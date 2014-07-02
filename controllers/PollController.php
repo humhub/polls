@@ -88,9 +88,6 @@ class PollController extends Controller {
         $poll->answersText = Yii::app()->request->getParam('answersText');
         $poll->allow_multiple = Yii::app()->request->getParam('allowMultiple');
 
-        // get user guids from notify input
-        $poll->userToNotify = Yii::app()->request->getParam('notifiyUserInput');
-
         if ($poll->validate()) {
             $poll->save();
             $this->renderJson(array('wallEntryId' => $poll->content->getFirstWallEntryId()));

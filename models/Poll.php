@@ -22,7 +22,6 @@ class Poll extends HActiveRecordContent
 
     const MIN_REQUIRED_ANSWERS = 2;
 
-    public $userToNotify = "";
     public $answersText;
     public $autoAddToWall = true;
 
@@ -100,18 +99,6 @@ class Poll extends HActiveRecordContent
             $activity->module = "polls";
             $activity->save();
             $activity->fire();
-
-            // notify assigned Users
-            if ($this->userToNotify != "") {
-                $guids = explode(",", $this->userToNotify);
-                foreach ($guids as $guid) {
-                    $guid = trim($guid);
-                    $user = User::model()->findByAttributes(array('guid' => $guid));
-                    if ($user != null) {
-                        $this->notifyUser($user);
-                    }
-                }
-            }
         }
 
         return true;
@@ -262,28 +249,6 @@ class Poll extends HActiveRecordContent
         }
 
         $this->answersText = $answerTextNew;
-    }
-
-    /**
-     * Assign user to this poll
-     */
-    public function notifyUser($user = "")
-    {
-
-        if ($user == "") {
-            $user = Yii::app()->user->getModel();
-        }
-
-        // Fire Notification to user
-        $notification = new Notification();
-        $notification->class = "PollCreatedNotification";
-        $notification->user_id = $user->id; // Assigned User
-        $notification->space_id = $this->content->space_id;
-        $notification->source_object_model = 'Poll';
-        $notification->source_object_id = $this->id;
-        $notification->target_object_model = 'Poll';
-        $notification->target_object_id = $this->id;
-        $notification->save();
     }
 
 }
