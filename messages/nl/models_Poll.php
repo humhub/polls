@@ -17,5 +17,8 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Polls' => '',
+  'Answers' => '',
+  'Multiple answers per user' => '',
+  'Please specify at least {min} answers!' => '',
+  'Question' => '',
 );

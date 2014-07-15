@@ -17,5 +17,5 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Polls' => '',
+  '{userName} created a new poll and assigned you.' => '',
 );

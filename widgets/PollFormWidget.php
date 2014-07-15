@@ -12,7 +12,7 @@ class PollFormWidget extends ContentFormWidget {
     public function renderForm() {
 
         $this->submitUrl = 'polls/poll/create';
-        $this->submitButtonText = Yii::t('PollsModule.base', 'Ask');
+        $this->submitButtonText = Yii::t('PollsModule.widgets_PollFormWidget', 'Ask');
 
         $this->form = $this->render('pollForm', array(), true);
     }

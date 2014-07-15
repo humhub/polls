@@ -62,9 +62,9 @@ class Poll extends HActiveRecordContent
     public function attributeLabels()
     {
         return array(
-            'answersText' => Yii::t('PollsModule.base', 'Answers'),
-            'question' => Yii::t('PollsModule.base', 'Question'),
-            'allow_multiple' => Yii::t('PollsModule.base', 'Multiple answers per user'),
+            'answersText' => Yii::t('PollsModule.models_Poll', 'Answers'),
+            'question' => Yii::t('PollsModule.models_Poll', 'Question'),
+            'allow_multiple' => Yii::t('PollsModule.models_Poll', 'Multiple answers per user'),
         );
     }
 
@@ -227,7 +227,7 @@ class Poll extends HActiveRecordContent
      */
     public function getContentTitle()
     {
-        return Yii::t('PollsModule.base', "Question") . " \"" . Helpers::truncateText($this->question, 25) . "\"";
+        return Yii::t('PollsModule.models_Poll', "Question") . " \"" . Helpers::truncateText($this->question, 25) . "\"";
     }
 
     public function validateAnswersText()
@@ -245,7 +245,7 @@ class Poll extends HActiveRecordContent
         }
 
         if ($answerCount < self::MIN_REQUIRED_ANSWERS) {
-            $this->addError('answersText', Yii::t('PollsModule.base', "Please specify at least {min} answers!", array("{min}" => self::MIN_REQUIRED_ANSWERS)));
+            $this->addError('answersText', Yii::t('PollsModule.models_Poll', "Please specify at least {min} answers!", array("{min}" => self::MIN_REQUIRED_ANSWERS)));
         }
 
         $this->answersText = $answerTextNew;

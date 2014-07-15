@@ -17,5 +17,8 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Polls' => '',
+  'Reset my vote' => '',
+  'Vote' => '',
+  'and {count} more vote for this.' => '',
+  'votes' => '',
 );

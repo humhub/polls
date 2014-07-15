@@ -17,5 +17,13 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Polls' => '',
+  'Asked by me' => '',
+  'Creation time' => '',
+  'Display all' => '',
+  'Last update' => '',
+  'No answered yet' => '',
+  'No poll found which matches your current filter(s)!' => '',
+  'Only private polls' => '',
+  'Only public polls' => '',
+  'Sorting' => '',
 );

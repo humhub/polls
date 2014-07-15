@@ -115,7 +115,7 @@ class PollController extends Controller {
         }
 
         if (count($votes) > 1 && !$poll->allow_multiple) {
-            throw new CHttpException(401, Yii::t('PollsModule.base', 'Voting for multiple answers is disabled!'));
+            throw new CHttpException(401, Yii::t('PollsModule.controllers_PollController', 'Voting for multiple answers is disabled!'));
         }
 
         $poll->vote($votes);
@@ -142,7 +142,7 @@ class PollController extends Controller {
         $answerId = (int) Yii::app()->request->getQuery('answerId', '');
         $answer = PollAnswer::model()->findByPk($answerId);
         if ($answer == null || $poll->id != $answer->poll_id) {
-            throw new CHttpException(401, Yii::t('PollsModule.base', 'Invalid answer!'));
+            throw new CHttpException(401, Yii::t('PollsModule.controllers_PollController', 'Invalid answer!'));
         }
 
         $page = (int) Yii::app()->request->getParam('page', 1);
@@ -161,7 +161,7 @@ class PollController extends Controller {
 
         $users = User::model()->findAllBySql($sql, $params);
         $output = $this->renderPartial('application.modules_core.user.views._listUsers', array(
-            'title' => Yii::t('PollsModule.base', "Users voted for: <strong>{answer}</strong>", array('{answer}' => $answer->answer)),
+            'title' => Yii::t('PollsModule.controllers_PollController', "Users voted for: <strong>{answer}</strong>", array('{answer}' => $answer->answer)),
             'users' => $users,
             'pagination' => $pagination
                 ), true);
@@ -207,11 +207,11 @@ class PollController extends Controller {
         $poll = Poll::model()->findByPk($pollId);
 
         if ($poll == null) {
-            throw new CHttpException(401, Yii::t('PollsModule.base', 'Could not load poll!'));
+            throw new CHttpException(401, Yii::t('PollsModule.controllers_PollController', 'Could not load poll!'));
         }
 
         if (!$poll->content->canRead()) {
-            throw new CHttpException(401, Yii::t('PollsModule.base', 'You have insufficient permissions to perform that operation!'));
+            throw new CHttpException(401, Yii::t('PollsModule.controllers_PollController', 'You have insufficient permissions to perform that operation!'));
         }
 
         return $poll;

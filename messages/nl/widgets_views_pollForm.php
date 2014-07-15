@@ -17,5 +17,7 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Polls' => '',
+  'Allow multiple answers per user?' => '',
+  'Ask something...' => '',
+  'Possible answers (one per line)' => '',
 );

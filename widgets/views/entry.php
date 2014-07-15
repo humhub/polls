@@ -73,7 +73,7 @@
                         // check if exists more user as limited
                         if ($i == $maxUser) {
                             // output with the number of not rendered users
-                            $userlist .= Yii::t('PollsModule.base', 'and {count} more vote for this.', array('{count}' => (intval(count($answer->votes) - $maxUser))));
+                            $userlist .= Yii::t('PollsModule.widgets_views_entry', 'and {count} more vote for this.', array('{count}' => (intval(count($answer->votes) - $maxUser))));
 
                             // stop the loop
                             break;
@@ -87,11 +87,11 @@
                             <a href="<?php echo $this->createUrl('//polls/poll/userListResults', array('pollId' => $poll->id, 'answerId' => $answer->id)); ?>"
                                class="tt" data-toggle="modal"
                                data-placement="top" title="" data-target="#globalModal"
-                               data-original-title="<?php echo $userlist; ?>"><?php echo count($answer->votes) . " " . Yii::t('PollsModule.base', 'votes'); ?></a>
+                               data-original-title="<?php echo $userlist; ?>"><?php echo count($answer->votes) . " " . Yii::t('PollsModule.widgets_views_entry', 'votes'); ?></a>
 
 
                         <?php } else { ?>
-                            0 <?php echo Yii::t('PollsModule.base', 'votes'); ?>
+                            0 <?php echo Yii::t('PollsModule.widgets_views_entry', 'votes'); ?>
                         <?php } ?>
                     </p>
 
@@ -107,7 +107,7 @@
             <br>
             <?php
             $voteUrl = CHtml::normalizeUrl(array('/polls/poll/answer', 'sguid' => $space->guid, 'pollId' => $poll->id, 'wallType'=>Wall::$currentType));
-            echo HHtml::ajaxSubmitButton(Yii::t('PollsModule.base', 'Vote'), $voteUrl, array(
+            echo HHtml::ajaxSubmitButton(Yii::t('PollsModule.widgets_views_entry', 'Vote'), $voteUrl, array(
                     'dataType' => 'json',
                     'success' => "function(json) {  $('#wallEntry_'+json.wallEntryId).html(parseHtml(json.output)); }",
                 ), array('id' => "PollAnswerButton_" . $poll->id, 'class' => 'btn btn-primary')
@@ -124,7 +124,7 @@
             <br>
             <?php
             $voteUrl = CHtml::normalizeUrl(array('/polls/poll/answerReset', 'sguid' => $space->guid, 'pollId' => $poll->id, 'wallType' => Wall::$currentType));
-            echo HHtml::ajaxLink(Yii::t('PollsModule.base', 'Reset my vote'), $voteUrl, array(
+            echo HHtml::ajaxLink(Yii::t('PollsModule.widgets_views_entry', 'Reset my vote'), $voteUrl, array(
                     'dataType' => 'json',
                     'success' => "function(json) { $('#wallEntry_'+json.wallEntryId).html(parseHtml(json.output)); $('#wallEntry_'+json.wallEntryId).find(':checkbox, :radio').flatelements(); }",
                 ), array('id' => "PollAnswerResetButton_" . $poll->id, 'class' => 'btn btn-danger')

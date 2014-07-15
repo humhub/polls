@@ -17,5 +17,9 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Polls' => '',
+  'Could not load poll!' => '',
+  'Invalid answer!' => '',
+  'Users voted for: <strong>{answer}</strong>' => '',
+  'Voting for multiple answers is disabled!' => '',
+  'You have insufficient permissions to perform that operation!' => '',
 );
