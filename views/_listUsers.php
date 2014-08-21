@@ -17,7 +17,7 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h4 class="modal-title"
                 id="myModalLabel">
-                <?php echo Yii::t('LikeModule.views_listUsers', 'User who vote this'); ?>
+                <?php echo Yii::t('PollsModule.views_listUsers', 'User who vote this'); ?>
                 <?php echo $title;?>
             </h4>
         </div>
