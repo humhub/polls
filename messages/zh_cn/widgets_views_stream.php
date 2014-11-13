@@ -17,8 +17,6 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  '<b>There are no polls yet!</b><br>Be the first and create one...' => '@@<b>还没有投票</b><br>我要创建一个。@@',
-  'Filter' => '@@筛选@@',
   'Asked by me' => '我提的问题',
   'Creation time' => '创建时间',
   'Display all' => '显示所有',
