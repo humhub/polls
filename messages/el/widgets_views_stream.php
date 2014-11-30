@@ -17,9 +17,11 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
+  '<b>There are no polls yet!</b><br>Be the first and create one...' => '',
   'Asked by me' => '',
   'Creation time' => '',
   'Display all' => '',
+  'Filter' => '',
   'Last update' => '',
   'No answered yet' => '',
   'No poll found which matches your current filter(s)!' => '',
