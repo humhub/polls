@@ -1,4 +1,4 @@
 <?php
 return array (
-  '{userName} created a new {question}.' => '{userName} vous demande : {question}.',
+  '{userName} created a new {question}.' => '{userName} a créé un sondage : {question}.',
 );
