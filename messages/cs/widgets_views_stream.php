@@ -1,6 +1,6 @@
 <?php
 return array (
-  '<b>There are no polls yet!</b><br>Be the first and create one...' => '<b>Zatím zde nejsou žádné ankety.</b><br>Vytvořte první...',
+  '<b>There are no polls yet!</b><br>Be the first to create one...' => '<b>Zatím zde nejsou žádné ankety.</b><br>Vytvořte první...',
   'Filter' => 'Filtr',
   'Asked by me' => 'Vytvořil(a) jsem',
   'Creation time' => 'Vytvořeno',

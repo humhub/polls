@@ -38,7 +38,7 @@
         <div class="emptyStreamMessage">
             <?php if ($this->contentContainer->canWrite()) { ?>
                 <div class="placeholder placeholder-empty-stream">
-                    <?php echo Yii::t('PollsModule.widgets_views_stream', '<b>There are no polls yet!</b><br>Be the first and create one...'); ?>
+                    <?php echo Yii::t('PollsModule.widgets_views_stream', '<b>There are no polls yet!</b><br>Be the first to create one...'); ?>
                 </div>
             <?php }?>
         </div>

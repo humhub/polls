@@ -1,6 +1,6 @@
 <?php
 return array (
-  '<b>There are no polls yet!</b><br>Be the first and create one...' => '<b>¡No hay votaciones todavía!</b><br>Sé el primero y crea una...',
+  '<b>There are no polls yet!</b><br>Be the first to create one...' => '<b>¡No hay votaciones todavía!</b><br>Sé el primero y crea una...',
   'Filter' => 'Filtro',
   'Asked by me' => 'Preguntado por mí',
   'Creation time' => 'Fecha de creación',

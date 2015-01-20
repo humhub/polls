@@ -17,7 +17,7 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  '<b>There are no polls yet!</b><br>Be the first and create one...' => '',
+  '<b>There are no polls yet!</b><br>Be the first to create one...' => '',
   'Filter' => '',
   'Asked by me' => 'Chiesto da me',
   'Creation time' => 'Tempo creazione',
