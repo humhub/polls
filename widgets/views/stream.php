@@ -11,7 +11,7 @@
 ?>
 <ul class="nav nav-tabs wallFilterPanel" id="filter" style="display: none;">
     <li class=" dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo Yii::t('PollModule.widgets_views_stream', 'Filter'); ?> <b class="caret"></b></a>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo Yii::t('PollsModule.widgets_views_stream', 'Filter'); ?> <b class="caret"></b></a>
         <ul class="dropdown-menu">
             <!--<li><a href="#" class="wallFilter" id="filter_visibility_public"><i class="fa fa-check-square-o"></i> <?php echo Yii::t('PollsModule.widgets_views_stream', 'Display all'); ?></a></li>-->
             <li><a href="#" class="wallFilter" id="filter_polls_notAnswered"><i class="fa fa-square-o"></i> <?php echo Yii::t('PollsModule.widgets_views_stream', 'No answered yet'); ?></a></li>
@@ -38,7 +38,7 @@
         <div class="emptyStreamMessage">
             <?php if ($this->contentContainer->canWrite()) { ?>
                 <div class="placeholder placeholder-empty-stream">
-                    <?php echo Yii::t('PollModule.widgets_views_stream', '<b>There are no polls yet!</b><br>Be the first and create one...'); ?>
+                    <?php echo Yii::t('PollsModule.widgets_views_stream', '<b>There are no polls yet!</b><br>Be the first and create one...'); ?>
                 </div>
             <?php }?>
         </div>

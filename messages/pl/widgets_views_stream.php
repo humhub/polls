@@ -17,13 +17,15 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Asked by me' => '',
-  'Creation time' => '',
-  'Display all' => '',
-  'Last update' => '',
-  'No answered yet' => '',
-  'No poll found which matches your current filter(s)!' => '',
-  'Only private polls' => '',
-  'Only public polls' => '',
-  'Sorting' => '',
+  '<b>There are no polls yet!</b><br>Be the first and create one...' => '',
+  'Filter' => '',
+  'Asked by me' => 'Moje zapytanie',
+  'Creation time' => 'Data utworzenia',
+  'Display all' => 'Pokaż wszystkie',
+  'Last update' => 'Ostatnia aktualizacja',
+  'No answered yet' => 'Jeszcze nie odpowiedziano',
+  'No poll found which matches your current filter(s)!' => 'Nie znaleziono głosowania według kryteriów obecnego filtru(-ów)! ',
+  'Only private polls' => 'Tylko prywatne głosowania',
+  'Only public polls' => 'Tylko publiczne głosowania',
+  'Sorting' => 'Sortowanie',
 );

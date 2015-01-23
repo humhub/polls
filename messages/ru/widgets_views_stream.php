@@ -17,13 +17,15 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Asked by me' => '',
-  'Creation time' => '',
-  'Display all' => '',
-  'Last update' => '',
-  'No answered yet' => '',
-  'No poll found which matches your current filter(s)!' => '',
-  'Only private polls' => '',
-  'Only public polls' => '',
-  'Sorting' => '',
+  '<b>There are no polls yet!</b><br>Be the first and create one...' => '',
+  'Filter' => '',
+  'Asked by me' => 'Мои опросы',
+  'Creation time' => 'Время создания',
+  'Display all' => 'Показать все',
+  'Last update' => 'Последнее обновление',
+  'No answered yet' => 'Пока без ответа',
+  'No poll found which matches your current filter(s)!' => 'Ответ соответствующий вашему фильтру не найден!',
+  'Only private polls' => 'Только приватные опросы',
+  'Only public polls' => 'Только публичные опросы',
+  'Sorting' => 'Сортировка',
 );
