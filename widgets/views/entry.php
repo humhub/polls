@@ -37,7 +37,7 @@
                         <?php else: ?>
                             <div class="radio">
                                 <label>
-                                    <?php echo CHtml::radioButton('answers', false, array('value' => $answer->id, 'id' => 'answer_'. $answer->id)); ?>
+                                    <?php echo CHtml::radioButton('answers', false, array('value' => $answer->id, 'id' => 'answer_' . $answer->id)); ?>
                                 </label>
                             </div>
                         <?php endif; ?>
@@ -78,7 +78,7 @@
                             // stop the loop
                             break;
                         } else {
-                            $userlist .= "<strong>" . $answer->votes[$i]->user->displayName . "</strong><br>";
+                            $userlist .= "<strong>" . CHtml::encode($answer->votes[$i]->user->displayName) . "</strong><br>";
                         }
                     }
                     ?>
@@ -106,11 +106,11 @@
         <?php if (!$poll->hasUserVoted()) : ?>
             <br>
             <?php
-            $voteUrl = CHtml::normalizeUrl(array('/polls/poll/answer', 'sguid' => $space->guid, 'pollId' => $poll->id, 'wallType'=>Wall::$currentType));
+            $voteUrl = CHtml::normalizeUrl(array('/polls/poll/answer', 'sguid' => $space->guid, 'pollId' => $poll->id, 'wallType' => Wall::$currentType));
             echo HHtml::ajaxSubmitButton(Yii::t('PollsModule.widgets_views_entry', 'Vote'), $voteUrl, array(
-                    'dataType' => 'json',
-                    'success' => "function(json) {  $('#wallEntry_'+json.wallEntryId).html(parseHtml(json.output)); }",
-                ), array('id' => "PollAnswerButton_" . $poll->id, 'class' => 'btn btn-primary')
+                'dataType' => 'json',
+                'success' => "function(json) {  $('#wallEntry_'+json.wallEntryId).html(parseHtml(json.output)); }",
+                    ), array('id' => "PollAnswerButton_" . $poll->id, 'class' => 'btn btn-primary')
             );
             ?>
             <br>
@@ -125,9 +125,9 @@
             <?php
             $voteUrl = CHtml::normalizeUrl(array('/polls/poll/answerReset', 'sguid' => $space->guid, 'pollId' => $poll->id, 'wallType' => Wall::$currentType));
             echo HHtml::ajaxLink(Yii::t('PollsModule.widgets_views_entry', 'Reset my vote'), $voteUrl, array(
-                    'dataType' => 'json',
-                    'success' => "function(json) { $('#wallEntry_'+json.wallEntryId).html(parseHtml(json.output)); $('#wallEntry_'+json.wallEntryId).find(':checkbox, :radio').flatelements(); }",
-                ), array('id' => "PollAnswerResetButton_" . $poll->id, 'class' => 'btn btn-danger')
+                'dataType' => 'json',
+                'success' => "function(json) { $('#wallEntry_'+json.wallEntryId).html(parseHtml(json.output)); $('#wallEntry_'+json.wallEntryId).find(':checkbox, :radio').flatelements(); }",
+                    ), array('id' => "PollAnswerResetButton_" . $poll->id, 'class' => 'btn btn-danger')
             );
             ?>
             <br>
