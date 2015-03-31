@@ -7,68 +7,26 @@
  * @since 0.5
  * @author Luke
  */
-class PollController extends Controller {
+class PollController extends ContentContainerController
+{
 
-    public $subLayout = "application.modules_core.space.views.space._layout";
 
-    /**
-     * @return array action filters
-     */
-    public function filters() {
+    public function actions()
+    {
         return array(
-            'accessControl', // perform access control for CRUD operations
-        );
-    }
-
-    /**
-     * Specifies the access control rules.
-     * This method is used by the 'accessControl' filter.
-     * @return array access control rules
-     */
-    public function accessRules() {
-        return array(
-            array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'users' => array('@'),
-            ),
-            array('deny', // deny all users
-                'users' => array('*'),
-            ),
-        );
-    }
-
-    /**
-     * Add mix-ins to this model
-     *
-     * @return type
-     */
-    public function behaviors() {
-        return array(
-            'SpaceControllerBehavior' => array(
-                'class' => 'application.modules_core.space.behaviors.SpaceControllerBehavior',
-            ),
-        );
-    }
-
-    /**
-     * Actions
-     *
-     * @return type
-     */
-    public function actions() {
-        return array(
-            // Adds the PollsStreamAction Module to add own Streaming/Walling
-            // for Polls Only Objects.
             'stream' => array(
-                'class' => 'application.modules.polls.PollsStreamAction',
-                'mode' => 'normal',
-            ),
+                'class' => 'PollsStreamAction',
+                'contentContainer' => $this->contentContainer
+             ),
         );
     }
+
 
     /**
      * Shows the questions tab
      */
-    public function actionShow() {
+    public function actionShow()
+    {
         $this->render('show', array());
     }
 
@@ -77,8 +35,8 @@ class PollController extends Controller {
      *
      * @return type
      */
-    public function actionCreate() {
-
+    public function actionCreate()
+    {
         $this->forcePostRequest();
         $_POST = Yii::app()->input->stripClean($_POST);
 
@@ -99,7 +57,8 @@ class PollController extends Controller {
     /**
      * Answers a polls
      */
-    public function actionAnswer() {
+    public function actionAnswer()
+    {
 
         $poll = $this->getPollByParameter();
         $answers = Yii::app()->request->getParam('answers');
@@ -125,7 +84,8 @@ class PollController extends Controller {
     /**
      * Resets users question answers
      */
-    public function actionAnswerReset() {
+    public function actionAnswerReset()
+    {
         $poll = $this->getPollByParameter();
         $poll->resetAnswer();
         $this->getPollOut($poll);
@@ -135,8 +95,8 @@ class PollController extends Controller {
      * Returns a user list including the pagination which contains all results
      * for an answer
      */
-    public function actionUserListResults() {
-
+    public function actionUserListResults()
+    {
         $poll = $this->getPollByParameter();
 
         $answerId = (int) Yii::app()->request->getQuery('answerId', '');
@@ -176,13 +136,8 @@ class PollController extends Controller {
      *
      * @param Poll $poll
      */
-    private function getPollOut($question) {
-
-        // Set correct wall type
-        $wallType = Yii::app()->request->getParam('wallType');
-        if ($wallType != "" && ($wallType == 'Space' || $wallType == 'Dashboard' || $wallType == 'User'))
-            Wall::$currentType = $wallType;
-
+    private function getPollOut($question)
+    {
         $output = $question->getWallOut();
         Yii::app()->clientScript->render($output);
 
@@ -198,13 +153,11 @@ class PollController extends Controller {
      *
      * This method also validates access rights of the requested poll object.
      */
-    private function getPollByParameter() {
-
-        // Try load space, this also checks access rights and such things
-        //$space = $this->getSpace();
-
+    private function getPollByParameter()
+    {
+        
         $pollId = (int) Yii::app()->request->getParam('pollId');
-        $poll = Poll::model()->findByPk($pollId);
+        $poll = Poll::model()->contentContainer($this->contentContainer)->findByPk($pollId);
 
         if ($poll == null) {
             throw new CHttpException(401, Yii::t('PollsModule.controllers_PollController', 'Could not load poll!'));

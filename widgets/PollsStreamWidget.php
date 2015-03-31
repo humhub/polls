@@ -7,10 +7,11 @@
  * @since 0.5
  * @author Luke
  */
-class PollsStreamWidget extends WallStreamWidget {
+class PollsStreamWidget extends StreamWidget
+{
 
     public $streamAction = "//polls/poll/stream";
-    
+
 }
 
 ?>

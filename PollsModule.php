@@ -78,7 +78,7 @@ class PollsModule extends HWebModule
             $event->sender->addItem(array(
                 'label' => Yii::t('PollsModule.base', 'Polls'),
                 'group' => 'modules',
-                'url' => Yii::app()->createUrl('//polls/poll/show', array('sguid' => $space->guid)),
+                'url' => $space->createUrl('//polls/poll/show'),
                 'icon' => '<i class="fa fa-question-circle"></i>',
                 'isActive' => (Yii::app()->controller->module && Yii::app()->controller->module->id == 'polls'),
             ));

@@ -17,7 +17,7 @@ class PollWallEntryWidget extends HWidget {
 
         $this->render('entry', array('poll' => $this->poll,
             'user' => $this->poll->content->user,
-            'space' => $this->poll->content->container));
+            'contentContainer' => $this->poll->content->container));
     }
 
 }

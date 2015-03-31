@@ -84,7 +84,7 @@
                     ?>
                     <p style="margin-top: 14px;">
                         <?php if (count($answer->votes) > 0) { ?>
-                            <a href="<?php echo $this->createUrl('//polls/poll/userListResults', array('pollId' => $poll->id, 'answerId' => $answer->id)); ?>"
+                            <a href="<?php echo $contentContainer->createUrl('//polls/poll/userListResults', array('pollId' => $poll->id, 'answerId' => $answer->id)); ?>"
                                class="tt" data-toggle="modal"
                                data-placement="top" title="" data-target="#globalModal"
                                data-original-title="<?php echo $userlist; ?>"><?php echo count($answer->votes) . " " . Yii::t('PollsModule.widgets_views_entry', 'votes'); ?></a>
@@ -103,11 +103,10 @@
         <?php endforeach; ?>
 
 
-        <?php if (!$poll->hasUserVoted()) : ?>
+        <?php if (!$poll->hasUserVoted() && !Yii::app()->user->isGuest) : ?>
             <br>
             <?php
-            $voteUrl = CHtml::normalizeUrl(array('/polls/poll/answer', 'sguid' => $space->guid, 'pollId' => $poll->id, 'wallType' => Wall::$currentType));
-            echo HHtml::ajaxSubmitButton(Yii::t('PollsModule.widgets_views_entry', 'Vote'), $voteUrl, array(
+            echo HHtml::ajaxSubmitButton(Yii::t('PollsModule.widgets_views_entry', 'Vote'), $contentContainer->createUrl('/polls/poll/answer', array('pollId' => $poll->id)), array(
                 'dataType' => 'json',
                 'success' => "function(json) {  $('#wallEntry_'+json.wallEntryId).html(parseHtml(json.output)); }",
                     ), array('id' => "PollAnswerButton_" . $poll->id, 'class' => 'btn btn-primary')
@@ -116,6 +115,11 @@
             <br>
         <?php endif; ?>
 
+        <?php if (Yii::app()->user->isGuest) : ?>
+            <?php echo HHtml::link(Yii::t('PollsModule.widgets_views_entry', 'Vote'), Yii::app()->user->loginUrl, array('class' => 'btn btn-primary', 'data-target' => '#globalModal', 'data-toggle' => 'modal')); ?>
+        <?php endif; ?>
+
+
         <div class="clearFloats"></div>
 
         <?php echo CHtml::endForm(); ?>
@@ -123,8 +127,7 @@
         <?php if ($poll->hasUserVoted()) : ?>
             <br>
             <?php
-            $voteUrl = CHtml::normalizeUrl(array('/polls/poll/answerReset', 'sguid' => $space->guid, 'pollId' => $poll->id, 'wallType' => Wall::$currentType));
-            echo HHtml::ajaxLink(Yii::t('PollsModule.widgets_views_entry', 'Reset my vote'), $voteUrl, array(
+            echo HHtml::ajaxLink(Yii::t('PollsModule.widgets_views_entry', 'Reset my vote'), $contentContainer->createUrl('/polls/poll/answerReset', array('pollId' => $poll->id)), array(
                 'dataType' => 'json',
                 'success' => "function(json) { $('#wallEntry_'+json.wallEntryId).html(parseHtml(json.output)); $('#wallEntry_'+json.wallEntryId).find(':checkbox, :radio').flatelements(); }",
                     ), array('id' => "PollAnswerResetButton_" . $poll->id, 'class' => 'btn btn-danger')

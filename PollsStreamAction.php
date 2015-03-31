@@ -11,37 +11,25 @@
  * @since 0.5
  * @author Luke
  */
-class PollsStreamAction extends StreamAction {
+class PollsStreamAction extends ContentContainerStreamAction
+{
 
     /**
-     * Inject Question Specific SQL
+     * Setup additional filters
      */
-    protected function prepareSQL() {
-        $this->sqlWhere .= " AND object_model='Poll'";
-        parent::prepareSQL();
-    }
-
-    /**
-     * Handle Question Specific Filters
-     */
-    protected function setupFilterSQL() {
-
+    public function setupFilters()
+    {
+        $this->criteria->condition .= " AND object_model='Poll'";
+        
         if (in_array('polls_notAnswered', $this->filters) || in_array('polls_mine', $this->filters)) {
-
-            $this->sqlJoin .= " LEFT JOIN poll ON content.object_id=poll.id AND content.object_model = 'Poll'";
-
+            
+            $this->criteria->join .= " LEFT JOIN poll ON content.object_id=poll.id AND content.object_model = 'Poll'";
+            
             if (in_array('polls_notAnswered', $this->filters)) {
-                $this->sqlJoin .= " LEFT JOIN poll_answer_user ON poll.id=poll_answer_user.poll_id AND poll_answer_user.created_by = '" . Yii::app()->user->id . "'";
-                $this->sqlWhere .= " AND poll_answer_user.id is null";
+                $this->criteria->join .= " LEFT JOIN poll_answer_user ON poll.id=poll_answer_user.poll_id AND poll_answer_user.created_by = '" . Yii::app()->user->id . "'";
+                $this->criteria->condition .= " AND poll_answer_user.id is null"; 
             }
-
-            #if (in_array('questions_mine', $this->filters)) {
-            #	$this->sqlWhere .= " AND question.created_by = '".Yii::app()->user->id."'";
-            #}
         }
-
-
-        parent::setupFilterSQL();
     }
 
 }

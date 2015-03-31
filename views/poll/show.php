@@ -11,5 +11,18 @@
  * @since 0.5
  */
 ?>
-<?php $this->widget('application.modules.polls.widgets.PollFormWidget', array('contentContainer' => $this->getSpace())); ?>
-<?php $this->widget('application.modules.polls.widgets.PollsStreamWidget', array('contentContainer' => $this->getSpace())); ?>
+
+<?php $this->widget('application.modules.polls.widgets.PollFormWidget', array('contentContainer' => $this->contentContainer)); ?>
+
+<?php
+$this->widget('application.modules.polls.widgets.PollsStreamWidget', array(
+    'contentContainer' => $this->contentContainer,
+    'streamAction' => '//polls/poll/stream',
+    'messageStreamEmpty' => ($this->contentContainer->canWrite()) ?
+            Yii::t('PollsModule.widgets_views_stream', '<b>There are no polls yet!</b><br>Be the first and create one...') :
+            Yii::t('SpaceModule.views_space_index', '<b>There are no polls yet!</b>'),
+    'messageStreamEmptyCss' => ($this->contentContainer->canWrite()) ?
+            'placeholder-empty-stream' :
+            '',
+));
+?>
