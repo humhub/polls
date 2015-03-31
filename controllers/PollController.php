@@ -10,17 +10,30 @@
 class PollController extends ContentContainerController
 {
 
-
     public function actions()
     {
         return array(
             'stream' => array(
                 'class' => 'PollsStreamAction',
                 'contentContainer' => $this->contentContainer
-             ),
+            ),
         );
     }
 
+    public function init()
+    {
+
+        /**
+         * Fallback for older versions
+         */
+        if (Yii::app()->request->getParam('containerClass') == 'Space') {
+            $_GET['sguid'] = Yii::app()->request->getParam('containerGuid');
+        } elseif (Yii::app()->request->getParam('containerClass') == 'User') {
+            $_GET['uguid'] = Yii::app()->request->getParam('containerGuid');
+        }
+        
+        return parent::init();
+    }
 
     /**
      * Shows the questions tab
@@ -155,7 +168,7 @@ class PollController extends ContentContainerController
      */
     private function getPollByParameter()
     {
-        
+
         $pollId = (int) Yii::app()->request->getParam('pollId');
         $poll = Poll::model()->contentContainer($this->contentContainer)->findByPk($pollId);
 
