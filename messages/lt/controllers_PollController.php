@@ -1,8 +1,8 @@
 <?php
 return array (
-  'Could not load poll!' => '',
-  'Invalid answer!' => '',
-  'Users voted for: <strong>{answer}</strong>' => '',
-  'Voting for multiple answers is disabled!' => '',
-  'You have insufficient permissions to perform that operation!' => '',
+  'Could not load poll!' => 'Nepavyko įkelti apklausos!',
+  'Invalid answer!' => 'Negalimas atsakymas!',
+  'Users voted for: <strong>{answer}</strong>' => 'Vartotojai balsavo už: <strong>{answer}</strong>',
+  'Voting for multiple answers is disabled!' => 'Negalima pasirinkti kelių atsakymų!',
+  'You have insufficient permissions to perform that operation!' => 'Jūs neturite teisių atlikti šį veiksmą!',
 );
