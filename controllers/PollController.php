@@ -1,5 +1,16 @@
 <?php
 
+namespace module\polls\controllers;
+
+use Yii;
+use yii\web\HttpException;
+use yii\helpers\Html;
+use humhub\modules\user\models\User;
+use humhub\modules\user\widgets\UserListBox;
+use humhub\modules\content\components\ContentContainerController;
+use module\polls\models\Poll;
+use module\polls\models\PollAnswer;
+
 /**
  * PollController handles all poll related actions.
  *
@@ -14,25 +25,11 @@ class PollController extends ContentContainerController
     {
         return array(
             'stream' => array(
-                'class' => 'PollsStreamAction',
+                'class' => \module\polls\components\StreamAction::className(),
+                'mode' => \module\polls\components\StreamAction::MODE_NORMAL,
                 'contentContainer' => $this->contentContainer
             ),
         );
-    }
-
-    public function init()
-    {
-
-        /**
-         * Fallback for older versions
-         */
-        if (Yii::app()->request->getParam('containerClass') == 'Space') {
-            $_GET['sguid'] = Yii::app()->request->getParam('containerGuid');
-        } elseif (Yii::app()->request->getParam('containerClass') == 'User') {
-            $_GET['uguid'] = Yii::app()->request->getParam('containerGuid');
-        }
-        
-        return parent::init();
     }
 
     /**
@@ -40,7 +37,9 @@ class PollController extends ContentContainerController
      */
     public function actionShow()
     {
-        $this->render('show', array());
+        return $this->render('show', array(
+                    'contentContainer' => $this->contentContainer
+        ));
     }
 
     /**
@@ -50,21 +49,12 @@ class PollController extends ContentContainerController
      */
     public function actionCreate()
     {
-        $this->forcePostRequest();
-        $_POST = Yii::app()->input->stripClean($_POST);
-
         $poll = new Poll();
-        $poll->content->populateByForm();
-        $poll->question = Yii::app()->request->getParam('question');
-        $poll->answersText = Yii::app()->request->getParam('answersText');
-        $poll->allow_multiple = Yii::app()->request->getParam('allowMultiple');
+        $poll->question = Yii::$app->request->post('question');
+        $poll->answersText = Yii::$app->request->post('answersText');
+        $poll->allow_multiple = Yii::$app->request->post('allowMultiple', 0);
 
-        if ($poll->validate()) {
-            $poll->save();
-            $this->renderJson(array('wallEntryId' => $poll->content->getFirstWallEntryId()));
-        } else {
-            $this->renderJson(array('errors' => $poll->getErrors()), false);
-        }
+        return \module\polls\widgets\WallCreateForm::save($poll);
     }
 
     /**
@@ -72,9 +62,8 @@ class PollController extends ContentContainerController
      */
     public function actionAnswer()
     {
-
         $poll = $this->getPollByParameter();
-        $answers = Yii::app()->request->getParam('answers');
+        $answers = Yii::$app->request->post('answers');
 
         // Build array of answer ids
         $votes = array();
@@ -87,11 +76,11 @@ class PollController extends ContentContainerController
         }
 
         if (count($votes) > 1 && !$poll->allow_multiple) {
-            throw new CHttpException(401, Yii::t('PollsModule.controllers_PollController', 'Voting for multiple answers is disabled!'));
+            throw new HttpException(401, Yii::t('PollsModule.controllers_PollController', 'Voting for multiple answers is disabled!'));
         }
 
         $poll->vote($votes);
-        $this->getPollOut($poll);
+        return $this->renderPollOut($poll);
     }
 
     /**
@@ -101,7 +90,7 @@ class PollController extends ContentContainerController
     {
         $poll = $this->getPollByParameter();
         $poll->resetAnswer();
-        $this->getPollOut($poll);
+        return $this->renderPollOut($poll);
     }
 
     /**
@@ -112,36 +101,20 @@ class PollController extends ContentContainerController
     {
         $poll = $this->getPollByParameter();
 
-        $answerId = (int) Yii::app()->request->getQuery('answerId', '');
-        $answer = PollAnswer::model()->findByPk($answerId);
+        $answerId = (int) Yii::$app->request->get('answerId', '');
+        $answer = PollAnswer::findOne(['id' => $answerId]);
         if ($answer == null || $poll->id != $answer->poll_id) {
-            throw new CHttpException(401, Yii::t('PollsModule.controllers_PollController', 'Invalid answer!'));
+            throw new HttpException(401, Yii::t('PollsModule.controllers_PollController', 'Invalid answer!'));
         }
 
-        $page = (int) Yii::app()->request->getParam('page', 1);
-        $total = PollAnswerUser::model()->count('poll_answer_id=:aid', array(':aid' => $answerId));
-        $usersPerPage = HSetting::Get('paginationSize');
+        $query = User::find();
+        $query->leftJoin('poll_answer_user', 'poll_answer_user.created_by=user.id');
+        $query->andWhere('poll_answer_user.poll_id IS NOT NULL');
+        $query->orderBy('poll_answer_user.created_at DESC');
 
-        $sql = "SELECT u.* FROM `poll_answer_user` a " .
-                "LEFT JOIN user u ON a.created_by = u.id " .
-                "WHERE a.poll_answer_id=:aid AND u.status=" . User::STATUS_ENABLED . " " .
-                "ORDER BY a.created_at DESC " .
-                "LIMIT " . ($page - 1) * $usersPerPage . "," . $usersPerPage;
-        $params = array(':aid' => $answerId);
+        $title = Yii::t('PollsModule.controllers_PollController', "Users voted for: <strong>{answer}</strong>", array('{answer}' => Html::encode($answer->answer)));
 
-        $pagination = new CPagination($total);
-        $pagination->setPageSize($usersPerPage);
-
-        $users = User::model()->findAllBySql($sql, $params);
-        $output = $this->renderPartial('application.modules_core.user.views._listUsers', array(
-            'title' => Yii::t('PollsModule.controllers_PollController', "Users voted for: <strong>{answer}</strong>", array('{answer}' => $answer->answer)),
-            'users' => $users,
-            'pagination' => $pagination
-                ), true);
-
-        Yii::app()->clientScript->render($output);
-        echo $output;
-        Yii::app()->end();
+        return $this->renderAjaxContent(UserListBox::widget(['query' => $query, 'title' => $title]));
     }
 
     /**
@@ -149,16 +122,15 @@ class PollController extends ContentContainerController
      *
      * @param Poll $poll
      */
-    private function getPollOut($question)
+    private function renderPollOut($question)
     {
-        $output = $question->getWallOut();
-        Yii::app()->clientScript->render($output);
+        Yii::$app->response->format = 'json';
 
         $json = array();
-        $json['output'] = $output;
-        $json['wallEntryId'] = $question->content->getFirstWallEntryId(); // there should be only one
-        echo CJSON::encode($json);
-        Yii::app()->end();
+        $json['output'] = $this->renderAjaxContent($question->getWallOut());
+        $json['wallEntryId'] = $question->content->getFirstWallEntryId();
+
+        return $json;
     }
 
     /**
@@ -169,15 +141,15 @@ class PollController extends ContentContainerController
     private function getPollByParameter()
     {
 
-        $pollId = (int) Yii::app()->request->getParam('pollId');
-        $poll = Poll::model()->contentContainer($this->contentContainer)->findByPk($pollId);
+        $pollId = (int) Yii::$app->request->get('pollId');
+        $poll = Poll::find()->contentContainer($this->contentContainer)->readable()->where(['poll.id' => $pollId])->one();
 
         if ($poll == null) {
-            throw new CHttpException(401, Yii::t('PollsModule.controllers_PollController', 'Could not load poll!'));
+            throw new HttpException(401, Yii::t('PollsModule.controllers_PollController', 'Could not load poll!'));
         }
 
         if (!$poll->content->canRead()) {
-            throw new CHttpException(401, Yii::t('PollsModule.controllers_PollController', 'You have insufficient permissions to perform that operation!'));
+            throw new HttpException(401, Yii::t('PollsModule.controllers_PollController', 'You have insufficient permissions to perform that operation!'));
         }
 
         return $poll;

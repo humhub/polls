@@ -1,5 +1,11 @@
 <?php
 
+namespace module\polls\models;
+
+use humhub\components\ActiveRecord;
+use module\polls\models\Poll;
+use humhub\modules\user\models\User;
+
 /**
  * This is the model class for table "poll_answer_user".
  *
@@ -16,44 +22,36 @@
  * @since 0.5
  * @author Luke
  */
-class PollAnswerUser extends HActiveRecord {
-
-    /**
-     * Returns the static model of the specified AR class.
-     * @param string $className active record class name.
-     * @return QuestionAnswerUser the static model class
-     */
-    public static function model($className = __CLASS__) {
-        return parent::model($className);
-    }
+class PollAnswerUser extends ActiveRecord
+{
 
     /**
      * @return string the associated database table name
      */
-    public function tableName() {
+    public static function tableName()
+    {
         return 'poll_answer_user';
     }
 
     /**
      * @return array validation rules for model attributes.
      */
-    public function rules() {
-        // NOTE: you should only define rules for those attributes that
-        // will receive user inputs.
+    public function rules()
+    {
         return array(
-            array('poll_answer_id, poll_id, created_at, created_by, updated_at, updated_by', 'required'),
-            array('poll_answer_id, poll_id, created_by, updated_by', 'numerical', 'integerOnly' => true),
+            array(['poll_answer_id', 'poll_id'], 'required'),
+            array(['poll_answer_id', 'poll_id'], 'integer'),
         );
     }
 
-    /**
-     * @return array relational rules.
-     */
-    public function relations() {
-        return array(
-            'poll' => array(self::BELONGS_TO, 'poll', 'id'),
-            'user' => array(self::BELONGS_TO, 'User', 'created_by'),
-        );
+    public function getPoll()
+    {
+        return $this->hasOne(Poll::className(), ['id' => 'poll_id']);
+    }
+
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'created_by']);
     }
 
 }

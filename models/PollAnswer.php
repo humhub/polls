@@ -1,5 +1,12 @@
 <?php
 
+namespace module\polls\models;
+
+use Yii;
+use humhub\components\ActiveRecord;
+use module\polls\models\Poll;
+use module\polls\models\PollAnswerUser;
+
 /**
  * This is the model class for table "poll_answer".
  *
@@ -16,45 +23,38 @@
  * @since 0.5
  * @author Luke
  */
-class PollAnswer extends HActiveRecord {
-
-    /**
-     * Returns the static model of the specified AR class.
-     * @param string $className active record class name.
-     * @return QuestionAnswer the static model class
-     */
-    public static function model($className = __CLASS__) {
-        return parent::model($className);
-    }
+class PollAnswer extends ActiveRecord
+{
 
     /**
      * @return string the associated database table name
      */
-    public function tableName() {
+    public static function tableName()
+    {
         return 'poll_answer';
     }
 
     /**
      * @return array validation rules for model attributes.
      */
-    public function rules() {
-        // NOTE: you should only define rules for those attributes that
-        // will receive user inputs.
+    public function rules()
+    {
         return array(
-            array('poll_id, answer, created_at, created_by, updated_at, updated_by', 'required'),
-            array('poll_id, created_by, updated_by', 'numerical', 'integerOnly' => true),
-            array('answer', 'length', 'max' => 255),
+            array(['poll_id', 'answer'], 'required'),
+            array(['poll_id'], 'integer'),
+            array(['answer'], 'string', 'max' => 255),
         );
     }
 
-    /**
-     * @return array relational rules.
-     */
-    public function relations() {
-        return array(
-            'poll' => array(self::BELONGS_TO, 'Poll', 'id'),
-            'votes' => array(self::HAS_MANY, 'PollAnswerUser', 'poll_answer_id'),
-        );
+    public function getPoll()
+    {
+        return $this->hasOne(Poll::className(), ['id' => 'poll_id']);
+    }
+
+    public function getVotes()
+    {
+        $query = $this->hasMany(PollAnswerUser::className(), ['poll_answer_id' => 'id']);
+        return $query;
     }
 
     /**
@@ -62,14 +62,13 @@ class PollAnswer extends HActiveRecord {
      *
      * @return int
      */
-    public function getPercent() {
-
-        $total = PollAnswerUser::model()->countByAttributes(array('poll_id' => $this->poll_id));
+    public function getPercent()
+    {
+        $total = PollAnswerUser::find()->where(array('poll_id' => $this->poll_id))->count();
         if ($total == 0)
             return 0;
 
-        $me = PollAnswerUser::model()->countByAttributes(array('poll_answer_id' => $this->id));
-        return $me / $total * 100;
+        return $this->getTotal() / $total * 100;
     }
 
     /**
@@ -77,9 +76,10 @@ class PollAnswer extends HActiveRecord {
      *
      * @return int
      */
-    public function getTotal() {
+    public function getTotal()
+    {
 
-        return PollAnswerUser::model()->countByAttributes(array('poll_answer_id' => $this->id));
+        return PollAnswerUser::find()->where(array('poll_answer_id' => $this->id))->count();
     }
 
 }

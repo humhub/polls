@@ -1,5 +1,12 @@
 <?php
 
+namespace module\polls\models;
+
+use Yii;
+use humhub\modules\content\components\ContentActiveRecord;
+use module\polls\models\PollAnswer;
+use module\polls\models\PollAnswerUser;
+
 /**
  * This is the model class for table "poll".
  *
@@ -17,7 +24,7 @@
  * @since 0.5
  * @author Luke
  */
-class Poll extends HActiveRecordContent
+class Poll extends ContentActiveRecord
 {
 
     const MIN_REQUIRED_ANSWERS = 2;
@@ -26,19 +33,9 @@ class Poll extends HActiveRecordContent
     public $autoAddToWall = true;
 
     /**
-     * Returns the static model of the specified AR class.
-     * @param string $className active record class name.
-     * @return Question the static model class
-     */
-    public static function model($className = __CLASS__)
-    {
-        return parent::model($className);
-    }
-
-    /**
      * @return string the associated database table name
      */
-    public function tableName()
+    public static function tableName()
     {
         return 'poll';
     }
@@ -49,10 +46,10 @@ class Poll extends HActiveRecordContent
     public function rules()
     {
         return array(
-            array('question, answersText, created_at, created_by, updated_at, updated_by', 'required'),
-            array('answersText', 'validateAnswersText'),
-            array('allow_multiple, created_by, updated_by', 'numerical', 'integerOnly' => true),
-            array('question', 'length', 'max' => 600),
+            array(['question', 'answersText'], 'required'),
+            array(['answersText'], 'validateAnswersText'),
+            array(['allow_multiple'], 'integer'),
+            array(['question'], 'string', 'max' => 600),
         );
     }
 
@@ -68,37 +65,24 @@ class Poll extends HActiveRecordContent
         );
     }
 
-    /**
-     * @return array relational rules.
-     */
-    public function relations()
+    public function getAnswers()
     {
-        return array(
-            'answers' => array(self::HAS_MANY, 'PollAnswer', 'poll_id'),
-        );
+        $query = $this->hasMany(PollAnswer::className(), ['poll_id' => 'id']);
+        return $query;
     }
 
-    public function afterSave()
+    public function afterSave($insert, $changedAttributes)
     {
-        parent::afterSave();
+        parent::afterSave($insert, $changedAttributes);
 
-        if ($this->isNewRecord) {
-
-            // Set Answers
+        if ($insert) {
             $answers = explode("\n", $this->answersText);
             foreach ($answers as $answerText) {
                 $answer = new PollAnswer();
                 $answer->poll_id = $this->id;
-                $answer->answer = Yii::app()->input->stripClean($answerText);
+                $answer->answer = $answerText;
                 $answer->save();
             }
-
-            // Create Question Created Activity
-            $activity = Activity::CreateForContent($this);
-            $activity->type = "PollCreated";
-            $activity->module = "polls";
-            $activity->save();
-            $activity->fire();
         }
 
         return true;
@@ -109,17 +93,12 @@ class Poll extends HActiveRecordContent
      */
     public function beforeDelete()
     {
-
-        // Delete all dependencies
         foreach ($this->answers as $answer) {
             foreach ($answer->votes as $answerUser) {
                 $answerUser->delete();
             }
             $answer->delete();
         }
-
-        Notification::remove('Poll', $this->id);
-
         return parent::beforeDelete();
     }
 
@@ -133,9 +112,9 @@ class Poll extends HActiveRecordContent
     {
 
         if ($userId == "")
-            $userId = Yii::app()->user->id;
+            $userId = Yii::$app->user->id;
 
-        $answer = PollAnswerUser::model()->findByAttributes(array('created_by' => $userId, 'poll_id' => $this->id));
+        $answer = PollAnswerUser::findOne(array('created_by' => $userId, 'poll_id' => $this->id));
 
         if ($answer == null)
             return false;
@@ -153,7 +132,7 @@ class Poll extends HActiveRecordContent
         $voted = false;
 
         foreach ($votes as $answerId) {
-            $answer = PollAnswer::model()->findByAttributes(array('id' => $answerId, 'poll_id' => $this->id));
+            $answer = PollAnswer::findOne(array('id' => $answerId, 'poll_id' => $this->id));
 
             $userVote = new PollAnswerUser();
             $userVote->poll_id = $this->id;
@@ -165,12 +144,10 @@ class Poll extends HActiveRecordContent
         }
 
         if ($voted) {
-            // Create Question Answered Activity
-            $activity = Activity::CreateForContent($this);
-            $activity->type = "PollAnswered";
-            $activity->module = "polls";
-            $activity->save();
-            $activity->fire();
+            $activity = new \module\polls\activities\NewVote();
+            $activity->source = $this;
+            $activity->originator = Yii::$app->user->getIdentity();
+            $activity->create();
         }
     }
 
@@ -183,31 +160,17 @@ class Poll extends HActiveRecordContent
     {
 
         if ($userId == "")
-            $userId = Yii::app()->user->id;
+            $userId = Yii::$app->user->id;
 
         if ($this->hasUserVoted($userId)) {
 
-            $answers = PollAnswerUser::model()->findAllByAttributes(array('created_by' => $userId, 'poll_id' => $this->id));
+            $answers = PollAnswerUser::findAll(array('created_by' => $userId, 'poll_id' => $this->id));
             foreach ($answers as $answer) {
                 $answer->delete();
             }
 
-            // Delete Activity for Question Answered
-            $activity = Activity::model()->findByAttributes(array(
-                'type' => 'PollAnswered',
-                'object_model' => "Poll",
-                'created_by' => $userId,
-                'object_id' => $this->id
-            ));
-
-            if ($activity)
-                $activity->delete();
+            //ToDo: Delete Activity
         }
-    }
-
-    public function setAnswers()
-    {
-        
     }
 
     /**
@@ -215,19 +178,27 @@ class Poll extends HActiveRecordContent
      */
     public function getWallOut()
     {
-        return Yii::app()->getController()->widget('application.modules.polls.widgets.PollWallEntryWidget', array('poll' => $this), true);
+        return \module\polls\widgets\WallEntry::widget(array('poll' => $this));
     }
 
     /**
-     * Returns a title/text which identifies this IContent.
-     *
-     * e.g. Post: foo bar 123...
-     *
-     * @return String
+     * @inheritdoc
      */
     public function getContentTitle()
     {
-        return Yii::t('PollsModule.models_Poll', "Question") . " \"" . Helpers::truncateText($this->question, 25) . "\"";
+        return Yii::t('PollsModule.models_Poll', "Question");
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getContentPreview($maxLength = 0)
+    {
+        if ($maxLength == 0) {
+            return $this->question;
+        }
+
+        return \humhub\libs\Helpers::truncateText($this->question, $maxLength);
     }
 
     public function validateAnswersText()

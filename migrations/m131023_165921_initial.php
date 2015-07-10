@@ -1,8 +1,12 @@
 <?php
 
-class m131023_165921_initial extends EDbMigration {
+use yii\db\Migration;
 
-    public function up() {
+class m131023_165921_initial extends Migration
+{
+
+    public function up()
+    {
 
         $this->createTable('poll', array(
             'id' => 'pk',
@@ -35,7 +39,8 @@ class m131023_165921_initial extends EDbMigration {
                 ), '');
     }
 
-    public function down() {
+    public function down()
+    {
         echo "m131023_165921_initial does not support migration down.\n";
         return false;
     }

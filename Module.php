@@ -1,5 +1,11 @@
 <?php
 
+namespace module\polls;
+
+use Yii;
+use module\poll\models\Poll;
+use module\poll\models\PollAnswerUser;
+
 /**
  * PollsModule is the WebModule for the polling system.
  *
@@ -9,29 +15,14 @@
  * @since 0.5
  * @author Luke
  */
-class PollsModule extends HWebModule
+class Module extends \humhub\components\Module
 {
-
-    /**
-     * Inits the Module
-     */
-    public function init()
-    {
-
-        $this->setImport(array(
-            'polls.models.*',
-            'polls.behaviors.*',
-        ));
-    }
 
     public function behaviors()
     {
-
-        return array(
-            'SpaceModuleBehavior' => array(
-                'class' => 'application.modules_core.space.behaviors.SpaceModuleBehavior',
-            ),
-        );
+        return [
+            \humhub\modules\space\behaviors\SpaceModule::className(),
+        ];
     }
 
     /**
@@ -40,9 +31,11 @@ class PollsModule extends HWebModule
     public function disable()
     {
         if (parent::disable()) {
-            foreach (Content::model()->findAllByAttributes(array('object_model' => 'Poll')) as $content) {
-                $content->delete();
+
+            foreach (Poll::find()->all() as $poll) {
+                $poll->delete();
             }
+
             return true;
         }
 
@@ -57,8 +50,8 @@ class PollsModule extends HWebModule
      */
     public function disableSpaceModule(Space $space)
     {
-        foreach (Content::model()->findAllByAttributes(array('space_id' => $space->id, 'object_model' => 'Poll')) as $content) {
-            $content->delete();
+        foreach (Poll::find()->contentContainer($space)->all() as $poll) {
+            $poll->delete();
         }
     }
 
@@ -70,17 +63,16 @@ class PollsModule extends HWebModule
      */
     public static function onSpaceMenuInit($event)
     {
-
-        $space = Yii::app()->getController()->getSpace();
+        $space = $event->sender->space;
 
         // Is Module enabled on this workspace?
         if ($space->isModuleEnabled('polls')) {
             $event->sender->addItem(array(
                 'label' => Yii::t('PollsModule.base', 'Polls'),
                 'group' => 'modules',
-                'url' => $space->createUrl('//polls/poll/show'),
+                'url' => $space->createUrl('/polls/poll/show'),
                 'icon' => '<i class="fa fa-question-circle"></i>',
-                'isActive' => (Yii::app()->controller->module && Yii::app()->controller->module->id == 'polls'),
+                'isActive' => (Yii::$app->controller->module && Yii::$app->controller->module->id == 'polls'),
             ));
         }
     }
@@ -92,9 +84,8 @@ class PollsModule extends HWebModule
      */
     public static function onUserDelete($event)
     {
-
-        foreach (PollAnswerUser::model()->findAllByAttributes(array('created_by' => $event->sender->id)) as $question) {
-            $question->delete();
+        foreach (PollAnswerUser::findAll(array('created_by' => $event->sender->id)) as $answer) {
+            $answer->delete();
         }
 
         return true;
