@@ -7,7 +7,6 @@ echo \module\polls\widgets\WallCreateForm::widget([
 ?>
 
 <?php
-
 echo \humhub\modules\content\widgets\Stream::widget(array(
     'contentContainer' => $contentContainer,
     'streamAction' => '/polls/poll/stream',

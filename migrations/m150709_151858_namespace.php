@@ -10,7 +10,7 @@ class m150709_151858_namespace extends Migration
     {
         $this->renameClass('Poll', module\polls\models\Poll::className());
         $this->update('activity', ['class' => 'humhub\modules\content\activities\ContentCreated', 'module' => 'content'], ['class' => 'PollCreated']);
-        $this->update('activity', ['class' => 'module\polls\activities\NewVote'], ['class' => 'PollAnswered']);
+        $this->update('activity', ['class' => 'module\polls\activities\NewVote', 'module' => 'polls'], ['class' => 'PollAnswered']);
     }
 
     public function down()

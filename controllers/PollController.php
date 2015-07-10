@@ -54,7 +54,7 @@ class PollController extends ContentContainerController
         $poll->answersText = Yii::$app->request->post('answersText');
         $poll->allow_multiple = Yii::$app->request->post('allowMultiple', 0);
 
-        return \module\polls\widgets\WallCreateForm::save($poll);
+        return \module\polls\widgets\WallCreateForm::create($poll);
     }
 
     /**

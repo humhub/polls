@@ -2,6 +2,7 @@
 
 namespace module\polls\components;
 
+use Yii;
 use humhub\modules\content\components\actions\ContentContainerStream;
 use module\polls\models\Poll;
 
