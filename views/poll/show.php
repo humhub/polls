@@ -1,6 +1,6 @@
 <?php
 
-echo \module\polls\widgets\WallCreateForm::widget([
+echo \humhub\modules\polls\widgets\WallCreateForm::widget([
     'contentContainer' => $contentContainer,
     'submitButtonText' => Yii::t('PollsModule.widgets_PollFormWidget', 'Ask'),
 ]);

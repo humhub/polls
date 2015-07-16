@@ -1,11 +1,11 @@
 <?php
 
-namespace module\polls\models;
+namespace humhub\modules\polls\models;
 
 use Yii;
 use humhub\modules\content\components\ContentActiveRecord;
-use module\polls\models\PollAnswer;
-use module\polls\models\PollAnswerUser;
+use humhub\modules\polls\models\PollAnswer;
+use humhub\modules\polls\models\PollAnswerUser;
 
 /**
  * This is the model class for table "poll".
@@ -144,7 +144,7 @@ class Poll extends ContentActiveRecord
         }
 
         if ($voted) {
-            $activity = new \module\polls\activities\NewVote();
+            $activity = new \humhub\modules\polls\activities\NewVote();
             $activity->source = $this;
             $activity->originator = Yii::$app->user->getIdentity();
             $activity->create();
@@ -178,7 +178,7 @@ class Poll extends ContentActiveRecord
      */
     public function getWallOut()
     {
-        return \module\polls\widgets\WallEntry::widget(array('poll' => $this));
+        return \humhub\modules\polls\widgets\WallEntry::widget(array('poll' => $this));
     }
 
     /**

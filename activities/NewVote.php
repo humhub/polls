@@ -6,7 +6,7 @@
  * @license https://www.humhub.com/licences
  */
 
-namespace module\polls\activities;
+namespace humhub\modules\polls\activities;
 
 use humhub\modules\activity\components\BaseActivity;
 

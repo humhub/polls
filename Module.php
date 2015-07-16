@@ -1,10 +1,8 @@
 <?php
 
-namespace module\polls;
+namespace humhub\modules\polls;
 
-use Yii;
-use module\poll\models\Poll;
-use module\poll\models\PollAnswerUser;
+use humhub\modules\polls\models\Poll;
 
 /**
  * PollsModule is the WebModule for the polling system.
@@ -18,6 +16,9 @@ use module\poll\models\PollAnswerUser;
 class Module extends \humhub\components\Module
 {
 
+    /**
+     * @inheritdoc
+     */
     public function behaviors()
     {
         return [
@@ -45,7 +46,7 @@ class Module extends \humhub\components\Module
     /**
      * On disabling this module on a space, deleted all module -> space related content/data.
      * Method stub is provided by "SpaceModuleBehavior"
-     * 
+     *
      * @param Space $space
      */
     public function disableSpaceModule(Space $space)
@@ -53,42 +54,6 @@ class Module extends \humhub\components\Module
         foreach (Poll::find()->contentContainer($space)->all() as $poll) {
             $poll->delete();
         }
-    }
-
-    /**
-     * On build of a Space Navigation, check if this module is enabled.
-     * When enabled add a menu item
-     *
-     * @param type $event
-     */
-    public static function onSpaceMenuInit($event)
-    {
-        $space = $event->sender->space;
-
-        // Is Module enabled on this workspace?
-        if ($space->isModuleEnabled('polls')) {
-            $event->sender->addItem(array(
-                'label' => Yii::t('PollsModule.base', 'Polls'),
-                'group' => 'modules',
-                'url' => $space->createUrl('/polls/poll/show'),
-                'icon' => '<i class="fa fa-question-circle"></i>',
-                'isActive' => (Yii::$app->controller->module && Yii::$app->controller->module->id == 'polls'),
-            ));
-        }
-    }
-
-    /**
-     * On User delete, delete all poll answers by this user
-     *
-     * @param type $event
-     */
-    public static function onUserDelete($event)
-    {
-        foreach (PollAnswerUser::findAll(array('created_by' => $event->sender->id)) as $answer) {
-            $answer->delete();
-        }
-
-        return true;
     }
 
 }

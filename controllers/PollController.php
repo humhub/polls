@@ -1,6 +1,6 @@
 <?php
 
-namespace module\polls\controllers;
+namespace humhub\modules\polls\controllers;
 
 use Yii;
 use yii\web\HttpException;
@@ -8,8 +8,8 @@ use yii\helpers\Html;
 use humhub\modules\user\models\User;
 use humhub\modules\user\widgets\UserListBox;
 use humhub\modules\content\components\ContentContainerController;
-use module\polls\models\Poll;
-use module\polls\models\PollAnswer;
+use humhub\modules\polls\models\Poll;
+use humhub\modules\polls\models\PollAnswer;
 
 /**
  * PollController handles all poll related actions.
@@ -25,8 +25,8 @@ class PollController extends ContentContainerController
     {
         return array(
             'stream' => array(
-                'class' => \module\polls\components\StreamAction::className(),
-                'mode' => \module\polls\components\StreamAction::MODE_NORMAL,
+                'class' => \humhub\modules\polls\components\StreamAction::className(),
+                'mode' => \humhub\modules\polls\components\StreamAction::MODE_NORMAL,
                 'contentContainer' => $this->contentContainer
             ),
         );
@@ -54,7 +54,7 @@ class PollController extends ContentContainerController
         $poll->answersText = Yii::$app->request->post('answersText');
         $poll->allow_multiple = Yii::$app->request->post('allowMultiple', 0);
 
-        return \module\polls\widgets\WallCreateForm::create($poll);
+        return \humhub\modules\polls\widgets\WallCreateForm::create($poll);
     }
 
     /**

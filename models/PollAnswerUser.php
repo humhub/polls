@@ -1,9 +1,9 @@
 <?php
 
-namespace module\polls\models;
+namespace humhub\modules\polls\models;
 
 use humhub\components\ActiveRecord;
-use module\polls\models\Poll;
+use humhub\modules\polls\models\Poll;
 use humhub\modules\user\models\User;
 
 /**

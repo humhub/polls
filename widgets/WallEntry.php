@@ -1,6 +1,6 @@
 <?php
 
-namespace module\polls\widgets;
+namespace humhub\modules\polls\widgets;
 
 use humhub\components\Widget;
 

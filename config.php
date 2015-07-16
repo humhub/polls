@@ -5,10 +5,11 @@ use humhub\modules\user\models\User;
 
 return [
     'id' => 'polls',
-    'class' => 'module\polls\Module',
+    'class' => 'humhub\modules\polls\Module',
+    'namespace' => 'humhub\modules\polls',
     'events' => array(
-        array('class' => User::className(), 'event' => User::EVENT_BEFORE_DELETE, 'callback' => array('module\polls\Module', 'onUserDelete')),
-        array('class' => Menu::className(), 'event' => Menu::EVENT_INIT, 'callback' => array('module\polls\Module', 'onSpaceMenuInit')),
+        array('class' => User::className(), 'event' => User::EVENT_BEFORE_DELETE, 'callback' => array('humhub\modules\polls\Events', 'onUserDelete')),
+        array('class' => Menu::className(), 'event' => Menu::EVENT_INIT, 'callback' => array('humhub\modules\polls\Events', 'onSpaceMenuInit')),
     ),
 ];
 ?>

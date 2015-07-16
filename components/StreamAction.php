@@ -1,10 +1,10 @@
 <?php
 
-namespace module\polls\components;
+namespace humhub\modules\polls\components;
 
 use Yii;
 use humhub\modules\content\components\actions\ContentContainerStream;
-use module\polls\models\Poll;
+use humhub\modules\polls\models\Poll;
 
 class StreamAction extends ContentContainerStream
 {

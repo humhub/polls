@@ -1,11 +1,11 @@
 <?php
 
-namespace module\polls\models;
+namespace humhub\modules\polls\models;
 
 use Yii;
 use humhub\components\ActiveRecord;
-use module\polls\models\Poll;
-use module\polls\models\PollAnswerUser;
+use humhub\modules\polls\models\Poll;
+use humhub\modules\polls\models\PollAnswerUser;
 
 /**
  * This is the model class for table "poll_answer".
