@@ -9,6 +9,7 @@
 namespace humhub\modules\polls;
 
 use Yii;
+use humhub\modules\polls\models\PollAnswer;
 use humhub\modules\polls\models\PollAnswerUser;
 
 /**
@@ -53,6 +54,38 @@ class Events extends \yii\base\Object
         }
 
         return true;
+    }
+
+    /**
+     * Callback to validate module database records.
+     *
+     * @param Event $event
+     */
+    public static function onIntegrityCheck($event)
+    {
+        $integrityController = $event->sender;
+        $integrityController->showTestHeadline("Polls Module - Answers (" . PollAnswer::find()->count() . " entries)");
+        foreach (PollAnswer::find()->joinWith('poll')->all() as $answer) {
+            if ($answer->poll === null) {
+                if ($integrityController->showFix("Deleting poll answer id " . $answer->id . " without existing poll!")) {
+                    $answer->delete();
+                }
+            }
+        }
+
+        $integrityController->showTestHeadline("Polls Module - Answers User (" . PollAnswerUser::find()->count() . " entries)");
+        foreach (PollAnswerUser::find()->joinWith(['poll', 'user'])->all() as $answerUser) {
+            if ($answerUser->poll === null) {
+                if ($integrityController->showFix("Deleting poll answer id " . $answerUser->id . " without existing poll!")) {
+                    $answerUser->delete();
+                }
+            }
+            if ($answerUser->user === null) {
+                if ($integrityController->showFix("Deleting poll answer id " . $answerUser->id . " without existing user!")) {
+                    $answerUser->delete();
+                }
+            }
+        }
     }
 
 }
