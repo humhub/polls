@@ -3,6 +3,9 @@
 namespace humhub\modules\polls;
 
 use humhub\modules\polls\models\Poll;
+use humhub\modules\space\models\Space;
+use humhub\modules\content\components\ContentContainerActiveRecord;
+use humhub\modules\content\components\ContentContainerModule;
 
 /**
  * PollsModule is the WebModule for the polling system.
@@ -13,45 +16,39 @@ use humhub\modules\polls\models\Poll;
  * @since 0.5
  * @author Luke
  */
-class Module extends \humhub\components\Module
+class Module extends ContentContainerModule
 {
 
     /**
      * @inheritdoc
      */
-    public function behaviors()
+    public function getContentContainerTypes()
     {
         return [
-            \humhub\modules\space\behaviors\SpaceModule::className(),
+            Space::className(),
         ];
     }
 
     /**
-     * On global module disable, delete all created content
+     * @inheritdoc
      */
     public function disable()
     {
-        if (parent::disable()) {
+        parent::disable();
 
-            foreach (Poll::find()->all() as $poll) {
-                $poll->delete();
-            }
-
-            return true;
+        foreach (Poll::find()->all() as $poll) {
+            $poll->delete();
         }
-
-        return false;
     }
 
     /**
-     * On disabling this module on a space, deleted all module -> space related content/data.
-     * Method stub is provided by "SpaceModuleBehavior"
-     *
-     * @param Space $space
+     * @inheritdoc
      */
-    public function disableSpaceModule(Space $space)
+    public function disableContentContainer(ContentContainerActiveRecord $container)
     {
-        foreach (Poll::find()->contentContainer($space)->all() as $poll) {
+        parent::disableContentContainer($container);
+
+        foreach (Poll::find()->contentContainer($container)->all() as $poll) {
             $poll->delete();
         }
     }
