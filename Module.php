@@ -34,11 +34,11 @@ class Module extends ContentContainerModule
      */
     public function disable()
     {
-        parent::disable();
-
         foreach (Poll::find()->all() as $poll) {
             $poll->delete();
         }
+
+        parent::disable();
     }
 
     /**
