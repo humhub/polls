@@ -24,7 +24,7 @@ use humhub\modules\polls\models\PollAnswerUser;
  * @since 0.5
  * @author Luke
  */
-class Poll extends ContentActiveRecord
+class Poll extends ContentActiveRecord implements \humhub\modules\search\interfaces\Searchable
 {
 
     const MIN_REQUIRED_ANSWERS = 2;
@@ -209,6 +209,16 @@ class Poll extends ContentActiveRecord
         }
 
         $this->answersText = $answerTextNew;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getSearchAttributes()
+    {
+        return array(
+            'question' => $this->question,
+        );
     }
 
 }
