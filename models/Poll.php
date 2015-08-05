@@ -31,6 +31,7 @@ class Poll extends ContentActiveRecord
 
     public $answersText;
     public $autoAddToWall = true;
+    public $wallEntryClass = 'humhub\modules\polls\widgets\WallEntry';
 
     /**
      * @return string the associated database table name
@@ -174,17 +175,9 @@ class Poll extends ContentActiveRecord
     }
 
     /**
-     * Returns the Wall Output
-     */
-    public function getWallOut()
-    {
-        return \humhub\modules\polls\widgets\WallEntry::widget(array('poll' => $this));
-    }
-
-    /**
      * @inheritdoc
      */
-    public function getContentTitle()
+    public function getContentName()
     {
         return Yii::t('PollsModule.models_Poll', "Question");
     }
@@ -192,13 +185,9 @@ class Poll extends ContentActiveRecord
     /**
      * @inheritdoc
      */
-    public function getContentPreview($maxLength = 0)
+    public function getContentDescription()
     {
-        if ($maxLength == 0) {
-            return $this->question;
-        }
-
-        return \humhub\libs\Helpers::truncateText($this->question, $maxLength);
+        return $this->question;
     }
 
     public function validateAnswersText()

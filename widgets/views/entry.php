@@ -3,8 +3,6 @@
 use yii\helpers\Html;
 ?>
 
-<?php $this->beginContent('@humhub/modules/content/views/layouts/wallLayout.php', array('object' => $poll)); ?>
-
 <?php echo Html::beginForm(); ?>
 
 <?php print nl2br($poll->question); ?><br><br>
@@ -136,5 +134,3 @@ use yii\helpers\Html;
     ?>
     <br>
 <?php endif; ?>
-
-<?php $this->endContent(); ?>
