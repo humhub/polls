@@ -216,9 +216,20 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
      */
     public function getSearchAttributes()
     {
+
+        $itemAnswers = "";
+
+        foreach($this->answers as $answer) {
+            $itemAnswers .= $answer->answer;
+        }
+
         return array(
             'question' => $this->question,
+            'itemAnswers' => $itemAnswers
         );
+
+
+
     }
 
 }

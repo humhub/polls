@@ -71,7 +71,7 @@ use yii\helpers\Html;
             <p style="margin-top: 14px;">
                 <?php if (count($answer->votes) > 0) { ?>
                     <a href="<?php echo $contentContainer->createUrl('/polls/poll/user-list-results', array('pollId' => $poll->id, 'answerId' => $answer->id)); ?>"
-                       class="tt" data-toggle="modal"
+                       class="tt" 
                        data-placement="top" title="" data-target="#globalModal"
                        data-original-title="<?php echo $userlist; ?>"><?php echo count($answer->votes) . " " . Yii::t('PollsModule.widgets_views_entry', 'votes'); ?></a>
 
