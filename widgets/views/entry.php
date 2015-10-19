@@ -71,8 +71,8 @@ use yii\helpers\Html;
             <p style="margin-top: 14px;">
                 <?php if (count($answer->votes) > 0) { ?>
                     <a href="<?php echo $contentContainer->createUrl('/polls/poll/user-list-results', array('pollId' => $poll->id, 'answerId' => $answer->id)); ?>"
-                       class="tt" 
-                       data-placement="top" title="" data-target="#globalModal"
+                       class="tt"
+                       data-placement="top" title="" data-target="#globalModal" data-toggle="tooltip"
                        data-original-title="<?php echo $userlist; ?>"><?php echo count($answer->votes) . " " . Yii::t('PollsModule.widgets_views_entry', 'votes'); ?></a>
 
 
@@ -134,3 +134,15 @@ use yii\helpers\Html;
     ?>
     <br>
 <?php endif; ?>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+  // show Tooltips on elements inside the views, which have the class 'tt'
+  $('.tt').tooltip({
+    html: true,
+    container: 'body'
+  });
+});
+
+</script>
