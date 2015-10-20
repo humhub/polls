@@ -108,7 +108,7 @@ use yii\helpers\Html;
 <?php endif; ?>
 
 <?php if (Yii::$app->user->isGuest) : ?>
-    <?php echo Html::a(Yii::t('PollsModule.widgets_views_entry', 'Vote'), Yii::$app->user->loginUrl, array('class' => 'btn btn-primary', 'data-target' => '#globalModal', 'data-toggle' => 'modal')); ?>
+    <?php echo Html::a(Yii::t('PollsModule.widgets_views_entry', 'Vote'), Yii::$app->user->loginUrl, array('class' => 'btn btn-primary', 'data-target' => '#globalModal')); ?>
 <?php endif; ?>
 
 
