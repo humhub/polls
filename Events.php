@@ -88,4 +88,14 @@ class Events extends \yii\base\Object
         }
     }
 
+    /**
+     * Create installer sample data
+     * 
+     * @param \yii\base\Event $event
+     */
+    public static function onSampleDataInstall($event)
+    {
+        // ToDo: Install Sample Data
+    }
+
 }
