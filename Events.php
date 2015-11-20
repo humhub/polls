@@ -111,8 +111,8 @@ class Events extends \yii\base\Object
         Yii::$app->user->switchIdentity($user);
 
         $poll = new Poll();
-        $poll->question = "Right now, we are in the planning stages for our next meetup and we would like to know from you, where you would like to go?";
-        $poll->answersText = "To Daniel\nClub A Steakhouse\nPisillo Italian Panini\n";
+        $poll->question = Yii::t('PollsModule.events', "Right now, we are in the planning stages for our next meetup and we would like to know from you, where you would like to go?");
+        $poll->answersText = Yii::t('PollsModule.events', "To Daniel\nClub A Steakhouse\nPisillo Italian Panini\n");
         $poll->content->container = $space;
         $poll->allow_multiple = Yii::$app->request->post('allowMultiple', 0);
         $poll->save();
@@ -128,7 +128,7 @@ class Events extends \yii\base\Object
         $poll->vote([2]);
 
         $comment = new \humhub\modules\comment\models\Comment();
-        $comment->message = "Why don't we go to Bemelmans Bar?";
+        $comment->message = Yii::t('PollsModule.events', "Why don't we go to Bemelmans Bar?");
         $comment->object_model = $poll->className();
         $comment->object_id = $poll->getPrimaryKey();
         $comment->save();
@@ -140,7 +140,7 @@ class Events extends \yii\base\Object
         $poll->vote([3]);
 
         $comment = new \humhub\modules\comment\models\Comment();
-        $comment->message = "Again? ;Weary;";
+        $comment->message = Yii::t('PollsModule.events', "Again? ;Weary;");
         $comment->object_model = $poll->className();
         $comment->object_id = $poll->getPrimaryKey();
         $comment->save();
