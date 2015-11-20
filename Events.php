@@ -8,6 +8,9 @@
 
 namespace humhub\modules\polls;
 
+use humhub\modules\space\models\Space;
+use humhub\modules\user\models\User;
+use humhub\modules\polls\models\Poll;
 use Yii;
 use humhub\modules\polls\models\PollAnswer;
 use humhub\modules\polls\models\PollAnswerUser;
@@ -95,7 +98,57 @@ class Events extends \yii\base\Object
      */
     public static function onSampleDataInstall($event)
     {
-        // ToDo: Install Sample Data
+
+        $space = Space::find()->where(['id' => 1])->one();
+
+        // activate module at space
+        if (!$space->isModuleEnabled("polls")) {
+            $space->enableModule("polls");
+        }
+
+        // Switch Identity
+        $user = User::find()->where(['id' => 1])->one();
+        Yii::$app->user->switchIdentity($user);
+
+        $poll = new Poll();
+        $poll->question = "Right now, we are in the planning stages for our next meetup and we would like to know from you, where you would like to go?";
+        $poll->answersText = "To Daniel\nClub A Steakhouse\nPisillo Italian Panini\n";
+        $poll->content->container = $space;
+        $poll->allow_multiple = Yii::$app->request->post('allowMultiple', 0);
+        $poll->save();
+
+        // load users
+        $user2 = User::find()->where(['id' => 2])->one();
+        $user3 = User::find()->where(['id' => 3])->one();
+
+        // Switch Identity
+        Yii::$app->user->switchIdentity($user2);
+
+        // vote
+        $poll->vote([2]);
+
+        $comment = new \humhub\modules\comment\models\Comment();
+        $comment->message = "Why don't we go to Bemelmans Bar?";
+        $comment->object_model = $poll->className();
+        $comment->object_id = $poll->getPrimaryKey();
+        $comment->save();
+
+        // Switch Identity
+        Yii::$app->user->switchIdentity($user3);
+
+        // vote
+        $poll->vote([3]);
+
+        $comment = new \humhub\modules\comment\models\Comment();
+        $comment->message = "Again? ;Weary;";
+        $comment->object_model = $poll->className();
+        $comment->object_id = $poll->getPrimaryKey();
+        $comment->save();
+
+        // Switch Identity
+        Yii::$app->user->switchIdentity($user);
+
+
     }
 
 }
