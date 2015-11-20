@@ -110,6 +110,7 @@ class PollController extends ContentContainerController
         $query = User::find();
         $query->leftJoin('poll_answer_user', 'poll_answer_user.created_by=user.id');
         $query->andWhere('poll_answer_user.poll_id IS NOT NULL');
+        $query->andWhere('poll_answer_user.poll_answer_id = '. $answerId);
         $query->orderBy('poll_answer_user.created_at DESC');
 
         $title = Yii::t('PollsModule.controllers_PollController', "Users voted for: <strong>{answer}</strong>", array('{answer}' => Html::encode($answer->answer)));
