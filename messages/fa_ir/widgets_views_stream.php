@@ -17,12 +17,6 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Creation time' => 'زمان ایجاد',
-    'Display all' => '@@نمایش همه@@',
-    'Filter' => 'فیلتر',
-    'Last update' => 'آخرین به‌روزرسانی',
-    'No poll found which matches your current filter(s)!' => '@@هیچ نظرسنجی‌ای که با فیلتر(های) کنونی شما هم‌خوانی داشته‌باشد پیدا نشد!@@',
-    'Sorting' => 'مرتب‌سازی',
     '<b>There are no polls yet!</b>' => '<b>هنوز هیچ نظرسنجی‌ای موجود نیست!</b>',
     '<b>There are no polls yet!</b><br>Be the first and create one...' => '<b> هنوز هیچ نظرسنجی‌ای وجود ندارد! </b> <br> به عنوان اولین نفر ایجاد کنید . . .',
     'Asked by me' => 'پرسیده‌شده توسط من',

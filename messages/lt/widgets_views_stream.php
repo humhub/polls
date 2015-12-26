@@ -17,10 +17,6 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Creation time' => 'Sukūrimo laikas',
-    'Filter' => 'Filtras',
-    'Last update' => 'Paskutinis atnaujinimas',
-    'Sorting' => 'Rūšiavimas',
     '<b>There are no polls yet!</b>' => '<b>Kol kas nėra apklausų!</b>',
     '<b>There are no polls yet!</b><br>Be the first and create one...' => '<b>Kol kas nėra apklausš!</b><br>Būkite pirmas...',
     'Asked by me' => 'Paklausiau aš',

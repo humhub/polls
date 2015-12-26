@@ -18,5 +18,4 @@
  */
 return [
     '{userName} answered the {question}.' => '',
-    '{userName} voted the {question}.' => '{userName} stimmte für die Umfrage »{question}« ab.',
 ];

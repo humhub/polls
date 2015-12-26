@@ -23,10 +23,4 @@ return [
     'No answered yet' => '',
     'Only private polls' => '',
     'Only public polls' => '',
-    'Creation time' => 'Hora de Criação',
-    'Display all' => '@@@@',
-    'Filter' => 'Filtro',
-    'Last update' => 'Última atualização',
-    'No poll found which matches your current filter(s)!' => '@@@@',
-    'Sorting' => 'Ordenar',
 ];

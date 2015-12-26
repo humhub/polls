@@ -19,12 +19,6 @@
 return [
     '<b>There are no polls yet!</b>' => '',
     '<b>There are no polls yet!</b><br>Be the first and create one...' => '',
-    'Creation time' => 'Tempo creazione',
-    'Display all' => '@@Mostra tutto@@',
-    'Filter' => 'Filtro',
-    'Last update' => 'Ultimo aggiornamento',
-    'No poll found which matches your current filter(s)!' => '@@Non ci sono sondaggi che rispettano il tuo filtro corrente!@@',
-    'Sorting' => 'Ordina',
     'Asked by me' => 'Chiesto da me',
     'No answered yet' => 'Ancora nessuna risposta',
     'Only private polls' => 'Solo sondaggi privati',

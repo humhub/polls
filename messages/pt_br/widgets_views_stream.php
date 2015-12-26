@@ -17,12 +17,6 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Creation time' => 'Hora de criação',
-    'Display all' => '@@Mostrar tudo@@',
-    'Filter' => 'Filtro',
-    'Last update' => 'Última atualização',
-    'No poll found which matches your current filter(s)!' => '@@Nenhuma enquete encontrada que corresponda(m) ao(s) seu(s) filtro(s) atual(ais)!@@',
-    'Sorting' => 'Classificando',
     '<b>There are no polls yet!</b>' => '<b>Não existem enquetes ainda!</b>',
     '<b>There are no polls yet!</b><br>Be the first and create one...' => '<b>Ainda não existem enquetes!</b> <br> Seja o primeiro e criar uma...',
     'Asked by me' => 'Enviadas por mim',

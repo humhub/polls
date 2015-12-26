@@ -17,12 +17,6 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Creation time' => 'Erstellungsdatum',
-    'Display all' => '@@Zeige alle@@',
-    'Filter' => 'Filter',
-    'Last update' => 'Letzte Aktualisierung',
-    'No poll found which matches your current filter(s)!' => '@@Keine passende Umfrage zu den Filtereinstellungen gefunden!@@',
-    'Sorting' => 'Sortierung',
     '<b>There are no polls yet!</b>' => 'Es gibt noch keine Umfragen!',
     '<b>There are no polls yet!</b><br>Be the first and create one...' => '<b>Es gibt noch keine Umfragen!</b><br>Erstelle die erste ...',
     'Asked by me' => 'Von mir erstellt',

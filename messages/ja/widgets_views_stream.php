@@ -19,12 +19,6 @@
 return [
     '<b>There are no polls yet!</b>' => '',
     '<b>There are no polls yet!</b><br>Be the first and create one...' => '',
-    'Creation time' => '作成時間',
-    'Display all' => '@@すべて表示@@',
-    'Filter' => '@@@@',
-    'Last update' => '最後のアップデート',
-    'No poll found which matches your current filter(s)!' => '@@現在のフィルターではアンケートが見つかりません！@@',
-    'Sorting' => '並べ替え',
     'Asked by me' => '私が質問',
     'No answered yet' => 'まだ回答がありません',
     'Only private polls' => '限定アンケート',

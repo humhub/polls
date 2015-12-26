@@ -17,12 +17,6 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Creation time' => 'Date de création',
-    'Display all' => '@@Tout afficher@@',
-    'Filter' => 'Filtre',
-    'Last update' => 'Dernière mise à jour',
-    'No poll found which matches your current filter(s)!' => '@@Aucun sondage trouvé (avec ces filtres)@@',
-    'Sorting' => 'Trier',
     '<b>There are no polls yet!</b>' => '<b>Il n\'y a aucun sondage actuellement</b>',
     '<b>There are no polls yet!</b><br>Be the first and create one...' => '<b>Il n\'y a aucun sondage actuellement</b><br>Soyez le premier à en créer un...',
     'Asked by me' => 'Mes demandes',
