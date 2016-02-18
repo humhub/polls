@@ -17,16 +17,10 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    '<b>There are no polls yet!</b>' => '',
-    '<b>There are no polls yet!</b><br>Be the first and create one...' => '',
-    'Asked by me' => '',
-    'No answered yet' => '',
-    'Only private polls' => '',
-    'Only public polls' => '',
-    'Creation time' => 'Aanmaak datum',
-    'Display all' => '@@@@',
-    'Filter' => 'Filter',
-    'Last update' => 'Laatste update',
-    'No poll found which matches your current filter(s)!' => '@@@@',
-    'Sorting' => 'Sortering',
+    '<b>There are no polls yet!</b>' => '<b>Er zijn nog geen polls!</b>',
+    '<b>There are no polls yet!</b><br>Be the first and create one...' => '<b>Er zijn nog geen polls!</b><br>Wees de eerste en maak er een...',
+    'Asked by me' => 'Gevraagd door mij',
+    'No answered yet' => 'Nog geen antwoord',
+    'Only private polls' => 'Alleen private polls',
+    'Only public polls' => 'Alleen publieke polls',
 ];

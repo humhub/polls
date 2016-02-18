@@ -23,8 +23,4 @@ return [
     'No answered yet' => '',
     'Only private polls' => '',
     'Only public polls' => '',
-    'Creation time' => '@@@@',
-    'Filter' => '@@@@',
-    'Last update' => '@@@@',
-    'Sorting' => '@@@@',
 ];

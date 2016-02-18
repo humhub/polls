@@ -1,4 +1,4 @@
 <?php
 return array (
-  'Polls' => '',
+  'Polls' => 'Pemungutan Suara',
 );

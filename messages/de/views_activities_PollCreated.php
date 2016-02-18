@@ -1,4 +1,4 @@
 <?php
 return array (
-  '{userName} created a new {question}.' => ' {userName} erstellte die Umfrage »{question}«.',
+  '{userName} created a new {question}.' => ' {userName} hat die Umfrage »{question}« erstellt.',
 );

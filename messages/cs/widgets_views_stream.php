@@ -18,12 +18,6 @@
  */
 return [
     '<b>There are no polls yet!</b>' => '',
-    'Creation time' => 'Vytvořeno',
-    'Display all' => '@@Zobrazit vše@@',
-    'Filter' => 'Filtr',
-    'Last update' => 'Změněno',
-    'No poll found which matches your current filter(s)!' => '@@Nebyla nalezena žádná anketa, která by odpovídala filtrům, které jste zvolil(a).@@',
-    'Sorting' => 'Řazení',
     '<b>There are no polls yet!</b><br>Be the first and create one...' => '<b>Zatím zde nejsou žádné ankety.</b><br>Vytvořte první...',
     'Asked by me' => 'Vytvořil(a) jsem',
     'No answered yet' => 'Bez odpovědí',

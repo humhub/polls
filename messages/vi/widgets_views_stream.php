@@ -23,10 +23,4 @@ return [
     'No answered yet' => '',
     'Only private polls' => '',
     'Only public polls' => '',
-    'Creation time' => 'Thời gian tạo',
-    'Display all' => '@@@@',
-    'Filter' => 'Lọc',
-    'Last update' => 'Cập nhật cuối cùng',
-    'No poll found which matches your current filter(s)!' => '@@@@',
-    'Sorting' => 'Sắp xếp',
 ];

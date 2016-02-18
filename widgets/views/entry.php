@@ -64,18 +64,14 @@ use yii\helpers\Html;
                     // stop the loop
                     break;
                 } else {
-                    $userlist .= "<strong>" . Html::encode($answer->votes[$i]->user->displayName) . "</strong><br>";
+                    $userlist .= Html::encode($answer->votes[$i]->user->displayName) . "\n";
                 }
             }
             ?>
-            <p style="margin-top: 14px;">
+            <p style="margin-top: 14px; display:inline-block;" class="tt" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo $userlist; ?>">
                 <?php if (count($answer->votes) > 0) { ?>
                     <a href="<?php echo $contentContainer->createUrl('/polls/poll/user-list-results', array('pollId' => $poll->id, 'answerId' => $answer->id)); ?>"
-                       class="tt" 
-                       data-placement="top" title="" data-target="#globalModal"
-                       data-original-title="<?php echo $userlist; ?>"><?php echo count($answer->votes) . " " . Yii::t('PollsModule.widgets_views_entry', 'votes'); ?></a>
-
-
+                        data-target="#globalModal""><?php echo count($answer->votes) . " " . Yii::t('PollsModule.widgets_views_entry', 'votes'); ?></a>
                 <?php } else { ?>
                     0 <?php echo Yii::t('PollsModule.widgets_views_entry', 'votes'); ?>
                 <?php } ?>
@@ -108,7 +104,7 @@ use yii\helpers\Html;
 <?php endif; ?>
 
 <?php if (Yii::$app->user->isGuest) : ?>
-    <?php echo Html::a(Yii::t('PollsModule.widgets_views_entry', 'Vote'), Yii::$app->user->loginUrl, array('class' => 'btn btn-primary', 'data-target' => '#globalModal', 'data-toggle' => 'modal')); ?>
+    <?php echo Html::a(Yii::t('PollsModule.widgets_views_entry', 'Vote'), Yii::$app->user->loginUrl, array('class' => 'btn btn-primary', 'data-target' => '#globalModal')); ?>
 <?php endif; ?>
 
 
@@ -134,3 +130,15 @@ use yii\helpers\Html;
     ?>
     <br>
 <?php endif; ?>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+  // show Tooltips on elements inside the views, which have the class 'tt'
+  $('.tt').tooltip({
+    html: true,
+    container: 'body'
+  });
+});
+
+</script>

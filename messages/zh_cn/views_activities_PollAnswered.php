@@ -18,5 +18,4 @@
  */
 return [
     '{userName} answered the {question}.' => '',
-    '{userName} voted the {question}.' => '{question} 投票 {userName}。',
 ];

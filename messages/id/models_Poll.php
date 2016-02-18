@@ -1,7 +1,7 @@
 <?php
 return array (
-  'Answers' => '',
-  'Multiple answers per user' => '',
-  'Please specify at least {min} answers!' => '',
-  'Question' => '',
+  'Answers' => 'Jawaban',
+  'Multiple answers per user' => 'Beberapa jawaban per pengguna',
+  'Please specify at least {min} answers!' => 'Silahkan tentukan setidaknya {min} jawaban!',
+  'Question' => 'Pertanyaan',
 );

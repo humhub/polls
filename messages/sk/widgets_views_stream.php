@@ -23,10 +23,4 @@ return [
     'No answered yet' => '',
     'Only private polls' => '',
     'Only public polls' => '',
-    'Creation time' => '@@@@',
-    'Display all' => '@@@@',
-    'Filter' => '@@@@',
-    'Last update' => '@@@@',
-    'No poll found which matches your current filter(s)!' => '@@@@',
-    'Sorting' => '@@@@',
 ];

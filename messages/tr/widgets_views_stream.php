@@ -19,12 +19,6 @@
 return [
     '<b>There are no polls yet!</b>' => '',
     '<b>There are no polls yet!</b><br>Be the first and create one...' => '',
-    'Creation time' => 'Oluşturma tarihi',
-    'Display all' => '@@Hepsini görüntüle@@',
-    'Filter' => 'Filtre',
-    'Last update' => 'Son güncellenen',
-    'No poll found which matches your current filter(s)!' => '@@Geçerli filtre ile eşleşen anket yok!@@',
-    'Sorting' => 'Sıralama',
     'Asked by me' => 'Bana sorulan',
     'No answered yet' => 'Henüz cevap yok',
     'Only private polls' => 'Sadece özel anketler',

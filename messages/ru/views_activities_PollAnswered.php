@@ -17,6 +17,5 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    '{userName} voted the {question}.' => '{userName} проголосовал за {question}.',
     '{userName} answered the {question}.' => '{userName} ответил на  {question}.',
 ];
