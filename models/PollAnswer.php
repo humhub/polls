@@ -25,6 +25,8 @@ use humhub\modules\polls\models\PollAnswerUser;
  */
 class PollAnswer extends ActiveRecord
 {
+    
+    public $active = true;
 
     /**
      * @return string the associated database table name
@@ -56,6 +58,14 @@ class PollAnswer extends ActiveRecord
         $query = $this->hasMany(PollAnswerUser::className(), ['poll_answer_id' => 'id']);
         return $query;
     }
+    
+    public function beforeDelete() {
+        foreach ($this->votes as $answerUser) {
+            $answerUser->delete();
+        }
+        
+        return parent::beforeDelete();
+    }
 
     /**
      * Returns the percentage of users voted for this answer
@@ -81,5 +91,19 @@ class PollAnswer extends ActiveRecord
 
         return PollAnswerUser::find()->where(array('poll_answer_id' => $this->id))->count();
     }
-
+    
+    public static function filterValidAnswers($answerArr) 
+    {
+        if($answerArr == null) {
+            return;
+        }
+        
+        $result = [];
+        foreach ($answerArr as $key => $answerText) {
+            if($answerText != null && $answerText !== '') {
+                $result[$key] = $answerText;
+            }
+        }
+        return $result;
+    }
 }

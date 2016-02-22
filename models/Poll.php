@@ -28,8 +28,12 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
 {
 
     const MIN_REQUIRED_ANSWERS = 2;
+    
+    const SCENARIO_CREATE = 'create';
+    const SCENARIO_EDIT = 'edit';
 
-    public $answersText;
+    public $newAnswers;
+    public $editAnswers;
     public $autoAddToWall = true;
     public $wallEntryClass = 'humhub\modules\polls\widgets\WallEntry';
 
@@ -47,10 +51,12 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
     public function rules()
     {
         return array(
-            array(['question', 'answersText'], 'required'),
-            array(['answersText'], 'validateAnswersText'),
-            array(['allow_multiple'], 'integer'),
-            array(['question'], 'string', 'max' => 600),
+            [['question', 'answersText'], 'required', 'on' => self::SCENARIO_CREATE],
+            [['anonymous'], 'boolean'],
+            [['question'], 'required', 'on' => self::SCENARIO_EDIT],
+            [['newAnswers'], 'validateAnswersText'],
+            [['allow_multiple'], 'integer', 'on' => self::SCENARIO_CREATE],
+            [['question'], 'string', 'max' => 600],
         );
     }
 
@@ -66,27 +72,107 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
         );
     }
 
+    /**
+     * @return ActiveRecord containing all answers of thes poll
+     */
     public function getAnswers()
     {
         $query = $this->hasMany(PollAnswer::className(), ['poll_id' => 'id']);
         return $query;
     }
+    
+    public function getViewAnswers()
+    {
+        if($this->is_random) {
+            $result = [];
+            foreach($this->answers as $key=>$value) {
+                $result[$key] = $value;
+            }
+           shuffle($result);
+           return $result;
+        } else {
+            return $this->answers;
+        }
+    }
 
+    /**
+     * Saves new answers (if set) and updates answers given editanswers (if set)
+     * @param type $insert
+     * @param type $changedAttributes
+     * @return boolean
+     */
     public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);
-
-        if ($insert) {
-            $answers = explode("\n", $this->answersText);
-            foreach ($answers as $answerText) {
-                $answer = new PollAnswer();
-                $answer->poll_id = $this->id;
-                $answer->answer = $answerText;
-                $answer->save();
-            }
+        
+        if(!$insert) {
+            $this->updateAnswers();
         }
+        
+        $this->saveNewAnswers();
 
         return true;
+    }
+    
+    public function saveNewAnswers()
+    {
+        if($this->newAnswers == null) {
+            return;
+        }
+        
+        foreach($this->newAnswers as $answerText) {
+            $this->addAnswer($answerText);
+        }
+    }
+    
+    public function addAnswer($answerText)
+    {
+        if(trim($answerText) === '') {
+            return;
+        }
+        
+        $answer = new PollAnswer();
+        $answer->poll_id = $this->id;
+        $answer->answer = $answerText;
+        $answer->save();
+        return $answer;
+    }
+    
+    public function updateAnswers()
+    {
+        if($this->editAnswers == null) {
+            return;
+        }
+        
+        foreach($this->answers as $answer) {
+            if(!array_key_exists($answer->id, $this->editAnswers)) {
+                $answer->delete();
+            } else if($answer->answer !== $this->editAnswers[$answer->id]) {
+                $answer->answer = $this->editAnswers[$answer->id];
+                $answer->update();
+            }
+        }
+    }
+    
+    /**
+     * Sets the newAnswers array, which is used for creating and updating (afterSave)
+     * the poll, by saving all valid answertexts contained in the given array.
+     * @param type $newAnswerArr
+     */
+    public function setNewAnswers($newAnswerArr) 
+    {
+        $this->newAnswers = PollAnswer::filterValidAnswers($newAnswerArr);
+    }
+    
+    /**
+     * Sets the editAnswers array, which is used for updating (afterSave)
+     * the poll. The given array has to contain poll answer ids as key and an answertext
+     * as values.
+     * @param type $newAnswerArr
+     */
+    public function setEditAnswers($editAnswerArr) 
+    {
+        $this->editAnswers = PollAnswer::filterValidAnswers($editAnswerArr);
     }
 
     /**
@@ -95,9 +181,6 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
     public function beforeDelete()
     {
         foreach ($this->answers as $answer) {
-            foreach ($answer->votes as $answerUser) {
-                $answerUser->delete();
-            }
             $answer->delete();
         }
         return parent::beforeDelete();
@@ -192,23 +275,10 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
 
     public function validateAnswersText()
     {
-
-        $answers = explode("\n", $this->answersText);
-        $answerCount = 0;
-        $answerTextNew = "";
-
-        foreach ($answers as $answer) {
-            if (trim($answer) != "") {
-                $answerCount++;
-                $answerTextNew .= $answer . "\n";
-            }
-        }
-
-        if ($answerCount < self::MIN_REQUIRED_ANSWERS) {
+        $count = count($this->newAnswers) + count($this->editAnswers);
+        if ($count < self::MIN_REQUIRED_ANSWERS) {
             $this->addError('answersText', Yii::t('PollsModule.models_Poll', "Please specify at least {min} answers!", array("{min}" => self::MIN_REQUIRED_ANSWERS)));
         }
-
-        $this->answersText = $answerTextNew;
     }
 
     /**

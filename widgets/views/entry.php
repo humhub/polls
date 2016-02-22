@@ -1,91 +1,39 @@
 <?php
 
 use yii\helpers\Html;
+
+if($poll->closed) {
 ?>
 
-<?php echo Html::beginForm(); ?>
+&nbsp;<span class="label label-danger pull-right"><?= Yii::t('PollsModule.widgets_views_entry', 'Closed') ?></span>
 
-<?php print nl2br($poll->question); ?><br><br>
+<?php
+}
+
+if($poll->anonymous) {
+?>
+
+&nbsp;<span class="label label-success pull-right"><?= Yii::t('PollsModule.widgets_views_entry', 'Anonymous') ?></span>
+
+<?php
+}
+
+echo Html::beginForm(); 
+print humhub\widgets\RichText::widget(['text' => $poll->question, 'record' => $poll]);
+
+?>
+
+<br><br>
 
 <!-- Loop and Show Answers -->
-<?php foreach ($poll->answers as $answer): ?>
-
-    <div class="row">
-        <?php if (!$poll->hasUserVoted()) : ?>
-            <div class="col-md-1" style="padding-right: 0;">
-                <?php if ($poll->allow_multiple) : ?>
-                    <div class="checkbox">
-                        <label>
-                            <?php echo Html::checkBox('answers[' . $answer->id . ']'); ?>
-                        </label>
-                    </div>
-
-                <?php else: ?>
-                    <div class="radio">
-                        <label>
-                            <?php echo Html::radio('answers', false, array('value' => $answer->id, 'id' => 'answer_' . $answer->id)); ?>
-                        </label>
-                    </div>
-                <?php endif; ?>
-            </div>
-        <?php endif; ?>
-
-        <?php
-        $percent = round($answer->getPercent());
-        $color = "progress-bar-info";
-        ?>
-
-        <div class="col-md-6">
-            <b><?php echo $answer->answer; ?></b><br>
-
-            <div class="progress">
-                <div id="progress_<?php echo $answer->id; ?>" class="progress-bar <?php echo $color; ?>" role="progressbar" aria-valuenow="<?php echo $percent; ?>" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
-            </div>
-            <script type="text/javascript">
-                $('#progress_<?php echo $answer->id; ?>').css('width', '<?php echo $percent; ?>%');
-            </script>
-        </div>
-
-        <div class="col-md-4">
-
-            <?php
-            $userlist = ""; // variable for users output
-            $maxUser = 10; // limit for rendered users inside the tooltip
+<?php 
+    foreach ($poll->getViewAnswers() as $answer) {
+        echo $this->render('_answer', ['poll' => $poll, 'answer' => $answer, 'contentContainer' => $contentContainer]);
+    } 
+ ?> 
 
 
-            for ($i = 0; $i < count($answer->votes); $i++) {
-
-                // if only one user likes
-                // check if exists more user as limited
-                if ($i == $maxUser) {
-                    // output with the number of not rendered users
-                    $userlist .= Yii::t('PollsModule.widgets_views_entry', 'and {count} more vote for this.', array('{count}' => (intval(count($answer->votes) - $maxUser))));
-
-                    // stop the loop
-                    break;
-                } else {
-                    $userlist .= Html::encode($answer->votes[$i]->user->displayName) . "\n";
-                }
-            }
-            ?>
-            <p style="margin-top: 14px; display:inline-block;" class="tt" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo $userlist; ?>">
-                <?php if (count($answer->votes) > 0) { ?>
-                    <a href="<?php echo $contentContainer->createUrl('/polls/poll/user-list-results', array('pollId' => $poll->id, 'answerId' => $answer->id)); ?>"
-                        data-target="#globalModal""><?php echo count($answer->votes) . " " . Yii::t('PollsModule.widgets_views_entry', 'votes'); ?></a>
-                <?php } else { ?>
-                    0 <?php echo Yii::t('PollsModule.widgets_views_entry', 'votes'); ?>
-                <?php } ?>
-            </p>
-
-        </div>
-
-
-    </div>
-    <div class="clearFloats"></div>
-<?php endforeach; ?>
-
-
-<?php if (!$poll->hasUserVoted() && !Yii::$app->user->isGuest) : ?>
+<?php if (!$poll->hasUserVoted() && !Yii::$app->user->isGuest && !$poll->closed) : ?>
     <br>
     <?php
     echo \humhub\widgets\AjaxButton::widget([
@@ -103,7 +51,7 @@ use yii\helpers\Html;
     <br>
 <?php endif; ?>
 
-<?php if (Yii::$app->user->isGuest) : ?>
+<?php if (Yii::$app->user->isGuest && !$poll->closed) : ?>
     <?php echo Html::a(Yii::t('PollsModule.widgets_views_entry', 'Vote'), Yii::$app->user->loginUrl, array('class' => 'btn btn-primary', 'data-target' => '#globalModal')); ?>
 <?php endif; ?>
 
@@ -112,7 +60,7 @@ use yii\helpers\Html;
 
 <?php echo Html::endForm(); ?>
 
-<?php if ($poll->hasUserVoted()) : ?>
+<?php if ($poll->hasUserVoted() && !$poll->closed) : ?>
     <br>
     <?php
     echo \humhub\widgets\AjaxButton::widget([

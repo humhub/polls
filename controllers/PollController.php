@@ -51,13 +51,80 @@ class PollController extends ContentContainerController
     {
         $poll = new Poll();
         $poll->question = Yii::$app->request->post('question');
-        $poll->answersText = Yii::$app->request->post('answersText');
+        $poll->newAnswers = Yii::$app->request->post('newAnswers');
         $poll->allow_multiple = Yii::$app->request->post('allowMultiple', 0);
+        $poll->anonymous = Yii::$app->request->post('anonymous', 0);
+        $poll->is_random = Yii::$app->request->post('is_random', 0);
 
         return \humhub\modules\polls\widgets\WallCreateForm::create($poll);
     }
-
+    
     /**
+     * Reloads a single entry
+     */
+    public function actionReload()
+    {
+        $id = Yii::$app->request->get('id');
+        $model = Poll::findOne(['id' => $id]);
+
+        if (!$model->content->canRead()) {
+            throw new HttpException(403, Yii::t('PollsModule.controllers_PollController', 'Access denied!'));
+        }
+        
+        return $this->renderAjaxContent($model->getWallOut(['justEdited' => true]));
+    }
+    
+    public function actionEdit()
+    {
+        
+        $request = Yii::$app->request;
+        $id = $request->get('id');
+
+        $edited = false;
+        $model = Poll::findOne(['id' => $id]);
+
+        if (!$model->content->canWrite() || $model->closed) {
+            throw new HttpException(403, Yii::t('PollsModule.controllers_PollController', 'Access denied!'));
+        }
+        
+        //Set newAnswers, and editAnswers which will be saved by afterSave of the poll class
+        $model->setNewAnswers($request->post('newAnswers'));
+        $model->setEditAnswers($request->post('answers'));
+
+        if ($model->load($request->post()) && $model->validate() && $model->save()) {
+            // Reload record to get populated updated_at field
+            $model = Poll::findOne(['id' => $id]);
+            return $this->renderAjaxContent($model->getWallOut(['justEdited' => true]));
+        }
+
+        return $this->renderAjax('edit', ['poll' => $model, 'edited' => $edited]);
+    }
+    
+    public function actionOpen()
+    {
+        return $this->setClosed(Yii::$app->request->get('id'), false);
+    }
+    
+    public function actionClose()
+    {
+        return $this->setClosed(Yii::$app->request->get('id'), true);
+    }
+    
+    public function setClosed($id, $closed)
+    {
+        $model = Poll::findOne(['id' => $id]);
+
+        if (!$model->content->canWrite()) {
+            throw new HttpException(403, Yii::t('PollsModule.controllers_PollController', 'Access denied!'));
+        }
+        
+        $model->closed = $closed;
+        $model->save();
+        
+        return $this->renderAjaxContent($model->getWallOut(['justEdited' => true]));
+    }
+    
+  /**
      * Answers a polls
      */
     public function actionAnswer()
@@ -98,9 +165,13 @@ class PollController extends ContentContainerController
      * for an answer
      */
     public function actionUserListResults()
-    {
+    {   
         $poll = $this->getPollByParameter();
 
+        if($poll->anonymous) {
+            throw new HttpException(401, Yii::t('PollsModule.controllers_PollController', 'Anonymous poll!'));
+        }
+        
         $answerId = (int) Yii::$app->request->get('answerId', '');
         $answer = PollAnswer::findOne(['id' => $answerId]);
         if ($answer == null || $poll->id != $answer->poll_id) {

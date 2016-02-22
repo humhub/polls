@@ -9,6 +9,7 @@ return [
     'class' => 'humhub\modules\polls\Module',
     'namespace' => 'humhub\modules\polls',
     'events' => array(
+        ['class' => humhub\modules\content\widgets\WallEntryControls::className(), 'event' => humhub\modules\content\widgets\WallEntryControls::EVENT_INIT, 'callback' => ['humhub\modules\polls\Events', 'onWallEntryControlsInit']],
         array('class' => User::className(), 'event' => User::EVENT_BEFORE_DELETE, 'callback' => array('humhub\modules\polls\Events', 'onUserDelete')),
         array('class' => Menu::className(), 'event' => Menu::EVENT_INIT, 'callback' => array('humhub\modules\polls\Events', 'onSpaceMenuInit')),
         array('class' => IntegrityController::className(), 'event' => IntegrityController::EVENT_ON_RUN, 'callback' => array('humhub\modules\polls\Events', 'onIntegrityCheck')),
