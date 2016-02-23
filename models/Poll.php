@@ -28,7 +28,6 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
 {
 
     const MIN_REQUIRED_ANSWERS = 2;
-    
     const SCENARIO_CREATE = 'create';
     const SCENARIO_EDIT = 'edit';
 
@@ -52,7 +51,7 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
     {
         return array(
             [['question', 'answersText'], 'required', 'on' => self::SCENARIO_CREATE],
-            [['anonymous'], 'boolean'],
+            [['anonymous', 'is_random'], 'boolean'],
             [['question'], 'required', 'on' => self::SCENARIO_EDIT],
             [['newAnswers'], 'validateAnswersText'],
             [['allow_multiple'], 'integer', 'on' => self::SCENARIO_CREATE],
@@ -80,16 +79,16 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
         $query = $this->hasMany(PollAnswer::className(), ['poll_id' => 'id']);
         return $query;
     }
-    
+
     public function getViewAnswers()
     {
-        if($this->is_random) {
+        if ($this->is_random) {
             $result = [];
-            foreach($this->answers as $key=>$value) {
+            foreach ($this->answers as $key => $value) {
                 $result[$key] = $value;
             }
-           shuffle($result);
-           return $result;
+            shuffle($result);
+            return $result;
         } else {
             return $this->answers;
         }
@@ -104,73 +103,73 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
     public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);
-        
-        if(!$insert) {
+
+        if (!$insert) {
             $this->updateAnswers();
         }
-        
+
         $this->saveNewAnswers();
 
         return true;
     }
-    
+
     public function saveNewAnswers()
     {
-        if($this->newAnswers == null) {
+        if ($this->newAnswers == null) {
             return;
         }
-        
-        foreach($this->newAnswers as $answerText) {
+
+        foreach ($this->newAnswers as $answerText) {
             $this->addAnswer($answerText);
         }
     }
-    
+
     public function addAnswer($answerText)
     {
-        if(trim($answerText) === '') {
+        if (trim($answerText) === '') {
             return;
         }
-        
+
         $answer = new PollAnswer();
         $answer->poll_id = $this->id;
         $answer->answer = $answerText;
         $answer->save();
         return $answer;
     }
-    
+
     public function updateAnswers()
     {
-        if($this->editAnswers == null) {
+        if ($this->editAnswers == null) {
             return;
         }
-        
-        foreach($this->answers as $answer) {
-            if(!array_key_exists($answer->id, $this->editAnswers)) {
+
+        foreach ($this->answers as $answer) {
+            if (!array_key_exists($answer->id, $this->editAnswers)) {
                 $answer->delete();
-            } else if($answer->answer !== $this->editAnswers[$answer->id]) {
+            } else if ($answer->answer !== $this->editAnswers[$answer->id]) {
                 $answer->answer = $this->editAnswers[$answer->id];
                 $answer->update();
             }
         }
     }
-    
+
     /**
      * Sets the newAnswers array, which is used for creating and updating (afterSave)
      * the poll, by saving all valid answertexts contained in the given array.
      * @param type $newAnswerArr
      */
-    public function setNewAnswers($newAnswerArr) 
+    public function setNewAnswers($newAnswerArr)
     {
         $this->newAnswers = PollAnswer::filterValidAnswers($newAnswerArr);
     }
-    
+
     /**
      * Sets the editAnswers array, which is used for updating (afterSave)
      * the poll. The given array has to contain poll answer ids as key and an answertext
      * as values.
      * @param type $newAnswerArr
      */
-    public function setEditAnswers($editAnswerArr) 
+    public function setEditAnswers($editAnswerArr)
     {
         $this->editAnswers = PollAnswer::filterValidAnswers($editAnswerArr);
     }
@@ -289,7 +288,7 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
 
         $itemAnswers = "";
 
-        foreach($this->answers as $answer) {
+        foreach ($this->answers as $answer) {
             $itemAnswers .= $answer->answer;
         }
 
@@ -297,9 +296,6 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
             'question' => $this->question,
             'itemAnswers' => $itemAnswers
         );
-
-
-
     }
 
 }
