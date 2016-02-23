@@ -80,36 +80,36 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
 
     </div>
     <div class="content_edit">
-        <div style="float:right;">
-            <?php
-            echo \humhub\widgets\AjaxButton::widget([
-                'label' => 'Save',
-                'ajaxOptions' => [
-                    'type' => 'POST',
-                    'success' => new yii\web\JsExpression('function(html){ $(".wall_' . $poll->getUniqueId() . '").replaceWith(html); }'),
-                    'url' => $poll->content->container->createUrl('/polls/poll/edit', ['id' => $poll->id]),
-                ],
-                'htmlOptions' => [
-                    'class' => 'btn btn-primary btn-sm btn-comment-submit',
-                    'id' => 'poll_edit_post_' . $poll->id,
-                    'type' => 'submit'
-                ]
-            ]);
-            echo '&nbsp;';
-            echo \humhub\widgets\AjaxButton::widget([
-                'label' => 'Cancel',
-                'ajaxOptions' => [
-                    'type' => 'POST',
-                    'success' => new yii\web\JsExpression('function(html){ $(".wall_' . $poll->getUniqueId() . '").replaceWith(html); }'),
-                    'url' => $poll->content->container->createUrl('/polls/poll/reload', ['id' => $poll->id]),
-                ],
-                'htmlOptions' => [
-                    'class' => 'btn btn-danger btn-sm btn-comment-submit',
-                    'id' => 'poll_edit_cancel_post_' . $poll->id
-                ]
-            ]);
-            ?>
-        </div><br />
+        <hr />
+        <?php
+        echo \humhub\widgets\AjaxButton::widget([
+            'label' => 'Save',
+            'ajaxOptions' => [
+                'type' => 'POST',
+                'success' => new yii\web\JsExpression('function(html){ $(".wall_' . $poll->getUniqueId() . '").replaceWith(html); }'),
+                'url' => $poll->content->container->createUrl('/polls/poll/edit', ['id' => $poll->id]),
+            ],
+            'htmlOptions' => [
+                'class' => 'btn btn-primary btn-comment-submit',
+                'id' => 'poll_edit_post_' . $poll->id,
+                'type' => 'submit'
+            ]
+        ]);
+        echo '&nbsp;';
+        echo \humhub\widgets\AjaxButton::widget([
+            'label' => 'Cancel',
+            'ajaxOptions' => [
+                'type' => 'POST',
+                'success' => new yii\web\JsExpression('function(html){ $(".wall_' . $poll->getUniqueId() . '").replaceWith(html); }'),
+                'url' => $poll->content->container->createUrl('/polls/poll/reload', ['id' => $poll->id]),
+            ],
+            'htmlOptions' => [
+                'class' => 'btn btn-danger btn-comment-submit',
+                'id' => 'poll_edit_cancel_post_' . $poll->id
+            ]
+        ]);
+        ?>
+        <br />
     </div>
     <?php CActiveForm::end(); ?>
 </div>
