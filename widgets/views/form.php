@@ -28,7 +28,7 @@ echo \humhub\widgets\RichTextEditor::widget(array(
     </div>
     <div class="checkbox">
         <label>
-            <?php echo Html::checkbox("anonymous", "", array('id' => "contentForm_anonymous", 'class' => 'checkbox contentForm', "tabindex" => "5")); ?> <?php echo Yii::t('PollsModule.widgets_views_pollForm', 'Anonymous Poll?'); ?>
+            <?php echo Html::checkbox("anonymous", "", array('id' => "contentForm_anonymous", 'class' => 'checkbox contentForm', "tabindex" => "5")); ?> <?php echo Yii::t('PollsModule.widgets_views_pollForm', 'Anonymous Votes?'); ?>
         </label>
     </div>
 </div>

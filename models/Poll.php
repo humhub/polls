@@ -30,6 +30,7 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
     const MIN_REQUIRED_ANSWERS = 2;
     const SCENARIO_CREATE = 'create';
     const SCENARIO_EDIT = 'edit';
+    const SCENARIO_CLOSE = 'close';
 
     public $newAnswers;
     public $editAnswers;
@@ -43,6 +44,17 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
     {
         return 'poll';
     }
+    
+    public function scenarios()
+    {
+        return [
+            self::SCENARIO_CLOSE => [],
+            self::SCENARIO_CREATE => ['question', 'anonymous', 'is_random', 'newAnswers', 'allow_multiple'],
+            self::SCENARIO_CREATE => ['question', 'anonymous', 'is_random', 'newAnswers', 'allow_multiple'],
+            self::SCENARIO_EDIT => ['question', 'anonymous', 'is_random', 'newAnswers', 'editAnswers', 'allow_multiple']
+        ];
+    }
+    
 
     /**
      * @return array validation rules for model attributes.
@@ -50,13 +62,31 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
     public function rules()
     {
         return array(
-            [['question', 'answersText'], 'required', 'on' => self::SCENARIO_CREATE],
-            [['anonymous', 'is_random'], 'boolean'],
-            [['question'], 'required', 'on' => self::SCENARIO_EDIT],
-            [['newAnswers'], 'validateAnswersText'],
-            [['allow_multiple'], 'integer', 'on' => self::SCENARIO_CREATE],
+            [['question'], 'required'],
             [['question'], 'string', 'max' => 600],
+            [['anonymous', 'is_random'], 'boolean'],
+            [['newAnswers'], 'required', 'on' => self::SCENARIO_CREATE],
+            [['newAnswers'], 'minTwoNewAnswers', 'on' => self::SCENARIO_CREATE],
+            //we use the question attribute since its always required, otherwise it would not be called for editAnswers if editAnswers is empty...
+            [['question'], 'minTwoAnswers', 'on' => self::SCENARIO_EDIT],
+            [['allow_multiple'], 'integer'],
+            
         );
+    }
+    
+    public function minTwoNewAnswers($attribute)
+    {
+        if(count($this->newAnswers) < self::MIN_REQUIRED_ANSWERS) {
+            $this->addError($attribute, Yii::t('PollsModule.models_Poll', "Please specify at least {min} answers!", array("{min}" => self::MIN_REQUIRED_ANSWERS)));
+        }
+    }
+    
+    public function minTwoAnswers($attribute)
+    {
+        $count = count($this->newAnswers) + count($this->editAnswers);
+        if ($count < self::MIN_REQUIRED_ANSWERS) {
+            $this->addError('editAnswers', Yii::t('PollsModule.models_Poll', "Please specify at least {min} answers!", array("{min}" => self::MIN_REQUIRED_ANSWERS)));
+        }
     }
 
     /**
@@ -65,7 +95,8 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
     public function attributeLabels()
     {
         return array(
-            'answersText' => Yii::t('PollsModule.models_Poll', 'Answers'),
+            'newAnswers' => Yii::t('PollsModule.models_Poll', 'Answers'),
+            'editAnswers' => Yii::t('PollsModule.models_Poll', 'Answers'),
             'question' => Yii::t('PollsModule.models_Poll', 'Question'),
             'allow_multiple' => Yii::t('PollsModule.models_Poll', 'Multiple answers per user'),
         );
@@ -139,7 +170,7 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
 
     public function updateAnswers()
     {
-        if ($this->editAnswers == null) {
+        if ($this->editAnswers == null && $this->newAnswers == null) {
             return;
         }
 
@@ -270,14 +301,6 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
     public function getContentDescription()
     {
         return $this->question;
-    }
-
-    public function validateAnswersText()
-    {
-        $count = count($this->newAnswers) + count($this->editAnswers);
-        if ($count < self::MIN_REQUIRED_ANSWERS) {
-            $this->addError('answersText', Yii::t('PollsModule.models_Poll', "Please specify at least {min} answers!", array("{min}" => self::MIN_REQUIRED_ANSWERS)));
-        }
     }
 
     /**

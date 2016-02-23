@@ -1,6 +1,6 @@
 <li>
     <?php
-    $labelKey = ($poll->closed) ? 'Open' : 'Close';
+    $labelKey = ($poll->closed) ? 'Reopen Poll' : 'Complete Poll';
     $action = ($poll->closed) ? '/polls/poll/open' : '/polls/poll/close';
     $cssClass = ($poll->closed) ? 'fa-check' : 'fa-times';
     $url = $poll->content->container->createUrl($action, ['id' => $poll->id]);
@@ -15,8 +15,13 @@
         $('#<?= $linkId ?>').on('click', function (event) {
             $.ajax({
                 type: 'post',
-                url: '<?= $url ?>'
+                url: '<?= $url ?>',
+                'beforeSend': function() {
+                    $(".wall_<?= $poll->getUniqueId() ?>").find('.errorMessage').empty().hide();
+                    $("#pollform-loader_<?= $poll->id ?>").removeClass("hidden");
+                }
             }).done(function (html) {
+                $("#pollform-loader_<?= $poll->id ?>").addClass("hidden");
                 $(".wall_<?= $poll->getUniqueId() ?>").replaceWith(html);
             });
             event.preventDefault();

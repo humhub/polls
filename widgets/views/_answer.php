@@ -4,7 +4,7 @@ use yii\helpers\Html;
 ?>
 
 <div class="row">
-        <?php if (!$poll->hasUserVoted()) : ?>
+        <?php if (!$poll->hasUserVoted() && !$poll->closed) : ?>
             <div class="col-md-1" style="padding-right: 0;">
                 <?php if ($poll->allow_multiple) : ?>
                     <div class="checkbox">

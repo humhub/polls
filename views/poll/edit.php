@@ -5,15 +5,11 @@ use humhub\compat\CActiveForm;
 $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
 ?>
 
-
-<?php if ($poll->closed): ?>
-    <span class="label label-danger pull-right" style="margin-left:0px"><?= Yii::t('PollsModule.widgets_views_entry', 'Closed') ?></span>
-<?php endif; ?>
-
 <div class="content_edit" id="poll_edit_<?php echo $poll->id; ?>">
+    <p class="errorMessage" style="color:#ff8989;display:none"></p>
     <?php
     $form = CActiveForm::begin(['id' => 'poll-edit-form_' . $poll->id]);
-    echo $form->label($poll, "question");
+    echo $form->label($poll, "question", ['class' => 'control-label']);
     ?>
 
     <?php echo $form->textArea($poll, 'question', array('class' => 'form-control', 'id' => 'poll_input_question_' . $poll->id, 'placeholder' => Yii::t('PollsModule.widgets_views_pollForm', 'Edit your poll question...'))); ?>
@@ -30,7 +26,7 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
 
     <div class="contentForm_options">
         <?php
-        echo $form->label($poll, "answersText");
+        echo $form->label($poll, "answersText", ['class' => 'control-label']);
         $tabIndex = 2;
         foreach ($poll->answers as $answer) :
             ?>
@@ -73,20 +69,48 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
                 <?php
                 echo $form::checkbox($poll, "anonymous", ['id' => "editForm_anonymous_" . $poll->id,
                     'class' => 'checkbox', "tabindex" => "5"]);
-                echo Yii::t('PollsModule.widgets_views_pollForm', 'Anonymous Poll?');
+                echo Yii::t('PollsModule.widgets_views_pollForm', 'Anonymous Votes?');
                 ?>
             </label>
         </div>
 
     </div>
+    <script type="text/javascript">
+    
+    var editPollResultHandler = function(json) {
+        $("#pollform-loader_<?= $poll->id ?>").addClass("hidden");
+        var $entry = $(".wall_<?= $poll->getUniqueId() ?>");
+        if(json.success) {
+            $entry.replaceWith(json.output);
+        } else if(json.errors) {
+            var $errorMessage = $entry.find('.errorMessage');
+            var errors = '';
+            $.each(json.errors, function(key, value) {
+                errors += value +'<br />';
+            });
+            $errorMessage.html(errors).show();
+        }
+    };
+    
+    var editPollBeforeSendHandler = function() {
+        $(".wall_<?= $poll->getUniqueId() ?>").find('.errorMessage').empty().hide();
+        $("#pollform-loader_<?= $poll->id ?>").removeClass("hidden");
+    };
+    
+    
+    
+    </script>
     <div class="content_edit">
         <hr />
+        <?php echo \humhub\widgets\LoaderWidget::widget(["id" => 'pollform-loader_'.$poll->id, 'cssClass' => 'loader-postform hidden']); ?>
         <?php
         echo \humhub\widgets\AjaxButton::widget([
             'label' => 'Save',
             'ajaxOptions' => [
+                'dataType' => 'json',
                 'type' => 'POST',
-                'success' => new yii\web\JsExpression('function(html){ $(".wall_' . $poll->getUniqueId() . '").replaceWith(html); }'),
+                'beforeSend' => 'editPollBeforeSendHandler',
+                'success' => 'editPollResultHandler',
                 'url' => $poll->content->container->createUrl('/polls/poll/edit', ['id' => $poll->id]),
             ],
             'htmlOptions' => [

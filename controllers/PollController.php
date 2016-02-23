@@ -50,12 +50,12 @@ class PollController extends ContentContainerController
     public function actionCreate()
     {
         $poll = new Poll();
+        $poll->scenario = Poll::SCENARIO_CREATE;
         $poll->question = Yii::$app->request->post('question');
-        $poll->newAnswers = Yii::$app->request->post('newAnswers');
+        $poll->setNewAnswers(Yii::$app->request->post('newAnswers'));
         $poll->allow_multiple = Yii::$app->request->post('allowMultiple', 0);
         $poll->anonymous = Yii::$app->request->post('anonymous', 0);
         $poll->is_random = Yii::$app->request->post('is_random', 0);
-
         return \humhub\modules\polls\widgets\WallCreateForm::create($poll);
     }
     
@@ -82,6 +82,7 @@ class PollController extends ContentContainerController
 
         $edited = false;
         $model = Poll::findOne(['id' => $id]);
+        $model->scenario = Poll::SCENARIO_EDIT;
 
         if (!$model->content->canWrite() || $model->closed) {
             throw new HttpException(403, Yii::t('PollsModule.controllers_PollController', 'Access denied!'));
@@ -91,12 +92,20 @@ class PollController extends ContentContainerController
         $model->setNewAnswers($request->post('newAnswers'));
         $model->setEditAnswers($request->post('answers'));
 
-        if ($model->load($request->post()) && $model->validate() && $model->save()) {
-            // Reload record to get populated updated_at field
-            $model = Poll::findOne(['id' => $id]);
-            return $this->renderAjaxContent($model->getWallOut(['justEdited' => true]));
+        if ($model->load($request->post())) {
+            Yii::$app->response->format = 'json';
+            $result = [];
+            if($model->validate() && $model->save()) {
+                // Reload record to get populated updated_at field
+                $model = Poll::findOne(['id' => $id]);
+                $result['success'] = true;
+                $result['output'] = $this->renderAjaxContent($model->getWallOut(['justEdited' => true]));
+            } else {
+                $result['errors'] = $model->getErrors();
+            }
+            return $result;
         }
-
+        
         return $this->renderAjax('edit', ['poll' => $model, 'edited' => $edited]);
     }
     
@@ -113,6 +122,7 @@ class PollController extends ContentContainerController
     public function setClosed($id, $closed)
     {
         $model = Poll::findOne(['id' => $id]);
+        $model->scenario = Poll::SCENARIO_CLOSE;
 
         if (!$model->content->canWrite()) {
             throw new HttpException(403, Yii::t('PollsModule.controllers_PollController', 'Access denied!'));
