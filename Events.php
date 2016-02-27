@@ -121,6 +121,7 @@ class Events extends \yii\base\Object
         Yii::$app->user->switchIdentity($user);
 
         $poll = new Poll();
+        $poll->scenario = Poll::SCENARIO_CREATE;
         $poll->question = Yii::t('PollsModule.events', "Right now, we are in the planning stages for our next meetup and we would like to know from you, where you would like to go?");
         $poll->newAnswers = [
             Yii::t('PollsModule.events', "To Daniel"),

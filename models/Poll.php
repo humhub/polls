@@ -50,7 +50,6 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
         return [
             self::SCENARIO_CLOSE => [],
             self::SCENARIO_CREATE => ['question', 'anonymous', 'is_random', 'newAnswers', 'allow_multiple'],
-            self::SCENARIO_CREATE => ['question', 'anonymous', 'is_random', 'newAnswers', 'allow_multiple'],
             self::SCENARIO_EDIT => ['question', 'anonymous', 'is_random', 'newAnswers', 'editAnswers', 'allow_multiple']
         ];
     }
