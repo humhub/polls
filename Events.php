@@ -122,7 +122,6 @@ class Events extends \yii\base\Object
 
         $poll = new Poll();
         $poll->question = Yii::t('PollsModule.events', "Right now, we are in the planning stages for our next meetup and we would like to know from you, where you would like to go?");
-        $poll->answersText = Yii::t('PollsModule.events', "To Daniel\nClub A Steakhouse\nPisillo Italian Panini\n");
         $poll->newAnswers = [
             Yii::t('PollsModule.events', "To Daniel"),
             Yii::t('PollsModule.events', "Club A Steakhouse"),
