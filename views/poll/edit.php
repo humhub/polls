@@ -63,7 +63,7 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
                 ?>
             </label>
         </div>
-
+         <?php if(!$poll->anonymous) : ?>
         <div class="checkbox">
             <label>
                 <?php
@@ -73,7 +73,7 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
                 ?>
             </label>
         </div>
-
+        <?php endif; ?>
     </div>
     <script type="text/javascript">
     

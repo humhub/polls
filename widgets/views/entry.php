@@ -61,25 +61,6 @@ print humhub\widgets\RichText::widget(['text' => $poll->question, 'record' => $p
 
 <?php echo Html::endForm(); ?>
 
-<?php if ($poll->hasUserVoted() && !$poll->closed) : ?>
-    <br>
-    <?php
-    echo \humhub\widgets\AjaxButton::widget([
-        'label' => Yii::t('PollsModule.widgets_views_entry', 'Reset my vote'),
-        'ajaxOptions' => [
-            'dataType' => 'json',
-            'type' => 'POST',
-            'success' => "function(json) { $('#wallEntry_'+json.wallEntryId).html(parseHtml(json.output)); $('#wallEntry_'+json.wallEntryId).find(':checkbox, :radio').flatelements(); }",
-            'url' => $contentContainer->createUrl('/polls/poll/answer-reset', array('pollId' => $poll->id)),
-        ],
-        'htmlOptions' => [
-            'class' => 'btn btn-danger', 'id' => 'PollAnswerResetButton_' . $poll->id
-        ]
-    ]);
-    ?>
-    <br>
-<?php endif; ?>
-
 <script type="text/javascript">
 
 $(document).ready(function() {

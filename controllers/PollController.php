@@ -82,6 +82,7 @@ class PollController extends ContentContainerController
 
         $edited = false;
         $model = Poll::findOne(['id' => $id]);
+        $wasAnonymous = $model->anonymous;
         $model->scenario = Poll::SCENARIO_EDIT;
 
         if (!$model->content->canWrite() || $model->closed) {
@@ -93,6 +94,10 @@ class PollController extends ContentContainerController
         $model->setEditAnswers($request->post('answers'));
 
         if ($model->load($request->post())) {
+            if($wasAnonymous && !$model->anonymous) {
+                //This is only possible per post hacks... just to get sure...
+                throw new HttpException(403, Yii::t('PollsModule.controllers_PollController', 'Access denied!'));
+            }
             Yii::$app->response->format = 'json';
             $result = [];
             if($model->validate() && $model->save()) {

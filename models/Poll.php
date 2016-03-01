@@ -100,6 +100,11 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
             'allow_multiple' => Yii::t('PollsModule.models_Poll', 'Multiple answers per user'),
         );
     }
+    
+    public function isResetAllowed()
+    {
+        return $this->hasUserVoted() && !$this->closed;
+    }
 
     /**
      * @return ActiveRecord containing all answers of thes poll
@@ -265,13 +270,17 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
     }
 
     /**
-     * Resets all answers from a user
+     * Resets all answers from a user only if the poll is not closed yet.
      *
      * @param type $userId
      */
     public function resetAnswer($userId = "")
     {
 
+        if($this->closed) {
+            return;
+        }
+        
         if ($userId == "")
             $userId = Yii::$app->user->id;
 

@@ -25,8 +25,19 @@ class Events extends \yii\base\Object
     public static function onWallEntryControlsInit($event)
     {
         $object = $event->sender->object;
-        if($object instanceof Poll && $object->content->canWrite()) {
+        
+        if(!$object instanceof Poll) {
+            return;
+        }
+        
+        if($object->content->canWrite()) {
             $event->sender->addWidget(\humhub\modules\polls\widgets\CloseButton::className(), [
+                'poll' => $object
+            ]);
+        }
+        
+        if($object->isResetAllowed()) {
+            $event->sender->addWidget(\humhub\modules\polls\widgets\ResetButton::className(), [
                 'poll' => $object
             ]);
         }
