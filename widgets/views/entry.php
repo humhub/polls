@@ -19,7 +19,7 @@ if($poll->anonymous) {
 }
 
 echo Html::beginForm(); 
-print humhub\widgets\RichText::widget(['text' => $poll->question, 'record' => $poll]);
+print humhub\widgets\RichText::widget(['text' => $poll->question]);
 
 ?>
 
@@ -32,7 +32,9 @@ print humhub\widgets\RichText::widget(['text' => $poll->question, 'record' => $p
     } 
  ?> 
 
+<?php if(version_compare(Yii::$app->version, '1.0.0-beta.1', 'gt')) : ?>
 <?php echo \humhub\widgets\LoaderWidget::widget(["id" => 'pollform-loader_'.$poll->id, 'cssClass' => 'loader-postform hidden']); ?>
+<?php endif; ?>
 
 <?php if (!$poll->hasUserVoted() && !Yii::$app->user->isGuest && !$poll->closed) : ?>
     <br>

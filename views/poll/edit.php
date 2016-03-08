@@ -22,7 +22,7 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
              <?php echo \humhub\widgets\RichText::widget(['text' => $poll->question, 'edit' => true]); ?>
     </div>
 
-    <?= \humhub\widgets\RichTextEditor::widget(['id' => 'poll_input_question_' . $poll->id, 'inputContent' => $poll->question, 'record' => $poll]); ?>
+    <?= \humhub\widgets\RichTextEditor::widget(['id' => 'poll_input_question_' . $poll->id, 'inputContent' => $poll->question]); ?>
 
     <div class="contentForm_options">
         <?php
@@ -102,8 +102,10 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
     </script>
     <div class="content_edit">
         <hr />
+        <?php if(version_compare(Yii::$app->version, '1.0.0-beta.1', 'gt')) : ?>
         <?php echo \humhub\widgets\LoaderWidget::widget(["id" => 'pollform-loader_'.$poll->id, 'cssClass' => 'loader-postform hidden']); ?>
-        <?php
+        <?php endif; ?>
+            <?php
         echo \humhub\widgets\AjaxButton::widget([
             'label' => 'Save',
             'ajaxOptions' => [
