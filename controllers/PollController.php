@@ -49,6 +49,10 @@ class PollController extends ContentContainerController
      */
     public function actionCreate()
     {
+        if (!$this->contentContainer->permissionManager->can(new \humhub\modules\polls\permissions\CreatePoll())) {
+            throw new HttpException(400, 'Access denied!');
+        }
+
         $poll = new Poll();
         $poll->scenario = Poll::SCENARIO_CREATE;
         $poll->question = Yii::$app->request->post('question');
@@ -58,7 +62,7 @@ class PollController extends ContentContainerController
         $poll->is_random = Yii::$app->request->post('is_random', 0);
         return \humhub\modules\polls\widgets\WallCreateForm::create($poll);
     }
-    
+
     /**
      * Reloads a single entry
      */
@@ -70,13 +74,13 @@ class PollController extends ContentContainerController
         if (!$model->content->canRead()) {
             throw new HttpException(403, Yii::t('PollsModule.controllers_PollController', 'Access denied!'));
         }
-        
+
         return $this->renderAjaxContent($model->getWallOut(['justEdited' => true]));
     }
-    
+
     public function actionEdit()
     {
-        
+
         $request = Yii::$app->request;
         $id = $request->get('id');
 
@@ -88,19 +92,19 @@ class PollController extends ContentContainerController
         if (!$model->content->canWrite() || $model->closed) {
             throw new HttpException(403, Yii::t('PollsModule.controllers_PollController', 'Access denied!'));
         }
-        
+
         //Set newAnswers, and editAnswers which will be saved by afterSave of the poll class
         $model->setNewAnswers($request->post('newAnswers'));
         $model->setEditAnswers($request->post('answers'));
 
         if ($model->load($request->post())) {
-            if($wasAnonymous && !$model->anonymous) {
+            if ($wasAnonymous && !$model->anonymous) {
                 //This is only possible per post hacks... just to get sure...
                 throw new HttpException(403, Yii::t('PollsModule.controllers_PollController', 'Access denied!'));
             }
             Yii::$app->response->format = 'json';
             $result = [];
-            if($model->validate() && $model->save()) {
+            if ($model->validate() && $model->save()) {
                 // Reload record to get populated updated_at field
                 $model = Poll::findOne(['id' => $id]);
                 $result['success'] = true;
@@ -110,20 +114,20 @@ class PollController extends ContentContainerController
             }
             return $result;
         }
-        
+
         return $this->renderAjax('edit', ['poll' => $model, 'edited' => $edited]);
     }
-    
+
     public function actionOpen()
     {
         return $this->setClosed(Yii::$app->request->get('id'), false);
     }
-    
+
     public function actionClose()
     {
         return $this->setClosed(Yii::$app->request->get('id'), true);
     }
-    
+
     public function setClosed($id, $closed)
     {
         $model = Poll::findOne(['id' => $id]);
@@ -132,14 +136,14 @@ class PollController extends ContentContainerController
         if (!$model->content->canWrite()) {
             throw new HttpException(403, Yii::t('PollsModule.controllers_PollController', 'Access denied!'));
         }
-        
+
         $model->closed = $closed;
         $model->save();
-        
+
         return $this->renderAjaxContent($model->getWallOut(['justEdited' => true]));
     }
-    
-  /**
+
+    /**
      * Answers a polls
      */
     public function actionAnswer()
@@ -180,13 +184,13 @@ class PollController extends ContentContainerController
      * for an answer
      */
     public function actionUserListResults()
-    {   
+    {
         $poll = $this->getPollByParameter();
 
-        if($poll->anonymous) {
+        if ($poll->anonymous) {
             throw new HttpException(401, Yii::t('PollsModule.controllers_PollController', 'Anonymous poll!'));
         }
-        
+
         $answerId = (int) Yii::$app->request->get('answerId', '');
         $answer = PollAnswer::findOne(['id' => $answerId]);
         if ($answer == null || $poll->id != $answer->poll_id) {

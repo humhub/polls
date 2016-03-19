@@ -53,4 +53,18 @@ class Module extends ContentContainerModule
         }
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function getPermissions($contentContainer = null)
+    {
+        if ($contentContainer instanceof \humhub\modules\space\models\Space) {
+            return [
+                new permissions\CreatePoll()
+            ];
+        }
+
+        return [];
+    }
+
 }

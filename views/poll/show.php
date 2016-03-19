@@ -7,13 +7,17 @@ echo \humhub\modules\polls\widgets\WallCreateForm::widget([
 ?>
 
 <?php
+
+$canCreatePolls = $contentContainer->permissionManager->can(new \humhub\modules\polls\permissions\CreatePoll());
+
+
 echo \humhub\modules\content\widgets\Stream::widget(array(
     'contentContainer' => $contentContainer,
     'streamAction' => '/polls/poll/stream',
-    'messageStreamEmpty' => ($contentContainer->canWrite()) ?
+    'messageStreamEmpty' => ($canCreatePolls) ?
             Yii::t('PollsModule.widgets_views_stream', '<b>There are no polls yet!</b><br>Be the first and create one...') :
             Yii::t('PollsModule.widgets_views_stream', '<b>There are no polls yet!</b>'),
-    'messageStreamEmptyCss' => ($contentContainer->canWrite()) ? 'placeholder-empty-stream' : '',
+    'messageStreamEmptyCss' => ($canCreatePolls) ? 'placeholder-empty-stream' : '',
     'filters' => [
         'filter_polls_notAnswered' => Yii::t('PollsModule.widgets_views_stream', 'No answered yet'),
         'filter_entry_mine' => Yii::t('PollsModule.widgets_views_stream', 'Asked by me'),
