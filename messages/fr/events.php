@@ -17,10 +17,11 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Again? ;Weary;' => '',
-    'Club A Steakhouse' => '',
-    'Pisillo Italian Panini' => '',
-    'Right now, we are in the planning stages for our next meetup and we would like to know from you, where you would like to go?' => '',
-    'To Daniel' => '',
-    'Why don\'t we go to Bemelmans Bar?' => '',
+    'Again? ;Weary;' => 'Encore ? ;Weary;',
+    'Club A Steakhouse' => 'Hippopotamus',
+    'Pisillo Italian Panini' => 'Panini chez Pisillo',
+    'Right now, we are in the planning stages for our next meetup and we would like to know from you, where you would like to go?' => 
+    'Nous sommes en train de préparer notre prochaine rencontre, et nous voudrions savoir où vous aimeriez aller ?',
+    'To Daniel' => 'Chez Daniel',
+    'Why don\'t we go to Bemelmans Bar?' => 'Pourquoi on n\'irait pas au bar Bemelmans ?',
 ];
