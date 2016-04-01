@@ -17,11 +17,11 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Add answer...' => '',
-    'Anonymous Votes?' => '',
-    'Display answers in random order?' => '',
-    'Edit answer (empty answers will be removed)...' => '',
-    'Edit your poll question...' => '',
+    'Add answer...' => 'Ajouter une réponse...',
+    'Anonymous Votes?' => 'Votes anonymes ?',
+    'Display answers in random order?' => 'Afficher les réponses dans un ordre aléatoire ?',
+    'Edit answer (empty answers will be removed)...' => 'Modifier la réponse (les réponses vides seront supprimées)',
+    'Edit your poll question...' => 'Modifier la question de votre sondage...',
     'Allow multiple answers per user?' => 'Autoriser les réponses multiples ?',
-    'Ask something...' => 'Votre question...',
+    'Ask something...' => 'Posez une question...',
 ];

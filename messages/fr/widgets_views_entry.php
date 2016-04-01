@@ -17,10 +17,12 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Anonymous' => '',
-    'Closed' => '',
+    'Anonymous' => 'Anonyme',
+    'Closed' => 'Fermé',
     'Reset my vote' => 'Annuler mon vote',
     'Vote' => 'Voter',
     'and {count} more vote for this.' => 'et {count} réponses en plus.',
     'votes' => 'réponses',
+    'Complete Poll' => 'Terminer le sondage',
+    'Reopen Poll' => 'Réouvrir le sondage',
 ];
