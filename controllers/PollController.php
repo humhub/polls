@@ -52,7 +52,7 @@ class PollController extends ContentContainerController
         if (!$this->contentContainer->permissionManager->can(new \humhub\modules\polls\permissions\CreatePoll())) {
             throw new HttpException(400, 'Access denied!');
         }
-
+        
         $poll = new Poll();
         $poll->scenario = Poll::SCENARIO_CREATE;
         $poll->question = Yii::$app->request->post('question');
@@ -60,7 +60,7 @@ class PollController extends ContentContainerController
         $poll->allow_multiple = Yii::$app->request->post('allowMultiple', 0);
         $poll->anonymous = Yii::$app->request->post('anonymous', 0);
         $poll->is_random = Yii::$app->request->post('is_random', 0);
-        return \humhub\modules\polls\widgets\WallCreateForm::create($poll);
+        return \humhub\modules\polls\widgets\WallCreateForm::create($poll, $this->contentContainer);
     }
 
     /**
