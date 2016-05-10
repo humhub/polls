@@ -261,7 +261,7 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
             }
         }
 
-        if ($voted) {
+        if ($voted && !$this->anonymous) {
             $activity = new \humhub\modules\polls\activities\NewVote();
             $activity->source = $this;
             $activity->originator = Yii::$app->user->getIdentity();
