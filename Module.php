@@ -67,4 +67,20 @@ class Module extends ContentContainerModule
         return [];
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function getContentContainerName(ContentContainerActiveRecord $container)
+    {
+        return Yii::t('PollsModule.base', 'Polls');
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getContentContainerDescription(ContentContainerActiveRecord $container)
+    {
+        return Yii::t('PollsModule.base', 'Allows to start polls.');
+    }
+
 }
