@@ -2,6 +2,7 @@
 
 namespace humhub\modules\polls;
 
+use Yii;
 use humhub\modules\polls\models\Poll;
 use humhub\modules\space\models\Space;
 use humhub\modules\content\components\ContentContainerActiveRecord;
