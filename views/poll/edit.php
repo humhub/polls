@@ -57,7 +57,7 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
         <div class="checkbox">
             <label>
                 <?php
-                echo $form::checkbox($poll, "is_random", ['id' => "editForm_random_" . $poll->id,
+                echo $form->checkbox($poll, "is_random", ['id' => "editForm_random_" . $poll->id,
                     'class' => 'checkbox', "tabindex" => "5"]);
                 echo Yii::t('PollsModule.widgets_views_pollForm', 'Display answers in random order?');
                 ?>
@@ -67,7 +67,7 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
         <div class="checkbox">
             <label>
                 <?php
-                echo $form::checkbox($poll, "anonymous", ['id' => "editForm_anonymous_" . $poll->id,
+                echo $formm->checkbox($poll, "anonymous", ['id' => "editForm_anonymous_" . $poll->id,
                     'class' => 'checkbox', "tabindex" => "5"]);
                 echo Yii::t('PollsModule.widgets_views_pollForm', 'Anonymous Votes?');
                 ?>
