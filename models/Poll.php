@@ -62,7 +62,7 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
     {
         return array(
             [['question'], 'required'],
-            [['question'], 'string', 'max' => 600],
+            [['question'], 'string'],
             [['anonymous', 'is_random'], 'boolean'],
             [['newAnswers'], 'required', 'on' => self::SCENARIO_CREATE],
             [['newAnswers'], 'minTwoNewAnswers', 'on' => self::SCENARIO_CREATE],
