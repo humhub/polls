@@ -251,13 +251,14 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
 
         foreach ($votes as $answerId) {
             $answer = PollAnswer::findOne(array('id' => $answerId, 'poll_id' => $this->id));
+            if ($answer) {
+                $userVote = new PollAnswerUser();
+                $userVote->poll_id = $this->id;
+                $userVote->poll_answer_id = $answer->id;
 
-            $userVote = new PollAnswerUser();
-            $userVote->poll_id = $this->id;
-            $userVote->poll_answer_id = $answer->id;
-
-            if ($userVote->save()) {
-                $voted = true;
+                if ($userVote->save()) {
+                    $voted = true;
+                }
             }
         }
 
