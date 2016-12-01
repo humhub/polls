@@ -105,7 +105,7 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
         <?php endif; ?>
         <?php
         echo \humhub\widgets\AjaxButton::widget([
-            'label' => 'Save',
+            'label' => Yii::t('PollsModule.widgets_views_pollForm', 'Save'),
             'ajaxOptions' => [
                 'dataType' => 'json',
                 'type' => 'POST',
@@ -121,7 +121,7 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
         ]);
         echo '&nbsp;';
         echo \humhub\widgets\AjaxButton::widget([
-            'label' => 'Cancel',
+            'label' => Yii::t('PollsModule.widgets_views_pollForm', 'Cancel'),
             'ajaxOptions' => [
                 'type' => 'POST',
                 'success' => new yii\web\JsExpression('function(html){ $(".wall_' . $poll->getUniqueId() . '").replaceWith(html); }'),

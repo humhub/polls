@@ -24,4 +24,6 @@ return [
     'Edit your poll question...' => '编辑投票问题...',
     'Allow multiple answers per user?' => '允许答案多选?',
     'Ask something...' => '发起投票',
+    'Save' => '保存',
+    'Cancel' => '取消',
 ];

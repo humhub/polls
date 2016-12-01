@@ -24,4 +24,6 @@ return [
     'Edit your poll question...' => 'Modifier la question de votre sondage...',
     'Allow multiple answers per user?' => 'Autoriser les réponses multiples ?',
     'Ask something...' => 'Posez une question...',
+    'Save' => '',
+    'Cancel' => '',
 ];

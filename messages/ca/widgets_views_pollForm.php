@@ -24,4 +24,6 @@ return [
     'Edit your poll question...' => '',
     'Allow multiple answers per user?' => 'Vols permetre múltiples respostes?',
     'Ask something...' => 'Pregunta alguna cosa...',
+    'Save' => '',
+    'Cancel' => '',
 ];

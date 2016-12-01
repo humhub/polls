@@ -24,4 +24,6 @@ return [
     'Display answers in random order?' => '',
     'Edit answer (empty answers will be removed)...' => '',
     'Edit your poll question...' => '',
+    'Save' => '',
+    'Cancel' => '',
 ];
