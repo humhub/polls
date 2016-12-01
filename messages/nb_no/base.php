@@ -19,4 +19,6 @@
 return [
     'Allows to start polls.' => '',
     'Polls' => '',
+    'Reopen Poll' => '',
+    'Complete Poll' => '',
 ];

@@ -17,8 +17,8 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    '<b>There are no polls yet!</b>' => '',
-    '<b>There are no polls yet!</b><br>Be the first and create one...' => '',
+    '<b>There are no polls yet!</b>' => '<b>还没有投票！</b>',
+    '<b>There are no polls yet!</b><br>Be the first and create one...' => '<b>还没有投票</b>创建第一个投票...',
     'Asked by me' => '我提的问题',
     'No answered yet' => '还没有回答',
     'Only private polls' => '仅私有投票',
