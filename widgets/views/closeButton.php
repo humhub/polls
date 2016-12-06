@@ -1,6 +1,6 @@
 <li>
     <?php
-    $labelKey = ($poll->closed) ? 'Reopen Poll' : 'Complete Poll';
+    $labelKey = ($poll->closed) ? Yii::t('PollsModule.base', 'Reopen Poll') : Yii::t('PollsModule.base', 'Complete Poll');
     $action = ($poll->closed) ? '/polls/poll/open' : '/polls/poll/close';
     $cssClass = ($poll->closed) ? 'fa-check' : 'fa-times';
     $url = $poll->content->container->createUrl($action, ['id' => $poll->id]);
@@ -9,7 +9,7 @@
 
     <a id="<?= $linkId ?>" href="#">
         <i class="fa <?= $cssClass ?>"></i>
-        <?= Yii::t('PollsModule.widgets_views_entry', $labelKey) ?>
+        <?= $labelKey ?>
     </a>
     <script type="text/javascript">
         $('#<?= $linkId ?>').on('click', function (event) {
