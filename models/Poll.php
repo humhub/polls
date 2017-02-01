@@ -157,6 +157,9 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
         foreach ($this->newAnswers as $answerText) {
             $this->addAnswer($answerText);
         }
+        
+        // Reset cached answers
+        unset($this->answers);
     }
 
     public function addAnswer($answerText)

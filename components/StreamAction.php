@@ -3,7 +3,7 @@
 namespace humhub\modules\polls\components;
 
 use Yii;
-use humhub\modules\content\components\actions\ContentContainerStream;
+use humhub\modules\stream\actions\ContentContainerStream;
 use humhub\modules\polls\models\Poll;
 
 class StreamAction extends ContentContainerStream
@@ -11,8 +11,6 @@ class StreamAction extends ContentContainerStream
 
     public function setupFilters()
     {
-        $this->activeQuery->andWhere(['content.object_model' => Poll::className()]);
-
         if (in_array('polls_notAnswered', $this->filters) || in_array('polls_mine', $this->filters)) {
 
             $this->activeQuery->leftJoin('poll', 'content.object_id=poll.id AND content.object_model=:pollClass', [':pollClass' => Poll::className()]);

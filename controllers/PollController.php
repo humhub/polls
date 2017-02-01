@@ -26,6 +26,7 @@ class PollController extends ContentContainerController
         return array(
             'stream' => array(
                 'class' => \humhub\modules\polls\components\StreamAction::className(),
+                'includes' => Poll::className(),
                 'mode' => \humhub\modules\polls\components\StreamAction::MODE_NORMAL,
                 'contentContainer' => $this->contentContainer
             ),
@@ -120,12 +121,14 @@ class PollController extends ContentContainerController
 
     public function actionOpen()
     {
-        return $this->setClosed(Yii::$app->request->get('id'), false);
+        Yii::$app->response->format = 'json';
+        return $this->setClosed(Yii::$app->request->get('id'), false); 
     }
 
     public function actionClose()
     {
-        return $this->setClosed(Yii::$app->request->get('id'), true);
+        Yii::$app->response->format = 'json';
+        return  $this->setClosed(Yii::$app->request->get('id'), true); 
     }
 
     public function setClosed($id, $closed)
@@ -139,8 +142,10 @@ class PollController extends ContentContainerController
 
         $model->closed = $closed;
         $model->save();
-
-        return $this->renderAjaxContent($model->getWallOut(['justEdited' => true]));
+        
+        return \humhub\modules\stream\actions\Stream::getContentResultEntry($model->content);
+        
+        //return $this->renderAjaxContent($model->getWallOut(['justEdited' => true]));
     }
 
     /**
@@ -219,7 +224,6 @@ class PollController extends ContentContainerController
 
         $json = array();
         $json['output'] = $this->renderAjaxContent($question->getWallOut());
-        $json['wallEntryId'] = $question->content->getFirstWallEntryId();
 
         return $json;
     }

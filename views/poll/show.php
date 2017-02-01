@@ -11,7 +11,7 @@ echo \humhub\modules\polls\widgets\WallCreateForm::widget([
 $canCreatePolls = $contentContainer->permissionManager->can(new \humhub\modules\polls\permissions\CreatePoll());
 
 
-echo \humhub\modules\content\widgets\Stream::widget(array(
+echo \humhub\modules\stream\widgets\StreamViewer::widget(array(
     'contentContainer' => $contentContainer,
     'streamAction' => '/polls/poll/stream',
     'messageStreamEmpty' => ($canCreatePolls) ?
