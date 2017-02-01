@@ -40,16 +40,4 @@ humhub\modules\polls\assets\PollsAsset::register($this);
     <div class="clearFloats"></div>
 
     <?php echo Html::endForm(); ?>
-
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-            // show Tooltips on elements inside the views, which have the class 'tt'
-            $('.tt').tooltip({
-                html: true,
-                container: 'body'
-            });
-        });
-
-    </script>
 </div>

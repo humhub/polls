@@ -14,7 +14,7 @@ class PollsAsset extends AssetBundle
 {
 
     public $jsOptions = ['position' => \yii\web\View::POS_END];
-    public $sourcePath = '@polls/assets';
+    public $sourcePath = '@polls/resources';
     public $css = [];
     public $js = [
         'js/humhub.polls.js'
