@@ -57,55 +57,53 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
         <div class="checkbox">
             <label>
                 <?php
-                echo $form::checkbox($poll, "is_random", ['id' => "editForm_random_" . $poll->id,
-                    'class' => 'checkbox', "tabindex" => "5"]);
-                echo Yii::t('PollsModule.widgets_views_pollForm', 'Display answers in random order?');
+                echo \yii\helpers\Html::activeCheckbox($poll, "is_random", ['id' => "editForm_random_" . $poll->id,
+                    'class' => 'checkbox', "tabindex" => "5", 'label' => Yii::t('PollsModule.widgets_views_pollForm', 'Display answers in random order?')]);
                 ?>
             </label>
         </div>
-         <?php if(!$poll->anonymous) : ?>
-        <div class="checkbox">
-            <label>
-                <?php
-                echo $form::checkbox($poll, "anonymous", ['id' => "editForm_anonymous_" . $poll->id,
-                    'class' => 'checkbox', "tabindex" => "5"]);
-                echo Yii::t('PollsModule.widgets_views_pollForm', 'Anonymous Votes?');
-                ?>
-            </label>
-        </div>
+        <?php if (!$poll->anonymous) : ?>
+            <div class="checkbox">
+                <label>
+                    <?php
+                    echo \yii\helpers\Html::activeCheckbox($poll, "anonymous", ['id' => "editForm_anonymous_" . $poll->id,
+                        'class' => 'checkbox', "tabindex" => "5", 'label' => Yii::t('PollsModule.widgets_views_pollForm', 'Anonymous Votes?')]);
+                    ?>
+                </label>
+            </div>
         <?php endif; ?>
     </div>
     <script type="text/javascript">
-    
-    var editPollResultHandler = function(json) {
-        $("#pollform-loader_<?= $poll->id ?>").addClass("hidden");
-        var $entry = $(".wall_<?= $poll->getUniqueId() ?>");
-        if(json.success) {
-            $entry.replaceWith(json.output);
-        } else if(json.errors) {
-            var $errorMessage = $entry.find('.errorMessage');
-            var errors = '';
-            $.each(json.errors, function(key, value) {
-                errors += value +'<br />';
-            });
-            $errorMessage.html(errors).show();
-        }
-    };
-    
-    var editPollBeforeSendHandler = function() {
-        $(".wall_<?= $poll->getUniqueId() ?>").find('.errorMessage').empty().hide();
-        $("#pollform-loader_<?= $poll->id ?>").removeClass("hidden");
-    };
-    
-    
-    
+
+        var editPollResultHandler = function (json) {
+            $("#pollform-loader_<?= $poll->id ?>").addClass("hidden");
+            var $entry = $(".wall_<?= $poll->getUniqueId() ?>");
+            if (json.success) {
+                $entry.replaceWith(json.output);
+            } else if (json.errors) {
+                var $errorMessage = $entry.find('.errorMessage');
+                var errors = '';
+                $.each(json.errors, function (key, value) {
+                    errors += value + '<br />';
+                });
+                $errorMessage.html(errors).show();
+            }
+        };
+
+        var editPollBeforeSendHandler = function () {
+            $(".wall_<?= $poll->getUniqueId() ?>").find('.errorMessage').empty().hide();
+            $("#pollform-loader_<?= $poll->id ?>").removeClass("hidden");
+        };
+
+
+
     </script>
     <div class="content_edit">
         <hr />
-        <?php if(version_compare(Yii::$app->version, '1.0.0-beta.1', 'gt')) : ?>
-        <?php echo \humhub\widgets\LoaderWidget::widget(["id" => 'pollform-loader_'.$poll->id, 'cssClass' => 'loader-postform hidden']); ?>
+        <?php if (version_compare(Yii::$app->version, '1.0.0-beta.1', 'gt')) : ?>
+            <?php echo \humhub\widgets\LoaderWidget::widget(["id" => 'pollform-loader_' . $poll->id, 'cssClass' => 'loader-postform hidden']); ?>
         <?php endif; ?>
-            <?php
+        <?php
         echo \humhub\widgets\AjaxButton::widget([
             'label' => 'Save',
             'ajaxOptions' => [

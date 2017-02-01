@@ -2,6 +2,7 @@
 
 namespace humhub\modules\polls;
 
+use Yii;
 use humhub\modules\polls\models\Poll;
 use humhub\modules\space\models\Space;
 use humhub\modules\content\components\ContentContainerActiveRecord;
@@ -65,6 +66,22 @@ class Module extends ContentContainerModule
         }
 
         return [];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getContentContainerName(ContentContainerActiveRecord $container)
+    {
+        return Yii::t('PollsModule.base', 'Polls');
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getContentContainerDescription(ContentContainerActiveRecord $container)
+    {
+        return Yii::t('PollsModule.base', 'Allows to start polls.');
     }
 
 }

@@ -17,6 +17,10 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Allows to start polls.' => '',
-    'Polls' => 'نظرسنجی‌ها',
+    'Anonymous' => '',
+    'Closed' => '',
+    'Reset my vote' => '',
+    'Vote' => '',
+    'and {count} more vote for this.' => '',
+    'votes' => '',
 ];

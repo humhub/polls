@@ -17,6 +17,11 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Allows to start polls.' => '',
-    'Polls' => 'نظرسنجی‌ها',
+    'Add answer...' => '',
+    'Allow multiple answers per user?' => '',
+    'Anonymous Votes?' => '',
+    'Ask something...' => '',
+    'Display answers in random order?' => '',
+    'Edit answer (empty answers will be removed)...' => '',
+    'Edit your poll question...' => '',
 ];
