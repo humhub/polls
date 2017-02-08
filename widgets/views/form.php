@@ -1,6 +1,9 @@
 <?php
 
 use yii\helpers\Html;
+
+\humhub\modules\polls\assets\PollsAsset::register($this);
+
 ?>
 <?php echo Html::textArea("question", '', array('id' => 'contentForm_question', 'class' => 'form-control autosize contentForm', 'rows' => '1', "tabindex" => "1", 'placeholder' => Yii::t('PollsModule.widgets_views_pollForm', "Ask something..."))); ?>
 
@@ -13,7 +16,7 @@ echo \humhub\widgets\RichTextEditor::widget(array(
 ?>
 
 
-<div class="contentForm_options">
+<div class="contentForm_options" data-content-component="polls.Poll">
     <?php echo humhub\modules\polls\widgets\AddAnswerInput::widget(['name' => 'newAnswers[]', 'showTitle' => false]); ?>
     
     <div class="checkbox">
