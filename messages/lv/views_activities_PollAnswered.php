@@ -17,8 +17,5 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Allows to start polls.' => '',
-    'Cancel' => '',
-    'Polls' => '',
-    'Save' => '',
+    '{userName} answered the {question}.' => '',
 ];

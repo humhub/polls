@@ -17,8 +17,8 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Allows to start polls.' => '',
-    'Cancel' => '',
-    'Polls' => '',
-    'Save' => '',
+    'Answers' => '',
+    'Multiple answers per user' => '',
+    'Please specify at least {min} answers!' => '',
+    'Question' => '',
 ];
