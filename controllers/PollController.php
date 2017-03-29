@@ -120,14 +120,12 @@ class PollController extends ContentContainerController
 
     public function actionOpen()
     {
-        Yii::$app->response->format = 'json';
-        return $this->setClosed(Yii::$app->request->get('id'), false); 
+        return $this->asJson($this->setClosed(Yii::$app->request->get('id'), false)); 
     }
 
     public function actionClose()
     {
-        Yii::$app->response->format = 'json';
-        return  $this->setClosed(Yii::$app->request->get('id'), true); 
+        return  $this->asJson($this->setClosed(Yii::$app->request->get('id'), true)); 
     }
 
     public function setClosed($id, $closed)
@@ -141,6 +139,8 @@ class PollController extends ContentContainerController
 
         $model->closed = $closed;
         $model->save();
+        // Refresh updated_at
+        $model->content->refresh();
         
         return \humhub\modules\stream\actions\Stream::getContentResultEntry($model->content);
     }
