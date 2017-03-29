@@ -17,8 +17,11 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Allows to start polls.' => '',
-    'Cancel' => '',
-    'Polls' => '',
-    'Save' => '',
+    'Access denied!' => '',
+    'Anonymous poll!' => '',
+    'Could not load poll!' => '',
+    'Invalid answer!' => '',
+    'Users voted for: <strong>{answer}</strong>' => '',
+    'Voting for multiple answers is disabled!' => '',
+    'You have insufficient permissions to perform that operation!' => '',
 ];
