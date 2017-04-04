@@ -16,7 +16,9 @@ humhub\modules\polls\assets\PollsAsset::register($this);
     <?php endif; ?>
 
     <?= Html::beginForm($contentContainer->createUrl('/polls/poll/answer', ['pollId' => $poll->id])); ?>
-    <?= humhub\widgets\RichText::widget(['text' => $poll->question]); ?>
+    <div data-ui-markdown>
+        <?= humhub\widgets\RichText::widget(['text' => $poll->question]); ?>
+    </div>
 
     <br><br>
 
