@@ -5,33 +5,28 @@ use yii\helpers\Html;
 \humhub\modules\polls\assets\PollsAsset::register($this);
 
 ?>
-<?php echo Html::textArea("question", '', array('id' => 'contentForm_question', 'class' => 'form-control autosize contentForm', 'rows' => '1', "tabindex" => "1", 'placeholder' => Yii::t('PollsModule.widgets_views_pollForm', "Ask something..."))); ?>
 
-<?php
-
-/* Modify textarea for mention input */
-echo \humhub\widgets\RichTextEditor::widget(array(
-    'id' => 'contentForm_question',
-));
-?>
-
+<?= \humhub\widgets\RichtextField::widget([
+        'name' => 'question',
+        'placeholder' => Yii::t('PollsModule.widgets_views_pollForm', "Ask something...")
+]); ?>
 
 <div class="contentForm_options" data-content-component="polls.Poll">
-    <?php echo humhub\modules\polls\widgets\AddAnswerInput::widget(['name' => 'newAnswers[]', 'showTitle' => false]); ?>
+    <?= humhub\modules\polls\widgets\AddAnswerInput::widget(['name' => 'newAnswers[]', 'showTitle' => false]); ?>
     
     <div class="checkbox">
         <label>
-            <?php echo Html::checkbox("allowMultiple", "", array('id' => "contentForm_allowMultiple", 'class' => 'checkbox contentForm', "tabindex" => "4")); ?> <?php echo Yii::t('PollsModule.widgets_views_pollForm', 'Allow multiple answers per user?'); ?>
+            <?= Html::checkbox("allowMultiple", "", ['id' => "contentForm_allowMultiple", 'class' => 'checkbox contentForm', "tabindex" => "4"]); ?> <?= Yii::t('PollsModule.widgets_views_pollForm', 'Allow multiple answers per user?'); ?>
         </label>
     </div>
     <div class="checkbox">
         <label>
-            <?php echo Html::checkbox("is_random", "", array('id' => "contentForm_is_random", 'class' => 'checkbox contentForm', "tabindex" => "6")); ?> <?php echo Yii::t('PollsModule.widgets_views_pollForm', 'Display answers in random order?'); ?>
+            <?= Html::checkbox("is_random", "", ['id' => "contentForm_is_random", 'class' => 'checkbox contentForm', "tabindex" => "6"]); ?> <?= Yii::t('PollsModule.widgets_views_pollForm', 'Display answers in random order?'); ?>
         </label>
     </div>
     <div class="checkbox">
         <label>
-            <?php echo Html::checkbox("anonymous", "", array('id' => "contentForm_anonymous", 'class' => 'checkbox contentForm', "tabindex" => "5")); ?> <?php echo Yii::t('PollsModule.widgets_views_pollForm', 'Anonymous Votes?'); ?>
+            <?= Html::checkbox("anonymous", "", ['id' => "contentForm_anonymous", 'class' => 'checkbox contentForm', "tabindex" => "5"]); ?> <?= Yii::t('PollsModule.widgets_views_pollForm', 'Anonymous Votes?'); ?>
         </label>
     </div>
 </div>
