@@ -17,5 +17,5 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    '{userName} answered the {question}.' => '',
+    '{userName} answered the {question}.' => '{userName} 回答了问题 {question}.',
 ];
