@@ -17,11 +17,11 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Add answer...' => '',
-    'Anonymous Votes?' => '',
-    'Display answers in random order?' => '',
-    'Edit answer (empty answers will be removed)...' => '',
-    'Edit your poll question...' => '',
+    'Add answer...' => '添加答案...',
+    'Anonymous Votes?' => '匿名投票？',
+    'Display answers in random order?' => '随机位置显示答案？',
+    'Edit answer (empty answers will be removed)...' => '编辑答案(空答案会被删除)...',
+    'Edit your poll question...' => '编辑投票问题...',
     'Allow multiple answers per user?' => '允许答案多选?',
     'Ask something...' => '发起投票',
 ];
