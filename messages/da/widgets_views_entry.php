@@ -21,6 +21,8 @@ return [
     'Closed' => '',
     'Complete Poll' => '',
     'Reopen Poll' => '',
+    'Created at' => '',
+    'Export poll' => '',
     'Reset my vote' => 'Nulstil min stemme',
     'Vote' => 'Stemme',
     'and {count} more vote for this.' => 'og {count} yderligere stemmer for dette.',

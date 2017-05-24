@@ -21,6 +21,8 @@ return [
     'Closed' => '关闭',
     'Complete Poll' => '完成投票',
     'Reopen Poll' => '重新打开投票',
+    'Created at' => '',
+    'Export poll' => '',
     'Reset my vote' => '重置我的投票',
     'Vote' => '投票',
     'and {count} more vote for this.' => '另外 {count} 个投票。',

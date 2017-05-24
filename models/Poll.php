@@ -6,6 +6,7 @@ use Yii;
 use humhub\modules\content\components\ContentActiveRecord;
 use humhub\modules\polls\models\PollAnswer;
 use humhub\modules\polls\models\PollAnswerUser;
+use humhub\modules\user\models\User;
 
 /**
  * This is the model class for table "poll".
@@ -87,6 +88,51 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
             $this->addError('editAnswers', Yii::t('PollsModule.models_Poll', "Please specify at least {min} answers!", array("{min}" => self::MIN_REQUIRED_ANSWERS)));
         }
     }
+
+    /*
+     * get csv results
+     */
+    public function getCSVAnswers()
+    {
+        // output headers so that the file is downloaded rather than displayed
+        header('Content-Type: text/csv; charset=utf-8');
+        header('Content-Disposition: attachment; filename=data.csv');
+
+        // create a file pointer connected to the output stream
+        $output = fopen('php://output', 'w');
+
+        // output the column headings
+        fputcsv($output, array(
+            Yii::t('PollsModule.models_Poll', 'Question'),
+            Yii::t('UserModule.models_ProfileField', 'Created at'),
+            Yii::t('UserModule.models_ProfileField', 'Updated at')
+        ));
+
+        // output relative question info
+        fputcsv($output, array(
+            $this->getAttributes()['question'],
+            $this->getAttributes()['created_at'],
+            $this->getAttributes()['updated_at']
+        ));
+        fputcsv($output, array(''));
+
+        fputcsv($output, array('Answers'));
+        // output Answers headers
+        fputcsv($output, array(Yii::t('PollsModule.models_Profile', 'User'), Yii::t('PollsModule.models_Poll', 'Answer'), 'Fecha de respuesta'));
+
+        $query = PollAnswerUser::find();
+        $query->leftJoin('poll_answer', 'poll_answer.poll_id='.$this->id);
+        $query->andWhere(['poll_answer_user.poll_id' => $this->id]);
+
+        fputcsv($output, array(''));
+        foreach ($query->each() as $row) {
+            $line = $row->getAttributes();
+            $user = User::findOne(['id' => $line['created_by']])->getAttributes()['username'];
+            $answer = PollAnswer::findOne(['id' => $line['poll_answer_id']])->getAttributes()['answer'];
+            fputcsv($output, array($user, $answer, $line['created_at']));
+        }
+    }
+    
 
     /**
      * @return array customized attribute labels (name=>label)

@@ -212,6 +212,12 @@ class PollController extends ContentContainerController
         return $this->renderAjaxContent(UserListBox::widget(['query' => $query, 'title' => $title]));
     }
 
+    public function actionExport()
+    {
+        $poll = $this->getPollByParameter();
+        $poll->getCSVAnswers();
+    }
+
     /**
      * Prints the given poll wall output include the affected wall entry id
      *

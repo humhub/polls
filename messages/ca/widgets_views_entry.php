@@ -21,6 +21,8 @@ return [
     'Closed' => '',
     'Complete Poll' => '',
     'Reopen Poll' => '',
+    'Created at' => '',
+    'Export poll' => '',
     'Reset my vote' => 'Restableix el meu vot',
     'Vote' => 'Vot',
     'and {count} more vote for this.' => 'i {count} més han votat això.',

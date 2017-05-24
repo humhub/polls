@@ -41,6 +41,12 @@ class Events extends \yii\base\Object
                 'poll' => $object
             ]);
         }
+
+        if ($object->getAttributes()['closed'] == 0) {
+            $event->sender->addWidget(\humhub\modules\polls\widgets\ExportButton::className(), [
+                'poll' => $object
+            ]);
+        }
     }
     
 

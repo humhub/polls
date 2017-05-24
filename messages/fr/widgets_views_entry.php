@@ -21,6 +21,8 @@ return [
     'Reopen Poll' => '',
     'Anonymous' => 'Anonyme',
     'Closed' => 'Fermé',
+    'Created at' => '',
+    'Export poll' => '',
     'Reset my vote' => 'Annuler mon vote',
     'Vote' => 'Voter',
     'and {count} more vote for this.' => 'et {count} réponses en plus.',

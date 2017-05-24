@@ -19,6 +19,8 @@
 return [
     'Complete Poll' => '',
     'Reopen Poll' => '',
+    'Created at' => 'Creado el',
+    'Export poll' => 'Exportar encuesta',
     'Anonymous' => 'Anónimos',
     'Closed' => 'Cerrado',
     'Reset my vote' => 'Reiniciar mi voto',
