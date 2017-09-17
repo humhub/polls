@@ -1,4 +1,4 @@
 <?php
 return array (
-  'User who vote this' => 'User bỏ phiếu điều này',
+  'User who vote this' => 'Người dùng bỏ phiếu điều này',
 );

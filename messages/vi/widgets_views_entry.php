@@ -6,6 +6,6 @@ return array (
   'Reopen Poll' => 'Mở lại biểu quyết',
   'Reset my vote' => 'Đặt lại phiếu của tôi',
   'Vote' => 'Bỏ phiếu',
-  'and {count} more vote for this.' => 'và {count} thêm vote cho điều này.',
-  'votes' => 'votes',
+  'and {count} more vote for this.' => 'và  thêm {count} biểu quyết cho điều này.',
+  'votes' => 'bỏ phiếu',
 );
