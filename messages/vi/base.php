@@ -1,7 +1,7 @@
 <?php
 return array (
-  'Allows to start polls.' => '',
+  'Allows to start polls.' => 'Cho phép khởi tạo biểu quyết',
   'Cancel' => 'Hủy',
-  'Polls' => '',
-  'Save' => '',
+  'Polls' => 'Biểu quyết',
+  'Save' => 'Lưu',
 );
