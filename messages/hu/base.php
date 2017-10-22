@@ -2,6 +2,6 @@
 return array (
   'Allows to start polls.' => '',
   'Cancel' => 'Mégsem',
-  'Polls' => '',
+  'Polls' => 'Szavazás',
   'Save' => 'Mentés',
 );
