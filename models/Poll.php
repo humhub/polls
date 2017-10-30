@@ -3,9 +3,11 @@
 namespace humhub\modules\polls\models;
 
 use Yii;
+use humhub\modules\search\interfaces\Searchable;
 use humhub\modules\content\components\ContentActiveRecord;
 use humhub\modules\polls\models\PollAnswer;
 use humhub\modules\polls\models\PollAnswerUser;
+use humhub\modules\polls\activities\NewVote;
 
 /**
  * This is the model class for table "poll".
@@ -24,7 +26,7 @@ use humhub\modules\polls\models\PollAnswerUser;
  * @since 0.5
  * @author Luke
  */
-class Poll extends ContentActiveRecord implements \humhub\modules\search\interfaces\Searchable
+class Poll extends ContentActiveRecord implements Searchable
 {
 
     const MIN_REQUIRED_ANSWERS = 2;
@@ -53,14 +55,13 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
             self::SCENARIO_EDIT => ['question', 'anonymous', 'is_random', 'newAnswers', 'editAnswers', 'allow_multiple']
         ];
     }
-    
 
     /**
      * @return array validation rules for model attributes.
      */
     public function rules()
     {
-        return array(
+        return [
             [['question'], 'required'],
             [['question'], 'string'],
             [['anonymous', 'is_random'], 'boolean'],
@@ -70,13 +71,13 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
             [['question'], 'minTwoAnswers', 'on' => self::SCENARIO_EDIT],
             [['allow_multiple'], 'integer'],
             
-        );
+        ];
     }
     
     public function minTwoNewAnswers($attribute)
     {
-        if(count($this->newAnswers) < self::MIN_REQUIRED_ANSWERS) {
-            $this->addError($attribute, Yii::t('PollsModule.models_Poll', "Please specify at least {min} answers!", array("{min}" => self::MIN_REQUIRED_ANSWERS)));
+        if (count($this->newAnswers) < self::MIN_REQUIRED_ANSWERS) {
+            $this->addError($attribute, Yii::t('PollsModule.models_Poll', 'Please specify at least {min} answers!', ['{min}' => self::MIN_REQUIRED_ANSWERS]));
         }
     }
     
@@ -84,7 +85,7 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
     {
         $count = count($this->newAnswers) + count($this->editAnswers);
         if ($count < self::MIN_REQUIRED_ANSWERS) {
-            $this->addError('editAnswers', Yii::t('PollsModule.models_Poll', "Please specify at least {min} answers!", array("{min}" => self::MIN_REQUIRED_ANSWERS)));
+            $this->addError('editAnswers', Yii::t('PollsModule.models_Poll', 'Please specify at least {min} answers!', ['{min}' => self::MIN_REQUIRED_ANSWERS]));
         }
     }
 
@@ -93,14 +94,14 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
      */
     public function attributeLabels()
     {
-        return array(
+        return [
             'newAnswers' => Yii::t('PollsModule.models_Poll', 'Answers'),
             'editAnswers' => Yii::t('PollsModule.models_Poll', 'Answers'),
             'question' => Yii::t('PollsModule.models_Poll', 'Question'),
             'allow_multiple' => Yii::t('PollsModule.models_Poll', 'Multiple answers per user'),
             'is_random' => Yii::t('PollsModule.widgets_views_pollForm', 'Display answers in random order?'),
             'anonymous' => Yii::t('PollsModule.widgets_views_pollForm', 'Anonymous Votes?')
-        );
+        ];
     }
     
     public function isResetAllowed()
@@ -174,6 +175,7 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
         $answer->poll_id = $this->id;
         $answer->answer = $answerText;
         $answer->save();
+
         return $answer;
     }
 
@@ -222,6 +224,7 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
         foreach ($this->answers as $answer) {
             $answer->delete();
         }
+
         return parent::beforeDelete();
     }
 
@@ -231,10 +234,10 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
      * @param type $userId
      * @return type
      */
-    public function hasUserVoted($userId = "")
+    public function hasUserVoted($userId = '')
     {
 
-        if ($userId == "")
+        if ($userId == '')
             $userId = Yii::$app->user->id;
 
         $answer = PollAnswerUser::findOne(array('created_by' => $userId, 'poll_id' => $this->id));
@@ -245,7 +248,7 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
         return true;
     }
 
-    public function vote($votes = array())
+    public function vote($votes = [])
     {
 
         if ($this->hasUserVoted()) {
@@ -255,7 +258,7 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
         $voted = false;
 
         foreach ($votes as $answerId) {
-            $answer = PollAnswer::findOne(array('id' => $answerId, 'poll_id' => $this->id));
+            $answer = PollAnswer::findOne(['id' => $answerId, 'poll_id' => $this->id]);
             if ($answer) {
                 $userVote = new PollAnswerUser();
                 $userVote->poll_id = $this->id;
@@ -268,7 +271,7 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
         }
 
         if ($voted && !$this->anonymous) {
-            $activity = new \humhub\modules\polls\activities\NewVote();
+            $activity = new NewVote();
             $activity->source = $this;
             $activity->originator = Yii::$app->user->getIdentity();
             $activity->create();
@@ -280,19 +283,18 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
      *
      * @param type $userId
      */
-    public function resetAnswer($userId = "")
+    public function resetAnswer($userId = '')
     {
 
-        if($this->closed) {
+        if ($this->closed) {
             return;
         }
         
-        if ($userId == "")
+        if ($userId == '')
             $userId = Yii::$app->user->id;
 
         if ($this->hasUserVoted($userId)) {
-
-            $answers = PollAnswerUser::findAll(array('created_by' => $userId, 'poll_id' => $this->id));
+            $answers = PollAnswerUser::findAll(['created_by' => $userId, 'poll_id' => $this->id]);
             foreach ($answers as $answer) {
                 $answer->delete();
             }
@@ -306,7 +308,7 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
      */
     public function getContentName()
     {
-        return Yii::t('PollsModule.models_Poll', "Question");
+        return Yii::t('PollsModule.models_Poll', 'Question');
     }
 
     /**
@@ -323,16 +325,16 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
     public function getSearchAttributes()
     {
 
-        $itemAnswers = "";
+        $itemAnswers = '';
 
         foreach ($this->answers as $answer) {
             $itemAnswers .= $answer->answer;
         }
 
-        return array(
+        return [
             'question' => $this->question,
             'itemAnswers' => $itemAnswers
-        );
+        ];
     }
 
 }
