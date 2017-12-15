@@ -7,7 +7,9 @@ use humhub\modules\content\components\ContentActiveRecord;
 use humhub\modules\polls\models\PollAnswer;
 use humhub\modules\polls\models\PollAnswerUser;
 use humhub\modules\user\models\User;
-
+use humhub\modules\user\models\Profile;
+include __DIR__.'/../lib/PHPExcel/Classes/PHPExcel/IOFactory.php';
+use PHPExcel_IOFactory;
 /**
  * This is the model class for table "poll".
  *
@@ -95,11 +97,20 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
     public function getCSVAnswers()
     {
         // output headers so that the file is downloaded rather than displayed
-        header('Content-Type: text/csv; charset=utf-8');
-        header('Content-Disposition: attachment; filename=data.csv');
+        header('Content-Type: application/vnd.ms-excel ; charset=utf-8');
+        header('Content-Disposition: attachment; filename=data.xls');
+	
+	//preparando conversor csv to excel
+	//include __DIR__.'/../lib/PHPExcel/Classes/PHPExcel/IOFactory.php';
+	$objReader = \PHPExcel_IOFactory::createReader('CSV');
+	// If the files uses a delimiter other than a comma (e.g. a tab), then tell the reader
+	//$objReader->setDelimiter("\t");
+	// If the files uses an encoding other than UTF-8 or ASCII, then tell the reader
+	//$objReader->setInputEncoding('UTF-16LE');
 
         // create a file pointer connected to the output stream
-        $output = fopen('php://output', 'w');
+        
+	 $output = fopen('/tmp/data.csv', 'w'); //ahora el output es un archivo csv.
 
         // output the column headings
         fputcsv($output, array(
@@ -128,12 +139,15 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
         foreach ($query->each() as $row) {
             $line = $row->getAttributes();
 	    $user = User::findOne(['id' => $line['created_by']])->getAttributes();
-            $profile = Profile::findOne(['user_id' => $line['created_by']])->getAttributes();
+	    $profile = Profile::findOne(['user_id' => $line['created_by']])->getAttributes();
             $user_name = $profile['firstname'].' '.$profile['lastname'];
 
             $answer = PollAnswer::findOne(['id' => $line['poll_answer_id']])->getAttributes()['answer'];
             fputcsv($output, array($user_name, $answer, $line['created_at']));
         }
+	$objPHPExcel = $objReader->load('/tmp/data.csv');
+	$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+	$objWriter->save('php://output');
     }
     
 
