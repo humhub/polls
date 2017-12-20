@@ -1,7 +1,7 @@
 <?php
 return array (
   'Access denied!' => 'Accesso negato!',
-  'Anonymous poll!' => '',
+  'Anonymous poll!' => 'Sondaggio anonimo!',
   'Could not load poll!' => 'Non posso caricare il sondaggio!',
   'Invalid answer!' => 'Risposta non valida!',
   'Users voted for: <strong>{answer}</strong>' => 'Gli utenti hanno votato per: <strong>{answer}</strong>',

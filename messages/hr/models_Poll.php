@@ -1,7 +1,7 @@
 <?php
 return array (
-  'Answers' => '',
-  'Multiple answers per user' => '',
-  'Please specify at least {min} answers!' => '',
-  'Question' => '',
+  'Answers' => 'Odgovori',
+  'Multiple answers per user' => 'Višestruki odgovori po korisniku',
+  'Please specify at least {min} answers!' => 'Molimo odaberite barem {min} odgovora!',
+  'Question' => 'Pitanje',
 );
