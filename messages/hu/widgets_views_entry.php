@@ -1,6 +1,6 @@
 <?php
 return array (
-  'Anonymous' => '',
+  'Anonymous' => 'Anonymous',
   'Closed' => 'Befejeződött',
   'Complete Poll' => 'Szavazás lezárása',
   'Reopen Poll' => 'Szavazás folytatása',
