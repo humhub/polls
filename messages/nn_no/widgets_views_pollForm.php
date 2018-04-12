@@ -18,10 +18,10 @@
  */
 return [
     'Add answer...' => '',
-    'Allow multiple answers per user?' => '',
     'Anonymous Votes?' => '',
     'Ask something...' => '',
     'Display answers in random order?' => '',
     'Edit answer (empty answers will be removed)...' => '',
     'Edit your poll question...' => '',
+    'Hide results until poll is closed?' => '',
 ];
