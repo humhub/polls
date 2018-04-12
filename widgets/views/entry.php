@@ -33,7 +33,7 @@ humhub\modules\polls\assets\PollsAsset::register($this);
     <?php if(!$poll->isShowResult()) : ?>
         <br>
         <div class="alert alert-default" style="margin:0">
-            <?= Yii::t('PollsModule.widgets_views_entry', '<strong>Note:</strong> The result of this poll is hidden until it is closed by a moderator.'); ?>
+            <?= Yii::t('PollsModule.widgets_views_entry', '<strong>Note:</strong> The result of is hidden until the poll is closed by a moderator.'); ?>
         </div>
     <?php endif; ?>
 
