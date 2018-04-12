@@ -1,28 +1,26 @@
 <?php
 
-use humhub\compat\CActiveForm;
+use humhub\widgets\RichtextField;
+use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
+use humhub\modules\polls\widgets\AddAnswerInput;
+
+/** @var  $poll \humhub\modules\polls\models\Poll */
 
 $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
 ?>
 
 <div data-poll="<?= $poll->id ?>" data-content-component="polls.Poll" data-content-key="<?= $poll->content->id ?>" class="content_edit" id="poll_edit_<?= $poll->id; ?>">
     <div  class="alert alert-danger" role="alert" style="display:none">
-        <span class="errorMessage"></p>
+        <span class="errorMessage"></span>
     </div>
     
-    <?php $form = CActiveForm::begin(); ?>
-    
-    <?= \humhub\widgets\RichtextField::widget([
-        'form' => $form,
-        'model' => $poll,
-        'label' => true,
-        'attribute' => "question",
-        'disabled' => $poll->closed,
-        'placeholder' => Yii::t('PollsModule.widgets_views_pollForm', 'Edit your poll question...')
-    ]); ?>
+    <?php $form = ActiveForm::begin(); ?>
+
+    <?= $form->field($poll, 'question')->widget(RichtextField::class, ['disabled' => $poll->closed, 'placeholder' => Yii::t('PollsModule.widgets_views_pollForm', 'Edit your poll question...')]) ?>
 
     <div class="contentForm_options">
-        <?= $form->label($poll, "answersText", ['class' => 'control-label']); ?>
+        <?= Html::activeLabel($poll, 'answersText', ['class' => 'control-label']); ?>
         <?php foreach ($poll->answers as $answer) :?>
             <div class="form-group">
                 <div class="input-group">
@@ -39,15 +37,17 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
         <?php endforeach; ?>
 
         <?php if (!$poll->closed) : ?>
-            <?= humhub\modules\polls\widgets\AddAnswerInput::widget(['name' => 'newAnswers[]', 'showTitle' => true]); ?>
+            <?= AddAnswerInput::widget(['name' => 'newAnswers[]', 'showTitle' => true]); ?>
         <?php endif; ?> 
 
         
-        <?= $form->field($poll, 'is_random')->checkbox() ?>
+        <?= $form->field($poll, 'is_random')->checkbox(['id' => 'edit_poll_is_random_'.$poll->id]) ?>
         
         <?php if (!$poll->anonymous) : ?>
-            <?= $form->field($poll, 'anonymous')->checkbox() ?>
+            <?= $form->field($poll, 'anonymous')->checkbox(['id' => 'edit_poll_anonymous'.$poll->id]) ?>
         <?php endif; ?>
+
+        <?= $form->field($poll, 'show_result_after_close')->checkbox(['id' => 'edit_poll_show_result_after_close'.$poll->id]) ?>
         
     </div>
     
@@ -64,5 +64,5 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
        data-ui-loader>
         <?= Yii::t('PollsModule.base', "Cancel") ?>
     </a>
-    <?php CActiveForm::end(); ?>
+    <?php ActiveForm::end(); ?>
 </div>

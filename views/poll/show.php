@@ -1,17 +1,20 @@
 <?php
 
-echo \humhub\modules\polls\widgets\WallCreateForm::widget([
-    'contentContainer' => $contentContainer,
-    'submitButtonText' => Yii::t('PollsModule.widgets_PollFormWidget', 'Ask'),
-]);
+use humhub\modules\polls\permissions\CreatePoll;
+use humhub\modules\polls\widgets\WallCreateForm;
+use humhub\modules\stream\widgets\StreamViewer;
+
+
+$canCreatePolls = $contentContainer->permissionManager->can(new CreatePoll());
 ?>
 
-<?php
+<?=  WallCreateForm::widget([
+    'contentContainer' => $contentContainer,
+    'submitButtonText' => Yii::t('PollsModule.widgets_PollFormWidget', 'Ask'),
+]); ?>
 
-$canCreatePolls = $contentContainer->permissionManager->can(new \humhub\modules\polls\permissions\CreatePoll());
 
-
-echo \humhub\modules\stream\widgets\StreamViewer::widget(array(
+<?= StreamViewer::widget([
     'contentContainer' => $contentContainer,
     'streamAction' => '/polls/poll/stream',
     'messageStreamEmpty' => ($canCreatePolls) ?
@@ -24,5 +27,5 @@ echo \humhub\modules\stream\widgets\StreamViewer::widget(array(
         'filter_visibility_public' => Yii::t('PollsModule.widgets_views_stream', 'Only public polls'),
         'filter_visibility_private' => Yii::t('PollsModule.widgets_views_stream', 'Only private polls')
     ]
-));
+]);
 ?>
