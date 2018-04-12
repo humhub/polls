@@ -17,7 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    '<strong>Note:</strong> The result of this poll is hidden until it is closed by a moderator.' => '',
+    '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '',
     'Anonymous' => 'Anoniem',
     'Closed' => 'Gesloten',
     'Complete Poll' => 'Rond het stemmen af.',
