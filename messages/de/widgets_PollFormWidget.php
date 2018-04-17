@@ -1,4 +1,4 @@
 <?php
 return array (
-  'Ask' => 'Frage stellen',
+  'Ask' => 'Frag',
 );
