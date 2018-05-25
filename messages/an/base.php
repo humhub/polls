@@ -1,7 +1,7 @@
 <?php
 return array (
-  'Allows to start polls.' => '',
+  'Allows to start polls.' => 'Permitir iniciar enqüestas.',
   'Cancel' => 'Cancelar',
-  'Polls' => '',
-  'Save' => 'Uložit',
+  'Polls' => 'Enqüestas',
+  'Save' => 'Alzar',
 );
