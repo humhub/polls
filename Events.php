@@ -1,13 +1,10 @@
 <?php
-
-/**
- * @link https://www.humhub.org/
- * @copyright Copyright (c) 2015 HumHub GmbH & Co. KG
- * @license https://www.humhub.com/licences
- */
+declare(strict_types=1);
 
 namespace humhub\modules\polls;
 
+use yii\base\Event;
+use humhub\modules\polls\widgets\MovePollWidget;
 use humhub\modules\space\models\Space;
 use humhub\modules\user\models\User;
 use humhub\modules\polls\models\Poll;
@@ -15,20 +12,19 @@ use Yii;
 use humhub\modules\polls\models\PollAnswer;
 use humhub\modules\polls\models\PollAnswerUser;
 
-/**
- * Description of Events
- *
- * @author luke
- */
 class Events extends \yii\base\Object
 {
-    public static function onWallEntryControlsInit($event)
+    public static function onWallEntryControlsInit(Event $event): void
     {
         $object = $event->sender->object;
         
         if(!$object instanceof Poll) {
             return;
         }
+
+        $event->sender->addWidget(MovePollWidget::className(),
+            ['content' => $object]
+        );
         
         if($object->content->canWrite()) {
             $event->sender->addWidget(\humhub\modules\polls\widgets\CloseButton::className(), [
