@@ -3,7 +3,7 @@
     "name": "Polls",
     "description": "Simple polling system for spaces",
     "keywords": ["poll", "voting"],
-    "version": "0.9.12",
+    "version": "0.9.13",
     "humhub": {
         "minVersion": "1.2"
     },
