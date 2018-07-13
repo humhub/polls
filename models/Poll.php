@@ -124,8 +124,7 @@ class Poll extends ContentActiveRecord implements Searchable
      */
     public function getAnswers()
     {
-        $query = $this->hasMany(PollAnswer::className(), ['poll_id' => 'id']);
-        return $query;
+        return $this->hasMany(PollAnswer::class, ['poll_id' => 'id']);;
     }
 
     public function getViewAnswers()
@@ -190,14 +189,12 @@ class Poll extends ContentActiveRecord implements Searchable
 
     public function updateAnswers()
     {
-        if ($this->editAnswers == null && $this->newAnswers == null) {
-            return;
-        }
+        $answersToEdit = empty($this->editAnswers) ? [] : $this->editAnswers;
 
         foreach ($this->answers as $answer) {
-            if (!array_key_exists($answer->id, $this->editAnswers)) {
+            if (!array_key_exists($answer->id, $answersToEdit)) {
                 $answer->delete();
-            } else if ($answer->answer !== $this->editAnswers[$answer->id]) {
+            } else if ($answer->answer !== $answersToEdit[$answer->id]) {
                 $answer->answer = $this->editAnswers[$answer->id];
                 $answer->update();
             }
