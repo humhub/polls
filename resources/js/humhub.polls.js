@@ -10,7 +10,19 @@ humhub.module('polls', function (module, require, $) {
     object.inherits(Poll, Content);
 
     Poll.prototype.vote = function (submitEvent) {
-        this.update(client.submit(submitEvent));
+		var noChecked = 0; 
+		submitEvent.$form.find("input:checkbox").each(
+	   		function(){
+	   			if($(this).prop("checked")){
+	   				noChecked += 1; 
+	   			}
+	   		});
+	   if (noChecked) {
+			this.update(client.submit(submitEvent));
+	   } else {
+			alert ("At least one answer is required"); 
+			location.reload();  // Not ideal aproach but need to get the vote button active
+	   }
     };
 
     Poll.prototype.close = function (event) {
