@@ -1,5 +1,8 @@
 Changelog
 =========
+0.9.15  (July 25, 2018)
+-----------------------
+- Fix: closing polls removed answers
 
 0.9.14  (July 13, 2018)
 -----------------------

@@ -127,7 +127,7 @@ class PollController extends ContentContainerController
         $model = Poll::findOne(['id' => $id]);
         $model->scenario = Poll::SCENARIO_CLOSE;
 
-        if (!$model->content->canWrite()) {
+        if (!$model->content->canEdit()) {
             throw new HttpException(403, Yii::t('PollsModule.controllers_PollController', 'Access denied!'));
         }
 

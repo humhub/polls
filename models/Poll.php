@@ -151,11 +151,13 @@ class Poll extends ContentActiveRecord implements Searchable
     {
         parent::afterSave($insert, $changedAttributes);
 
-        if (!$insert) {
-            $this->updateAnswers();
-        }
+        if($this->scenario === static::SCENARIO_EDIT || $this->scenario === static::SCENARIO_CREATE) {
+            if (!$insert) {
+                $this->updateAnswers();
+            }
 
-        $this->saveNewAnswers();
+            $this->saveNewAnswers();
+        }
 
         return true;
     }
