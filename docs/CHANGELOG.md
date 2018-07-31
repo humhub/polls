@@ -1,5 +1,9 @@
 Changelog
 =========
+0.9.16  (July 25, 2018)
+-----------------------
+- Fix #49: Added stream topic filter for HumHub >= v.1.3
+
 0.9.15  (July 25, 2018)
 -----------------------
 - Fix: closing polls removed answers
