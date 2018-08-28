@@ -16,15 +16,16 @@
  *
  * NOTE: this file must be saved in UTF-8 encoding.
  */
-return [
-    'Complete Poll' => '',
-    'Reopen Poll' => '',
-    'Anonymous' => 'Anônimo',
-    'Closed' => 'Fechada',
-    'Created at' => '',
-    'Export poll' => '',
-    'Reset my vote' => 'Redefinir meu voto',
-    'Vote' => 'Votar',
-    'and {count} more vote for this.' => 'e mais {count} votos para este.',
-    'votes' => 'votos',
-];
+return array (
+  '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '<strong>Nota:</ strong> O resultado ficará oculto até que a votação seja fechada por um moderador.',
+  'Anonymous' => 'Anônimo',
+  'Closed' => 'Fechada',
+  'Complete Poll' => 'Completar Enquete',
+  'Reopen Poll' => 'Reabrir Enquete',
+  'Reset my vote' => 'Redefinir meu voto',
+  'Vote' => 'Votar',
+  'and {count} more vote for this.' => 'e mais {count} votos para este.',
+  'votes' => 'votos',
+  'Created at' => '',
+  'Export poll' => '',
+);

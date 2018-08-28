@@ -2,7 +2,12 @@
 
 namespace humhub\modules\polls\widgets;
 
-class WallCreateForm extends \humhub\modules\content\widgets\WallCreateContentForm
+use humhub\modules\content\widgets\WallCreateContentForm;
+use humhub\modules\polls\models\Poll;
+use humhub\modules\polls\permissions\CreatePoll;
+use humhub\modules\space\models\Space;
+
+class WallCreateForm extends WallCreateContentForm
 {
 
     /**
@@ -15,7 +20,7 @@ class WallCreateForm extends \humhub\modules\content\widgets\WallCreateContentFo
      */
     public function renderForm()
     {
-        return $this->render('form', array());
+        return $this->render('form', ['model' => new Poll()]);
     }
 
     /**
@@ -23,9 +28,8 @@ class WallCreateForm extends \humhub\modules\content\widgets\WallCreateContentFo
      */
     public function run()
     {
-        if ($this->contentContainer instanceof \humhub\modules\space\models\Space) {
-            
-            if (!$this->contentContainer->permissionManager->can(new \humhub\modules\polls\permissions\CreatePoll())) {
+        if ($this->contentContainer instanceof Space) {
+            if (!$this->contentContainer->permissionManager->can(new CreatePoll())) {
                 return;
             }
         }

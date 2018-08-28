@@ -17,14 +17,15 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Anonymous' => '',
-    'Closed' => '',
-    'Complete Poll' => '',
-    'Reopen Poll' => '',
-    'Created at' => '',
-    'Export poll' => '',
+    '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '',
+    'Anonymous' => 'Anonimo',
+    'Closed' => 'Chiuso',
+    'Complete Poll' => 'Sondaggio completato',
+    'Reopen Poll' => 'Sondaggio riaperto',
     'Reset my vote' => 'Resetta il mio voto',
     'Vote' => 'Vota',
     'and {count} more vote for this.' => 'più {count} voti per questo.',
     'votes' => 'voti',
+    'Created at' => '',
+    'Export poll' => '',
 ];

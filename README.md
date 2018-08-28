@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/humhub/humhub-modules-polls.svg?branch=master)](https://travis-ci.org/humhub/humhub-modules-polls)
+
 ## Description
 
 Simple polling system for spaces.

@@ -1,10 +1,10 @@
 <?php
 return array (
   'Access denied!' => 'Nincs hozzáférésed!',
-  'Anonymous poll!' => '',
-  'Could not load poll!' => '',
-  'Invalid answer!' => '',
-  'Users voted for: <strong>{answer}</strong>' => '',
-  'Voting for multiple answers is disabled!' => '',
-  'You have insufficient permissions to perform that operation!' => '',
+  'Anonymous poll!' => 'Anonymous szavazat!',
+  'Could not load poll!' => 'Szavazás nem tölthető be!',
+  'Invalid answer!' => 'Érvénytelen válasz!',
+  'Users voted for: <strong>{answer}</strong>' => 'Felhasználó választása: <strong>{answer}</strong>',
+  'Voting for multiple answers is disabled!' => 'Többszörös válasz nem engedélyezett!',
+  'You have insufficient permissions to perform that operation!' => 'Elégtelen jogosultságaid vannak a végrehajtáshoz!',
 );

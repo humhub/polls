@@ -17,14 +17,15 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Anonymous' => '',
-    'Closed' => '',
-    'Complete Poll' => '',
-    'Reopen Poll' => '',
+    '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '',
+    'Anonymous' => 'Anonimno',
+    'Closed' => 'Zatvoreno',
+    'Complete Poll' => 'Cijela anketa',
+    'Reopen Poll' => 'Re-otvori anketu',
+    'Reset my vote' => 'Resetiraj moj glas',
+    'Vote' => 'Glasaj',
+    'and {count} more vote for this.' => 'i {count} više glasova za ovo.',
+    'votes' => 'glasova',
     'Created at' => '',
     'Export poll' => '',
-    'Reset my vote' => '',
-    'Vote' => '',
-    'and {count} more vote for this.' => '',
-    'votes' => '',
 ];

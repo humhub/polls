@@ -1,7 +1,7 @@
 <?php
 return array (
-  'Allows to start polls.' => '',
+  'Allows to start polls.' => 'Engedélyezi szavazás indítását.',
   'Cancel' => 'Mégsem',
-  'Polls' => '',
+  'Polls' => 'Szavazás',
   'Save' => 'Mentés',
 );

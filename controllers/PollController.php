@@ -2,6 +2,7 @@
 
 namespace humhub\modules\polls\controllers;
 
+use humhub\modules\polls\widgets\WallCreateForm;
 use Yii;
 use yii\web\HttpException;
 use yii\helpers\Html;
@@ -23,14 +24,14 @@ class PollController extends ContentContainerController
 
     public function actions()
     {
-        return array(
-            'stream' => array(
+        return [
+            'stream' => [
                 'class' => \humhub\modules\polls\components\StreamAction::className(),
                 'includes' => Poll::className(),
                 'mode' => \humhub\modules\polls\components\StreamAction::MODE_NORMAL,
                 'contentContainer' => $this->contentContainer
-            ),
-        );
+            ],
+        ];
     }
 
     /**
@@ -38,30 +39,21 @@ class PollController extends ContentContainerController
      */
     public function actionShow()
     {
-        return $this->render('show', array(
+        return $this->render('show', [
                     'contentContainer' => $this->contentContainer
-        ));
+        ]);
     }
 
-    /**
-     * Posts a new question  throu the question form
-     *
-     * @return type
-     */
     public function actionCreate()
     {
         if (!$this->contentContainer->permissionManager->can(new \humhub\modules\polls\permissions\CreatePoll())) {
             throw new HttpException(400, 'Access denied!');
         }
         
-        $poll = new Poll();
-        $poll->scenario = Poll::SCENARIO_CREATE;
-        $poll->question = Yii::$app->request->post('question');
+        $poll = new Poll(['scenario' => Poll::SCENARIO_CREATE]);
+        $poll->load(Yii::$app->request->post());
         $poll->setNewAnswers(Yii::$app->request->post('newAnswers'));
-        $poll->allow_multiple = Yii::$app->request->post('allowMultiple', 0);
-        $poll->anonymous = Yii::$app->request->post('anonymous', 0);
-        $poll->is_random = Yii::$app->request->post('is_random', 0);
-        return \humhub\modules\polls\widgets\WallCreateForm::create($poll, $this->contentContainer);
+        return WallCreateForm::create($poll, $this->contentContainer);
     }
 
     /**
@@ -130,10 +122,12 @@ class PollController extends ContentContainerController
 
     public function setClosed($id, $closed)
     {
+        $this->forcePostRequest();
+
         $model = Poll::findOne(['id' => $id]);
         $model->scenario = Poll::SCENARIO_CLOSE;
 
-        if (!$model->content->canWrite()) {
+        if (!$model->content->canEdit()) {
             throw new HttpException(403, Yii::t('PollsModule.controllers_PollController', 'Access denied!'));
         }
 

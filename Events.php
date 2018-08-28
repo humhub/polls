@@ -20,7 +20,7 @@ use humhub\modules\polls\models\PollAnswerUser;
  *
  * @author luke
  */
-class Events extends \yii\base\Object
+class Events
 {
     public static function onWallEntryControlsInit($event)
     {

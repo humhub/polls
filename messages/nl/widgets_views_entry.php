@@ -1,5 +1,6 @@
 <?php
 return array (
+  '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '<strong>Opmerking:</ strong> het resultaat  blijft verborgen totdat een  moderator de stembus sluit.',
   'Anonymous' => 'Anoniem',
   'Closed' => 'Gesloten',
   'Created at' => '',

@@ -3,6 +3,7 @@
 namespace humhub\modules\polls\models;
 
 use Yii;
+use humhub\modules\search\interfaces\Searchable;
 use humhub\modules\content\components\ContentActiveRecord;
 use humhub\modules\polls\models\PollAnswer;
 use humhub\modules\polls\models\PollAnswerUser;
@@ -10,6 +11,7 @@ use humhub\modules\user\models\User;
 use humhub\modules\user\models\Profile;
 include __DIR__.'/../lib/PHPExcel/Classes/PHPExcel/IOFactory.php';
 use PHPExcel_IOFactory;
+
 /**
  * This is the model class for table "poll".
  *
@@ -22,12 +24,14 @@ use PHPExcel_IOFactory;
  * @property integer $created_by
  * @property string $updated_at
  * @property integer $updated_by
+ * @property integer $closed
+ * @property integer show_result_after_close
  *
  * @package humhub.modules.polls.models
  * @since 0.5
  * @author Luke
  */
-class Poll extends ContentActiveRecord implements \humhub\modules\search\interfaces\Searchable
+class Poll extends ContentActiveRecord implements Searchable
 {
 
     const MIN_REQUIRED_ANSWERS = 2;
@@ -52,11 +56,10 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
     {
         return [
             self::SCENARIO_CLOSE => [],
-            self::SCENARIO_CREATE => ['question', 'anonymous', 'is_random', 'newAnswers', 'allow_multiple'],
-            self::SCENARIO_EDIT => ['question', 'anonymous', 'is_random', 'newAnswers', 'editAnswers', 'allow_multiple']
+            self::SCENARIO_CREATE => ['question', 'anonymous', 'is_random', 'show_result_after_close', 'newAnswers', 'allow_multiple'],
+            self::SCENARIO_EDIT => ['question', 'anonymous', 'is_random', 'show_result_after_close','newAnswers', 'editAnswers', 'allow_multiple']
         ];
     }
-    
 
     /**
      * @return array validation rules for model attributes.
@@ -79,7 +82,7 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
     public function minTwoNewAnswers($attribute)
     {
         if(count($this->newAnswers) < self::MIN_REQUIRED_ANSWERS) {
-            $this->addError($attribute, Yii::t('PollsModule.models_Poll', "Please specify at least {min} answers!", array("{min}" => self::MIN_REQUIRED_ANSWERS)));
+            $this->addError($attribute, Yii::t('PollsModule.models_Poll', "Please specify at least {min} answers!", ["{min}" => self::MIN_REQUIRED_ANSWERS]));
         }
     }
     
@@ -87,7 +90,7 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
     {
         $count = count($this->newAnswers) + count($this->editAnswers);
         if ($count < self::MIN_REQUIRED_ANSWERS) {
-            $this->addError('editAnswers', Yii::t('PollsModule.models_Poll', "Please specify at least {min} answers!", array("{min}" => self::MIN_REQUIRED_ANSWERS)));
+            $this->addError('editAnswers', Yii::t('PollsModule.models_Poll', "Please specify at least {min} answers!", ["{min}" => self::MIN_REQUIRED_ANSWERS]));
         }
     }
 
@@ -162,8 +165,14 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
             'question' => Yii::t('PollsModule.models_Poll', 'Question'),
             'allow_multiple' => Yii::t('PollsModule.models_Poll', 'Multiple answers per user'),
             'is_random' => Yii::t('PollsModule.widgets_views_pollForm', 'Display answers in random order?'),
-            'anonymous' => Yii::t('PollsModule.widgets_views_pollForm', 'Anonymous Votes?')
+            'anonymous' => Yii::t('PollsModule.widgets_views_pollForm', 'Anonymous Votes?'),
+            'show_result_after_close' => Yii::t('PollsModule.widgets_views_pollForm', 'Hide results until poll is closed?')
         );
+    }
+
+    public function getIcon()
+    {
+        return 'fa-question-circle';
     }
     
     public function isResetAllowed()
@@ -171,13 +180,17 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
         return $this->hasUserVoted() && !$this->closed;
     }
 
+    public function isShowResult()
+    {
+        return !$this->show_result_after_close || $this->closed;
+    }
+
     /**
      * @return ActiveRecord containing all answers of thes poll
      */
     public function getAnswers()
     {
-        $query = $this->hasMany(PollAnswer::className(), ['poll_id' => 'id']);
-        return $query;
+        return $this->hasMany(PollAnswer::class, ['poll_id' => 'id']);;
     }
 
     public function getViewAnswers()
@@ -204,11 +217,13 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
     {
         parent::afterSave($insert, $changedAttributes);
 
-        if (!$insert) {
-            $this->updateAnswers();
-        }
+        if($this->scenario === static::SCENARIO_EDIT || $this->scenario === static::SCENARIO_CREATE) {
+            if (!$insert) {
+                $this->updateAnswers();
+            }
 
-        $this->saveNewAnswers();
+            $this->saveNewAnswers();
+        }
 
         return true;
     }
@@ -242,14 +257,12 @@ class Poll extends ContentActiveRecord implements \humhub\modules\search\interfa
 
     public function updateAnswers()
     {
-        if ($this->editAnswers == null && $this->newAnswers == null) {
-            return;
-        }
+        $answersToEdit = empty($this->editAnswers) ? [] : $this->editAnswers;
 
         foreach ($this->answers as $answer) {
-            if (!array_key_exists($answer->id, $this->editAnswers)) {
+            if (!array_key_exists($answer->id, $answersToEdit)) {
                 $answer->delete();
-            } else if ($answer->answer !== $this->editAnswers[$answer->id]) {
+            } else if ($answer->answer !== $answersToEdit[$answer->id]) {
                 $answer->answer = $this->editAnswers[$answer->id];
                 $answer->update();
             }

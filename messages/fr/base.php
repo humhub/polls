@@ -1,6 +1,6 @@
 <?php
 return array (
-  'Allows to start polls.' => 'Autorise à lancer des sondages.',
+  'Allows to start polls.' => 'Ce module permet de créer des sondages.',
   'Cancel' => 'Annuler',
   'Polls' => 'Sondages',
   'Save' => 'Enregistrer',

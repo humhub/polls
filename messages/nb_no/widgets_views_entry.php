@@ -1,5 +1,6 @@
 <?php
 return array (
+  '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '<strong>Merk:</strong> Resultatene er skjult til meningsmålingen avsluttes av moderator.',
   'Anonymous' => 'Anonym',
   'Closed' => 'Lukket',
   'Complete Poll' => 'Ferdigstill meningsmåling',

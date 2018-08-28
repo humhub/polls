@@ -1,14 +1,17 @@
 <?php
 
 use yii\helpers\Html;
+use humhub\widgets\RichText;
 
 humhub\modules\polls\assets\PollsAsset::register($this);
+
+/** @var $poll \humhub\modules\polls\models\Poll **/
 ?>
 
 <div data-poll="<?= $poll->id ?>" data-content-component="polls.Poll" data-content-key="<?= $poll->content->id ?>">
 
     <?php if ($poll->closed) : ?>
-        &nbsp;<span class="label label-danger pull-right"><?= Yii::t('PollsModule.widgets_views_entry', 'Closed') ?></span>
+        &nbsp;<span style="margin-left:3px;" class="label label-danger pull-right"><?= Yii::t('PollsModule.widgets_views_entry', 'Closed') ?></span>
     <?php endif; ?>
 
     <?php if ($poll->anonymous) : ?>
@@ -16,8 +19,9 @@ humhub\modules\polls\assets\PollsAsset::register($this);
     <?php endif; ?>
 
     <?= Html::beginForm($contentContainer->createUrl('/polls/poll/answer', ['pollId' => $poll->id])); ?>
+
     <div data-ui-markdown>
-        <?= humhub\widgets\RichText::widget(['text' => $poll->question]); ?>
+        <?= RichText::widget(['text' => $poll->question]); ?>
     </div>
 
     <br><br>
@@ -25,6 +29,13 @@ humhub\modules\polls\assets\PollsAsset::register($this);
     <?php foreach ($poll->getViewAnswers() as $answer) : ?>
         <?= $this->render('_answer', ['poll' => $poll, 'answer' => $answer, 'contentContainer' => $contentContainer]); ?>
     <?php endforeach; ?>
+
+    <?php if(!$poll->isShowResult()) : ?>
+        <br>
+        <div class="alert alert-default" style="margin:0">
+            <?= Yii::t('PollsModule.widgets_views_entry', '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.'); ?>
+        </div>
+    <?php endif; ?>
 
     <?php if (!$poll->hasUserVoted() && !Yii::$app->user->isGuest && !$poll->closed) : ?>
         <br>
@@ -35,11 +46,11 @@ humhub\modules\polls\assets\PollsAsset::register($this);
     <?php endif; ?>
 
     <?php if (Yii::$app->user->isGuest && !$poll->closed) : ?>
-        <?php echo Html::a(Yii::t('PollsModule.widgets_views_entry', 'Vote'), Yii::$app->user->loginUrl, array('class' => 'btn btn-primary', 'data-target' => '#globalModal')); ?>
+        <?= Html::a(Yii::t('PollsModule.widgets_views_entry', 'Vote'), Yii::$app->user->loginUrl, ['class' => 'btn btn-primary', 'data-target' => '#globalModal']); ?>
     <?php endif; ?>
 
 
     <div class="clearFloats"></div>
 
-    <?php echo Html::endForm(); ?>
+    <?= Html::endForm(); ?>
 </div>
