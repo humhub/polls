@@ -104,7 +104,6 @@ class Poll extends ContentActiveRecord implements Searchable
         header('Content-Disposition: attachment; filename=data.xls');
 	
 	//preparando conversor csv to excel
-	//include __DIR__.'/../lib/PHPExcel/Classes/PHPExcel/IOFactory.php';
 	$objReader = \PHPExcel_IOFactory::createReader('CSV');
 	// If the files uses a delimiter other than a comma (e.g. a tab), then tell the reader
 	//$objReader->setDelimiter("\t");
@@ -136,6 +135,7 @@ class Poll extends ContentActiveRecord implements Searchable
 
         $query = PollAnswerUser::find();
         $query->leftJoin('poll_answer', 'poll_answer.poll_id='.$this->id);
+	$query->groupBy('created_by');
         $query->andWhere(['poll_answer_user.poll_id' => $this->id]);
 
         fputcsv($output, array(''));
