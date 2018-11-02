@@ -1,7 +1,7 @@
 <?php
 return array (
   'Access denied!' => 'Nincs hozzáférésed!',
-  'Anonymous poll!' => 'Anonymous szavazat!',
+  'Anonymous poll!' => 'Ismeretlen szavazat?',
   'Could not load poll!' => 'Szavazás nem tölthető be!',
   'Invalid answer!' => 'Érvénytelen válasz!',
   'Users voted for: <strong>{answer}</strong>' => 'Felhasználó választása: <strong>{answer}</strong>',
