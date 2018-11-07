@@ -33,6 +33,20 @@ class PollCest
         $I->see('Answer 1');
         $I->see('Answer 2');
         $I->see('Answer 3');
+
+        $I->click('Vote', '#wallStream');
+
+        $I->seeWarning('At least one answer is required');
+
+        $I->jsClick('#answer_1');
+        $I->click('Vote', '#wallStream');
+
+        $I->seeSuccess('Saved');
+        $I->see('1 votes', '.wall-entry');
+        $I->click('1 votes', '.wall-entry');
+        $I->waitForText('Users voted for: Answer 1', null,'#globalModal');
+
+
     }
    
 }

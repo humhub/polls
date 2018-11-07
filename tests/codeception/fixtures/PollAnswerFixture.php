@@ -8,11 +8,13 @@
 
 namespace tests\codeception\fixtures;
 
+use humhub\modules\polls\models\Poll;
+use humhub\modules\polls\models\PollAnswer;
 use yii\test\ActiveFixture;
 
-class SpaceModuleFixture extends ActiveFixture
+class PollAnswerFixture extends ActiveFixture
 {
 
-    public $modelClass = 'humhub\modules\space\models\Module';
+    public $modelClass = PollAnswer::class;
 
 }

@@ -22,14 +22,10 @@ env:
   matrix:
     - HUMHUB_VERSION=master
     - HUMHUB_VERSION=develop
-    - HUMHUB_VERSION=v1.2.0
 
 matrix:
   allow_failures:
     - env: HUMHUB_VERSION=develop
-  exclude:
-      - php: '7.2'
-        env: HUMHUB_VERSION=v1.2.0
   fast_finish: true
 
 
