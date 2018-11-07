@@ -31,7 +31,7 @@ use yii\helpers\Html;
         ?>
 
         <div class="col-md-6">
-            <span><?= $answer->answer; ?></span>
+            <span><?= Html::encode($answer->answer) ?></span>
 
             <div class="progress">
                 <div id="progress_<?= $answer->id; ?>" class="progress-bar <?= $color; ?>" role="progressbar" aria-valuenow="<?= $percent; ?>" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>

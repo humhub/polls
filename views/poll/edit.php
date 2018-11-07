@@ -26,7 +26,7 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
                 <div class="input-group">
                     <input type="text" name="answers[<?= $answer->id ?>]" <?= $disabled ?>
                            title="<?= count($answer->votes) . ' ' . Yii::t('PollsModule.widgets_views_entry', 'votes') ?>" 
-                           value="<?= htmlspecialchars( $answer->answer) ?>" 
+                           value="<?= Html::encode($answer->answer) ?>"
                            class="form-control tt poll_answer_old_input"
                            placeholder="<?= Yii::t('PollsModule.widgets_views_pollForm', "Edit answer (empty answers will be removed)...") ?>"/>
                     <div class="input-group-addon" style="cursor:pointer;" data-action-click="removePollAnswer">
