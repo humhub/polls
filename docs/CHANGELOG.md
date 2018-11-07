@@ -1,6 +1,6 @@
 Changelog
 =========
-0.9.17  (July 25, 2018)
+0.9.17  (November 07, 2018)
 -----------------------
 - Fix empty answer submittion not intercepted
 
