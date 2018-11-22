@@ -7,6 +7,6 @@ return array (
   'Reopen Poll' => 'Szavazás folytatása',
   'Reset my vote' => 'Szavazatom visszavonása',
   'Vote' => 'Szavazok',
-  'and {count} more vote for this.' => 'és még {count} ember szavazott erre',
+  'and {count} more vote for this.' => 'és még {count} ember szavazott erre.',
   'votes' => 'szavazat',
 );
