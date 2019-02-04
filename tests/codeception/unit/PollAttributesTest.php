@@ -7,7 +7,7 @@ use tests\codeception\_support\HumHubDbTestCase;
 use humhub\modules\polls\models\Poll;
 
 
-class PollTest extends HumHubDbTestCase
+class PollAttributesTest extends HumHubDbTestCase
 {
 
     public function setUp() {
@@ -33,7 +33,37 @@ class PollTest extends HumHubDbTestCase
         $this->poll->scenario = Poll::SCENARIO_EDIT;
         $this->poll->debate = "hello";
         $validated = $this->poll->validate();
-        codecept_debug('errors' . print_r($this->poll->errors,true));
+        $this->assertFalse($validated);
+    }
+
+    public function testTheStateAttributeIsInteger() {
+        $this->poll->state = 2;
+        $validated = $this->poll->validate();
+        $this->assertTrue($validated);
+        $this->assertEquals('integer', gettype($this->poll->state));
+    }
+
+    public function testThereIsAStateSTATE_PROPOSAL() {
+        Poll::STATE_PROPOSAL;
+    }
+    public function testThereIsAStateSTATE_DEBATE() {
+        Poll::STATE_DEBATE;
+    }
+    public function testThereIsAStateSTATE_VOTING() {
+        Poll::STATE_VOTING;
+    }
+    public function testThereIsAStateSTATE_CLOSED() {
+        Poll::STATE_CLOSED;
+    }
+    public function testTheStateAttributeIsValidatedInCreation() {
+        $this->poll->state = "hello";
+        $validated = $this->poll->validate();
+        $this->assertFalse($validated);
+    }
+    public function testTheStateAttributeIsValidatedInEdit() {
+        $this->poll->scenario = Poll::SCENARIO_EDIT;
+        $this->poll->state = "hello";
+        $validated = $this->poll->validate();
         $this->assertFalse($validated);
     }
 }

@@ -3,4 +3,7 @@ nbproject
 .idea/*
 .gitmodules
 /composer.lock
+**/tests/codeception/_support/_generated/**
+**/tests/codeception/_output/**
+*.swp
 
