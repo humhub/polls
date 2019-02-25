@@ -1,7 +1,9 @@
 <?php
-return array (
-  'Allows to start polls.' => '',
-  'Cancel' => 'Afbryd',
-  'Polls' => 'Afstemninger',
-  'Save' => 'Gem',
-);
+
+return [
+    'Allows to start polls.' => '',
+    'At least one answer is required' => '',
+    'Cancel' => 'Afbryd',
+    'Polls' => 'Afstemninger',
+    'Save' => 'Gem',
+];

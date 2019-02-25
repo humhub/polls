@@ -1,7 +1,9 @@
 <?php
-return array (
-  'Allows to start polls.' => '',
-  'Cancel' => 'Cancel·la',
-  'Polls' => 'Enquestes',
-  'Save' => 'Desa',
-);
+
+return [
+    'Allows to start polls.' => '',
+    'At least one answer is required' => '',
+    'Cancel' => 'Cancel·la',
+    'Polls' => 'Enquestes',
+    'Save' => 'Desa',
+];

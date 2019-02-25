@@ -1,7 +1,9 @@
 <?php
-return array (
-  'Allows to start polls.' => 'Starten van stembussen toestaan.',
-  'Cancel' => 'Annuleer',
-  'Polls' => 'Stembus',
-  'Save' => 'Bewaar',
-);
+
+return [
+    'At least one answer is required' => '',
+    'Allows to start polls.' => 'Starten van stembussen toestaan.',
+    'Cancel' => 'Annuleer',
+    'Polls' => 'Stembus',
+    'Save' => 'Bewaar',
+];

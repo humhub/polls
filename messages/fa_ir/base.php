@@ -1,7 +1,9 @@
 <?php
-return array (
-  'Allows to start polls.' => '',
-  'Cancel' => 'انصراف',
-  'Polls' => 'نظرسنجی‌ها',
-  'Save' => 'ذخیره',
-);
+
+return [
+    'Allows to start polls.' => '',
+    'At least one answer is required' => '',
+    'Cancel' => 'انصراف',
+    'Polls' => 'نظرسنجی‌ها',
+    'Save' => 'ذخیره',
+];
