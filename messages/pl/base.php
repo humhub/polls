@@ -1,9 +1,8 @@
 <?php
-
-return [
-    'At least one answer is required' => '',
-    'Allows to start polls.' => 'Pozwala dodawać głosowania.',
-    'Cancel' => 'Anuluj',
-    'Polls' => 'Głosowania ',
-    'Save' => 'Zapisz ',
-];
+return array (
+  'Allows to start polls.' => 'Pozwala dodawać głosowania.',
+  'At least one answer is required' => 'Przynajmniej jedna odpowiedź jest wymagana',
+  'Cancel' => 'Anuluj',
+  'Polls' => 'Głosowania',
+  'Save' => 'Zapisz',
+);
