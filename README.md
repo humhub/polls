@@ -1,21 +1,12 @@
 [![Build Status](https://travis-ci.org/humhub/humhub-modules-polls.svg?branch=master)](https://travis-ci.org/humhub/humhub-modules-polls)
 
-## Description
+# Polls
 
-Simple polling system for spaces.
+Stop discussing, let the votes speak for themselves. Our Polls module allows you to resolve disputes quickly. Let the majority decide, or just get an opinion on your urgent questions. 
 
-__Module website:__ <https://github.com/humhub/humhub-modules-polls>  
-__Author:__ luke, andystrobel  
-__Author website:__ [humhub.org](http://humhub.org)
+## Overviews
 
-## Changelog
-v 0.8.0:
-    - Anonymous Poll
-    - Close Poll
-    - Edit Poll
-    - Random Poll answers
-<https://github.com/humhub/humhub-modules-polls/commits/master>
-
-## Bugtracker
-
-<https://github.com/humhub/humhub-modules-polls/issues>
+- Offer single or multiple choice
+- Hide the results until the poll is closed
+- Vote anonymously
+- Discuss the results in the comments

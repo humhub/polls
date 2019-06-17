@@ -1,11 +1,28 @@
 {
     "id": "polls",
     "name": "Polls",
-    "description": "Simple polling system for spaces",
-    "keywords": ["poll", "voting"],
-    "version": "0.9.17",
+    "description": "Easy to use poll system",
+    "keywords": ["poll", "voting", "decision making"],
+    "version": "0.9.18",
     "humhub": {
         "minVersion": "1.2"
     },
-    "screenshots": ["assets/screen1.jpg", "assets/screen2.jpg", "assets/screen3.jpg"]
+    "homepage": "https://github.com/humhub/humhub-modules-polls",
+    "authors": [
+        {
+            "name": "Andreas Strobel"
+        },
+        {
+            "name": "Lucas Bartholemy"
+        },
+        {
+            "name": "Julian Harrer"
+        }
+    ],
+    "screenshots": [
+        "assets/screen1.PNG", 
+        "assets/screen2.PNG", 
+        "assets/screen3.PNG",
+        "assets/screen4.PNG"
+    ]
 }
