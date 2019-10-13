@@ -1,6 +1,13 @@
 Changelog
 =========
+
+0.9.19 - June 17, 2019
+-----------------------
+- Fix: 1.4 compatibility removed deprecated content usage
+
+
 0.9.18 - June 17, 2019
+-----------------------
 - Enh: Updated translations
 - Enh: Updated docs
 

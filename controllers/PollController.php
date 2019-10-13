@@ -65,7 +65,7 @@ class PollController extends ContentContainerController
         $id = Yii::$app->request->get('id');
         $model = Poll::findOne(['id' => $id]);
 
-        if (!$model->content->canRead()) {
+        if (!$model->content->canView()) {
             throw new HttpException(403, Yii::t('PollsModule.controllers_PollController', 'Access denied!'));
         }
 
@@ -236,7 +236,7 @@ class PollController extends ContentContainerController
             throw new HttpException(401, Yii::t('PollsModule.controllers_PollController', 'Could not load poll!'));
         }
 
-        if (!$poll->content->canRead()) {
+        if (!$poll->content->canView()) {
             throw new HttpException(401, Yii::t('PollsModule.controllers_PollController', 'You have insufficient permissions to perform that operation!'));
         }
 
