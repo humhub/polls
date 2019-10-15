@@ -82,7 +82,7 @@ class PollController extends ContentContainerController
         $wasAnonymous = $model->anonymous;
         $model->scenario = Poll::SCENARIO_EDIT;
 
-        if (!$model->content->canWrite() || $model->closed) {
+        if (!$model->content->canEdit() || $model->closed) {
             throw new HttpException(403, Yii::t('PollsModule.controllers_PollController', 'Access denied!'));
         }
 
