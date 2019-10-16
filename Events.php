@@ -30,7 +30,7 @@ class Events
             return;
         }
         
-        if($object->content->canWrite()) {
+        if($object->content->canEdit()) {
             $event->sender->addWidget(\humhub\modules\polls\widgets\CloseButton::className(), [
                 'poll' => $object
             ]);
