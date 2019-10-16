@@ -1,10 +1,11 @@
 Changelog
 =========
 
-0.9.19
------------------------
+0.9.19 - October 16, 2019
+-------------------------
 - Fix: 1.4 compatibility removed deprecated content usage
 - Enh: 1.4 csp nonce support
+- Enh: Raised minimum HumHub version to 1.3 
 
 
 0.9.18 - June 17, 2019
@@ -14,8 +15,8 @@ Changelog
 
 
 0.9.17 - November 07, 2018
------------------------
-- Fix: Empty answer submittion not intercepted
+--------------------------
+- Fix: Empty answer submission not intercepted
 
 
 0.9.16 - July 25, 2018
