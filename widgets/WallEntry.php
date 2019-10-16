@@ -25,9 +25,9 @@ class WallEntry extends \humhub\modules\content\widgets\WallEntry
             $this->editRoute = '';
         }
 
-        return $this->render('entry', array('poll' => $this->contentObject,
-                    'user' => $this->contentObject->content->user,
-                    'contentContainer' => $this->contentObject->content->container));
+        return $this->render('entry', ['poll' => $this->contentObject,
+                    'user' => $this->contentObject->content->createdBy,
+                    'contentContainer' => $this->contentObject->content->container]);
     }
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-use yii\helpers\Html;
+use humhub\libs\Html;
 
 /** @var $poll \humhub\modules\polls\models\Poll **/
 ?>
@@ -36,9 +36,7 @@ use yii\helpers\Html;
             <div class="progress">
                 <div id="progress_<?= $answer->id; ?>" class="progress-bar <?= $color; ?>" role="progressbar" aria-valuenow="<?= $percent; ?>" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
             </div>
-            <script type="text/javascript">
-                $('#progress_<?= $answer->id; ?>').css('width', '<?= $percent; ?>%');
-            </script>
+            <?= Html::script(" $('#progress_{$answer->id}').css('width', '{$percent}%');")?>
         </div>
 
         <div class="col-md-4">

@@ -1,6 +1,14 @@
 Changelog
 =========
+
+0.9.19
+-----------------------
+- Fix: 1.4 compatibility removed deprecated content usage
+- Enh: 1.4 csp nonce support
+
+
 0.9.18 - June 17, 2019
+-----------------------
 - Enh: Updated translations
 - Enh: Updated docs
 

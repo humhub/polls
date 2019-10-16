@@ -8,6 +8,8 @@
 
 namespace humhub\modules\polls;
 
+use humhub\modules\polls\widgets\CloseButton;
+use humhub\modules\polls\widgets\ResetButton;
 use humhub\modules\space\models\Space;
 use humhub\modules\user\models\User;
 use humhub\modules\polls\models\Poll;
@@ -31,13 +33,13 @@ class Events
         }
         
         if($object->content->canEdit()) {
-            $event->sender->addWidget(\humhub\modules\polls\widgets\CloseButton::className(), [
+            $event->sender->addWidget(CloseButton::class, [
                 'poll' => $object
             ]);
         }
         
         if($object->isResetAllowed()) {
-            $event->sender->addWidget(\humhub\modules\polls\widgets\ResetButton::className(), [
+            $event->sender->addWidget(ResetButton::class, [
                 'poll' => $object
             ]);
         }
