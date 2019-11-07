@@ -16,6 +16,7 @@ use humhub\modules\polls\models\Poll;
 use Yii;
 use humhub\modules\polls\models\PollAnswer;
 use humhub\modules\polls\models\PollAnswerUser;
+use humhub\modules\content\widgets\WallEntryLinks;
 
 /**
  * Description of Events
@@ -28,23 +29,22 @@ class Events
     {
         $object = $event->sender->object;
         
-        if(!$object instanceof Poll) {
+        if (!$object instanceof Poll) {
             return;
         }
         
-        if($object->content->canEdit()) {
+        if ($object->content->canEdit()) {
             $event->sender->addWidget(CloseButton::class, [
                 'poll' => $object
             ]);
         }
-        
-        if($object->isResetAllowed()) {
+
+        if ($object->isResetAllowed()) {
             $event->sender->addWidget(ResetButton::class, [
                 'poll' => $object
             ]);
         }
     }
-    
 
     /**
      * On build of a Space Navigation, check if this module is enabled.
@@ -58,13 +58,27 @@ class Events
 
         // Is Module enabled on this workspace?
         if ($space->isModuleEnabled('polls')) {
-            $event->sender->addItem(array(
+            $event->sender->addItem([
                 'label' => Yii::t('PollsModule.base', 'Polls'),
                 'group' => 'modules',
                 'url' => $space->createUrl('/polls/poll/show'),
                 'icon' => '<i class="fa fa-question-circle"></i>',
                 'isActive' => (Yii::$app->controller->module && Yii::$app->controller->module->id == 'polls'),
-            ));
+            ]);
+        }
+    }
+
+    public static function onProfileMenuInit($event)
+    {
+        /* @var $user User */
+        $user = $event->sender->user;
+        if ($user->isModuleEnabled('polls')) {
+            $event->sender->addItem([
+                'label' => Yii::t('PollsModule.base', 'Polls'),
+                'url' => $user->createUrl('/polls/poll/show'),
+                'icon' => '<i class="fa fa-question-circle"></i>',
+                'isActive' => (Yii::$app->controller->module && Yii::$app->controller->module->id == 'polls'),
+            ]);
         }
     }
 
@@ -175,7 +189,6 @@ class Events
 
         // Switch Identity
         Yii::$app->user->switchIdentity($user);
-
 
     }
 
