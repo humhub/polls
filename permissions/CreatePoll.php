@@ -8,12 +8,14 @@
 
 namespace humhub\modules\polls\permissions;
 
+use humhub\libs\BasePermission;
 use humhub\modules\space\models\Space;
+use humhub\modules\user\models\User;
 
 /**
  * CreatePost Permission
  */
-class CreatePoll extends \humhub\libs\BasePermission
+class CreatePoll extends BasePermission
 {
 
     /**
@@ -24,13 +26,18 @@ class CreatePoll extends \humhub\libs\BasePermission
         Space::USERGROUP_ADMIN,
         Space::USERGROUP_MODERATOR,
         Space::USERGROUP_MEMBER,
+        User::USERGROUP_SELF
     ];
     
     /**
      * @inheritdoc
      */
     protected $fixedGroups = [
-        Space::USERGROUP_USER
+        Space::USERGROUP_OWNER,
+        Space::USERGROUP_ADMIN,
+        Space::USERGROUP_USER,
+        User::USERGROUP_SELF,
+        User::USERGROUP_GUEST
     ];
 
     /**

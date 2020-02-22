@@ -3,7 +3,7 @@
     "name": "Polls",
     "description": "Easy to use poll system",
     "keywords": ["poll", "voting", "decision making"],
-    "version": "0.9.19",
+    "version": "0.9.20",
     "humhub": {
         "minVersion": "1.3"
     },
