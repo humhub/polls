@@ -8,10 +8,12 @@ use humhub\modules\stream\widgets\StreamViewer;
 $canCreatePolls = $contentContainer->permissionManager->can(new CreatePoll());
 ?>
 
-<?=  WallCreateForm::widget([
-    'contentContainer' => $contentContainer,
-    'submitButtonText' => Yii::t('PollsModule.widgets_PollFormWidget', 'Ask'),
-]); ?>
+<?php if($canCreatePolls) : ?>
+    <?=  WallCreateForm::widget([
+        'contentContainer' => $contentContainer,
+        'submitButtonText' => Yii::t('PollsModule.widgets_PollFormWidget', 'Ask'),
+    ]); ?>
+<?php endif; ?>
 
 <?php
  $filters = [

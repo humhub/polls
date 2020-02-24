@@ -60,7 +60,6 @@ class Events
         if ($space->isModuleEnabled('polls')) {
             $event->sender->addItem(array(
                 'label' => Yii::t('PollsModule.base', 'Polls'),
-                'group' => 'modules',
                 'url' => $space->createUrl('/polls/poll/show'),
                 'icon' => '<i class="fa fa-question-circle"></i>',
                 'isActive' => (Yii::$app->controller->module && Yii::$app->controller->module->id == 'polls'),
@@ -68,10 +67,25 @@ class Events
         }
     }
 
+    public static function onProfileMenuInit($event)
+    {
+        $user = $event->sender->user;
+
+        if ($user->isModuleEnabled('polls')) {
+            $event->sender->addItem([
+                'label' => Yii::t('PollsModule.base', 'Polls'),
+                'url' => $user->createUrl('/polls/poll/show'),
+                'icon' => '<i class="fa fa-question-circle"></i>',
+                'isActive' => (Yii::$app->controller->module && Yii::$app->controller->module->id == 'polls'),
+            ]);
+        }
+    }
+
     /**
      * On User delete, delete all poll answers by this user
      *
      * @param type $event
+     * @return bool
      */
     public static function onUserDelete($event)
     {
@@ -86,6 +100,8 @@ class Events
      * Callback to validate module database records.
      *
      * @param Event $event
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
      */
     public static function onIntegrityCheck($event)
     {
@@ -116,8 +132,9 @@ class Events
 
     /**
      * Create installer sample data
-     * 
+     *
      * @param \yii\base\Event $event
+     * @throws \yii\base\Exception
      */
     public static function onSampleDataInstall($event)
     {

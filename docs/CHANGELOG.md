@@ -3,8 +3,9 @@ Changelog
 
 0.9.20
 -------------------------
+- Enh #15: Implement user profile polls
+- Fix: Poll create form rendered for users without create poll permission
 - Fix #59: Only public/private poll stream filter not working 
-
 
 0.9.19 - October 16, 2019
 -------------------------

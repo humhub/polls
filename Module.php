@@ -2,6 +2,7 @@
 
 namespace humhub\modules\polls;
 
+use humhub\modules\user\models\User;
 use Yii;
 use humhub\modules\polls\models\Poll;
 use humhub\modules\space\models\Space;
@@ -26,7 +27,8 @@ class Module extends ContentContainerModule
     public function getContentContainerTypes()
     {
         return [
-            Space::className(),
+            Space::class,
+            User::class
         ];
     }
 
@@ -47,11 +49,11 @@ class Module extends ContentContainerModule
      */
     public function disableContentContainer(ContentContainerActiveRecord $container)
     {
-        parent::disableContentContainer($container);
-
         foreach (Poll::find()->contentContainer($container)->all() as $poll) {
             $poll->delete();
         }
+
+        parent::disableContentContainer($container);
     }
 
     /**
@@ -59,7 +61,7 @@ class Module extends ContentContainerModule
      */
     public function getPermissions($contentContainer = null)
     {
-        if ($contentContainer instanceof \humhub\modules\space\models\Space) {
+        if ($contentContainer) {
             return [
                 new permissions\CreatePoll()
             ];

@@ -2,7 +2,10 @@
 
 namespace humhub\modules\polls\controllers;
 
+use humhub\modules\polls\components\StreamAction;
+use humhub\modules\polls\permissions\CreatePoll;
 use humhub\modules\polls\widgets\WallCreateForm;
+use humhub\modules\stream\actions\Stream;
 use Yii;
 use yii\web\HttpException;
 use yii\helpers\Html;
@@ -26,9 +29,9 @@ class PollController extends ContentContainerController
     {
         return [
             'stream' => [
-                'class' => \humhub\modules\polls\components\StreamAction::className(),
+                'class' => StreamAction::class,
                 'includes' => Poll::class,
-                'mode' => \humhub\modules\polls\components\StreamAction::MODE_NORMAL,
+                'mode' => StreamAction::MODE_NORMAL,
                 'contentContainer' => $this->contentContainer
             ],
         ];
@@ -46,7 +49,7 @@ class PollController extends ContentContainerController
 
     public function actionCreate()
     {
-        if (!$this->contentContainer->permissionManager->can(new \humhub\modules\polls\permissions\CreatePoll())) {
+        if (!$this->contentContainer->permissionManager->can(new CreatePoll())) {
             throw new HttpException(400, 'Access denied!');
         }
         
@@ -59,17 +62,19 @@ class PollController extends ContentContainerController
     /**
      * Reloads a single entry
      */
-    public function actionReload()
+    public function actionReload($id)
     {
-        Yii::$app->response->format = 'json';
-        $id = Yii::$app->request->get('id');
         $model = Poll::findOne(['id' => $id]);
 
-        if (!$model->content->canView()) {
-            throw new HttpException(403, Yii::t('PollsModule.controllers_PollController', 'Access denied!'));
+        if(!$model) {
+            throw new HttpException(404);
         }
 
-        return \humhub\modules\stream\actions\Stream::getContentResultEntry($model->content);
+        if (!$model->content->canView()) {
+            throw new HttpException(403);
+        }
+
+        return $this->asJson(Stream::getContentResultEntry($model->content));
     }
 
     public function actionEdit()
@@ -100,7 +105,7 @@ class PollController extends ContentContainerController
             if ($model->validate() && $model->save()) {
                 // Reload record to get populated updated_at field
                 $model = Poll::findOne(['id' => $id]);
-                return \humhub\modules\stream\actions\Stream::getContentResultEntry($model->content);
+                return Stream::getContentResultEntry($model->content);
             } else {
                 $result['errors'] = $model->getErrors();
             }
@@ -136,7 +141,7 @@ class PollController extends ContentContainerController
         // Refresh updated_at
         $model->content->refresh();
         
-        return \humhub\modules\stream\actions\Stream::getContentResultEntry($model->content);
+        return Stream::getContentResultEntry($model->content);
     }
 
     /**
@@ -163,7 +168,8 @@ class PollController extends ContentContainerController
         }
 
         $poll->vote($votes);
-        return \humhub\modules\stream\actions\Stream::getContentResultEntry($poll->content);
+
+        return Stream::getContentResultEntry($poll->content);
     }
 
     /**
@@ -171,10 +177,9 @@ class PollController extends ContentContainerController
      */
     public function actionAnswerReset()
     {
-        Yii::$app->response->format = 'json';
         $poll = $this->getPollByParameter();
         $poll->resetAnswer();
-        return \humhub\modules\stream\actions\Stream::getContentResultEntry($poll->content);
+        return $this->asJson(Stream::getContentResultEntry($poll->content));
     }
 
     /**
@@ -210,15 +215,14 @@ class PollController extends ContentContainerController
      * Prints the given poll wall output include the affected wall entry id
      *
      * @param Poll $poll
+     * @return \yii\web\Response
      */
     private function renderPollOut($question)
     {
-        Yii::$app->response->format = 'json';
-
         $json = array();
         $json['output'] = $this->renderAjaxContent($question->getWallOut());
 
-        return $json;
+        return $this->asJson($json);
     }
 
     /**
@@ -232,7 +236,7 @@ class PollController extends ContentContainerController
         $pollId = (int) Yii::$app->request->get('pollId');
         $poll = Poll::find()->contentContainer($this->contentContainer)->readable()->where(['poll.id' => $pollId])->one();
 
-        if ($poll == null) {
+        if (!$poll) {
             throw new HttpException(401, Yii::t('PollsModule.controllers_PollController', 'Could not load poll!'));
         }
 
