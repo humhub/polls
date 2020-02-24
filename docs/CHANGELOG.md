@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.9.20
+-------------------------
+- Fix #59: Only public/private poll stream filter not working 
+
+
 0.9.19 - October 16, 2019
 -------------------------
 - Fix: 1.4 compatibility removed deprecated content usage
