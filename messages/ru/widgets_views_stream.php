@@ -17,8 +17,8 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    '<b>There are no polls yet!</b>' => '<b>Здесь нет пока опросов!</b>',
-    '<b>There are no polls yet!</b><br>Be the first and create one...' => '<b> Опросов пока нет! </ b>  Будьте первым...',
+    '<b>There are no polls yet!</b>' => '<b>Здесь пока что нет опросов!</b>',
+    '<b>There are no polls yet!</b><br>Be the first and create one...' => '<b>Здесь пока что нет опросов!</b>Будьте первым - создайте опрос...',
     'Asked by me' => 'Мои опросы',
     'No answered yet' => 'Пока без ответа',
     'Only private polls' => 'Только приватные опросы',
