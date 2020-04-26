@@ -1,4 +1,4 @@
 <?php
 return array (
-  '{userName} created a new {question}.' => '{userName} создал новый {question}.',
+  '{userName} created a new {question}.' => '{userName} создал(а) новый {question}.',
 );
