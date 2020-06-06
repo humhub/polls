@@ -1,9 +1,8 @@
 <?php
-
-return [
-    'At least one answer is required' => '',
-    'Allows to start polls.' => 'Permite iniciar enquetes.',
-    'Cancel' => 'Cancelar',
-    'Polls' => 'Enquete',
-    'Save' => 'Salvar',
-];
+return array (
+  'Allows to start polls.' => 'Permite iniciar enquetes.',
+  'At least one answer is required' => 'É necessária pelo menos uma resposta',
+  'Cancel' => 'Cancelar',
+  'Polls' => 'Enquete',
+  'Save' => 'Salvar',
+);
