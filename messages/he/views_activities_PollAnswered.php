@@ -1,5 +1,4 @@
 <?php
-
-return [
-    '{userName} answered the {question}.' => '',
-];
+return array (
+  '{userName} answered the {question}.' => '{userName} ענה על {question}.',
+);
