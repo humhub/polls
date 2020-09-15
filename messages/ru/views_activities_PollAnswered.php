@@ -17,5 +17,5 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    '{userName} answered the {question}.' => '{userName} ответил на  {question}.',
+    '{userName} answered the {question}.' => '{userName} ответил(а) на {question}.',
 ];
