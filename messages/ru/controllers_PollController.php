@@ -6,5 +6,5 @@ return array (
   'Invalid answer!' => 'Неверный ответ!',
   'Users voted for: <strong>{answer}</strong>' => 'Пользователи проголосовали за: <strong>{answer}</strong>',
   'Voting for multiple answers is disabled!' => 'Голосование за несколько вариантов отключено!',
-  'You have insufficient permissions to perform that operation!' => 'Вы должны иметь доступ на выполнение этой операции!',
+  'You have insufficient permissions to perform that operation!' => 'У вас недостаточно прав для выполнения этой операции!',
 );
