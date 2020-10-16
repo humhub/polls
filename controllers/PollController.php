@@ -47,6 +47,12 @@ class PollController extends ContentContainerController
         ]);
     }
 
+    /**
+     * @return array
+     * @throws HttpException
+     * @throws \yii\base\Exception
+     * @throws \yii\base\InvalidConfigException
+     */
     public function actionCreate()
     {
         if (!$this->contentContainer->permissionManager->can(new CreatePoll())) {

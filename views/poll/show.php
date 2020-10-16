@@ -22,11 +22,6 @@ $canCreatePolls = $contentContainer->permissionManager->can(new CreatePoll());
      'visibility_public' => Yii::t('PollsModule.widgets_views_stream', 'Only public polls'),
      'visibility_private' => Yii::t('PollsModule.widgets_views_stream', 'Only private polls'),
  ];
-
- if(version_compare(Yii::$app->version, '1.3', '>=')) {
-     $filters['topic'] = null;
- }
-
 ?>
 
 <?= StreamViewer::widget([
@@ -37,5 +32,4 @@ $canCreatePolls = $contentContainer->permissionManager->can(new CreatePoll());
             Yii::t('PollsModule.widgets_views_stream', '<b>There are no polls yet!</b>'),
     'messageStreamEmptyCss' => ($canCreatePolls) ? 'placeholder-empty-stream' : '',
     'filters' => $filters
-]);
-?>
+]) ?>

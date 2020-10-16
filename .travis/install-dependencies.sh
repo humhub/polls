@@ -4,13 +4,9 @@
 set -ev
 
 # Install chomedriver
-curl -s -L -o chromedriver_linux64.zip https://chromedriver.storage.googleapis.com/2.38/chromedriver_linux64.zip \
+CHROME_MAIN_VERSION=`google-chrome-stable --version | sed -E 's/(^Google Chrome |\.[0-9]+ )//g'`
+CHROMEDRIVER_VERSION=`curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_MAIN_VERSION"`
+
+curl "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip" -O \
     && unzip -o -d $HOME chromedriver_linux64.zip \
 	&& chmod +x $HOME/chromedriver
-
-# Install composer package
-composer global require fxp/composer-asset-plugin
-
-# Install NPM
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-sudo apt-get install -y nodejs
