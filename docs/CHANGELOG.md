@@ -7,6 +7,7 @@ Changelog
 - Fix: Poll create form rendered for users without create poll permission
 - Enh #56: Use of new richtext editor in poll question
 - Fix #50: Poll stream filter not working
+- Chng: Updated min HumHub min version to 1.6
 
 0.9.19 - October 16, 2019
 -------------------------
