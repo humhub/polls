@@ -2,6 +2,7 @@
 
 namespace humhub\modules\polls\models;
 
+use humhub\modules\content\widgets\richtext\RichText;
 use Yii;
 use humhub\modules\search\interfaces\Searchable;
 use humhub\modules\content\components\ContentActiveRecord;
@@ -120,7 +121,7 @@ class Poll extends ContentActiveRecord implements Searchable
     }
 
     /**
-     * @return ActiveRecord containing all answers of thes poll
+     * @return \yii\db\ActiveQuery
      */
     public function getAnswers()
     {
@@ -143,13 +144,16 @@ class Poll extends ContentActiveRecord implements Searchable
 
     /**
      * Saves new answers (if set) and updates answers given editanswers (if set)
-     * @param type $insert
-     * @param type $changedAttributes
-     * @return boolean
+     * @param $insert
+     * @param $changedAttributes
+     * @return bool|void
+     * @throws \yii\base\InvalidConfigException
      */
     public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);
+
+        RichText::postProcess($this->question, $this);
 
         if($this->scenario === static::SCENARIO_EDIT || $this->scenario === static::SCENARIO_CREATE) {
             if (!$insert) {

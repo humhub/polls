@@ -1,8 +1,7 @@
 <?php
 
+use humhub\modules\content\widgets\richtext\RichTextField;
 use humhub\modules\polls\assets\PollsAsset;
-use humhub\widgets\RichtextField;
-use yii\bootstrap\ActiveForm;
 use humhub\modules\polls\widgets\AddAnswerInput;
 use yii\bootstrap\Html;
 
@@ -12,7 +11,7 @@ PollsAsset::register($this);
 
 ?>
 
-<?= RichtextField::widget([
+<?= RichTextField::widget([
         'name' => 'Poll[question]',
         'placeholder' => Yii::t('PollsModule.widgets_views_pollForm', "Ask something...")
 ]); ?>

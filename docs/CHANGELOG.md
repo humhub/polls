@@ -1,11 +1,12 @@
 Changelog
 =========
 
-0.9.20
+0.9.20 - October 16, 2020
 -------------------------
 - Enh #15: Implement user profile polls
 - Fix: Poll create form rendered for users without create poll permission
 - Fix #59: Only public/private poll stream filter not working 
+- Enh #56: Use of new richtext editor in poll question
 
 0.9.19 - October 16, 2019
 -------------------------

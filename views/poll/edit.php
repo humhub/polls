@@ -1,6 +1,6 @@
 <?php
 
-use humhub\widgets\RichtextField;
+use humhub\modules\content\widgets\richtext\RichTextField;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use humhub\modules\polls\widgets\AddAnswerInput;
@@ -17,7 +17,7 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
     
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($poll, 'question')->widget(RichtextField::class, ['disabled' => $poll->closed, 'placeholder' => Yii::t('PollsModule.widgets_views_pollForm', 'Edit your poll question...')]) ?>
+    <?= $form->field($poll, 'question')->widget(RichTextField::class, ['disabled' => $poll->closed, 'placeholder' => Yii::t('PollsModule.widgets_views_pollForm', 'Edit your poll question...')]) ?>
 
     <div class="contentForm_options">
         <?= Html::activeLabel($poll, 'answersText', ['class' => 'control-label']); ?>
