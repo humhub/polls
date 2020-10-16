@@ -18,10 +18,9 @@ $canCreatePolls = $contentContainer->permissionManager->can(new CreatePoll());
 <?php
  $filters = [
      'filter_polls_notAnswered' => Yii::t('PollsModule.widgets_views_stream', 'No answered yet'),
-     'filter_entry_mine' => Yii::t('PollsModule.widgets_views_stream', 'Asked by me'),
-     'visibility_private' => Yii::t('PollsModule.widgets_views_stream', 'Only public polls'),
-     'visibility_public' => Yii::t('PollsModule.widgets_views_stream', 'Only private polls'),
-
+     'entry_mine' => Yii::t('PollsModule.widgets_views_stream', 'Asked by me'),
+     'visibility_public' => Yii::t('PollsModule.widgets_views_stream', 'Only public polls'),
+     'visibility_private' => Yii::t('PollsModule.widgets_views_stream', 'Only private polls'),
  ];
 
  if(version_compare(Yii::$app->version, '1.3', '>=')) {
