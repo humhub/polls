@@ -1,10 +1,6 @@
 Changelog
 =========
 
-0.9.21 (Unreleased)
----------------------
-- Enh #71: Wall Stream Layout Migration
-
 0.9.20 - October 16, 2020
 -------------------------
 - Enh #15: Implement user profile polls
