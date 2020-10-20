@@ -22,7 +22,7 @@ humhub\modules\polls\assets\PollsAsset::register($this);
     <?= Html::beginForm($contentContainer->createUrl('/polls/poll/answer', ['pollId' => $poll->id])) ?>
 
     <div data-ui-markdown>
-        <?= RichText::output($poll->question) ?>
+        <?= RichText::output($poll->description) ?>
     </div>
 
     <br><br>

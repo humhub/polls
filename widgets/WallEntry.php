@@ -36,6 +36,6 @@ class WallEntry extends WallStreamModuleEntryWidget
      */
     protected function getTitle()
     {
-        return $this->model->question;
+        return trim($this->model->question) === '' ? Yii::t('PollsModule.widgets_views_entry', 'Poll') : $this->model->question;
     }
 }

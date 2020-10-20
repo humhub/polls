@@ -17,7 +17,9 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
     
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($poll, 'question')->widget(RichTextField::class, ['disabled' => $poll->closed, 'placeholder' => Yii::t('PollsModule.widgets_views_pollForm', 'Edit your poll question...')]) ?>
+    <?= $form->field($poll,'question')->textInput($poll->closed ? ['disabled' => 'disabled'] : []) ?>
+
+    <?= $form->field($poll, 'description')->widget(RichTextField::class, ['disabled' => $poll->closed, 'placeholder' => Yii::t('PollsModule.widgets_views_pollForm', 'Edit your poll question...')]) ?>
 
     <div class="contentForm_options">
         <?= Html::activeLabel($poll, 'answersText', ['class' => 'control-label']); ?>
