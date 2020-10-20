@@ -4,6 +4,8 @@ Changelog
 0.9.21 (Unreleased)
 ---------------------
 - Enh #71: Wall Stream Layout Migration
+- Enh: Rename the attribute "Question" to "Description"
+- Enh: Add an attribute "Question" as simple short text
 
 0.9.20 - October 16, 2020
 -------------------------
