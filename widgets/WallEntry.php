@@ -27,7 +27,7 @@ class WallEntry extends WallStreamModuleEntryWidget
     public function renderContent()
     {
         //We don't want an edit menu when the poll is closed
-        if (version_compare(Yii::$app->version, '1.0.0-beta.4', 'lt') || $this->model->closed) {
+        if ($this->model->closed) {
             $this->editRoute = '';
         }
 
