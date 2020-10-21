@@ -1,11 +1,12 @@
 Changelog
 =========
 
-0.9.21 (Unreleased)
+1.0.0 (Unreleased)
 ---------------------
-- Enh #71: Wall Stream Layout Migration
+- Enh #71: Wall Stream Layout Migration (HumHub 1.7+)
 - Enh: Rename the attribute "Question" to "Description"
 - Enh: Add an attribute "Question" as simple short text
+
 
 0.9.20 - October 16, 2020
 -------------------------
