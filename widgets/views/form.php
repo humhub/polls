@@ -11,19 +11,18 @@ PollsAsset::register($this);
 
 ?>
 
-<div class="contentForm_options" data-content-component="polls.Poll" style="margin-bottom:10px;margin-top:0">
-    <?= Html::activeTextInput($model,'question', [
-        'placeholder' => Yii::t('PollsModule.widgets_views_pollForm', 'Short question...'),
-        'class' => 'form-control',
-    ]) ?>
-</div>
-
-<?= RichTextField::widget([
-        'name' => 'Poll[description]',
-        'placeholder' => Yii::t('PollsModule.widgets_views_pollForm', 'Ask something...')
-]); ?>
+<?= Html::activeTextInput($model,'question', [
+    'placeholder' => Yii::t('PollsModule.widgets_views_pollForm', 'Question'),
+    'class' => 'form-control',
+]) ?>
 
 <div class="contentForm_options" data-content-component="polls.Poll">
+    <?= RichTextField::widget([
+        'name' => 'Poll[description]',
+        'placeholder' => Yii::t('PollsModule.widgets_views_pollForm', 'Description'),
+        'layout' => RichTextField::LAYOUT_INLINE,
+        'options' => ['style' => 'margin:15px 0'],
+    ]); ?>
 
     <?= AddAnswerInput::widget(['name' => 'newAnswers[]', 'showTitle' => false]); ?>
 
