@@ -20,22 +20,28 @@ PollsAsset::register($this);
     <?= RichTextField::widget([
         'name' => 'Poll[description]',
         'placeholder' => Yii::t('PollsModule.widgets_views_pollForm', 'Description'),
-        'layout' => RichTextField::LAYOUT_INLINE,
-        'options' => ['style' => 'margin:15px 0'],
+        'options' => ['style' => 'margin:30px 0'],
     ]); ?>
 
+    <label><?= Yii::t('PollsModule.widgets_views_pollForm', 'Answers:') ?></label>
     <?= AddAnswerInput::widget(['name' => 'newAnswers[]', 'showTitle' => false]); ?>
 
-    <div class="checkbox regular-checkbox-container">
-        <?= Html::activeCheckbox($model, 'allow_multiple'); ?>
-    </div>
-    <div class="checkbox regular-checkbox-container">
-        <?= Html::activeCheckbox($model, 'is_random'); ?>
-    </div>
-    <div class="checkbox regular-checkbox-container">
-        <?= Html::activeCheckbox($model, 'anonymous'); ?>
-    </div>
-    <div class="checkbox regular-checkbox-container">
-        <?= Html::activeCheckbox($model, 'show_result_after_close'); ?>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="checkbox regular-checkbox-container">
+                <?= Html::activeCheckbox($model, 'allow_multiple'); ?>
+            </div>
+            <div class="checkbox regular-checkbox-container">
+                <?= Html::activeCheckbox($model, 'is_random'); ?>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="checkbox regular-checkbox-container">
+                <?= Html::activeCheckbox($model, 'anonymous'); ?>
+            </div>
+            <div class="checkbox regular-checkbox-container">
+                <?= Html::activeCheckbox($model, 'show_result_after_close'); ?>
+            </div>
+        </div>
     </div>
 </div>
