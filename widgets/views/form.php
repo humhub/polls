@@ -20,10 +20,10 @@ PollsAsset::register($this);
     <?= RichTextField::widget([
         'name' => 'Poll[description]',
         'placeholder' => Yii::t('PollsModule.widgets_views_pollForm', 'Description'),
-        'options' => ['style' => 'margin:30px 0'],
+        'options' => ['style' => 'margin:20px 0 15px'],
     ]); ?>
 
-    <label><?= Yii::t('PollsModule.widgets_views_pollForm', 'Answers:') ?></label>
+    <?= Html::activeLabel($model, 'answersText', ['class' => 'control-label']); ?>
     <?= AddAnswerInput::widget(['name' => 'newAnswers[]', 'showTitle' => false]); ?>
 
     <div class="row">
