@@ -5,13 +5,13 @@ use humhub\modules\polls\assets\PollsAsset;
 use humhub\modules\polls\widgets\AddAnswerInput;
 use yii\bootstrap\Html;
 
-/** @var $model \yii\base\Model **/
+/** @var $model \yii\base\Model * */
 
 PollsAsset::register($this);
 
 ?>
 
-<?= Html::activeTextInput($model,'question', [
+<?= Html::activeTextInput($model, 'question', [
     'placeholder' => Yii::t('PollsModule.widgets_views_pollForm', 'Question'),
     'class' => 'form-control',
 ]) ?>
@@ -23,7 +23,7 @@ PollsAsset::register($this);
         'options' => ['style' => 'margin:20px 0 15px'],
     ]); ?>
 
-    <?= Html::activeLabel($model, 'answersText', ['class' => 'control-label']); ?>
+    <?= Html::activeLabel($model, 'answersText', ['label' => Yii::t('PollsModule.base', 'Answers'), 'class' => 'control-label']); ?>
     <?= AddAnswerInput::widget(['name' => 'newAnswers[]', 'showTitle' => false]); ?>
 
     <div class="row">

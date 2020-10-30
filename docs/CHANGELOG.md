@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0.0 (Unreleased)
+1.0.0 (November 30, 2020)
 ---------------------
 - Enh #71: Wall Stream Layout Migration (HumHub 1.7+)
 - Enh: Rename the attribute "Question" to "Description"
