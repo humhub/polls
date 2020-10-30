@@ -1,9 +1,10 @@
 <?php
 
 return [
-    'Allows to start polls.' => '',
-    'At least one answer is required' => '',
-    'Polls' => '',
     'Cancel' => 'إلغاء',
     'Save' => 'حفظ',
+    'Allows to start polls.' => '',
+    'Answers' => '',
+    'At least one answer is required' => '',
+    'Polls' => '',
 ];
