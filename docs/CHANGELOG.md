@@ -1,6 +1,13 @@
 Changelog
 =========
 
+1.0.0 (November 30, 2020)
+---------------------
+- Enh #71: Wall Stream Layout Migration (HumHub 1.7+)
+- Enh: Rename the attribute "Question" to "Description"
+- Enh: Add an attribute "Question" as simple short text
+
+
 0.9.20 - October 16, 2020
 -------------------------
 - Enh #15: Implement user profile polls
