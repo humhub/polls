@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.0.1 - Unreleased
+---------------------------
+- Enh #4670: Enable default permissions
+
 1.0.0 (November 30, 2020)
 ---------------------
 - Enh #71: Wall Stream Layout Migration (HumHub 1.7+)
