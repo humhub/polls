@@ -4,6 +4,8 @@ Changelog
 1.0.1 - Unreleased
 ---------------------------
 - Enh #4670: Enable default permissions
+- Fix #77: Make permission settings translatable
+
 
 1.0.0 (November 30, 2020)
 ---------------------
