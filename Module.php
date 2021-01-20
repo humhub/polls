@@ -63,7 +63,7 @@ class Module extends ContentContainerModule
     {
         if ($contentContainer) {
             return [
-                new permissions\CreatePoll(['contentContainer' => $contentContainer])
+                new permissions\CreatePoll()
             ];
         }
 
