@@ -15,7 +15,14 @@ use Yii;
 class NewVote extends BaseActivity implements ConfigurableActivityInterface
 {
 
+    /**
+     * @inheritdoc
+     */
     public $moduleId = 'polls';
+    
+    /**
+     * @inheritdoc
+     */
     public $viewName = 'newVote';
 
     /**
@@ -31,7 +38,7 @@ class NewVote extends BaseActivity implements ConfigurableActivityInterface
      */
     public function getDescription()
     {
-        return Yii::t('PollsModule.activities', 'Whenever someone answers on a question.');
+        return Yii::t('PollsModule.activities', 'Whenever someone participates in a poll.');
     }
 
 }
