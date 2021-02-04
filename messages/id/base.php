@@ -1,9 +1,12 @@
 <?php
-return array (
-  'Allows to start polls.' => '',
-  'Answers' => 'Jawaban',
-  'At least one answer is required' => '',
-  'Cancel' => 'Batal',
-  'Polls' => 'Pemungutan Suara',
-  'Save' => 'Simpan',
-);
+
+return [
+    'Answers' => 'Jawaban',
+    'Cancel' => 'Batal',
+    'Polls' => 'Pemungutan Suara',
+    'Save' => 'Simpan',
+    'Allows the user to create polls' => '',
+    'Allows to start polls.' => '',
+    'At least one answer is required' => '',
+    'Create poll' => '',
+];

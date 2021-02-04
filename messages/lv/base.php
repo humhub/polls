@@ -1,9 +1,12 @@
 <?php
-return array (
-  'Allows to start polls.' => 'Atļauj uzsākt aptauju.',
-  'Answers' => 'Atbildes',
-  'At least one answer is required' => '',
-  'Cancel' => 'Atcelt',
-  'Polls' => 'Aptaujas',
-  'Save' => 'Saglabāt',
-);
+
+return [
+    'Allows to start polls.' => 'Atļauj uzsākt aptauju.',
+    'Answers' => 'Atbildes',
+    'Cancel' => 'Atcelt',
+    'Polls' => 'Aptaujas',
+    'Save' => 'Saglabāt',
+    'Allows the user to create polls' => '',
+    'At least one answer is required' => '',
+    'Create poll' => '',
+];
