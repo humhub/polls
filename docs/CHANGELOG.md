@@ -6,6 +6,7 @@ Changelog
 - Enh #4670: Enable default permissions
 - Fix #77: Make permission settings translatable
 - Enh #80: Exclude from Mail Summary (Activity)
+- Fix #82: Fix install sample content
 
 
 1.0.0 (November 30, 2020)
