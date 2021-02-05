@@ -152,7 +152,9 @@ class Events
 
         $poll = new Poll();
         $poll->scenario = Poll::SCENARIO_CREATE;
-        $poll->question = Yii::t('PollsModule.events', "Right now, we are in the planning stages for our next meetup and we would like to know from you, where you would like to go?");
+        
+        $poll->question = Yii::t('PollsModule.events', 'Location of the next meeting');
+        $poll->description = Yii::t('PollsModule.events', "Right now, we are in the planning stages for our next meetup and we would like to know from you, where you would like to go?");
         $poll->newAnswers = [
             Yii::t('PollsModule.events', "To Daniel"),
             Yii::t('PollsModule.events', "Club A Steakhouse"),
@@ -160,7 +162,9 @@ class Events
         ];
         $poll->content->container = $space;
         $poll->allow_multiple = Yii::$app->request->post('allowMultiple', 0);
-        $poll->save();
+        if (!$poll->save()) {
+            return;
+        }
 
         // load users
         $user2 = User::find()->where(['id' => 2])->one();
