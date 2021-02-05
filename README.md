@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/humhub/humhub-modules-polls.svg?branch=master)](https://travis-ci.org/humhub/humhub-modules-polls)
+[![Test Status](https://github.com/humhub/humhub-modules-polls/workflows/PHP%20Codeception%20Tests/badge.svg)](https://github.com/humhub/humhub-modules-polls/actions)
 
 # Polls
 
