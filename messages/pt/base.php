@@ -1,12 +1,11 @@
 <?php
-
-return [
-    'Save' => 'Guardar',
-    'Allows the user to create polls' => '',
-    'Allows to start polls.' => '',
-    'Answers' => '',
-    'At least one answer is required' => '',
-    'Cancel' => '',
-    'Create poll' => '',
-    'Polls' => '',
-];
+return array (
+  'Allows the user to create polls' => 'Permite à pessoa criar votações',
+  'Allows to start polls.' => 'Permite iniciar votações.',
+  'Answers' => 'Respostas',
+  'At least one answer is required' => 'Pelo menos uma opção é necessária',
+  'Cancel' => 'Cancelar',
+  'Create poll' => 'Criar votação',
+  'Polls' => 'Votações',
+  'Save' => 'Guardar',
+);

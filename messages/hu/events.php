@@ -2,6 +2,7 @@
 return array (
   'Again? ;Weary;' => 'Megint? ;Weary;',
   'Club A Steakhouse' => 'Club A Steakhouse',
+  'Location of the next meeting' => 'A következő találkozó helyszíne',
   'Pisillo Italian Panini' => 'Pisillo Italian Panini',
   'Right now, we are in the planning stages for our next meetup and we would like to know from you, where you would like to go?' => 'Jelenleg következő találkozónkat tervezzük, és szeretnénk tudni, hogy hová szeretnél menni?',
   'To Daniel' => 'Dánielnek',
