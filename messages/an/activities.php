@@ -1,6 +1,5 @@
 <?php
-
-return [
-    'Polls' => '',
-    'Whenever someone participates in a poll.' => '',
-];
+return array (
+  'Polls' => 'Enqüestas',
+  'Whenever someone participates in a poll.' => '',
+);
