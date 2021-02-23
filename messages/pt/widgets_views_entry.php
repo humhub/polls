@@ -1,6 +1,6 @@
 <?php
 return array (
-  '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '',
+  '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '<strong>Nota:</strong> O resultado está oculto até a votação ser fechada pela moderação.',
   'Anonymous' => 'Anónimo',
   'Closed' => 'Fechada',
   'Complete Poll' => 'Votação completa',
