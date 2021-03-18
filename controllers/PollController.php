@@ -24,6 +24,10 @@ use humhub\modules\polls\models\PollAnswer;
  */
 class PollController extends ContentContainerController
 {
+    /**
+     * @inheritdoc
+     */
+    protected $doNotInterceptActionIds = ['*'];
 
     public function actions()
     {

@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.1.0  (Unreleased)
+--------------------------
+- Enh: Use controller config for not intercepted actions
+
+
 1.0.1 (February 5, 2021)
 ------------------------
 - Enh #4670: Enable default permissions
