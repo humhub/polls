@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.1.0  (Unreleased)
+1.0.2  (Unreleased)
 --------------------------
 - Enh: Use controller config for not intercepted actions
 
