@@ -1,4 +1,4 @@
 <?php
 return array (
-  '{userName} answered the {question}.' => '{userName} votou a {question}.',
+  '{userName} answered the {question}.' => '{userName} votou sobre {question}.',
 );

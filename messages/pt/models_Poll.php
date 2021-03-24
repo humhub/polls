@@ -1,8 +1,8 @@
 <?php
 return array (
-  'Answers' => 'Resultados',
+  'Answers' => 'Opções',
   'Description' => 'Descrição',
-  'Multiple answers per user' => 'Vários resultados por pessoa',
-  'Please specify at least {min} answers!' => 'Por favor especifica pelo menos {min} resultados!',
+  'Multiple answers per user' => 'Várias opções por pessoa',
+  'Please specify at least {min} answers!' => 'Por favor especifica pelo menos {min} opções!',
   'Question' => 'Questão',
 );
