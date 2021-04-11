@@ -1,12 +1,11 @@
 <?php
-
-return [
-    'Allows to start polls.' => 'Tillåtelse att starta enkäter.',
-    'Answers' => 'Svar',
-    'Cancel' => 'Avbryt',
-    'Polls' => 'Enkät',
-    'Save' => 'Spara',
-    'Allows the user to create polls' => '',
-    'At least one answer is required' => '',
-    'Create poll' => '',
-];
+return array (
+  'Allows the user to create polls' => 'Låter användaren skapa undersökningar',
+  'Allows to start polls.' => 'Tillåtelse att starta undersökningar.',
+  'Answers' => 'Svar',
+  'At least one answer is required' => 'Minst ett svar krävs',
+  'Cancel' => 'Avbryt',
+  'Create poll' => 'Skapa undersökning',
+  'Polls' => 'Enkät',
+  'Save' => 'Spara',
+);
