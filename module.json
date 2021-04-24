@@ -7,7 +7,7 @@
     "humhub": {
         "minVersion": "1.7"
     },
-    "homepage": "https://github.com/humhub/humhub-modules-polls",
+    "homepage": "https://github.com/humhub/polls",
     "authors": [
         {
             "name": "Andreas Strobel"
