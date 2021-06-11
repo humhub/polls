@@ -1,5 +1,5 @@
 <?php
 return array (
-  'Polls' => 'Ψηφορορίες',
+  'Polls' => 'Ψηφοφορίες',
   'Whenever someone participates in a poll.' => 'Όταν κάποιος συμμετέχει σε ψηφοφορία.',
 );
