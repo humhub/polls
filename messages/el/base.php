@@ -6,6 +6,6 @@ return array (
   'At least one answer is required' => '',
   'Cancel' => 'Ακύρωση',
   'Create poll' => '',
-  'Polls' => 'Ψηφορορίες',
+  'Polls' => 'Ψηφοφορίες',
   'Save' => 'Αποθήκευση',
 );
