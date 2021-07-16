@@ -61,7 +61,6 @@ class PollController extends ContentContainerController
         
         $poll = new Poll(['scenario' => Poll::SCENARIO_CREATE]);
         $poll->load(Yii::$app->request->post());
-        $poll->setNewAnswers(Yii::$app->request->post('newAnswers'));
         return WallCreateForm::create($poll, $this->contentContainer);
     }
 
@@ -89,6 +88,7 @@ class PollController extends ContentContainerController
         $id = $request->get('id');
 
         $edited = false;
+        /* @var Poll $poll*/
         $model = Poll::findOne(['id' => $id]);
         $wasAnonymous = $model->anonymous;
         $model->scenario = Poll::SCENARIO_EDIT;
@@ -96,10 +96,6 @@ class PollController extends ContentContainerController
         if (!$model->content->canEdit() || $model->closed) {
             throw new HttpException(403, Yii::t('PollsModule.controllers_PollController', 'Access denied!'));
         }
-
-        //Set newAnswers, and editAnswers which will be saved by afterSave of the poll class
-        $model->setNewAnswers($request->post('newAnswers'));
-        $model->setEditAnswers($request->post('answers'));
 
         if ($model->load($request->post())) {
             if ($wasAnonymous && !$model->anonymous) {

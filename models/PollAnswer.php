@@ -12,7 +12,7 @@ use humhub\modules\polls\models\PollAnswerUser;
  *
  * The followings are the available columns in table 'poll_answer':
  * @property integer $id
- * @property integer $question_id
+ * @property integer $poll_id
  * @property string $answer
  * @property string $created_at
  * @property integer $created_by
@@ -94,8 +94,8 @@ class PollAnswer extends ActiveRecord
     
     public static function filterValidAnswers($answerArr) 
     {
-        if($answerArr == null) {
-            return;
+        if (empty($answerArr)) {
+            return [];
         }
         
         $result = [];

@@ -20,7 +20,9 @@ use humhub\modules\content\components\ContentActiveRecord;
  * @property integer $created_by
  * @property string $updated_at
  * @property integer $updated_by
+ * @property integer $is_random
  * @property integer $closed
+ * @property integer $anonymous
  * @property integer show_result_after_close
  *
  * @package humhub.modules.polls.models
@@ -266,7 +268,7 @@ class Poll extends ContentActiveRecord implements Searchable
     {
 
         if ($this->hasUserVoted()) {
-            return;
+            return false;
         }
 
         $voted = false;
@@ -290,6 +292,8 @@ class Poll extends ContentActiveRecord implements Searchable
             $activity->originator = Yii::$app->user->getIdentity();
             $activity->create();
         }
+
+        return $voted;
     }
 
     /**
@@ -351,6 +355,18 @@ class Poll extends ContentActiveRecord implements Searchable
             'description' => $this->description,
             'itemAnswers' => $itemAnswers
         );
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function load($data, $formName = null)
+    {
+        // Set newAnswers, and editAnswers which will be saved by afterSave of the poll class
+        $this->setNewAnswers(isset($data['newAnswers']) && is_array($data['newAnswers']) ? $data['newAnswers'] : []);
+        $this->setEditAnswers(isset($data['answers']) && is_array($data['answers']) ? $data['answers'] : []);
+
+        return parent::load($data, $formName);
     }
 
 }

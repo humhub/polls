@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.0.2 (Unreleased)
+------------------------
+- Enh #86: Add REST API Support
+
+
 1.0.1 (February 5, 2021)
 ------------------------
 - Enh #4670: Enable default permissions
