@@ -17,7 +17,4 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU Affero General Public License for more details.
  */
-return [
-    ['id' => 1, 'module_id' => 'polls', 'space_id' => 1, 'state' => 1]
-];
-
+return [];

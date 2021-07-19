@@ -8,7 +8,6 @@
 
 namespace tests\codeception\fixtures;
 
-use humhub\modules\polls\models\Poll;
 use humhub\modules\polls\models\PollAnswer;
 use yii\test\ActiveFixture;
 
@@ -16,5 +15,6 @@ class PollAnswerFixture extends ActiveFixture
 {
 
     public $modelClass = PollAnswer::class;
+    public $dataFile = '@polls/tests/codeception/fixtures/data/pollAnswer.php';
 
 }
