@@ -18,6 +18,7 @@ return [
         ['class' => ProfileMenu::class, 'event' => ProfileMenu::EVENT_INIT, 'callback' => ['humhub\modules\polls\Events', 'onProfileMenuInit']],
         ['class' => IntegrityController::class, 'event' => IntegrityController::EVENT_ON_RUN, 'callback' => ['humhub\modules\polls\Events', 'onIntegrityCheck']],
         ['class' => 'humhub\modules\installer\controllers\ConfigController', 'event' => 'install_sample_data', 'callback' => ['humhub\modules\polls\Events', 'onSampleDataInstall']],
+        ['class' => 'humhub\modules\rest\Module', 'event' => 'restApiAddRules', 'callback' => ['humhub\modules\polls\Events', 'onRestApiAddRules']],
     ]
 ];
 ?>

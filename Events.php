@@ -200,4 +200,33 @@ class Events
 
     }
 
+    public static function onRestApiAddRules()
+    {
+        /* @var \humhub\modules\rest\Module $restModule */
+        $restModule = Yii::$app->getModule('rest');
+        $restModule->addRules([
+
+            // List polls
+            ['pattern' => 'polls', 'route' => 'polls/rest/polls/find', 'verb' => ['GET', 'HEAD']],
+            ['pattern' => 'polls/container/<containerId:\d+>', 'route' => 'polls/rest/polls/find-by-container', 'verb' => ['GET', 'HEAD']],
+            ['pattern' => 'polls/container/<containerId:\d+>', 'route' => 'polls/rest/polls/delete-by-container', 'verb' => 'DELETE'],
+
+            // Poll CRUD
+            ['pattern' => 'polls/container/<containerId:\d+>', 'route' => 'polls/rest/polls/create', 'verb' => 'POST'],
+            ['pattern' => 'polls/poll/<id:\d+>', 'route' => 'polls/rest/polls/view', 'verb' => ['GET', 'HEAD']],
+            ['pattern' => 'polls/poll/<id:\d+>', 'route' => 'polls/rest/polls/update', 'verb' => 'PUT'],
+            ['pattern' => 'polls/poll/<id:\d+>', 'route' => 'polls/rest/polls/delete', 'verb' => 'DELETE'],
+
+            // Close/Open Poll
+            ['pattern' => 'polls/poll/<id:\d+>/close', 'route' => 'polls/rest/polls/close', 'verb' => 'PATCH'],
+            ['pattern' => 'polls/poll/<id:\d+>/open', 'route' => 'polls/rest/polls/open', 'verb' => 'PATCH'],
+
+            // Vote
+            ['pattern' => 'polls/vote/<id:\d+>', 'route' => 'polls/rest/polls/vote', 'verb' => 'PUT'],
+            ['pattern' => 'polls/vote/<id:\d+>', 'route' => 'polls/rest/polls/reset-vote', 'verb' => 'DELETE'],
+            ['pattern' => 'polls/vote/<id:\d+>', 'route' => 'polls/rest/polls/votes', 'verb' => 'GET'],
+
+        ], 'polls');
+    }
+
 }
