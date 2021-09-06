@@ -4,6 +4,7 @@ Changelog
 1.0.2 (Unreleased)
 ------------------------
 - Enh #86: Add REST API Support
+- Enh #5274: Deprecate CompatModuleManager
 
 
 1.0.1 (February 5, 2021)
