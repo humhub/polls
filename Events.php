@@ -54,10 +54,11 @@ class Events
      */
     public static function onSpaceMenuInit($event)
     {
+        /* @var Space $space */
         $space = $event->sender->space;
 
         // Is Module enabled on this workspace?
-        if ($space->isModuleEnabled('polls')) {
+        if ($space->moduleManager->isEnabled('polls')) {
             $event->sender->addItem(array(
                 'label' => Yii::t('PollsModule.base', 'Polls'),
                 'url' => $space->createUrl('/polls/poll/show'),
@@ -69,9 +70,10 @@ class Events
 
     public static function onProfileMenuInit($event)
     {
+        /* @var User $user */
         $user = $event->sender->user;
 
-        if ($user->isModuleEnabled('polls')) {
+        if ($user->moduleManager->isEnabled('polls')) {
             $event->sender->addItem([
                 'label' => Yii::t('PollsModule.base', 'Polls'),
                 'url' => $user->createUrl('/polls/poll/show'),
@@ -138,13 +140,11 @@ class Events
      */
     public static function onSampleDataInstall($event)
     {
-
+        /* @var Space $space */
         $space = Space::find()->where(['id' => 1])->one();
 
         // activate module at space
-        if (!$space->isModuleEnabled("polls")) {
-            $space->enableModule("polls");
-        }
+        $space->moduleManager->enable('polls');
 
         // Switch Identity
         $user = User::find()->where(['id' => 1])->one();
