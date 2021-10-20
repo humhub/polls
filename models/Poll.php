@@ -25,6 +25,8 @@ use humhub\modules\content\components\ContentActiveRecord;
  * @property integer $anonymous
  * @property integer show_result_after_close
  *
+ * @property-read PollAnswer[] $answers
+ *
  * @package humhub.modules.polls.models
  * @since 0.5
  * @author Luke
@@ -343,18 +345,17 @@ class Poll extends ContentActiveRecord implements Searchable
      */
     public function getSearchAttributes()
     {
-
         $itemAnswers = '';
 
         foreach ($this->answers as $answer) {
-            $itemAnswers .= $answer->answer;
+            $itemAnswers .= $answer->answer . ' ';
         }
 
-        return array(
+        return [
             'question' => $this->question,
             'description' => $this->description,
-            'itemAnswers' => $itemAnswers
-        );
+            'itemAnswers' => trim($itemAnswers)
+        ];
     }
 
     /**
