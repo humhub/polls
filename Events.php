@@ -27,24 +27,24 @@ class Events
     public static function onWallEntryControlsInit($event)
     {
         $object = $event->sender->object;
-        
+
         if(!$object instanceof Poll) {
             return;
         }
-        
+
         if($object->content->canEdit()) {
             $event->sender->addWidget(CloseButton::class, [
                 'poll' => $object
             ]);
         }
-        
+
         if($object->isResetAllowed()) {
             $event->sender->addWidget(ResetButton::class, [
                 'poll' => $object
             ]);
         }
     }
-    
+
 
     /**
      * On build of a Space Navigation, check if this module is enabled.
@@ -141,18 +141,18 @@ class Events
     public static function onSampleDataInstall($event)
     {
         /* @var Space $space */
-        $space = Space::find()->where(['id' => 1])->one();
+        $space = Space::find()->orderBy(['id' => SORT_ASC])->one();
 
         // activate module at space
         $space->moduleManager->enable('polls');
 
         // Switch Identity
-        $user = User::find()->where(['id' => 1])->one();
+        $user = User::find()->orderBy(['username' => 'admin'])->one();
         Yii::$app->user->switchIdentity($user);
 
         $poll = new Poll();
         $poll->scenario = Poll::SCENARIO_CREATE;
-        
+
         $poll->question = Yii::t('PollsModule.events', 'Location of the next meeting');
         $poll->description = Yii::t('PollsModule.events', "Right now, we are in the planning stages for our next meetup and we would like to know from you, where you would like to go?");
         $poll->newAnswers = [
@@ -167,8 +167,8 @@ class Events
         }
 
         // load users
-        $user2 = User::find()->where(['id' => 2])->one();
-        $user3 = User::find()->where(['id' => 3])->one();
+        $user2 = User::find()->where(['username' => 'david1986'])->one();
+        $user3 = User::find()->where(['username' => 'sara1989'])->one();
 
         // Switch Identity
         Yii::$app->user->switchIdentity($user2);
