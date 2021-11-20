@@ -147,7 +147,7 @@ class Events
         $space->moduleManager->enable('polls');
 
         // Switch Identity
-        $user = User::find()->orderBy(['username' => 'admin'])->one();
+        $user = User::find()->orderBy(['id' => SORT_ASC])->one();
         Yii::$app->user->switchIdentity($user);
 
         $poll = new Poll();
