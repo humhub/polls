@@ -6,6 +6,7 @@ Changelog
 - Enh #86: Add REST API Support
 - Enh #5274: Deprecate CompatModuleManager
 - Fix #91: Added separator for concatenated search attributes
+- Fix #93: Fixed sample data for galera compatibility
 
 
 1.0.1 (February 5, 2021)
