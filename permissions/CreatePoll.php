@@ -37,6 +37,7 @@ class CreatePoll extends BasePermission
         Space::USERGROUP_OWNER,
         Space::USERGROUP_ADMIN,
         Space::USERGROUP_USER,
+        Space::USERGROUP_GUEST,
         User::USERGROUP_SELF,
         User::USERGROUP_GUEST
     ];
