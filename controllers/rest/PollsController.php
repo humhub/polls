@@ -38,6 +38,13 @@ class PollsController extends BaseContentController
         return RestDefinitions::getPoll($contentRecord);
     }
 
+    private function savePoll(Poll $poll): bool
+    {
+        return $poll->load($data = Yii::$app->request->post()) &&
+            $poll->save() &&
+            (!method_exists($this, 'updateContent') || $this->updateContent($poll, $data));
+    }
+
     /**
      * @inheritdoc
      */
@@ -57,8 +64,8 @@ class PollsController extends BaseContentController
 
         $poll = new Poll($container, ['scenario' => Poll::SCENARIO_CREATE]);
 
-        if ($poll->load(Yii::$app->request->post()) && $poll->save()) {
-            return RestDefinitions::getPoll(Poll::findOne(['id' => $poll->id]));
+        if ($this->savePoll($poll)) {
+            return $this->returnContentDefinition(Poll::findOne(['id' => $poll->id]));
         }
 
         if ($poll->hasErrors()) {
@@ -86,8 +93,8 @@ class PollsController extends BaseContentController
         }
 
         $poll->scenario = Poll::SCENARIO_EDIT;
-        if ($poll->load(Yii::$app->request->post()) && $poll->save()) {
-            return RestDefinitions::getPoll(Poll::findOne(['id' => $poll->id]));
+        if ($this->savePoll($poll)) {
+            return $this->returnContentDefinition(Poll::findOne(['id' => $poll->id]));
         }
 
         if ($poll->hasErrors()) {
