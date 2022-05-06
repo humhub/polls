@@ -657,6 +657,8 @@ definitions:
         type: array
         items:
           $ref: "#/definitions/Answer"
+      content:
+        $ref: "https://raw.githubusercontent.com/humhub/rest/master/docs/swagger/content.yaml#/definitions/Content"
 
   Answer:
     type: object
@@ -732,6 +734,8 @@ definitions:
             - "First answer"
             - "Second answer"
             - "Third answer"
+        content:
+          $ref: "https://raw.githubusercontent.com/humhub/rest/master/docs/swagger/content.yaml#/definitions/Content"
 
   PollEditParams:
     in: body
@@ -788,3 +792,5 @@ definitions:
           example:
             - "Fourth answer"
             - "Fifth answer"
+        content:
+          $ref: "https://raw.githubusercontent.com/humhub/rest/master/docs/swagger/content.yaml#/definitions/Content"

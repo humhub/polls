@@ -9,6 +9,7 @@ namespace humhub\modules\polls\helpers;
 
 use humhub\modules\polls\models\Poll;
 use humhub\modules\polls\models\PollAnswer;
+use humhub\modules\rest\definitions\ContentDefinitions;
 use humhub\modules\rest\definitions\UserDefinitions;
 
 /**
@@ -35,6 +36,7 @@ class RestDefinitions
             'anonymous' => (int)$poll->anonymous,
             'show_result_after_close' => (int)$poll->show_result_after_close,
             'answers' => self::getAnswersByPollId($poll->id),
+            'content' => ContentDefinitions::getContent($poll->content),
         ];
     }
 
