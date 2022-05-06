@@ -735,7 +735,7 @@ definitions:
             - "Second answer"
             - "Third answer"
         content:
-          $ref: "https://raw.githubusercontent.com/humhub/rest/master/docs/swagger/content.yaml#/definitions/ContentForm"
+          $ref: "https://raw.githubusercontent.com/humhub/rest/master/docs/swagger/content.yaml#/definitions/Content"
 
   PollEditParams:
     in: body
@@ -793,4 +793,4 @@ definitions:
             - "Fourth answer"
             - "Fifth answer"
         content:
-          $ref: "https://raw.githubusercontent.com/humhub/rest/master/docs/swagger/content.yaml#/definitions/ContentForm"
+          $ref: "https://raw.githubusercontent.com/humhub/rest/master/docs/swagger/content.yaml#/definitions/Content"
