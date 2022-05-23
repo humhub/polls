@@ -8,14 +8,18 @@
 
 namespace humhub\modules\polls;
 
+use humhub\modules\polls\models\Poll;
+use humhub\modules\polls\models\PollAnswer;
+use humhub\modules\polls\models\PollAnswerUser;
 use humhub\modules\polls\widgets\CloseButton;
 use humhub\modules\polls\widgets\ResetButton;
 use humhub\modules\space\models\Space;
+use humhub\modules\space\widgets\Menu;
+use humhub\modules\ui\menu\MenuLink;
 use humhub\modules\user\models\User;
-use humhub\modules\polls\models\Poll;
+use humhub\modules\user\widgets\ProfileMenu;
 use Yii;
-use humhub\modules\polls\models\PollAnswer;
-use humhub\modules\polls\models\PollAnswerUser;
+use yii\base\Event;
 
 /**
  * Description of Events
@@ -50,43 +54,43 @@ class Events
      * On build of a Space Navigation, check if this module is enabled.
      * When enabled add a menu item
      *
-     * @param type $event
+     * @param Event $event
      */
     public static function onSpaceMenuInit($event)
     {
-        /* @var Space $space */
-        $space = $event->sender->space;
+        /* @var Menu $menu */
+        $menu = $event->sender;
 
         // Is Module enabled on this workspace?
-        if ($space->moduleManager->isEnabled('polls')) {
-            $event->sender->addItem(array(
+        if ($menu->space->moduleManager->isEnabled('polls')) {
+            $menu->addEntry(new MenuLink([
                 'label' => Yii::t('PollsModule.base', 'Polls'),
-                'url' => $space->createUrl('/polls/poll/show'),
-                'icon' => '<i class="fa fa-question-circle"></i>',
-                'isActive' => (Yii::$app->controller->module && Yii::$app->controller->module->id == 'polls'),
-            ));
+                'url' => $menu->space->createUrl('/polls/poll/show'),
+                'icon' => 'bar-chart',
+                'isActive' => MenuLink::isActiveState('polls'),
+            ]));
         }
     }
 
     public static function onProfileMenuInit($event)
     {
-        /* @var User $user */
-        $user = $event->sender->user;
+        /* @var ProfileMenu $menu */
+        $menu = $event->sender;
 
-        if ($user->moduleManager->isEnabled('polls')) {
-            $event->sender->addItem([
+        if ($menu->user->moduleManager->isEnabled('polls')) {
+            $menu->addEntry(new MenuLink([
                 'label' => Yii::t('PollsModule.base', 'Polls'),
-                'url' => $user->createUrl('/polls/poll/show'),
-                'icon' => '<i class="fa fa-question-circle"></i>',
-                'isActive' => (Yii::$app->controller->module && Yii::$app->controller->module->id == 'polls'),
-            ]);
+                'url' => $menu->user->createUrl('/polls/poll/show'),
+                'icon' => 'bar-chart',
+                'isActive' => MenuLink::isActiveState('polls'),
+            ]));
         }
     }
 
     /**
      * On User delete, delete all poll answers by this user
      *
-     * @param type $event
+     * @param Event $event
      * @return bool
      */
     public static function onUserDelete($event)

@@ -8,6 +8,7 @@ Changelog
 - Fix #91: Added separator for concatenated search attributes
 - Fix #93: Fixed sample data for galera compatibility
 - Enh #95: Allow update content topics
+- Enh #96: Change icon in sidebar menu
 
 
 1.0.1 (February 5, 2021)
