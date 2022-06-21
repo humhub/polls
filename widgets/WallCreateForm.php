@@ -6,6 +6,7 @@ use humhub\modules\content\widgets\WallCreateContentForm;
 use humhub\modules\polls\models\Poll;
 use humhub\modules\polls\permissions\CreatePoll;
 use humhub\modules\space\models\Space;
+use humhub\modules\ui\form\widgets\ActiveForm;
 
 class WallCreateForm extends WallCreateContentForm
 {
@@ -18,7 +19,7 @@ class WallCreateForm extends WallCreateContentForm
     /**
      * @inheritdoc
      */
-    public function renderForm()
+    public function renderForm(ActiveForm $form): string
     {
         return $this->render('form', ['model' => new Poll()]);
     }
