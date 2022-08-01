@@ -28,18 +28,18 @@ PollsAsset::register($this);
 
     <div class="row">
         <div class="col-sm-6">
-            <div class="checkbox regular-checkbox-container">
+            <div class="checkbox">
                 <?= Html::activeCheckbox($model, 'allow_multiple'); ?>
             </div>
-            <div class="checkbox regular-checkbox-container">
+            <div class="checkbox">
                 <?= Html::activeCheckbox($model, 'is_random'); ?>
             </div>
         </div>
         <div class="col-sm-6">
-            <div class="checkbox regular-checkbox-container">
+            <div class="checkbox">
                 <?= Html::activeCheckbox($model, 'anonymous'); ?>
             </div>
-            <div class="checkbox regular-checkbox-container">
+            <div class="checkbox">
                 <?= Html::activeCheckbox($model, 'show_result_after_close'); ?>
             </div>
         </div>

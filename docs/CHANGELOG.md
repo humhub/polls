@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.1.0 (Unreleased)
+--------------------
+- Enh: Remove deprecated checkbox "regular" style
+
+
 1.0.2 (Unreleased)
 ------------------------
 - Enh #86: Add REST API Support
