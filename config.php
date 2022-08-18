@@ -1,5 +1,6 @@
 <?php
 
+use humhub\modules\content\widgets\WallCreateContentMenu;
 use humhub\modules\space\widgets\Menu;
 use humhub\modules\user\models\User;
 use humhub\commands\IntegrityController;
@@ -19,6 +20,6 @@ return [
         ['class' => IntegrityController::class, 'event' => IntegrityController::EVENT_ON_RUN, 'callback' => ['humhub\modules\polls\Events', 'onIntegrityCheck']],
         ['class' => 'humhub\modules\installer\controllers\ConfigController', 'event' => 'install_sample_data', 'callback' => ['humhub\modules\polls\Events', 'onSampleDataInstall']],
         ['class' => 'humhub\modules\rest\Module', 'event' => 'restApiAddRules', 'callback' => ['humhub\modules\polls\Events', 'onRestApiAddRules']],
+        ['class' => WallCreateContentMenu::class, 'event' => WallCreateContentMenu::EVENT_INIT, 'callback' => ['humhub\modules\polls\Events', 'onInitWallCreateContentMenu']],
     ]
 ];
-?>

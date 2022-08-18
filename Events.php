@@ -8,9 +8,11 @@
 
 namespace humhub\modules\polls;
 
+use humhub\modules\content\widgets\WallCreateContentMenu;
 use humhub\modules\polls\models\Poll;
 use humhub\modules\polls\models\PollAnswer;
 use humhub\modules\polls\models\PollAnswerUser;
+use humhub\modules\polls\permissions\CreatePoll;
 use humhub\modules\polls\widgets\CloseButton;
 use humhub\modules\polls\widgets\ResetButton;
 use humhub\modules\space\models\Space;
@@ -231,6 +233,24 @@ class Events
             ['pattern' => 'polls/vote/<id:\d+>', 'route' => 'polls/rest/polls/votes', 'verb' => 'GET'],
 
         ], 'polls');
+    }
+
+    public static function onInitWallCreateContentMenu($event)
+    {
+        /* @var WallCreateContentMenu $menu */
+        $menu = $event->sender;
+
+        if ($menu->contentContainer &&
+            $menu->contentContainer->moduleManager->isEnabled('polls') &&
+            $menu->contentContainer->getPermissionManager()->can(CreatePoll::class)) {
+            $menu->addEntry(new MenuLink([
+                'label' => Yii::t('PollsModule.base', 'Poll'),
+                // TODO: Implement form loading by AJAX with [data-action-click="loadForm"]
+                'url' => $menu->contentContainer->createUrl('/polls/poll/show'),
+                'sortOrder' => 200,
+                'icon' => 'bar-chart',
+            ]));
+        }
     }
 
 }
