@@ -86,4 +86,12 @@ class Module extends ContentContainerModule
         return Yii::t('PollsModule.base', 'Allows to start polls.');
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function getContentClasses(?ContentContainerActiveRecord $contentContainer = null): array
+    {
+        return [Poll::class];
+    }
+
 }

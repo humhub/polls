@@ -3,7 +3,6 @@
 namespace humhub\modules\polls\widgets;
 
 use humhub\modules\content\widgets\stream\WallStreamModuleEntryWidget;
-use Yii;
 
 /**
  * PollWallEntryWidget is used to display a poll inside the stream.
@@ -15,11 +14,27 @@ use Yii;
  */
 class WallEntry extends WallStreamModuleEntryWidget
 {
+    /**
+     * Route to create a content
+     *
+     * @var string
+     */
+    public $createRoute = '/polls/poll/show';
 
     /**
      * @inheritDoc
      */
-    public $editRoute = "/polls/poll/edit";
+    public $editRoute = '/polls/poll/edit';
+
+    /**
+     * @inheritdoc
+     */
+    public $menuIcon = 'bar-chart';
+
+    /**
+     * @inheritdoc
+     */
+    public $menuSortOrder = 200;
 
     /**
      * @inheritDoc
