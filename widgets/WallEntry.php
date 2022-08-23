@@ -29,11 +29,6 @@ class WallEntry extends WallStreamModuleEntryWidget
     /**
      * @inheritdoc
      */
-    public $menuIcon = 'bar-chart';
-
-    /**
-     * @inheritdoc
-     */
     public $menuSortOrder = 200;
 
     /**
