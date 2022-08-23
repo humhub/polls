@@ -7,6 +7,7 @@ use humhub\modules\polls\permissions\CreatePoll;
 use humhub\modules\polls\widgets\WallCreateForm;
 use humhub\modules\stream\actions\Stream;
 use Yii;
+use yii\web\ForbiddenHttpException;
 use yii\web\HttpException;
 use yii\helpers\Html;
 use humhub\modules\user\models\User;
@@ -45,6 +46,18 @@ class PollController extends ContentContainerController
         return $this->render('show', [
                     'contentContainer' => $this->contentContainer
         ]);
+    }
+
+    public function actionForm()
+    {
+        if (!$this->contentContainer->getPermissionManager()->can(CreatePoll::class)) {
+            throw new ForbiddenHttpException();
+        }
+
+        return $this->renderAjaxPartial(WallCreateForm::widget([
+            'contentContainer' => $this->contentContainer,
+            'displayMenu' => false
+        ]));
     }
 
     /**
