@@ -4,10 +4,6 @@ Changelog
 1.1.0 (Unreleased)
 --------------------
 - Enh #99: Remove deprecated checkbox "regular" style
-
-
-1.0.2 (Unreleased)
-------------------------
 - Enh #86: Add REST API Support
 - Enh #5274: Deprecate CompatModuleManager
 - Fix #91: Added separator for concatenated search attributes
