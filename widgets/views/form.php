@@ -2,46 +2,36 @@
 
 use humhub\modules\content\widgets\richtext\RichTextField;
 use humhub\modules\polls\assets\PollsAsset;
+use humhub\modules\polls\models\Poll;
 use humhub\modules\polls\widgets\AddAnswerInput;
+use humhub\modules\ui\form\widgets\ActiveForm;
 use yii\bootstrap\Html;
 
-/** @var $model \yii\base\Model * */
+/* @var $model Poll */
+/* @var $form ActiveForm */
 
 PollsAsset::register($this);
-
 ?>
 
-<?= Html::activeTextInput($model, 'question', [
-    'placeholder' => Yii::t('PollsModule.widgets_views_pollForm', 'Question'),
-    'class' => 'form-control',
-]) ?>
+<?= $form->field($model, 'question')->textInput(['placeholder' => Yii::t('PollsModule.widgets_views_pollForm', 'Question')])->label(false) ?>
 
 <div class="contentForm_options" data-content-component="polls.Poll">
-    <?= RichTextField::widget([
-        'name' => 'Poll[description]',
+    <?= $form->field($model, 'description')->widget(RichTextField::class, [
         'placeholder' => Yii::t('PollsModule.widgets_views_pollForm', 'Description'),
         'options' => ['style' => 'margin:20px 0 15px'],
-    ]); ?>
+    ])->label(false) ?>
 
     <?= Html::activeLabel($model, 'answersText', ['label' => Yii::t('PollsModule.base', 'Answers'), 'class' => 'control-label']); ?>
     <?= AddAnswerInput::widget(['name' => 'newAnswers[]', 'showTitle' => false]); ?>
 
     <div class="row">
         <div class="col-sm-6">
-            <div class="checkbox regular-checkbox-container">
-                <?= Html::activeCheckbox($model, 'allow_multiple'); ?>
-            </div>
-            <div class="checkbox regular-checkbox-container">
-                <?= Html::activeCheckbox($model, 'is_random'); ?>
-            </div>
+            <?= $form->field($model, 'allow_multiple')->checkbox() ?>
+            <?= $form->field($model, 'is_random')->checkbox() ?>
         </div>
         <div class="col-sm-6">
-            <div class="checkbox regular-checkbox-container">
-                <?= Html::activeCheckbox($model, 'anonymous'); ?>
-            </div>
-            <div class="checkbox regular-checkbox-container">
-                <?= Html::activeCheckbox($model, 'show_result_after_close'); ?>
-            </div>
+            <?= $form->field($model, 'anonymous')->checkbox() ?>
+            <?= $form->field($model, 'show_result_after_close')->checkbox() ?>
         </div>
     </div>
 </div>
