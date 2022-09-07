@@ -51,6 +51,11 @@ class Poll extends ContentActiveRecord implements Searchable
     protected $createPermission = CreatePoll::class;
 
     /**
+     * @inheritdoc
+     */
+    public $moduleId = 'polls';
+
+    /**
      * @return string the associated database table name
      */
     public static function tableName()
