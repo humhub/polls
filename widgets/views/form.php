@@ -7,20 +7,16 @@ use humhub\modules\polls\widgets\AddAnswerInput;
 use humhub\modules\ui\form\widgets\ActiveForm;
 use yii\bootstrap\Html;
 
-/** @var $model Poll * */
+/* @var $model Poll */
 /* @var $form ActiveForm */
 
 PollsAsset::register($this);
 ?>
 
-<?= $form->field($model, 'question')->textInput([
-    'placeholder' => Yii::t('PollsModule.widgets_views_pollForm', 'Question'),
-    'class' => 'form-control',
-])->label(false) ?>
+<?= $form->field($model, 'question')->textInput(['placeholder' => Yii::t('PollsModule.widgets_views_pollForm', 'Question')])->label(false) ?>
 
 <div class="contentForm_options" data-content-component="polls.Poll">
     <?= $form->field($model, 'description')->widget(RichTextField::class, [
-        'name' => 'Poll[description]',
         'placeholder' => Yii::t('PollsModule.widgets_views_pollForm', 'Description'),
         'options' => ['style' => 'margin:20px 0 15px'],
     ])->label(false) ?>

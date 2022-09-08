@@ -1,14 +1,17 @@
 Changelog
 =========
 
-1.0.2 (Unreleased)
-------------------------
+1.1.0 (Unreleased)
+--------------------
+- Enh #99: Remove deprecated checkbox "regular" style
 - Enh #86: Add REST API Support
 - Enh #5274: Deprecate CompatModuleManager
 - Fix #91: Added separator for concatenated search attributes
 - Fix #93: Fixed sample data for galera compatibility
 - Enh #95: Allow update content topics
 - Enh #96: Change icon in sidebar menu
+- Fix #10: Fix yii console Help without installed Rest module
+- 
 
 
 1.0.1 (February 5, 2021)

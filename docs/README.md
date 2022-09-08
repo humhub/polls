@@ -1,4 +1,4 @@
-[![Test Status](https://github.com/humhub/humhub-modules-polls/workflows/PHP%20Codeception%20Tests/badge.svg)](https://github.com/humhub/humhub-modules-polls/actions)
+[![Test Status](https://github.com/humhub/polls/actions/workflows/php-test-master.yml/badge.svg)](https://github.com/humhub/polls/actions/workflows/php-test-master.yml)
 
 # Polls
 
