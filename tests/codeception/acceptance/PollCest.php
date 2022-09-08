@@ -7,7 +7,7 @@ use polls\AcceptanceTester;
 
 class PollCest
 {
-    
+
     public function testCreatePoll(AcceptanceTester $I)
     {
         $I->amAdmin();
@@ -15,11 +15,15 @@ class PollCest
         $I->amGoingTo('submit a the poll entry');
 
         $I->enableModule(1, 'polls');
-        $I->amOnSpace1('/polls/poll/show');
+        $I->amOnSpace1();
 
         $I->click('#contentFormBody');
+        $I->waitForElementVisible('#contentFormMenu');
+        $I->click('Question');
+        $I->waitForElement('#poll-question');
+        $I->click('#poll-question');
         $I->expect('to see the poll form');
-        $I->seeElement('.contentForm_options');
+        $I->waitForElementVisible('.contentForm_options');
 
         $I->fillField('[contentEditable]', 'My Poll Question');
         $I->click(Locator::elementAt('.addPollAnswerButton',1)); //Ass answers
@@ -45,8 +49,6 @@ class PollCest
         $I->see('1 votes', '.wall-entry');
         $I->click('1 votes', '.wall-entry');
         $I->waitForText('Users voted for: Answer 1', null,'#globalModal');
-
-
     }
-   
+
 }

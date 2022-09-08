@@ -38,16 +38,6 @@ class PollController extends ContentContainerController
         ];
     }
 
-    /**
-     * Shows the questions tab
-     */
-    public function actionShow()
-    {
-        return $this->render('show', [
-                    'contentContainer' => $this->contentContainer
-        ]);
-    }
-
     public function actionForm()
     {
         if (!(new Poll($this->contentContainer))->content->canEdit()) {
