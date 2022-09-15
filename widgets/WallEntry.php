@@ -27,11 +27,6 @@ class WallEntry extends WallStreamModuleEntryWidget
     public $editRoute = '/polls/poll/edit';
 
     /**
-     * @inheritdoc
-     */
-    public $createFormSortOrder = 200;
-
-    /**
      * @inheritDoc
      */
     public function renderContent()
