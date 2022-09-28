@@ -32,6 +32,11 @@ class WallEntry extends WallStreamModuleEntryWidget
     public $createFormSortOrder = 200;
 
     /**
+     * @inheritdoc
+     */
+    public $createFormClass = WallCreateForm::class;
+
+    /**
      * @inheritDoc
      */
     public function renderContent()
