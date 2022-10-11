@@ -38,7 +38,7 @@ class PollController extends ContentContainerController
         ];
     }
 
-    public function actionForm()
+    public function actionCreateForm()
     {
         if (!(new Poll($this->contentContainer))->content->canEdit()) {
             throw new ForbiddenHttpException();

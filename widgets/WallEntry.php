@@ -19,7 +19,7 @@ class WallEntry extends WallStreamModuleEntryWidget
      *
      * @var string
      */
-    public $createRoute = '/polls/poll/form';
+    public $createRoute = '/polls/poll/create-form';
 
     /**
      * @inheritDoc
