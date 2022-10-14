@@ -21,7 +21,7 @@ class WallCreateForm extends WallCreateContentForm
      */
     public function renderForm()
     {
-        return $this->render('form', ['model' => new Poll()]);
+        return $this->render('form', ['model' => new Poll($this->contentContainer)]);
     }
 
     /**
@@ -29,7 +29,11 @@ class WallCreateForm extends WallCreateContentForm
      */
     public function renderActiveForm(ActiveForm $form): string
     {
-        return $this->render('form', ['model' => new Poll(), 'form' => $form]);
+        return $this->render('form', [
+            'model' => new Poll($this->contentContainer),
+            'form' => $form,
+            'submitUrl' => $this->submitUrl,
+        ]);
     }
 
     /**
@@ -39,7 +43,7 @@ class WallCreateForm extends WallCreateContentForm
     {
         if ($this->contentContainer instanceof Space) {
             if (!$this->contentContainer->permissionManager->can(new CreatePoll())) {
-                return;
+                return '';
             }
         }
 

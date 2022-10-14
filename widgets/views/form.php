@@ -1,6 +1,7 @@
 <?php
 
 use humhub\modules\content\widgets\richtext\RichTextField;
+use humhub\modules\content\widgets\WallCreateContentFormFooter;
 use humhub\modules\polls\assets\PollsAsset;
 use humhub\modules\polls\models\Poll;
 use humhub\modules\polls\widgets\AddAnswerInput;
@@ -9,6 +10,7 @@ use yii\bootstrap\Html;
 
 /* @var $model Poll */
 /* @var $form ActiveForm */
+/* @var $submitUrl string */
 
 PollsAsset::register($this);
 ?>
@@ -35,3 +37,8 @@ PollsAsset::register($this);
         </div>
     </div>
 </div>
+
+<?= WallCreateContentFormFooter::widget([
+    'contentContainer' => $model->content->container,
+    'submitUrl' => $submitUrl,
+]) ?>
