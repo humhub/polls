@@ -46,7 +46,6 @@ class PollController extends ContentContainerController
 
         return $this->renderAjaxPartial(WallCreateForm::widget([
             'contentContainer' => $this->contentContainer,
-            'displayContentTabs' => false
         ]));
     }
 
