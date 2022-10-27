@@ -68,7 +68,7 @@ class Poll extends ContentActiveRecord implements Searchable
     {
         return array(
             [['question'], 'string', 'max' => 255],
-            [['description'], 'required'],
+            [['question'], 'required'],
             [['description'], 'string'],
             [['anonymous', 'is_random'], 'boolean'],
             [['newAnswers'], 'required', 'on' => self::SCENARIO_CREATE],

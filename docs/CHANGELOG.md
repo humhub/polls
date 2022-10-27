@@ -11,7 +11,7 @@ Changelog
 - Enh #95: Allow update content topics
 - Enh #96: Change icon in sidebar menu
 - Fix #10: Fix yii console Help without installed Rest module
-- 
+- Fix #107: Make field "Question" mandatory
 
 
 1.0.1 (February 5, 2021)
