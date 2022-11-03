@@ -21,7 +21,7 @@ class PollCest
         $I->expect('to see the poll form');
         $I->seeElement('.contentForm_options');
 
-        $I->fillField('[contentEditable]', 'My Poll Question');
+        $I->fillField('#poll-question', 'My Poll Question');
         $I->click(Locator::elementAt('.addPollAnswerButton',1)); //Ass answers
         $I->fillField(Locator::elementAt('.poll_answer_new_input', 1), 'Answer 1');
         $I->fillField(Locator::elementAt('.poll_answer_new_input', 2), 'Answer 2');
