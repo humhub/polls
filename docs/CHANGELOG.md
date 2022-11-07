@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.1.0 (Unreleased)
---------------------
+1.1.0 (November 7, 2022)
+------------------------
 - Enh #99: Remove deprecated checkbox "regular" style
 - Enh #86: Add REST API Support
 - Enh #5274: Deprecate CompatModuleManager
