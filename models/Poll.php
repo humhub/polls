@@ -3,9 +3,10 @@
 namespace humhub\modules\polls\models;
 
 use humhub\modules\content\widgets\richtext\RichText;
-use Yii;
+use humhub\modules\polls\permissions\CreatePoll;
 use humhub\modules\search\interfaces\Searchable;
 use humhub\modules\content\components\ContentActiveRecord;
+use Yii;
 
 /**
  * This is the model class for table "poll".
@@ -43,6 +44,16 @@ class Poll extends ContentActiveRecord implements Searchable
     public $editAnswers;
     public $autoAddToWall = true;
     public $wallEntryClass = 'humhub\modules\polls\widgets\WallEntry';
+
+    /**
+     * @inheritdoc
+     */
+    protected $createPermission = CreatePoll::class;
+
+    /**
+     * @inheritdoc
+     */
+    public $moduleId = 'polls';
 
     /**
      * @return string the associated database table name

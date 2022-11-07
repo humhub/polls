@@ -21,4 +21,3 @@ return [
         ['class' => 'humhub\modules\rest\Module', 'event' => 'restApiAddRules', 'callback' => ['humhub\modules\polls\Events', 'onRestApiAddRules']],
     ]
 ];
-?>

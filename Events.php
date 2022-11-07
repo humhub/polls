@@ -14,10 +14,7 @@ use humhub\modules\polls\models\PollAnswerUser;
 use humhub\modules\polls\widgets\CloseButton;
 use humhub\modules\polls\widgets\ResetButton;
 use humhub\modules\space\models\Space;
-use humhub\modules\space\widgets\Menu;
-use humhub\modules\ui\menu\MenuLink;
 use humhub\modules\user\models\User;
-use humhub\modules\user\widgets\ProfileMenu;
 use Yii;
 use yii\base\Event;
 
@@ -46,44 +43,6 @@ class Events
             $event->sender->addWidget(ResetButton::class, [
                 'poll' => $object
             ]);
-        }
-    }
-
-
-    /**
-     * On build of a Space Navigation, check if this module is enabled.
-     * When enabled add a menu item
-     *
-     * @param Event $event
-     */
-    public static function onSpaceMenuInit($event)
-    {
-        /* @var Menu $menu */
-        $menu = $event->sender;
-
-        // Is Module enabled on this workspace?
-        if ($menu->space->moduleManager->isEnabled('polls')) {
-            $menu->addEntry(new MenuLink([
-                'label' => Yii::t('PollsModule.base', 'Polls'),
-                'url' => $menu->space->createUrl('/polls/poll/show'),
-                'icon' => 'bar-chart',
-                'isActive' => MenuLink::isActiveState('polls'),
-            ]));
-        }
-    }
-
-    public static function onProfileMenuInit($event)
-    {
-        /* @var ProfileMenu $menu */
-        $menu = $event->sender;
-
-        if ($menu->user->moduleManager->isEnabled('polls')) {
-            $menu->addEntry(new MenuLink([
-                'label' => Yii::t('PollsModule.base', 'Polls'),
-                'url' => $menu->user->createUrl('/polls/poll/show'),
-                'icon' => 'bar-chart',
-                'isActive' => MenuLink::isActiveState('polls'),
-            ]));
         }
     }
 
