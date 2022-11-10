@@ -3,9 +3,9 @@
     "name": "Polls",
     "description": "Easy to use poll system",
     "keywords": ["poll", "voting", "decision making"],
-    "version": "1.1.0",
+    "version": "1.2.0-beta.1",
     "humhub": {
-        "minVersion": "1.12"
+        "minVersion": "1.13"
     },
     "homepage": "https://github.com/humhub/polls",
     "authors": [
