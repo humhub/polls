@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.2.0-beta.2 (November 21, 2022)
+-------------------------------
+- Enh #101: Improved Content Form Support
+
+
 1.2.0-beta.1 (November 7, 2022)
 -------------------------------
 - Enh #101: Implemented new HumHub v1.13 Content Form Support
