@@ -19,7 +19,7 @@ class PollCest
 
         $I->click('#contentFormBody');
         $I->waitForElementVisible('#contentFormMenu');
-        $I->click('Question');
+        $I->click('Poll');
         $I->waitForElement('#poll-question');
         $I->click('#poll-question');
         $I->expect('to see the poll form');
@@ -32,7 +32,7 @@ class PollCest
         $I->fillField(Locator::elementAt('.poll_answer_new_input', 3), 'Answer 3');
 
         $I->click('#post_submit_button');
-        $I->waitForElementVisible('.wall-entry');
+        $I->waitForElementVisible('.wall-entry .wall_humhubmodulespollsmodelsPoll_1');
         $I->see('My Poll Question');
         $I->see('Answer 1');
         $I->see('Answer 2');

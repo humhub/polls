@@ -125,7 +125,7 @@ class Poll extends ContentActiveRecord implements Searchable
 
     public function getIcon()
     {
-        return 'fa-question-circle';
+        return 'fa-bar-chart';
     }
     
     public function isResetAllowed()
@@ -340,7 +340,7 @@ class Poll extends ContentActiveRecord implements Searchable
      */
     public function getContentName()
     {
-        return Yii::t('PollsModule.models_Poll', 'Question');
+        return Yii::t('PollsModule.models_Poll', 'Poll');
     }
 
     /**
