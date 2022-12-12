@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.2.0 (December 12, 2022)
+-------------------------
+- Enh #113: Update single item wording from `Question` to `Poll` 
+- Enh #113: Changed module icon to `bar-chart` 
+
+
 1.2.0-beta.2 (November 21, 2022)
 -------------------------------
 - Enh #101: Improved Content Form Support
