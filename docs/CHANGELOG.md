@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.2.1 (December 21, 2022)
+-------------------------
+- Enh #113: Update translations 
+
 1.2.0 (December 12, 2022)
 -------------------------
 - Enh #113: Update single item wording from `Question` to `Poll` 
