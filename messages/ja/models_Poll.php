@@ -2,8 +2,8 @@
 return array (
   'Answers' => '回答',
   'Description' => '説明',
-  'Multiple answers per user' => '複数回答を許可する',
-  'Please specify at least {min} answers!' => '{min}問以上の回答を指定してください。',
-  'Poll' => 'アンケート',
-  'Question' => 'アンケート',
+  'Multiple answers per user' => 'ユーザーごとの複数回答',
+  'Please specify at least {min} answers!' => '少なくとも {min} の回答を指定してください!',
+  'Poll' => '世論調査',
+  'Question' => '質問',
 );
