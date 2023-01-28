@@ -2,7 +2,6 @@
 
 namespace humhub\modules\polls\controllers;
 
-use humhub\modules\polls\components\StreamAction;
 use humhub\modules\polls\permissions\CreatePoll;
 use humhub\modules\polls\widgets\WallCreateForm;
 use humhub\modules\stream\actions\Stream;
@@ -25,18 +24,6 @@ use humhub\modules\polls\models\PollAnswer;
  */
 class PollController extends ContentContainerController
 {
-
-    public function actions()
-    {
-        return [
-            'stream' => [
-                'class' => StreamAction::class,
-                'includes' => Poll::class,
-                'mode' => StreamAction::MODE_NORMAL,
-                'contentContainer' => $this->contentContainer
-            ],
-        ];
-    }
 
     public function actionCreateForm()
     {
