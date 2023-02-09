@@ -2,10 +2,7 @@
 
 namespace humhub\modules\polls\models;
 
-use Yii;
 use humhub\components\ActiveRecord;
-use humhub\modules\polls\models\Poll;
-use humhub\modules\polls\models\PollAnswerUser;
 
 /**
  * This is the model class for table "poll_answer".
@@ -18,6 +15,9 @@ use humhub\modules\polls\models\PollAnswerUser;
  * @property integer $created_by
  * @property string $updated_at
  * @property integer $updated_by
+ *
+ * @property-read Poll $poll
+ * @property-read PollAnswerUser[] $votes
  *
  * @package humhub.modules.polls.models
  * @since 0.5

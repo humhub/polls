@@ -3,7 +3,6 @@
 namespace humhub\modules\polls\models;
 
 use humhub\components\ActiveRecord;
-use humhub\modules\polls\models\Poll;
 use humhub\modules\user\models\User;
 
 /**
@@ -17,6 +16,9 @@ use humhub\modules\user\models\User;
  * @property integer $created_by
  * @property string $updated_at
  * @property integer $updated_by
+ *
+ * @property-read Poll $poll
+ * @property-read User $user
  *
  * @package humhub.modules.polls.models
  * @since 0.5

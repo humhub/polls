@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.2.2 (Unreleased)
+-------------------------
+- Fix #117: Fix responsive layout bug
+
 1.2.1 (December 21, 2022)
 -------------------------
 - Enh #113: Update translations 
