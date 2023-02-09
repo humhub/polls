@@ -46,8 +46,8 @@ class PollCest
         $I->click('Vote', '#wallStream');
 
         $I->seeSuccess('Saved');
-        $I->see('1 votes', '.wall-entry');
-        $I->click('1 votes', '.wall-entry');
+        $I->see('1 vote', '.wall-entry');
+        $I->click('1 vote', '.wall-entry');
         $I->waitForText('Users voted for: Answer 1', null,'#globalModal');
     }
 
