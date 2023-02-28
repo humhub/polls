@@ -9,4 +9,5 @@ return [
     'Cancel' => '',
     'Create poll' => '',
     'Polls' => '',
+    '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '',
 ];

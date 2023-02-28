@@ -9,4 +9,5 @@ return [
     'Save' => 'Lưu',
     'Allows the user to create polls' => '',
     'Create poll' => '',
+    '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '',
 ];

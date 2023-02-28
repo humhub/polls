@@ -9,4 +9,5 @@ return [
     'At least one answer is required' => '',
     'Create poll' => '',
     'Polls' => '',
+    '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '',
 ];

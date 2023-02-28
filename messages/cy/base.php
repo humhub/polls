@@ -9,4 +9,5 @@ return [
     'Create poll' => '',
     'Polls' => '',
     'Save' => '',
+    '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '',
 ];
