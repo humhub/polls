@@ -1,10 +1,9 @@
 <?php
-
-return [
-    'Answers' => '',
-    'Description' => '',
-    'Multiple answers per user' => '',
-    'Please specify at least {min} answers!' => '',
-    'Poll' => '',
-    'Question' => '',
-];
+return array (
+  'Answers' => '',
+  'Description' => '描述',
+  'Multiple answers per user' => '',
+  'Please specify at least {min} answers!' => '',
+  'Poll' => '',
+  'Question' => '',
+);
