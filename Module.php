@@ -52,7 +52,7 @@ class Module extends ContentContainerModule
     public function disable()
     {
         foreach (Poll::find()->all() as $poll) {
-            $poll->delete();
+            $poll->hardDelete();
         }
 
         parent::disable();
@@ -64,7 +64,7 @@ class Module extends ContentContainerModule
     public function disableContentContainer(ContentContainerActiveRecord $container)
     {
         foreach (Poll::find()->contentContainer($container)->all() as $poll) {
-            $poll->delete();
+            $poll->hardDelete();
         }
 
         parent::disableContentContainer($container);

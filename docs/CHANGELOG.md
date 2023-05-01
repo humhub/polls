@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.3.0 (Unreleased)
+-------------------------
+- Fix #122: Hard delete records on disable module
+
 1.2.2 (Unreleased)
 -------------------------
 - Fix #117: Fix responsive layout bug
