@@ -1,6 +1,6 @@
 <?php
 return array (
-  'Again? ;Weary;' => '再び？ ;Weary;',
+  'Again? ;Weary;' => 'また？ ;疲れた;',
   'Club A Steakhouse' => 'クラブAステーキハウス',
   'Location of the next meeting' => '次の会議の場所',
   'Pisillo Italian Panini' => 'ピシーロイタリアンパニーニ',
