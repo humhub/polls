@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.3.1 (Unreleased)
+-------------------
+- Fix #123: Fix double insertion of answers
+
 1.3.0 (May 1, 2023)
 -------------------
 - Fix #122: Hard delete records on disable module
@@ -111,6 +115,3 @@ Changelog
 0.9.11 - 12 April, 2018
 ------------------------
 - Enh: Added `Hide results until poll is closed?` option.
-
-
-
