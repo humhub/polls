@@ -193,7 +193,9 @@ class Poll extends ContentActiveRecord implements Searchable
         foreach ($this->newAnswers as $answerText) {
             $this->addAnswer($answerText);
         }
-        
+        // Reset already inserted answers to avoid their duplicates
+        $this->newAnswers = null;
+
         // Reset cached answers
         unset($this->answers);
     }
