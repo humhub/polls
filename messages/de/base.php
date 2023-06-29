@@ -8,5 +8,5 @@ return array (
   'Create poll' => 'Umfrage erstellen',
   'Polls' => 'Umfragen',
   'Save' => 'Speichern',
-  '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '{n,plural,=1{# {htmlTagBegin}Umfrage{htmlTagEnd}}other{# {htmlTagBegin}Umfragen{htmlTagEnd}}}',
+  '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '{n,plural,=1{# {htmlTagBegin}Stimme{htmlTagEnd}}other{# {htmlTagBegin}Stimmen{htmlTagEnd}}}',
 );
