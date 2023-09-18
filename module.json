@@ -1,7 +1,7 @@
 {
     "id": "polls",
     "name": "Polls",
-    "description": "Easy to use poll system",
+    "description": "Empower your users to create polls and survey to drive engagement and gather valuable insights from your community.",
     "keywords": ["poll", "voting", "decision making"],
     "version": "1.3.3",
     "humhub": {
