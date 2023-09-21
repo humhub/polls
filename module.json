@@ -3,7 +3,7 @@
     "name": "Polls",
     "description": "Empower your users to create polls and survey to drive engagement and gather valuable insights from your community.",
     "keywords": ["poll", "voting", "decision making"],
-    "version": "1.3.3",
+    "version": "1.3.4",
     "humhub": {
         "minVersion": "1.14"
     },

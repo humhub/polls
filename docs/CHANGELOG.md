@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.3.4 (Unreleased)
+----------------------
+- Enh #127: Tests for `next` version
+
 1.3.1 (May 26, 2023)
 --------------------
 - Fix #123: Fix double insertion of answers
