@@ -4,6 +4,7 @@ Changelog
 1.3.4 (Unreleased)
 ----------------------
 - Enh #127: Tests for `next` version
+- Fix #128: Remove unused events from config
 
 1.3.1 (May 26, 2023)
 --------------------
