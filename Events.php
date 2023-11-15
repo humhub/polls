@@ -72,7 +72,7 @@ class Events
     {
         $integrityController = $event->sender;
         $integrityController->showTestHeadline("Polls Module - Answers (" . PollAnswer::find()->count() . " entries)");
-        foreach (PollAnswer::find()->joinWith('poll')->all() as $answer) {
+        foreach (PollAnswer::find()->joinWith('poll')->each() as $answer) {
             if ($answer->poll === null) {
                 if ($integrityController->showFix("Deleting poll answer id " . $answer->id . " without existing poll!")) {
                     $answer->delete();
@@ -81,7 +81,7 @@ class Events
         }
 
         $integrityController->showTestHeadline("Polls Module - Answers User (" . PollAnswerUser::find()->count() . " entries)");
-        foreach (PollAnswerUser::find()->joinWith(['poll', 'user'])->all() as $answerUser) {
+        foreach (PollAnswerUser::find()->joinWith(['poll', 'user'])->each() as $answerUser) {
             if ($answerUser->poll === null) {
                 if ($integrityController->showFix("Deleting poll answer id " . $answerUser->id . " without existing poll!")) {
                     $answerUser->delete();
