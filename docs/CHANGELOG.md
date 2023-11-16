@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.3.5 (Unreleased)
+----------------------
+- Fix #129: Fix memory usage on integrity check
+
 1.3.4 (November, 10, 2023)
 --------------------------
 - Enh #127: Tests for `next` version
