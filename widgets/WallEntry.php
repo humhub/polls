@@ -56,6 +56,6 @@ class WallEntry extends WallStreamModuleEntryWidget
      */
     protected function getTitle()
     {
-        return trim($this->model->question) === '' ? $this->model->getContentName() : $this->model->question;
+        return trim((string)$this->model->question) === '' ? $this->model->getContentName() : $this->model->question;
     }
 }
