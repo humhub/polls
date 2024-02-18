@@ -1,13 +1,12 @@
 <?php
-
-return [
-    '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '',
-    'Anonymous' => '',
-    'Closed' => '',
-    'Complete Poll' => '',
-    'Reopen Poll' => '',
-    'Reset my vote' => '',
-    'Vote' => '',
-    'and {count} more vote for this.' => '',
-    'votes' => '',
-];
+return array (
+  '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '<strong> Napomena: </strong> rezultat je skriven dok moderator ne zatvori anketu.',
+  'Anonymous' => 'Anonimno',
+  'Closed' => 'Zatvoreno',
+  'Complete Poll' => 'Cela anketa',
+  'Reopen Poll' => 'Ponovo-otvori anketu',
+  'Reset my vote' => 'Resetiraj moj glas',
+  'Vote' => 'Glasaj',
+  'and {count} more vote for this.' => 'i {count} više glasova za ovo.',
+  'votes' => 'glasova',
+);

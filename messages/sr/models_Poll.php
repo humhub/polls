@@ -1,10 +1,9 @@
 <?php
-
-return [
-    'Answers' => '',
-    'Description' => '',
-    'Multiple answers per user' => '',
-    'Please specify at least {min} answers!' => '',
-    'Poll' => '',
-    'Question' => '',
-];
+return array (
+  'Answers' => 'Odgovori',
+  'Description' => 'Opis',
+  'Multiple answers per user' => 'Višestruki odgovori po korisniku',
+  'Please specify at least {min} answers!' => 'Molimo odaberite barem {min} odgovora!',
+  'Poll' => 'Anketa',
+  'Question' => 'Pitanje',
+);
