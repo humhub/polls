@@ -4,6 +4,6 @@ return array (
   'Description' => 'Opis',
   'Multiple answers per user' => 'Višestruki odgovori po korisniku',
   'Please specify at least {min} answers!' => 'Molimo odaberite barem {min} odgovora!',
-  'Poll' => 'Pitanje',
+  'Poll' => 'Anketa',
   'Question' => 'Pitanje',
 );
