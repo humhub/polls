@@ -2,11 +2,11 @@
 
 # Polls
 
-Stop discussing, let the votes speak for themselves. Our Polls module allows you to resolve disputes quickly. Let the majority decide, or just get an opinion on your urgent questions. 
+Easily create polls with the intuitive Polls Module, simplifying decision-making on your network. Whether you're seeking opinions on urgent matters or aiming for consensus, harness the power of voting to streamline discussions and swiftly resolve disputes.
 
 ## Overviews
 
-- Offer single or multiple choice
-- Hide the results until the poll is closed
-- Vote anonymously
-- Discuss the results in the comments
+- **Immersive:** Discuss the poll topic or results in comments.
+- **Vote Types:** Choose between regular and anonymous voting.
+- **Choices:** Allow your users to select single or multiple options.
+- **Blind Voting:** Keep poll results hidden until it's closed to avoid choice bias.
