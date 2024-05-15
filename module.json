@@ -1,7 +1,7 @@
 {
     "id": "polls",
     "name": "Polls",
-    "description": "Empower your users to create polls and survey to drive engagement and gather valuable insights from your community.",
+    "description": "Easily create polls, streamline decision-making, and harness the power of voting.",
     "keywords": ["poll", "voting", "decision making"],
     "version": "1.3.5",
     "humhub": {
@@ -20,9 +20,12 @@
         }
     ],
     "screenshots": [
-        "assets/screen1.PNG",
-        "assets/screen2.PNG",
-        "assets/screen3.PNG",
-        "assets/screen4.PNG"
+        "resources/screenshot1.png",
+        "resources/screenshot2.png",
+        "resources/screenshot3.png",
+        "resources/screenshot4.png",
+        "resources/screenshot5.png",
+        "resources/screenshot6.png",
+        "resources/screenshot7.png"
     ]
 }
