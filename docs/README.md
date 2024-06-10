@@ -4,7 +4,7 @@
 
 Easily create polls with the intuitive Polls Module, simplifying decision-making on your network. Whether you're seeking opinions on urgent matters or aiming for consensus, harness the power of voting to streamline discussions and swiftly resolve disputes.
 
-## Overviews
+## Key Features:
 
 - **Immersive:** Discuss the poll topic or results in comments.
 - **Vote Types:** Choose between regular and anonymous voting.
