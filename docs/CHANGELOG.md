@@ -4,6 +4,7 @@ Changelog
 1.3.5 (Unreleased)
 ----------------------
 - Fix #129: Fix memory usage on integrity check
+- Fix #136: Fix wall stream horizontally scrollable
 
 1.3.4 (November, 10, 2023)
 --------------------------
