@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.3.5 (Unreleased)
+1.3.5 (June 18, 2024)
 ----------------------
 - Fix #129: Fix memory usage on integrity check
 - Fix #136: Fix wall stream horizontally scrollable
