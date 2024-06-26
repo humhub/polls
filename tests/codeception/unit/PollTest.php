@@ -6,5 +6,4 @@ use tests\codeception\_support\HumHubDbTestCase;
 
 class PollTest extends HumHubDbTestCase
 {
-
 }

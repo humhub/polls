@@ -16,12 +16,10 @@ use humhub\components\Widget;
 class ResetButton extends Widget
 {
     public $poll;
-    
+
     public function run()
     {
         return $this->render('resetButton', ['poll' => $this->poll]);
     }
 
 }
-
-?>

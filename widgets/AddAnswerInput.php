@@ -15,15 +15,12 @@ use humhub\components\Widget;
  */
 class AddAnswerInput extends Widget
 {
-    
     public $name;
     public $showTitle;
-    
+
     public function run()
     {
         return $this->render('addAnswersInput', ['name' => $this->name, 'showTitle' => $this->showTitle]);
     }
 
 }
-
-?>

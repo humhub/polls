@@ -24,7 +24,6 @@ use humhub\modules\polls\models\PollAnswer;
  */
 class PollController extends ContentContainerController
 {
-
     public function actionCreateForm()
     {
         if (!(new Poll($this->contentContainer))->content->canEdit()) {
@@ -47,7 +46,7 @@ class PollController extends ContentContainerController
         if (!$this->contentContainer->permissionManager->can(new CreatePoll())) {
             throw new HttpException(400, 'Access denied!');
         }
-        
+
         $poll = new Poll(['scenario' => Poll::SCENARIO_CREATE]);
         $poll->load(Yii::$app->request->post());
         return WallCreateForm::create($poll, $this->contentContainer);
@@ -108,12 +107,12 @@ class PollController extends ContentContainerController
 
     public function actionOpen()
     {
-        return $this->asJson($this->setClosed(Yii::$app->request->get('id'), false)); 
+        return $this->asJson($this->setClosed(Yii::$app->request->get('id'), false));
     }
 
     public function actionClose()
     {
-        return  $this->asJson($this->setClosed(Yii::$app->request->get('id'), true)); 
+        return  $this->asJson($this->setClosed(Yii::$app->request->get('id'), true));
     }
 
     public function setClosed($id, $closed)
@@ -131,7 +130,7 @@ class PollController extends ContentContainerController
         $model->save();
         // Refresh updated_at
         $model->content->refresh();
-        
+
         return Stream::getContentResultEntry($model->content);
     }
 

@@ -18,7 +18,6 @@ use Yii;
  */
 class CreatePoll extends BasePermission
 {
-
     /**
      * @inheritdoc
      */
@@ -27,9 +26,9 @@ class CreatePoll extends BasePermission
         Space::USERGROUP_ADMIN,
         Space::USERGROUP_MODERATOR,
         Space::USERGROUP_MEMBER,
-        User::USERGROUP_SELF
+        User::USERGROUP_SELF,
     ];
-    
+
     /**
      * @inheritdoc
      */
@@ -39,7 +38,7 @@ class CreatePoll extends BasePermission
         Space::USERGROUP_USER,
         Space::USERGROUP_GUEST,
         User::USERGROUP_SELF,
-        User::USERGROUP_GUEST
+        User::USERGROUP_GUEST,
     ];
 
     /**

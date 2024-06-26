@@ -8,13 +8,13 @@ use humhub\components\ActiveRecord;
  * This is the model class for table "poll_answer".
  *
  * The followings are the available columns in table 'poll_answer':
- * @property integer $id
- * @property integer $poll_id
+ * @property int $id
+ * @property int $poll_id
  * @property string $answer
  * @property string $created_at
- * @property integer $created_by
+ * @property int $created_by
  * @property string $updated_at
- * @property integer $updated_by
+ * @property int $updated_by
  *
  * @property-read Poll $poll
  * @property-read PollAnswerUser[] $votes
@@ -25,7 +25,6 @@ use humhub\components\ActiveRecord;
  */
 class PollAnswer extends ActiveRecord
 {
-    
     public $active = true;
 
     /**
@@ -58,12 +57,13 @@ class PollAnswer extends ActiveRecord
         $query = $this->hasMany(PollAnswerUser::className(), ['poll_answer_id' => 'id']);
         return $query;
     }
-    
-    public function beforeDelete() {
+
+    public function beforeDelete()
+    {
         foreach ($this->votes as $answerUser) {
             $answerUser->delete();
         }
-        
+
         return parent::beforeDelete();
     }
 
@@ -75,8 +75,9 @@ class PollAnswer extends ActiveRecord
     public function getPercent()
     {
         $total = PollAnswerUser::find()->where(array('poll_id' => $this->poll_id))->count();
-        if ($total == 0)
+        if ($total == 0) {
             return 0;
+        }
 
         return $this->getTotal() / $total * 100;
     }
@@ -91,13 +92,13 @@ class PollAnswer extends ActiveRecord
 
         return PollAnswerUser::find()->where(array('poll_answer_id' => $this->id))->count();
     }
-    
-    public static function filterValidAnswers($answerArr) 
+
+    public static function filterValidAnswers($answerArr)
     {
         if (empty($answerArr)) {
             return [];
         }
-        
+
         $result = [];
         foreach ($answerArr as $key => $answerText) {
             if($answerText != null && $answerText !== '') {

@@ -13,18 +13,18 @@ use Yii;
  *
  * The followings are the available columns in table 'poll':
  *
- * @property integer $id
+ * @property int $id
  * @property string $question
  * @property string $description
- * @property integer $allow_multiple
+ * @property int $allow_multiple
  * @property string $created_at
- * @property integer $created_by
+ * @property int $created_by
  * @property string $updated_at
- * @property integer $updated_by
- * @property integer $is_random
- * @property integer $closed
- * @property integer $anonymous
- * @property integer show_result_after_close
+ * @property int $updated_by
+ * @property int $is_random
+ * @property int $closed
+ * @property int $anonymous
+ * @property int show_result_after_close
  *
  * @property-read PollAnswer[] $answers
  *
@@ -34,11 +34,10 @@ use Yii;
  */
 class Poll extends ContentActiveRecord implements Searchable
 {
-
-    const MIN_REQUIRED_ANSWERS = 2;
-    const SCENARIO_CREATE = 'create';
-    const SCENARIO_EDIT = 'edit';
-    const SCENARIO_CLOSE = 'close';
+    public const MIN_REQUIRED_ANSWERS = 2;
+    public const SCENARIO_CREATE = 'create';
+    public const SCENARIO_EDIT = 'edit';
+    public const SCENARIO_CLOSE = 'close';
 
     public $newAnswers;
     public $editAnswers;
@@ -62,13 +61,13 @@ class Poll extends ContentActiveRecord implements Searchable
     {
         return 'poll';
     }
-    
+
     public function scenarios()
     {
         return [
             self::SCENARIO_CLOSE => [],
             self::SCENARIO_CREATE => ['question', 'description', 'anonymous', 'is_random', 'show_result_after_close', 'newAnswers', 'allow_multiple'],
-            self::SCENARIO_EDIT => ['question', 'description', 'anonymous', 'is_random', 'show_result_after_close','newAnswers', 'editAnswers', 'allow_multiple']
+            self::SCENARIO_EDIT => ['question', 'description', 'anonymous', 'is_random', 'show_result_after_close','newAnswers', 'editAnswers', 'allow_multiple'],
         ];
     }
 
@@ -87,17 +86,17 @@ class Poll extends ContentActiveRecord implements Searchable
             //we use the question attribute since its always required, otherwise it would not be called for editAnswers if editAnswers is empty...
             [['question'], 'minTwoAnswers', 'on' => self::SCENARIO_EDIT],
             [['allow_multiple'], 'integer'],
-            
+
         );
     }
-    
+
     public function minTwoNewAnswers($attribute)
     {
         if(count($this->newAnswers) < self::MIN_REQUIRED_ANSWERS) {
             $this->addError($attribute, Yii::t('PollsModule.models_Poll', "Please specify at least {min} answers!", ["{min}" => self::MIN_REQUIRED_ANSWERS]));
         }
     }
-    
+
     public function minTwoAnswers($attribute)
     {
         $count = count($this->newAnswers) + count($this->editAnswers);
@@ -119,7 +118,7 @@ class Poll extends ContentActiveRecord implements Searchable
             'allow_multiple' => Yii::t('PollsModule.models_Poll', 'Multiple answers per user'),
             'is_random' => Yii::t('PollsModule.widgets_views_pollForm', 'Display answers in random order?'),
             'anonymous' => Yii::t('PollsModule.widgets_views_pollForm', 'Anonymous Votes?'),
-            'show_result_after_close' => Yii::t('PollsModule.widgets_views_pollForm', 'Hide results until poll is closed?')
+            'show_result_after_close' => Yii::t('PollsModule.widgets_views_pollForm', 'Hide results until poll is closed?'),
         );
     }
 
@@ -127,7 +126,7 @@ class Poll extends ContentActiveRecord implements Searchable
     {
         return 'fa-bar-chart';
     }
-    
+
     public function isResetAllowed()
     {
         return $this->hasUserVoted() && !$this->closed;
@@ -143,7 +142,8 @@ class Poll extends ContentActiveRecord implements Searchable
      */
     public function getAnswers()
     {
-        return $this->hasMany(PollAnswer::class, ['poll_id' => 'id']);;
+        return $this->hasMany(PollAnswer::class, ['poll_id' => 'id']);
+        ;
     }
 
     public function getViewAnswers()
@@ -220,7 +220,7 @@ class Poll extends ContentActiveRecord implements Searchable
         foreach ($this->answers as $answer) {
             if (!array_key_exists($answer->id, $answersToEdit)) {
                 $answer->delete();
-            } else if ($answer->answer !== $answersToEdit[$answer->id]) {
+            } elseif ($answer->answer !== $answersToEdit[$answer->id]) {
                 $answer->answer = $this->editAnswers[$answer->id];
                 $answer->update();
             }
@@ -268,13 +268,15 @@ class Poll extends ContentActiveRecord implements Searchable
     public function hasUserVoted($userId = "")
     {
 
-        if ($userId == "")
+        if ($userId == "") {
             $userId = Yii::$app->user->id;
+        }
 
         $answer = PollAnswerUser::findOne(array('created_by' => $userId, 'poll_id' => $this->id));
 
-        if ($answer == null)
+        if ($answer == null) {
             return false;
+        }
 
         return true;
     }
@@ -322,9 +324,10 @@ class Poll extends ContentActiveRecord implements Searchable
         if($this->closed) {
             return;
         }
-        
-        if ($userId == "")
+
+        if ($userId == "") {
             $userId = Yii::$app->user->id;
+        }
 
         if ($this->hasUserVoted($userId)) {
 
@@ -367,7 +370,7 @@ class Poll extends ContentActiveRecord implements Searchable
         return [
             'question' => $this->question,
             'description' => $this->description,
-            'itemAnswers' => trim($itemAnswers)
+            'itemAnswers' => trim($itemAnswers),
         ];
     }
 

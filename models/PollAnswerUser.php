@@ -9,13 +9,13 @@ use humhub\modules\user\models\User;
  * This is the model class for table "poll_answer_user".
  *
  * The followings are the available columns in table 'poll_answer_user':
- * @property integer $id
- * @property integer $question_id
- * @property integer $question_answer_id
+ * @property int $id
+ * @property int $question_id
+ * @property int $question_answer_id
  * @property string $created_at
- * @property integer $created_by
+ * @property int $created_by
  * @property string $updated_at
- * @property integer $updated_by
+ * @property int $updated_by
  *
  * @property-read Poll $poll
  * @property-read User $user
@@ -26,7 +26,6 @@ use humhub\modules\user\models\User;
  */
 class PollAnswerUser extends ActiveRecord
 {
-
     /**
      * @return string the associated database table name
      */

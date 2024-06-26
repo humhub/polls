@@ -21,7 +21,6 @@ use Yii;
  */
 class Module extends ContentContainerModule
 {
-
     /**
      * @inheritdoc
      */
@@ -42,7 +41,7 @@ class Module extends ContentContainerModule
     {
         return [
             Space::class,
-            User::class
+            User::class,
         ];
     }
 
@@ -77,7 +76,7 @@ class Module extends ContentContainerModule
     {
         if ($contentContainer) {
             return [
-                new permissions\CreatePoll()
+                new permissions\CreatePoll(),
             ];
         }
 

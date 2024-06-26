@@ -13,7 +13,6 @@ use yii\test\ActiveFixture;
 
 class PollAnswerUserFixture extends ActiveFixture
 {
-
     public $modelClass = PollAnswerUser::class;
     public $dataFile = '@polls/tests/codeception/fixtures/data/pollAnswerUser.php';
 
