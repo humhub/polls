@@ -16,12 +16,10 @@ use humhub\components\Widget;
 class CloseButton extends Widget
 {
     public $poll;
-    
+
     public function run()
     {
         return $this->render('closeButton', ['poll' => $this->poll]);
     }
 
 }
-
-?>

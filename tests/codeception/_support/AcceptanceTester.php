@@ -1,4 +1,5 @@
 <?php
+
 namespace polls;
 
 /**
@@ -20,7 +21,7 @@ class AcceptanceTester extends \AcceptanceTester
 {
     use _generated\AcceptanceTesterActions;
 
-   /**
-    * Define custom actions here
-    */
+    /**
+     * Define custom actions here
+     */
 }

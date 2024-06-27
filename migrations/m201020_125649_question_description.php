@@ -23,6 +23,6 @@ class m201020_125649_question_description extends Migration
     public function safeDown()
     {
         $this->dropColumn('poll', 'question');
-        $this->renameColumn('poll', 'description','question');
+        $this->renameColumn('poll', 'description', 'question');
     }
 }

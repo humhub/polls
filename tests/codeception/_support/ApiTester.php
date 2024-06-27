@@ -1,4 +1,5 @@
 <?php
+
 namespace polls;
 
 use humhub\modules\polls\helpers\RestDefinitions;

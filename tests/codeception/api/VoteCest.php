@@ -8,7 +8,6 @@ use tests\codeception\_support\HumHubApiTestCest;
 
 class VoteCest extends HumHubApiTestCest
 {
-
     public function testVotePoll(ApiTester $I)
     {
         if (!$this->isRestModuleEnabled()) {
@@ -51,9 +50,11 @@ class VoteCest extends HumHubApiTestCest
 
         $I->wantTo('get votes on a poll for current user');
         $I->amAdmin();
-        $I->createPoll('Sample poll question?', 'Sample poll description',
+        $I->createPoll(
+            'Sample poll question?',
+            'Sample poll description',
             ['Answer 1', 'Answer 2', 'Answer 3'],
-            ['allow_multiple' => 1]
+            ['allow_multiple' => 1],
         );
 
         $I->sendPut('polls/vote/1', ['answers' => [2,3]]);

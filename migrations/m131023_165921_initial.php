@@ -4,7 +4,6 @@ use yii\db\Migration;
 
 class m131023_165921_initial extends Migration
 {
-
     public function up()
     {
 
@@ -16,7 +15,7 @@ class m131023_165921_initial extends Migration
             'created_by' => 'int(11) NOT NULL',
             'updated_at' => 'datetime NOT NULL',
             'updated_by' => 'int(11) NOT NULL',
-                ), '');
+        ), '');
 
         $this->createTable('poll_answer', array(
             'id' => 'pk',
@@ -26,7 +25,7 @@ class m131023_165921_initial extends Migration
             'created_by' => 'int(11) NOT NULL',
             'updated_at' => 'datetime NOT NULL',
             'updated_by' => 'int(11) NOT NULL',
-                ), '');
+        ), '');
 
         $this->createTable('poll_answer_user', array(
             'id' => 'pk',
@@ -36,7 +35,7 @@ class m131023_165921_initial extends Migration
             'created_by' => 'int(11) NOT NULL',
             'updated_at' => 'datetime NOT NULL',
             'updated_by' => 'int(11) NOT NULL',
-                ), '');
+        ), '');
     }
 
     public function down()

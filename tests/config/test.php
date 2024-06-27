@@ -5,9 +5,6 @@ return [
     'modules' => ['polls'],
     'fixtures' => [
         'default',
-        'polls' => \tests\codeception\fixtures\PollFixture::class
-    ]
+        'polls' => \tests\codeception\fixtures\PollFixture::class,
+    ],
 ];
-
-
-

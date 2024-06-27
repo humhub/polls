@@ -1,13 +1,12 @@
 <?php
-namespace polls\acceptance;
 
+namespace polls\acceptance;
 
 use Codeception\Util\Locator;
 use polls\AcceptanceTester;
 
 class PollCest
 {
-
     public function testCreatePoll(AcceptanceTester $I)
     {
         $I->amAdmin();
@@ -26,7 +25,7 @@ class PollCest
         $I->waitForElementVisible('.contentForm_options');
 
         $I->fillField('#poll-question', 'My Poll Question');
-        $I->click(Locator::elementAt('.addPollAnswerButton',1)); //Ass answers
+        $I->click(Locator::elementAt('.addPollAnswerButton', 1)); //Ass answers
         $I->fillField(Locator::elementAt('.poll_answer_new_input', 1), 'Answer 1');
         $I->fillField(Locator::elementAt('.poll_answer_new_input', 2), 'Answer 2');
         $I->fillField(Locator::elementAt('.poll_answer_new_input', 3), 'Answer 3');
@@ -48,7 +47,7 @@ class PollCest
         $I->seeSuccess('Saved');
         $I->see('1 vote', '.wall-entry');
         $I->click('1 vote', '.wall-entry');
-        $I->waitForText('Users voted for: Answer 1', null,'#globalModal');
+        $I->waitForText('Users voted for: Answer 1', null, '#globalModal');
     }
 
 }

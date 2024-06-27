@@ -5,7 +5,6 @@ use humhub\components\Migration;
 
 class m150709_151858_namespace extends Migration
 {
-
     public function up()
     {
         $this->renameClass('Poll', humhub\modules\polls\models\Poll::className());

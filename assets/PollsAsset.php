@@ -14,12 +14,11 @@ use yii\web\AssetBundle;
 
 class PollsAsset extends AssetBundle
 {
-
     public $jsOptions = ['position' => \yii\web\View::POS_END];
     public $sourcePath = '@polls/resources';
     public $css = [];
     public $js = [
-        'js/humhub.polls.js'
+        'js/humhub.polls.js',
     ];
 
     /**
@@ -30,8 +29,8 @@ class PollsAsset extends AssetBundle
     {
         $view->registerJsConfig('polls', [
             'text' => [
-                'warn.answer_required' => Yii::t('PollsModule.base', 'At least one answer is required')
-            ]
+                'warn.answer_required' => Yii::t('PollsModule.base', 'At least one answer is required'),
+            ],
         ]);
         return parent::register($view);
     }

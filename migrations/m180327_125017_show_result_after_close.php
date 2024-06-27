@@ -13,7 +13,7 @@ class m180327_125017_show_result_after_close extends Migration
 {
     public function safeUp()
     {
-        $this->addColumn('poll', 'show_result_after_close', Schema::TYPE_BOOLEAN. ' DEFAULT 0');
+        $this->addColumn('poll', 'show_result_after_close', Schema::TYPE_BOOLEAN . ' DEFAULT 0');
     }
 
     public function safeDown()

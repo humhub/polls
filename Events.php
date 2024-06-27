@@ -35,13 +35,13 @@ class Events
 
         if($object->content->canEdit()) {
             $event->sender->addWidget(CloseButton::class, [
-                'poll' => $object
+                'poll' => $object,
             ]);
         }
 
         if($object->isResetAllowed()) {
             $event->sender->addWidget(ResetButton::class, [
-                'poll' => $object
+                'poll' => $object,
             ]);
         }
     }
@@ -121,7 +121,7 @@ class Events
         $poll->newAnswers = [
             Yii::t('PollsModule.events', "To Daniel"),
             Yii::t('PollsModule.events', "Club A Steakhouse"),
-            Yii::t('PollsModule.events', "Pisillo Italian Panini")
+            Yii::t('PollsModule.events', "Pisillo Italian Panini"),
         ];
         $poll->content->container = $space;
         $poll->allow_multiple = Yii::$app->request->post('allowMultiple', 0);

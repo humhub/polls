@@ -14,12 +14,11 @@ use Yii;
 
 class NewVote extends BaseActivity implements ConfigurableActivityInterface
 {
-
     /**
      * @inheritdoc
      */
     public $moduleId = 'polls';
-    
+
     /**
      * @inheritdoc
      */

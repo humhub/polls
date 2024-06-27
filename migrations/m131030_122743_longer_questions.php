@@ -4,7 +4,6 @@ use yii\db\Migration;
 
 class m131030_122743_longer_questions extends Migration
 {
-
     public function up()
     {
         $this->alterColumn('poll', 'question', 'TEXT NOT NULL');

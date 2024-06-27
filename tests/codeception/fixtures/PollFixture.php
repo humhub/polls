@@ -13,12 +13,11 @@ use yii\test\ActiveFixture;
 
 class PollFixture extends ActiveFixture
 {
-
     public $modelClass = Poll::class;
     public $dataFile = '@polls/tests/codeception/fixtures/data/poll.php';
 
     public $depends = [
         PollAnswerUserFixture::class,
-        PollAnswerFixture::class
+        PollAnswerFixture::class,
     ];
 }

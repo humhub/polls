@@ -8,7 +8,6 @@ use tests\codeception\_support\HumHubApiTestCest;
 
 class PollCest extends HumHubApiTestCest
 {
-
     public function testCreatePoll(ApiTester $I)
     {
         if (!$this->isRestModuleEnabled()) {

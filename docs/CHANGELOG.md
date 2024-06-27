@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.3.6 (Unreleased)
+----------------------
+- Enh #137: Use PHP CS Fixer
+
 1.3.5 (June 18, 2024)
 ----------------------
 - Fix #129: Fix memory usage on integrity check
