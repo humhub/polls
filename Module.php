@@ -24,6 +24,11 @@ class Module extends ContentContainerModule
     /**
      * @inheritdoc
      */
+    public $resourcesPath = 'resources';
+
+    /**
+     * @inheritdoc
+     */
     public function init()
     {
         parent::init();
