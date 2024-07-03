@@ -1,9 +1,9 @@
 <?php
 return array (
-  'Answers' => '',
+  'Answers' => 'Odpovede',
   'Description' => 'Popis',
-  'Multiple answers per user' => '',
-  'Please specify at least {min} answers!' => '',
-  'Poll' => '',
-  'Question' => '',
+  'Multiple answers per user' => 'Viaceré odpovede na jedného používateľa',
+  'Please specify at least {min} answers!' => 'Zadajte aspoň {min} odpovedí!',
+  'Poll' => 'Anketa',
+  'Question' => 'Otázka',
 );
