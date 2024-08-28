@@ -9,5 +9,5 @@ return [
     'Create poll' => 'Criar enquete',
     'Polls' => 'Enquete',
     'Save' => 'Salvar',
-    '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '',
+    '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '{n,plural,=1{# {htmlTagBegin}voto{htmlTagEnd}}other{# {htmlTagBegin}votos{htmlTagEnd}}}',
 ];
