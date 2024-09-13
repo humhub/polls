@@ -183,7 +183,7 @@ class PollsController extends BaseContentController
 
         $answers = Yii::$app->request->post('answers');
 
-        $votes = array();
+        $votes = [];
         if (is_array($answers)) {
             foreach ($answers as $answerId) {
                 $votes[] = (int)$answerId;

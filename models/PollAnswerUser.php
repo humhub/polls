@@ -39,10 +39,10 @@ class PollAnswerUser extends ActiveRecord
      */
     public function rules()
     {
-        return array(
-            array(['poll_answer_id', 'poll_id'], 'required'),
-            array(['poll_answer_id', 'poll_id'], 'integer'),
-        );
+        return [
+            [['poll_answer_id', 'poll_id'], 'required'],
+            [['poll_answer_id', 'poll_id'], 'integer'],
+        ];
     }
 
     public function getPoll()

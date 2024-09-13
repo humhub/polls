@@ -40,11 +40,11 @@ class PollAnswer extends ActiveRecord
      */
     public function rules()
     {
-        return array(
-            array(['poll_id', 'answer'], 'required'),
-            array(['poll_id'], 'integer'),
-            array(['answer'], 'string', 'max' => 255),
-        );
+        return [
+            [['poll_id', 'answer'], 'required'],
+            [['poll_id'], 'integer'],
+            [['answer'], 'string', 'max' => 255],
+        ];
     }
 
     public function getPoll()
@@ -74,7 +74,7 @@ class PollAnswer extends ActiveRecord
      */
     public function getPercent()
     {
-        $total = PollAnswerUser::find()->where(array('poll_id' => $this->poll_id))->count();
+        $total = PollAnswerUser::find()->where(['poll_id' => $this->poll_id])->count();
         if ($total == 0) {
             return 0;
         }
@@ -90,7 +90,7 @@ class PollAnswer extends ActiveRecord
     public function getTotal()
     {
 
-        return PollAnswerUser::find()->where(array('poll_answer_id' => $this->id))->count();
+        return PollAnswerUser::find()->where(['poll_answer_id' => $this->id])->count();
     }
 
     public static function filterValidAnswers($answerArr)
@@ -101,7 +101,7 @@ class PollAnswer extends ActiveRecord
 
         $result = [];
         foreach ($answerArr as $key => $answerText) {
-            if($answerText != null && $answerText !== '') {
+            if ($answerText != null && $answerText !== '') {
                 $result[$key] = $answerText;
             }
         }
