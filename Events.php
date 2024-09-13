@@ -29,17 +29,17 @@ class Events
     {
         $object = $event->sender->object;
 
-        if(!$object instanceof Poll) {
+        if (!$object instanceof Poll) {
             return;
         }
 
-        if($object->content->canEdit()) {
+        if ($object->content->canEdit()) {
             $event->sender->addWidget(CloseButton::class, [
                 'poll' => $object,
             ]);
         }
 
-        if($object->isResetAllowed()) {
+        if ($object->isResetAllowed()) {
             $event->sender->addWidget(ResetButton::class, [
                 'poll' => $object,
             ]);
@@ -54,7 +54,7 @@ class Events
      */
     public static function onUserDelete($event)
     {
-        foreach (PollAnswerUser::findAll(array('created_by' => $event->sender->id)) as $answer) {
+        foreach (PollAnswerUser::findAll(['created_by' => $event->sender->id]) as $answer) {
             $answer->delete();
         }
 

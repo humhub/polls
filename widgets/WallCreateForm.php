@@ -4,7 +4,6 @@ namespace humhub\modules\polls\widgets;
 
 use humhub\modules\content\widgets\WallCreateContentForm;
 use humhub\modules\polls\models\Poll;
-use humhub\modules\polls\permissions\CreatePoll;
 use humhub\modules\space\models\Space;
 use humhub\modules\ui\form\widgets\ActiveForm;
 
@@ -41,7 +40,7 @@ class WallCreateForm extends WallCreateContentForm
     public function run()
     {
         if ($this->contentContainer instanceof Space) {
-            if (!$this->contentContainer->permissionManager->can(new CreatePoll())) {
+            if (!(new Poll($this->contentContainer))->content->canEdit()) {
                 return '';
             }
         }

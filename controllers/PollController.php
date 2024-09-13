@@ -2,18 +2,17 @@
 
 namespace humhub\modules\polls\controllers;
 
-use humhub\modules\polls\permissions\CreatePoll;
+use humhub\modules\content\components\ContentContainerController;
+use humhub\modules\polls\models\Poll;
+use humhub\modules\polls\models\PollAnswer;
 use humhub\modules\polls\widgets\WallCreateForm;
 use humhub\modules\stream\actions\Stream;
+use humhub\modules\user\models\User;
+use humhub\modules\user\widgets\UserListBox;
 use Yii;
 use yii\web\ForbiddenHttpException;
 use yii\web\HttpException;
 use yii\helpers\Html;
-use humhub\modules\user\models\User;
-use humhub\modules\user\widgets\UserListBox;
-use humhub\modules\content\components\ContentContainerController;
-use humhub\modules\polls\models\Poll;
-use humhub\modules\polls\models\PollAnswer;
 
 /**
  * PollController handles all poll related actions.
@@ -43,11 +42,12 @@ class PollController extends ContentContainerController
      */
     public function actionCreate()
     {
-        if (!$this->contentContainer->permissionManager->can(new CreatePoll())) {
+        $poll = new Poll($this->contentContainer, ['scenario' => Poll::SCENARIO_CREATE]);
+
+        if (!$poll->content->canEdit()) {
             throw new HttpException(400, 'Access denied!');
         }
 
-        $poll = new Poll(['scenario' => Poll::SCENARIO_CREATE]);
         $poll->load(Yii::$app->request->post());
         return WallCreateForm::create($poll, $this->contentContainer);
     }
@@ -59,7 +59,7 @@ class PollController extends ContentContainerController
     {
         $model = Poll::findOne(['id' => $id]);
 
-        if(!$model) {
+        if (!$model) {
             throw new HttpException(404);
         }
 
@@ -144,7 +144,7 @@ class PollController extends ContentContainerController
         $answers = Yii::$app->request->post('answers');
 
         // Build array of answer ids
-        $votes = array();
+        $votes = [];
         if (is_array($answers)) {
             foreach ($answers as $answer_id => $flag) {
                 $votes[] = (int) $answer_id;
@@ -196,7 +196,7 @@ class PollController extends ContentContainerController
         $query->andWhere(['poll_answer_user.poll_answer_id' => $answerId]);
         $query->orderBy('poll_answer_user.created_at DESC');
 
-        $title = Yii::t('PollsModule.controllers_PollController', "Users voted for: <strong>{answer}</strong>", array('{answer}' => Html::encode($answer->answer)));
+        $title = Yii::t('PollsModule.controllers_PollController', "Users voted for: <strong>{answer}</strong>", ['{answer}' => Html::encode($answer->answer)]);
 
         return $this->renderAjaxContent(UserListBox::widget(['query' => $query, 'title' => $title]));
     }
@@ -209,7 +209,7 @@ class PollController extends ContentContainerController
      */
     private function renderPollOut($question)
     {
-        $json = array();
+        $json = [];
         $json['output'] = $this->renderAjaxContent($question->getWallOut());
 
         return $this->asJson($json);
