@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.3.6 (Unreleased)
-----------------------
+1.3.6 (September 13, 2024)
+--------------------------
 - Enh #137: Use PHP CS Fixer
 - Fix #141: Fix visibility of the creating form for administrator
 
