@@ -2,18 +2,17 @@
 
 namespace humhub\modules\polls\controllers;
 
-use humhub\modules\polls\permissions\CreatePoll;
+use humhub\modules\content\components\ContentContainerController;
+use humhub\modules\polls\models\Poll;
+use humhub\modules\polls\models\PollAnswer;
 use humhub\modules\polls\widgets\WallCreateForm;
 use humhub\modules\stream\actions\Stream;
+use humhub\modules\user\models\User;
+use humhub\modules\user\widgets\UserListBox;
 use Yii;
 use yii\web\ForbiddenHttpException;
 use yii\web\HttpException;
 use yii\helpers\Html;
-use humhub\modules\user\models\User;
-use humhub\modules\user\widgets\UserListBox;
-use humhub\modules\content\components\ContentContainerController;
-use humhub\modules\polls\models\Poll;
-use humhub\modules\polls\models\PollAnswer;
 
 /**
  * PollController handles all poll related actions.
@@ -43,11 +42,12 @@ class PollController extends ContentContainerController
      */
     public function actionCreate()
     {
-        if (!$this->contentContainer->permissionManager->can(new CreatePoll())) {
+        $poll = new Poll($this->contentContainer, ['scenario' => Poll::SCENARIO_CREATE]);
+
+        if (!$poll->content->canEdit()) {
             throw new HttpException(400, 'Access denied!');
         }
 
-        $poll = new Poll(['scenario' => Poll::SCENARIO_CREATE]);
         $poll->load(Yii::$app->request->post());
         return WallCreateForm::create($poll, $this->contentContainer);
     }

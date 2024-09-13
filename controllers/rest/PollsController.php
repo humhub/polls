@@ -13,7 +13,6 @@ use humhub\modules\content\models\ContentContainer;
 use humhub\modules\polls\helpers\RestDefinitions;
 use humhub\modules\polls\models\Poll;
 use humhub\modules\polls\models\PollAnswerUser;
-use humhub\modules\polls\permissions\CreatePoll;
 use humhub\modules\rest\components\BaseContentController;
 use Yii;
 
@@ -57,12 +56,12 @@ class PollsController extends BaseContentController
         /* @var ContentContainerActiveRecord $container */
         $container = $containerRecord->getPolymorphicRelation();
 
-        if (! in_array(get_class($container), Yii::$app->getModule('polls')->getContentContainerTypes()) ||
-            ! $container->permissionManager->can([CreatePoll::class])) {
+        $poll = new Poll($container, ['scenario' => Poll::SCENARIO_CREATE]);
+
+        if (!in_array(get_class($container), Yii::$app->getModule('polls')->getContentContainerTypes()) ||
+            !$poll->content->canEdit()) {
             return $this->returnError(403, 'You are not allowed to create a poll!');
         }
-
-        $poll = new Poll($container, ['scenario' => Poll::SCENARIO_CREATE]);
 
         if ($this->savePoll($poll)) {
             return $this->returnContentDefinition(Poll::findOne(['id' => $poll->id]));
