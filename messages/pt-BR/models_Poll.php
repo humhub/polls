@@ -4,6 +4,6 @@ return array (
   'Description' => 'Descrição',
   'Multiple answers per user' => 'Múltiplas respostas por usuário',
   'Please specify at least {min} answers!' => 'Especifique pelo menos {min} respostas!',
-  'Poll' => 'Pergunta',
+  'Poll' => 'Enquete',
   'Question' => 'Pergunta',
 );

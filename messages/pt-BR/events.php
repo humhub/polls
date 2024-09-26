@@ -1,6 +1,6 @@
 <?php
 return array (
-  'Again? ;Weary;' => 'Mais uma vez? ;Weary;',
+  'Again? ;Weary;' => 'De novo? ;Weary;',
   'Club A Steakhouse' => 'Club A Steakhouse',
   'Location of the next meeting' => 'Local da próxima reunião',
   'Pisillo Italian Panini' => 'Pisillo Italian Panini',
