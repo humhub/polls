@@ -29,7 +29,7 @@ class NewVote extends BaseActivity implements ConfigurableActivityInterface
      */
     public function getTitle()
     {
-        return Yii::t('PollsModule.activities', 'Polls');
+        return Yii::t('PollsModule.base', 'Polls');
     }
 
     /**
@@ -37,7 +37,7 @@ class NewVote extends BaseActivity implements ConfigurableActivityInterface
      */
     public function getDescription()
     {
-        return Yii::t('PollsModule.activities', 'Whenever someone participates in a poll.');
+        return Yii::t('PollsModule.base', 'Whenever someone participates in a poll.');
     }
 
 }

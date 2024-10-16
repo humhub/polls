@@ -26,7 +26,7 @@ if (!$poll->anonymous) {
         /* @var $vote PollAnswerUser */
         // if only one user likes check if exists more user as limited
         if ($i == $maxUser) {
-            $userlist .= Yii::t('PollsModule.widgets_views_entry', 'and {count} more vote for this.', ['{count}' => $voteCount - $maxUser]);
+            $userlist .= Yii::t('PollsModule.base', 'and {count} more vote for this.', ['{count}' => $voteCount - $maxUser]);
             break;
         } else {
             $userlist .= Html::encode($vote->user->displayName) . "\n";
