@@ -15,11 +15,11 @@ use yii\bootstrap\Html;
 PollsAsset::register($this);
 ?>
 
-<?= $form->field($model, 'question')->textInput(['placeholder' => Yii::t('PollsModule.widgets_views_pollForm', 'Question')])->label(false) ?>
+<?= $form->field($model, 'question')->textInput(['placeholder' => Yii::t('PollsModule.base', 'Question')])->label(false) ?>
 
 <div class="contentForm_options" data-content-component="polls.Poll">
     <?= $form->field($model, 'description')->widget(RichTextField::class, [
-        'placeholder' => Yii::t('PollsModule.widgets_views_pollForm', 'Description'),
+        'placeholder' => Yii::t('PollsModule.base', 'Description'),
         'options' => ['style' => 'margin:15px 0 0'],
     ])->label(false) ?>
 

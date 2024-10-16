@@ -93,7 +93,7 @@ class Poll extends ContentActiveRecord implements Searchable
     public function minTwoNewAnswers($attribute)
     {
         if (count($this->newAnswers) < self::MIN_REQUIRED_ANSWERS) {
-            $this->addError($attribute, Yii::t('PollsModule.models_Poll', "Please specify at least {min} answers!", ["{min}" => self::MIN_REQUIRED_ANSWERS]));
+            $this->addError($attribute, Yii::t('PollsModule.base', "Please specify at least {min} answers!", ["{min}" => self::MIN_REQUIRED_ANSWERS]));
         }
     }
 
@@ -101,7 +101,7 @@ class Poll extends ContentActiveRecord implements Searchable
     {
         $count = count($this->newAnswers) + count($this->editAnswers);
         if ($count < self::MIN_REQUIRED_ANSWERS) {
-            $this->addError('editAnswers', Yii::t('PollsModule.models_Poll', "Please specify at least {min} answers!", ["{min}" => self::MIN_REQUIRED_ANSWERS]));
+            $this->addError('editAnswers', Yii::t('PollsModule.base', "Please specify at least {min} answers!", ["{min}" => self::MIN_REQUIRED_ANSWERS]));
         }
     }
 
@@ -111,14 +111,14 @@ class Poll extends ContentActiveRecord implements Searchable
     public function attributeLabels()
     {
         return [
-            'newAnswers' => Yii::t('PollsModule.models_Poll', 'Answers'),
-            'editAnswers' => Yii::t('PollsModule.models_Poll', 'Answers'),
-            'question' => Yii::t('PollsModule.models_Poll', 'Question'),
-            'description' => Yii::t('PollsModule.models_Poll', 'Description'),
-            'allow_multiple' => Yii::t('PollsModule.models_Poll', 'Multiple answers per user'),
-            'is_random' => Yii::t('PollsModule.widgets_views_pollForm', 'Display answers in random order?'),
-            'anonymous' => Yii::t('PollsModule.widgets_views_pollForm', 'Anonymous Votes?'),
-            'show_result_after_close' => Yii::t('PollsModule.widgets_views_pollForm', 'Hide results until poll is closed?'),
+            'newAnswers' => Yii::t('PollsModule.base', 'Answers'),
+            'editAnswers' => Yii::t('PollsModule.base', 'Answers'),
+            'question' => Yii::t('PollsModule.base', 'Question'),
+            'description' => Yii::t('PollsModule.base', 'Description'),
+            'allow_multiple' => Yii::t('PollsModule.base', 'Multiple answers per user'),
+            'is_random' => Yii::t('PollsModule.base', 'Display answers in random order?'),
+            'anonymous' => Yii::t('PollsModule.base', 'Anonymous Votes?'),
+            'show_result_after_close' => Yii::t('PollsModule.base', 'Hide results until poll is closed?'),
         ];
     }
 
@@ -345,7 +345,7 @@ class Poll extends ContentActiveRecord implements Searchable
      */
     public function getContentName()
     {
-        return Yii::t('PollsModule.models_Poll', 'Poll');
+        return Yii::t('PollsModule.base', 'Poll');
     }
 
     /**

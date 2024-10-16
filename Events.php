@@ -116,12 +116,12 @@ class Events
         $poll = new Poll();
         $poll->scenario = Poll::SCENARIO_CREATE;
 
-        $poll->question = Yii::t('PollsModule.events', 'Location of the next meeting');
-        $poll->description = Yii::t('PollsModule.events', "Right now, we are in the planning stages for our next meetup and we would like to know from you, where you would like to go?");
+        $poll->question = Yii::t('PollsModule.base', 'Location of the next meeting');
+        $poll->description = Yii::t('PollsModule.base', "Right now, we are in the planning stages for our next meetup and we would like to know from you, where you would like to go?");
         $poll->newAnswers = [
-            Yii::t('PollsModule.events', "To Daniel"),
-            Yii::t('PollsModule.events', "Club A Steakhouse"),
-            Yii::t('PollsModule.events', "Pisillo Italian Panini"),
+            Yii::t('PollsModule.base', "To Daniel"),
+            Yii::t('PollsModule.base', "Club A Steakhouse"),
+            Yii::t('PollsModule.base', "Pisillo Italian Panini"),
         ];
         $poll->content->container = $space;
         $poll->allow_multiple = Yii::$app->request->post('allowMultiple', 0);
@@ -140,7 +140,7 @@ class Events
         $poll->vote([2]);
 
         $comment = new \humhub\modules\comment\models\Comment();
-        $comment->message = Yii::t('PollsModule.events', "Why don't we go to Bemelmans Bar?");
+        $comment->message = Yii::t('PollsModule.base', "Why don't we go to Bemelmans Bar?");
         $comment->object_model = $poll->className();
         $comment->object_id = $poll->getPrimaryKey();
         $comment->save();
@@ -152,7 +152,7 @@ class Events
         $poll->vote([3]);
 
         $comment = new \humhub\modules\comment\models\Comment();
-        $comment->message = Yii::t('PollsModule.events', "Again? ;Weary;");
+        $comment->message = Yii::t('PollsModule.base', "Again? ;Weary;");
         $comment->object_model = $poll->className();
         $comment->object_id = $poll->getPrimaryKey();
         $comment->save();

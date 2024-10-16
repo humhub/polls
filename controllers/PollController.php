@@ -82,13 +82,13 @@ class PollController extends ContentContainerController
         $model->scenario = Poll::SCENARIO_EDIT;
 
         if (!$model->content->canEdit() || $model->closed) {
-            throw new HttpException(403, Yii::t('PollsModule.controllers_PollController', 'Access denied!'));
+            throw new HttpException(403, Yii::t('PollsModule.base', 'Access denied!'));
         }
 
         if ($model->load($request->post())) {
             if ($wasAnonymous && !$model->anonymous) {
                 //This is only possible per post hacks... just to get sure...
-                throw new HttpException(403, Yii::t('PollsModule.controllers_PollController', 'Access denied!'));
+                throw new HttpException(403, Yii::t('PollsModule.base', 'Access denied!'));
             }
             Yii::$app->response->format = 'json';
             $result = [];
@@ -123,7 +123,7 @@ class PollController extends ContentContainerController
         $model->scenario = Poll::SCENARIO_CLOSE;
 
         if (!$model->content->canEdit()) {
-            throw new HttpException(403, Yii::t('PollsModule.controllers_PollController', 'Access denied!'));
+            throw new HttpException(403, Yii::t('PollsModule.base', 'Access denied!'));
         }
 
         $model->closed = $closed;
@@ -154,7 +154,7 @@ class PollController extends ContentContainerController
         }
 
         if (count($votes) > 1 && !$poll->allow_multiple) {
-            throw new HttpException(401, Yii::t('PollsModule.controllers_PollController', 'Voting for multiple answers is disabled!'));
+            throw new HttpException(401, Yii::t('PollsModule.base', 'Voting for multiple answers is disabled!'));
         }
 
         $poll->vote($votes);
@@ -181,13 +181,13 @@ class PollController extends ContentContainerController
         $poll = $this->getPollByParameter();
 
         if ($poll->anonymous) {
-            throw new HttpException(401, Yii::t('PollsModule.controllers_PollController', 'Anonymous poll!'));
+            throw new HttpException(401, Yii::t('PollsModule.base', 'Anonymous poll!'));
         }
 
         $answerId = (int) Yii::$app->request->get('answerId', '');
         $answer = PollAnswer::findOne(['id' => $answerId]);
         if ($answer == null || $poll->id != $answer->poll_id) {
-            throw new HttpException(401, Yii::t('PollsModule.controllers_PollController', 'Invalid answer!'));
+            throw new HttpException(401, Yii::t('PollsModule.base', 'Invalid answer!'));
         }
 
         $query = User::find();
@@ -196,7 +196,7 @@ class PollController extends ContentContainerController
         $query->andWhere(['poll_answer_user.poll_answer_id' => $answerId]);
         $query->orderBy('poll_answer_user.created_at DESC');
 
-        $title = Yii::t('PollsModule.controllers_PollController', "Users voted for: <strong>{answer}</strong>", ['{answer}' => Html::encode($answer->answer)]);
+        $title = Yii::t('PollsModule.base', "Users voted for: <strong>{answer}</strong>", ['{answer}' => Html::encode($answer->answer)]);
 
         return $this->renderAjaxContent(UserListBox::widget(['query' => $query, 'title' => $title]));
     }
@@ -227,11 +227,11 @@ class PollController extends ContentContainerController
         $poll = Poll::find()->contentContainer($this->contentContainer)->readable()->where(['poll.id' => $pollId])->one();
 
         if (!$poll) {
-            throw new HttpException(401, Yii::t('PollsModule.controllers_PollController', 'Could not load poll!'));
+            throw new HttpException(401, Yii::t('PollsModule.base', 'Could not load poll!'));
         }
 
         if (!$poll->content->canView()) {
-            throw new HttpException(401, Yii::t('PollsModule.controllers_PollController', 'You have insufficient permissions to perform that operation!'));
+            throw new HttpException(401, Yii::t('PollsModule.base', 'You have insufficient permissions to perform that operation!'));
         }
 
         return $poll;
