@@ -4,6 +4,7 @@ Changelog
 1.3.7 (Unreleased)
 --------------------------
 - Enh #142: Reduce translation message categories
+- Enh #143: Enable the feature to move a content to another space
 
 1.3.6 (September 13, 2024)
 --------------------------
