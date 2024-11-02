@@ -55,6 +55,11 @@ class Poll extends ContentActiveRecord implements Searchable
     public $moduleId = 'polls';
 
     /**
+     * @inheritdoc
+     */
+    protected $canMove = true;
+
+    /**
      * @return string the associated database table name
      */
     public static function tableName()
