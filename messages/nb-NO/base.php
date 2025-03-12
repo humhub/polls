@@ -14,7 +14,7 @@ return [
   'Cancel' => 'Avbryt',
   'Closed' => 'Lukket',
   'Club A Steakhouse' => 'Bestem et sted å møtes',
-  'Complete Poll' => 'Ferdigstill avstemming',
+  'Close Poll' => 'Ferdigstill avstemming',
   'Could not load poll!' => 'Kunne ikke laste avstemming!',
   'Create poll' => 'Lag avstemming',
   'Description' => 'Beskrivelse',

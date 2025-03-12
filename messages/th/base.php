@@ -15,7 +15,7 @@ return [
     'Cancel' => 'ยกเลิก',
     'Closed' => 'ปิด',
     'Club A Steakhouse' => 'คลับ เอ สเต็กเฮาส์',
-    'Complete Poll' => 'กรอกแบบสำรวจ',
+    'Close Poll' => 'กรอกแบบสำรวจ',
     'Could not load poll!' => 'ไม่สามารถโหลดแบบสำรวจความคิดเห็น!',
     'Create poll' => 'สร้างโพล',
     'Description' => 'คำอธิบาย',

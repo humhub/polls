@@ -15,7 +15,7 @@ return [
     'Cancel' => 'Annulla',
     'Closed' => 'Chiuso',
     'Club A Steakhouse' => 'Paninoteca',
-    'Complete Poll' => 'Sondaggio completato',
+    'Close Poll' => 'Sondaggio completato',
     'Could not load poll!' => 'Non posso caricare il sondaggio!',
     'Create poll' => 'Crea sondaggio',
     'Description' => 'Descrizione',

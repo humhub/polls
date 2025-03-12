@@ -15,7 +15,7 @@ return [
     'Cancel' => '',
     'Closed' => '',
     'Club A Steakhouse' => '',
-    'Complete Poll' => '',
+    'Close Poll' => '',
     'Could not load poll!' => '',
     'Create poll' => '',
     'Description' => '',

@@ -17,7 +17,7 @@ return [
     'At least one answer is required' => '',
     'Closed' => '',
     'Club A Steakhouse' => '',
-    'Complete Poll' => '',
+    'Close Poll' => '',
     'Could not load poll!' => '',
     'Create poll' => '',
     'Description' => '',

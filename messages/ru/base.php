@@ -15,7 +15,7 @@ return [
     'Cancel' => 'Отменить',
     'Closed' => 'Закрыт',
     'Club A Steakhouse' => 'Клуб «Стейкхаус»',
-    'Complete Poll' => 'Завершить опрос',
+    'Close Poll' => 'Завершить опрос',
     'Could not load poll!' => 'Не удалось загрузить опрос!',
     'Create poll' => 'Создать опрос',
     'Description' => 'Описание',

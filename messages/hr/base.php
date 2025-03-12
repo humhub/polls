@@ -14,7 +14,7 @@ return [
     'Cancel' => 'Poništi',
     'Closed' => 'Zatvoreno',
     'Club A Steakhouse' => 'Club A Steakhouse',
-    'Complete Poll' => 'Cijela anketa',
+    'Close Poll' => 'Cijela anketa',
     'Could not load poll!' => 'Nije moguće učitati anketu!',
     'Description' => 'Opis',
     'Display answers in random order?' => 'Prikaži odgovore u nasumičnom redoslijedu?',

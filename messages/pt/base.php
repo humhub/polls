@@ -15,7 +15,7 @@ return [
     'Cancel' => 'Cancelar',
     'Closed' => 'Fechada',
     'Club A Steakhouse' => 'Churrasqueira Club A',
-    'Complete Poll' => 'Votação completa',
+    'Close Poll' => 'Votação completa',
     'Could not load poll!' => 'Não conseguimos carregar a votação!',
     'Create poll' => 'Criar votação',
     'Description' => 'Descrição',

@@ -12,7 +12,7 @@ return [
     'Cancel' => '取消',
     'Closed' => '关闭',
     'Club A Steakhouse' => '俱乐部A的牛排',
-    'Complete Poll' => '完成投票',
+    'Close Poll' => '完成投票',
     'Could not load poll!' => '无法加载投票！',
     'Description' => '描述',
     'Display answers in random order?' => '随机位置显示答案？',

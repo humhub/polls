@@ -14,7 +14,7 @@ return array (
   'Cancel' => 'Poništi',
   'Closed' => 'Zatvoreno',
   'Club A Steakhouse' => 'Club A Steakhouse',
-  'Complete Poll' => 'Cela anketa',
+  'Close Poll' => 'Cela anketa',
   'Could not load poll!' => 'Nije moguće učitati anketu!',
   'Create poll' => '',
   'Description' => 'Opis',

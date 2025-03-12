@@ -14,7 +14,7 @@ return [
   'Cancel' => 'Cancelar',
   'Closed' => 'Fechada',
   'Club A Steakhouse' => 'Club A Steakhouse',
-  'Complete Poll' => 'Completar Enquete',
+  'Close Poll' => 'Completar Enquete',
   'Could not load poll!' => 'Não foi possível carregar a enquete!',
   'Create poll' => 'Criar enquete',
   'Description' => 'Descrição',

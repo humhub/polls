@@ -14,7 +14,7 @@ return [
   'Cancel' => 'Abbrechen',
   'Closed' => 'Beendet',
   'Club A Steakhouse' => 'Club A Steakhaus',
-  'Complete Poll' => 'Umfrage schließen',
+  'Close Poll' => 'Umfrage schließen',
   'Could not load poll!' => 'Konnte Umfrage nicht laden!',
   'Create poll' => 'Umfrage erstellen',
   'Description' => 'Beschreibung',

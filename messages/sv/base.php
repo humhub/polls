@@ -15,7 +15,7 @@ return [
     'Cancel' => 'Avbryt',
     'Closed' => 'Stängd',
     'Club A Steakhouse' => 'Club A Steakhouse',
-    'Complete Poll' => 'Avsluta undersökning',
+    'Close Poll' => 'Avsluta undersökning',
     'Could not load poll!' => 'Kunde inte ladda enkät!',
     'Create poll' => 'Skapa undersökning',
     'Description' => 'Beskrivning',

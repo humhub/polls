@@ -14,7 +14,7 @@ return [
   'Cancel' => 'Anuluj',
   'Closed' => 'Zamknięte',
   'Club A Steakhouse' => 'Stek',
-  'Complete Poll' => 'Zakończ głosowanie',
+  'Close Poll' => 'Zakończ głosowanie',
   'Could not load poll!' => 'Nie można wczytać głosowania!',
   'Create poll' => 'Utwórz ankietę',
   'Description' => 'Opis',

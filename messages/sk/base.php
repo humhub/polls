@@ -15,7 +15,7 @@ return [
     'Cancel' => 'Zrušiť',
     'Closed' => 'ZATVORENÉ',
     'Club A Steakhouse' => 'Klub A Steakhouse',
-    'Complete Poll' => 'Vyplňte anketu',
+    'Close Poll' => 'Vyplňte anketu',
     'Could not load poll!' => 'Anketu sa nepodarilo načítať!',
     'Create poll' => 'Vytvoriť anketu',
     'Description' => 'Popis',

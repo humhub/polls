@@ -15,7 +15,7 @@ return [
     'Cancel' => 'Mégsem',
     'Closed' => 'Befejeződött',
     'Club A Steakhouse' => 'Club A Steakhouse',
-    'Complete Poll' => 'Szavazás lezárása',
+    'Close Poll' => 'Szavazás lezárása',
     'Could not load poll!' => 'Szavazás nem tölthető be!',
     'Create poll' => 'Szavazás létrehozása',
     'Description' => 'Leírás',

@@ -15,7 +15,7 @@ return [
     'Cancel' => 'Annuleer',
     'Closed' => 'Gesloten',
     'Club A Steakhouse' => 'Club A Steakhouse',
-    'Complete Poll' => 'Rond het stemmen af.',
+    'Close Poll' => 'Rond het stemmen af.',
     'Could not load poll!' => 'Kon stembus niet laden!',
     'Create poll' => 'Maak een stembus',
     'Description' => 'Beschrijving',
