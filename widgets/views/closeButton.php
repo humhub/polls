@@ -9,7 +9,7 @@
         <a data-action-click="close" data-action-target="[data-poll='<?= $poll->id ?>']" 
            data-action-url="<?= $poll->content->container->createUrl('/polls/poll/close', ['id' => $poll->id]); ?>">
             <i class="fa fa-times"></i>
-            <?= Yii::t('PollsModule.base', 'Complete Poll') ?>
+            <?= Yii::t('PollsModule.base', 'Close Poll') ?>
         </a>
     <?php endif; ?>
 </li>

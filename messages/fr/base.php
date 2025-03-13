@@ -15,7 +15,7 @@ return [
     'Cancel' => 'Annuler',
     'Closed' => 'Fermé',
     'Club A Steakhouse' => 'Hippopotamus',
-    'Complete Poll' => 'Fermer le sondage',
+    'Close Poll' => 'Fermer le sondage',
     'Could not load poll!' => 'Impossible de charger le sondage.',
     'Create poll' => 'Créer un sondage',
     'Description' => 'Description',

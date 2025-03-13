@@ -14,7 +14,7 @@ return [
     'Cancel' => 'Hủy',
     'Closed' => 'Đóng',
     'Club A Steakhouse' => 'Tiệm thịt bò?',
-    'Complete Poll' => 'Hoàn thành biểu quyết',
+    'Close Poll' => 'Hoàn thành biểu quyết',
     'Could not load poll!' => 'Không thể tải biểu quyết!',
     'Description' => 'Miêu tả',
     'Display answers in random order?' => 'Hiển thị câu trả lời theo thứ tự ngẫu nhiên?',

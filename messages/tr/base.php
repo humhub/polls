@@ -32,7 +32,7 @@ return [
     'Again? ;Weary;' => '',
     'Allows the user to create polls' => '',
     'Club A Steakhouse' => '',
-    'Complete Poll' => '',
+    'Close Poll' => '',
     'Create poll' => '',
     'Edit answer (empty answers will be removed)...' => '',
     'Hide results until poll is closed?' => '',

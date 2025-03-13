@@ -6,7 +6,7 @@ return [
     'Answers' => 'Respuestas',
     'Cancel' => 'Cancelar',
     'Closed' => 'Zarrada',
-    'Complete Poll' => 'Enqüesta completa',
+    'Close Poll' => 'Enqüesta completa',
     'Description' => 'Descripción',
     'Multiple answers per user' => 'Multiples respuestas per usuario',
     'Please specify at least {min} answers!' => 'Per favor, especifica {min} respuestas como minimo!',

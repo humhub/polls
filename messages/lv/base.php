@@ -12,7 +12,7 @@ return [
     'Cancel' => 'Atcelt',
     'Closed' => 'Slēgta',
     'Club A Steakhouse' => 'Uz steika sviestmaizi',
-    'Complete Poll' => 'Pabeigt aptauju',
+    'Close Poll' => 'Pabeigt aptauju',
     'Could not load poll!' => 'Nevarēja ielādēt aptauju!',
     'Description' => 'Apraksts',
     'Display answers in random order?' => 'Parādīt atbildes jauktā kārtībā?',

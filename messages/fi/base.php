@@ -14,7 +14,7 @@ return [
     'Cancel' => 'Peruuta',
     'Closed' => 'Suljettu',
     'Club A Steakhouse' => 'Club A Steakhouse',
-    'Complete Poll' => 'Sulje kysely',
+    'Close Poll' => 'Sulje kysely',
     'Could not load poll!' => 'Kyselyä ei voitu ladata!',
     'Description' => 'Kuvaus',
     'Display answers in random order?' => 'Näytä vastaukset satunnaisessa järjestyksessä',

@@ -34,7 +34,7 @@ return [
     'Allows to start polls.' => '',
     'At least one answer is required' => '',
     'Club A Steakhouse' => '',
-    'Complete Poll' => '',
+    'Close Poll' => '',
     'Create poll' => '',
     'Hide results until poll is closed?' => '',
     'Location of the next meeting' => '',

@@ -15,7 +15,7 @@ return [
     'Cancel' => 'Отказ',
     'Closed' => 'Затворена',
     'Club A Steakhouse' => 'Club A Steakhouse',
-    'Complete Poll' => 'Завърши анкета',
+    'Close Poll' => 'Завърши анкета',
     'Could not load poll!' => 'Анкета не може да бъде заредена!',
     'Create poll' => 'Създаване на анкета',
     'Description' => 'Описание',

@@ -14,7 +14,7 @@ return array (
   'Cancel' => 'Utzi bertan behera',
   'Closed' => 'Itxita',
   'Club A Steakhouse' => 'Club A erretegia',
-  'Complete Poll' => 'Inkesta osoa',
+  'Close Poll' => 'Inkesta osoa',
   'Could not load poll!' => 'Ezin izan da inkesta kargatu!',
   'Create poll' => 'Sortu inkesta',
   'Description' => 'Deskribapena',

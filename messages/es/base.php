@@ -15,7 +15,7 @@ return [
     'Cancel' => 'Cancelar',
     'Closed' => 'Cerrado',
     'Club A Steakhouse' => 'Restaurante especializado en cortes de carne',
-    'Complete Poll' => 'Terminar la encuesta',
+    'Close Poll' => 'Terminar la encuesta',
     'Could not load poll!' => '¡No se pudo cargar la votación!',
     'Create poll' => 'Crear encuesta',
     'Description' => 'Descripción',

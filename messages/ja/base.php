@@ -15,7 +15,7 @@ return [
     'Cancel' => 'キャンセル',
     'Closed' => '終了',
     'Club A Steakhouse' => 'クラブAステーキハウス',
-    'Complete Poll' => 'アンケートを終了',
+    'Close Poll' => 'アンケートを終了',
     'Could not load poll!' => 'アンケートを読み込めませんでした！',
     'Create poll' => '投票を作成する',
     'Description' => '説明',

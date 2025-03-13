@@ -26,7 +26,7 @@ return [
     'At least one answer is required' => '',
     'Closed' => '',
     'Club A Steakhouse' => '',
-    'Complete Poll' => '',
+    'Close Poll' => '',
     'Create poll' => '',
     'Display answers in random order?' => '',
     'Edit answer (empty answers will be removed)...' => '',

@@ -12,7 +12,7 @@ return [
     'At least one answer is required' => 'Almenys una resposta és necessària',
     'Cancel' => 'Cancel·la',
     'Closed' => 'Tancada',
-    'Complete Poll' => 'Completar enquesta',
+    'Close Poll' => 'Completar enquesta',
     'Could not load poll!' => 'No s\'ha pogut carregar l\'enquesta!',
     'Create poll' => 'Crear enquesta',
     'Description' => 'Descripció',

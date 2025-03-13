@@ -15,7 +15,7 @@ return [
     'Cancel' => 'إلغاء',
     'Closed' => 'مغلق',
     'Club A Steakhouse' => 'نادي ستيك هاوس',
-    'Complete Poll' => 'إكمال الاستطلاع',
+    'Close Poll' => 'إكمال الاستطلاع',
     'Could not load poll!' => 'فشل تحميل الاستطلاع!',
     'Create poll' => 'إنشاء استطلاع',
     'Description' => 'الوصف',

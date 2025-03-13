@@ -25,7 +25,7 @@ return [
     'Answers' => '',
     'At least one answer is required' => '',
     'Closed' => '',
-    'Complete Poll' => '',
+    'Close Poll' => '',
     'Could not load poll!' => '',
     'Create poll' => '',
     'Display answers in random order?' => '',
