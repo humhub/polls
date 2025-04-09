@@ -5,7 +5,7 @@ namespace humhub\modules\polls\widgets;
 use humhub\modules\content\widgets\WallCreateContentForm;
 use humhub\modules\polls\models\Poll;
 use humhub\modules\space\models\Space;
-use humhub\modules\ui\form\widgets\ActiveForm;
+use humhub\widgets\form\ActiveForm;
 
 class WallCreateForm extends WallCreateContentForm
 {
