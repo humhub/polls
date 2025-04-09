@@ -1,11 +1,11 @@
 <?php
 
-use humhub\libs\Html;
+use humhub\helpers\Html;
 use humhub\modules\content\components\ContentContainerActiveRecord;
 use humhub\modules\polls\models\Poll;
 use humhub\modules\polls\models\PollAnswer;
 use humhub\modules\polls\models\PollAnswerUser;
-use humhub\widgets\Link;
+use humhub\widgets\bootstrap\Link;
 
 /* @var $poll Poll */
 /* @var $answer PollAnswer */

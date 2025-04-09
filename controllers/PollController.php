@@ -12,7 +12,7 @@ use humhub\modules\user\widgets\UserListBox;
 use Yii;
 use yii\web\ForbiddenHttpException;
 use yii\web\HttpException;
-use yii\helpers\Html;
+use humhub\helpers\Html;
 
 /**
  * PollController handles all poll related actions.

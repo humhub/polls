@@ -6,7 +6,7 @@ use humhub\modules\polls\assets\PollsAsset;
 use humhub\modules\polls\models\Poll;
 use humhub\modules\polls\widgets\AddAnswerInput;
 use humhub\widgets\form\ActiveForm;
-use yii\bootstrap\Html;
+use humhub\helpers\Html;
 
 /* @var $model Poll */
 /* @var $form ActiveForm */

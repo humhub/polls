@@ -2,7 +2,7 @@
 
 use humhub\modules\content\widgets\richtext\RichText;
 use humhub\modules\polls\models\Poll;
-use yii\helpers\Html;
+use humhub\helpers\Html;
 
 humhub\modules\polls\assets\PollsAsset::register($this);
 
