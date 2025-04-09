@@ -1,8 +1,8 @@
 <?php
 
 use humhub\modules\content\widgets\richtext\RichTextField;
-use yii\bootstrap5\ActiveForm;
-use yii\helpers\Html;
+use humhub\widgets\form\ActiveForm;
+use humhub\helpers\Html;
 use humhub\modules\polls\widgets\AddAnswerInput;
 
 /** @var  $poll \humhub\modules\polls\models\Poll */
