@@ -36,16 +36,21 @@ if (!$poll->anonymous) {
 $isGuest = Yii::$app->user->isGuest;
 ?>
 <div class="row" style="margin:0">
-    <?php if (!$poll->hasUserVoted() && !$poll->closed && !$isGuest) : ?>
+    <?php if (!$poll->hasUserVoted() && !$poll->closed) : ?>
         <div class="col-xs-1" style="margin-top:6px;padding-left:0">
             <?php if ($poll->allow_multiple) : ?>
-                <?= Html::checkBox('answers[' . $answer->id . ']'); ?>
+                <?php if ($isGuest) : ?>
+                    <?= Html::checkBox('answers[' . $answer->id . ']', false, ['disabled' => true, 'style' => 'opacity: 0.5; cursor: not-allowed;']); ?>
+                <?php else : ?>
+                    <?= Html::checkBox('answers[' . $answer->id . ']'); ?>
+                <?php endif; ?>
             <?php else : ?>
-                <?= Html::radio('answers', false, ['value' => $answer->id, 'id' => 'answer_' . $answer->id]) ?>
+                <?php if ($isGuest) : ?>
+                    <?= Html::radio('answers', false, ['value' => $answer->id, 'id' => 'answer_' . $answer->id, 'disabled' => true, 'style' => 'opacity: 0.5; cursor: not-allowed;']) ?>
+                <?php else : ?>
+                    <?= Html::radio('answers', false, ['value' => $answer->id, 'id' => 'answer_' . $answer->id]) ?>
+                <?php endif; ?>
             <?php endif; ?>
-        </div>
-    <?php elseif ($isGuest) : ?>
-        <div class="col-xs-1" style="margin-top:6px;padding-left:0">
         </div>
     <?php endif; ?>
 
@@ -58,7 +63,7 @@ $isGuest = Yii::$app->user->isGuest;
 
     <?php if ($poll->isShowResult()) : ?>
         <div class="col-xs-2 text-nowrap tt" style="margin-top:14px;padding:0" data-toggle="tooltip" data-placement="top" data-original-title="<?= $userlist ?>">
-            <?= !$poll->anonymous && $voteCount && !$isGuest
+            <?= !$poll->anonymous && $voteCount
                 ? Link::asLink($voteText, $contentContainer->createUrl('/polls/poll/user-list-results', [
                     'pollId' => $poll->id,
                     'answerId' => $answer->id,
