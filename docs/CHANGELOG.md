@@ -6,6 +6,7 @@ Changelog
 - Enh #142: Reduce translation message categories
 - Enh #143: Enable the feature to move a content to another space
 - Enh #145: Updated wording for clarity
+- Enh #147: Proper Guest Notice
 
 1.3.6 (September 13, 2024)
 --------------------------
