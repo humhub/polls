@@ -19,12 +19,11 @@ $voteText = Yii::t('PollsModule.base', '{n,plural,=1{# {htmlTagBegin}vote{htmlTa
     'htmlTagEnd' => '</span>',
 ]);
 
-$userlist = ''; // variable for users output
-$maxUser = 10; // limit for rendered users inside the tooltip
+$userlist = '';
+$maxUser = 10;
 if (!$poll->anonymous) {
     foreach ($answer->votes as $i => $vote) {
         /* @var $vote PollAnswerUser */
-        // if only one user likes check if exists more user as limited
         if ($i == $maxUser) {
             $userlist .= Yii::t('PollsModule.base', 'and {count} more vote for this.', ['{count}' => $voteCount - $maxUser]);
             break;
@@ -33,15 +32,20 @@ if (!$poll->anonymous) {
         }
     }
 }
+
+$isGuest = Yii::$app->user->isGuest;
 ?>
 <div class="row" style="margin:0">
-    <?php if (!$poll->hasUserVoted() && !$poll->closed) : ?>
+    <?php if (!$poll->hasUserVoted() && !$poll->closed && !$isGuest) : ?>
         <div class="col-xs-1" style="margin-top:6px;padding-left:0">
             <?php if ($poll->allow_multiple) : ?>
                 <?= Html::checkBox('answers[' . $answer->id . ']'); ?>
             <?php else : ?>
                 <?= Html::radio('answers', false, ['value' => $answer->id, 'id' => 'answer_' . $answer->id]) ?>
             <?php endif; ?>
+        </div>
+    <?php elseif ($isGuest) : ?>
+        <div class="col-xs-1" style="margin-top:6px;padding-left:0">
         </div>
     <?php endif; ?>
 
@@ -54,7 +58,7 @@ if (!$poll->anonymous) {
 
     <?php if ($poll->isShowResult()) : ?>
         <div class="col-xs-2 text-nowrap tt" style="margin-top:14px;padding:0" data-toggle="tooltip" data-placement="top" data-original-title="<?= $userlist ?>">
-            <?= !$poll->anonymous && $voteCount
+            <?= !$poll->anonymous && $voteCount && !$isGuest
                 ? Link::asLink($voteText, $contentContainer->createUrl('/polls/poll/user-list-results', [
                     'pollId' => $poll->id,
                     'answerId' => $answer->id,
