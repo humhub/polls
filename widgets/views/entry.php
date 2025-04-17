@@ -3,6 +3,7 @@
 use humhub\modules\content\widgets\richtext\RichText;
 use humhub\modules\polls\models\Poll;
 use humhub\helpers\Html;
+use humhub\widgets\bootstrap\Badge;
 
 humhub\modules\polls\assets\PollsAsset::register($this);
 
@@ -12,11 +13,11 @@ humhub\modules\polls\assets\PollsAsset::register($this);
 <div data-poll="<?= $poll->id ?>" data-content-component="polls.Poll" data-content-key="<?= $poll->content->id ?>">
 
     <?php if ($poll->closed) : ?>
-        &nbsp;<span style="margin-left:3px;" class="label label-danger float-end"><?= Yii::t('PollsModule.base', 'Closed') ?></span>
+        &nbsp;<?= Badge::danger(Yii::t('PollsModule.base', 'Closed'))->style(['margin-left' => '3px'])->right() ?>
     <?php endif; ?>
 
     <?php if ($poll->anonymous) : ?>
-        &nbsp;<span class="label label-success float-end"><?= Yii::t('PollsModule.base', 'Anonymous') ?></span>
+        &nbsp;<?= Badge::success(Yii::t('PollsModule.base', 'Anonymous'))->right() ?>
     <?php endif; ?>
 
     <?= Html::beginForm($contentContainer->createUrl('/polls/poll/answer', ['pollId' => $poll->id])) ?>

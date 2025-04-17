@@ -40,7 +40,7 @@ humhub.module('polls', function (module, require, $) {
         var that = this;
         var $errorMessage = that.$.find('.errorMessage');
         this.loader();
-        $errorMessage.parent().hide();
+        $errorMessage.parent().addClass('d-none');
         client.submit(evt).then(function (response) {
             if (!response.errors) {
                 that.handleUpdateSuccess(response);
@@ -49,7 +49,7 @@ humhub.module('polls', function (module, require, $) {
                 $.each(response.errors, function (key, value) {
                     errors += value + '<br />';
                 });
-                $errorMessage.html(errors).parent().show();
+                $errorMessage.html(errors).parent().removeClass('d-none');
             }
         }).catch(Poll.handleUpdateError)
             .finally($.proxy(this.loader, this, false));
@@ -78,14 +78,14 @@ humhub.module('polls', function (module, require, $) {
         var $input = $newInputGroup.find('input');
 
         $input.val('');
-        $newInputGroup.hide();
+        $newInputGroup.addClass('d-none');
         $this.closest('.mb-3').after($newInputGroup);
         $this.children('span').removeClass('glyphicon-plus').addClass('glyphicon-trash');
         $this.off('click.humhub-action').on('click', function () {
             $this.closest('.mb-3').remove();
         });
         $this.removeAttr('data-action-click');
-        $newInputGroup.fadeIn('fast');
+        $newInputGroup.removeClass('d-none');
     };
 
     Poll.prototype.loader = function ($loader) {
