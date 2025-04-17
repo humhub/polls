@@ -5,7 +5,7 @@
     "keywords": ["poll", "voting", "decision making"],
     "version": "1.3.6",
     "humhub": {
-        "minVersion": "1.14"
+        "minVersion": "1.18"
     },
     "homepage": "https://github.com/humhub/polls",
     "authors": [
