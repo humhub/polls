@@ -5,7 +5,7 @@
 $title = ($showTitle) ? '0' . Yii::t('PollsModule.base', 'votes') : '';
 ?>
 
-<div class="form-group">
+<div class="mb-3">
     <div class="input-group">
         <input type="text" name="<?= $name ?>" 
                class="form-control poll_answer_new_input contentForm"
@@ -16,7 +16,7 @@ $title = ($showTitle) ? '0' . Yii::t('PollsModule.base', 'votes') : '';
         </div>
     </div>
 </div>
-<div class="form-group">
+<div class="mb-3">
     <div class="input-group">
         <input type="text" name="<?= $name ?>" 
                class="form-control poll_answer_new_input contentForm"

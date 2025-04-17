@@ -26,7 +26,7 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
     <div class="contentForm_options">
         <?= Html::activeLabel($poll, 'answersText', ['label' => Yii::t('PollsModule.base', 'Answers'), 'class' => 'control-label']); ?>
         <?php foreach ($poll->answers as $answer) : ?>
-            <div class="form-group">
+            <div class="mb-3">
                 <div class="input-group">
                     <input type="text" name="answers[<?= $answer->id ?>]" <?= $disabled ?>
                            title="<?= count($answer->votes) . ' ' . Yii::t('PollsModule.base', 'votes') ?>"

@@ -64,7 +64,7 @@ humhub.module('polls', function (module, require, $) {
     };
 
     Poll.prototype.removePollAnswer = function (evt) {
-        evt.$trigger.closest('.form-group').remove();
+        evt.$trigger.closest('.mb-3').remove();
     };
 
     Poll.prototype.addPollAnswer = function (evt) {
@@ -74,15 +74,15 @@ humhub.module('polls', function (module, require, $) {
             container: 'body'
         });
 
-        var $newInputGroup = $this.closest('.form-group').clone(false);
+        var $newInputGroup = $this.closest('.mb-3').clone(false);
         var $input = $newInputGroup.find('input');
 
         $input.val('');
         $newInputGroup.hide();
-        $this.closest('.form-group').after($newInputGroup);
+        $this.closest('.mb-3').after($newInputGroup);
         $this.children('span').removeClass('glyphicon-plus').addClass('glyphicon-trash');
         $this.off('click.humhub-action').on('click', function () {
-            $this.closest('.form-group').remove();
+            $this.closest('.mb-3').remove();
         });
         $this.removeAttr('data-action-click');
         $newInputGroup.fadeIn('fast');
