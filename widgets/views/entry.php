@@ -4,6 +4,7 @@ use humhub\modules\content\widgets\richtext\RichText;
 use humhub\modules\polls\models\Poll;
 use humhub\helpers\Html;
 use humhub\widgets\bootstrap\Badge;
+use humhub\widgets\bootstrap\Button;
 
 humhub\modules\polls\assets\PollsAsset::register($this);
 
