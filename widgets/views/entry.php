@@ -53,7 +53,7 @@ humhub\modules\polls\assets\PollsAsset::register($this);
     <?php endif; ?>
 
     <?php if (Yii::$app->user->isGuest && !$poll->closed) : ?>
-        <?= Html::a(Yii::t('PollsModule.base', 'Vote'), Yii::$app->user->loginUrl, ['class' => 'btn btn-primary', 'data-target' => '#globalModal']); ?>
+        <?= Html::a(Yii::t('PollsModule.base', 'Vote'), Yii::$app->user->loginUrl, ['class' => 'btn btn-primary', 'data-bs-target' => '#globalModal']); ?>
     <?php endif; ?>
 
 
