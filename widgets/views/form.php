@@ -17,7 +17,7 @@ PollsAsset::register($this);
 
 <?= $form->field($model, 'question')->textInput(['placeholder' => Yii::t('PollsModule.base', 'Question')])->label(false) ?>
 
-<div class="contentForm_options" data-content-component="polls.Poll">
+<div class="contentForm_options container" data-content-component="polls.Poll">
     <?= $form->field($model, 'description')->widget(RichTextField::class, [
         'placeholder' => Yii::t('PollsModule.base', 'Description'),
         'options' => ['style' => 'margin:15px 0 0'],
@@ -27,11 +27,11 @@ PollsAsset::register($this);
     <?= AddAnswerInput::widget(['name' => 'newAnswers[]', 'showTitle' => false]); ?>
 
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-md-6">
             <?= $form->field($model, 'allow_multiple')->checkbox() ?>
             <?= $form->field($model, 'is_random')->checkbox() ?>
         </div>
-        <div class="col-sm-6">
+        <div class="col-md-6">
             <?= $form->field($model, 'anonymous')->checkbox() ?>
             <?= $form->field($model, 'show_result_after_close')->checkbox() ?>
         </div>

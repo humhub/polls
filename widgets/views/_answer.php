@@ -15,7 +15,7 @@ $percent = $poll->isShowResult() ? round($answer->getPercent()) : 0;
 $voteCount = count($answer->votes);
 $voteText = Yii::t('PollsModule.base', '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}', [
     'n' => $voteCount,
-    'htmlTagBegin' => '<span class="hidden-xs">',
+    'htmlTagBegin' => '<span class="d-none d-sm-inline">',
     'htmlTagEnd' => '</span>',
 ]);
 
@@ -34,32 +34,34 @@ if (!$poll->anonymous) {
     }
 }
 ?>
-<div class="row" style="margin:0">
-    <?php if (!$poll->hasUserVoted() && !$poll->closed) : ?>
-        <div class="col-xs-1" style="margin-top:6px;padding-left:0">
-            <?php if ($poll->allow_multiple) : ?>
-                <?= Html::checkBox('answers[' . $answer->id . ']'); ?>
-            <?php else : ?>
-                <?= Html::radio('answers', false, ['value' => $answer->id, 'id' => 'answer_' . $answer->id]) ?>
-            <?php endif; ?>
-        </div>
-    <?php endif; ?>
+<div class="container">
+    <div class="row" style="margin:0">
+        <?php if (!$poll->hasUserVoted() && !$poll->closed) : ?>
+            <div class="col-1" style="margin-top:6px;padding-left:0">
+                <?php if ($poll->allow_multiple) : ?>
+                    <?= Html::checkBox('answers[' . $answer->id . ']'); ?>
+                <?php else : ?>
+                    <?= Html::radio('answers', false, ['value' => $answer->id, 'id' => 'answer_' . $answer->id]) ?>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
 
-    <div class="col-sm-7 col-xs-9" style="padding-left:0">
-        <span><?= Html::encode($answer->answer) ?></span>
-        <div class="progress">
-            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="<?= $percent ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?= $percent ?>%"></div>
+        <div class="col-md-7 col-9" style="padding-left:0">
+            <span><?= Html::encode($answer->answer) ?></span>
+            <div class="progress">
+                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="<?= $percent ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?= $percent ?>%"></div>
+            </div>
         </div>
+
+        <?php if ($poll->isShowResult()) : ?>
+            <div class="col-2 text-nowrap tt" style="margin-top:14px;padding:0" data-bs-toggle="tooltip" data-placement="top" data-original-title="<?= $userlist ?>">
+                <?= !$poll->anonymous && $voteCount
+                    ? Link::asLink($voteText, $contentContainer->createUrl('/polls/poll/user-list-results', [
+                        'pollId' => $poll->id,
+                        'answerId' => $answer->id,
+                    ]))->options(['data-bs-target' => '#globalModal'])
+                    : $voteText ?>
+            </div>
+        <?php endif; ?>
     </div>
-
-    <?php if ($poll->isShowResult()) : ?>
-        <div class="col-xs-2 text-nowrap tt" style="margin-top:14px;padding:0" data-bs-toggle="tooltip" data-placement="top" data-original-title="<?= $userlist ?>">
-            <?= !$poll->anonymous && $voteCount
-                ? Link::asLink($voteText, $contentContainer->createUrl('/polls/poll/user-list-results', [
-                    'pollId' => $poll->id,
-                    'answerId' => $answer->id,
-                ]))->options(['data-bs-target' => '#globalModal'])
-                : $voteText ?>
-        </div>
-    <?php endif; ?>
 </div>
