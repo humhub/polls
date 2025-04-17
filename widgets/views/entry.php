@@ -12,11 +12,11 @@ humhub\modules\polls\assets\PollsAsset::register($this);
 <div data-poll="<?= $poll->id ?>" data-content-component="polls.Poll" data-content-key="<?= $poll->content->id ?>">
 
     <?php if ($poll->closed) : ?>
-        &nbsp;<span style="margin-left:3px;" class="label label-danger pull-right"><?= Yii::t('PollsModule.base', 'Closed') ?></span>
+        &nbsp;<span style="margin-left:3px;" class="label label-danger float-end"><?= Yii::t('PollsModule.base', 'Closed') ?></span>
     <?php endif; ?>
 
     <?php if ($poll->anonymous) : ?>
-        &nbsp;<span class="label label-success pull-right"><?= Yii::t('PollsModule.base', 'Anonymous') ?></span>
+        &nbsp;<span class="label label-success float-end"><?= Yii::t('PollsModule.base', 'Anonymous') ?></span>
     <?php endif; ?>
 
     <?= Html::beginForm($contentContainer->createUrl('/polls/poll/answer', ['pollId' => $poll->id])) ?>
@@ -40,9 +40,15 @@ humhub\modules\polls\assets\PollsAsset::register($this);
 
     <?php if (!$poll->hasUserVoted() && !Yii::$app->user->isGuest && !$poll->closed) : ?>
         <br>
-        <button data-action-click="vote" data-action-submit data-ui-loader class="btn btn-primary">
-            <?= Yii::t('PollsModule.base', 'Vote') ?>
-        </button>
+        <?= Button::widget([
+            'label' => Yii::t('PollsModule.base', 'Vote'),
+            'options' => [
+                'class' => 'btn-primary',
+                'data-action-click' => 'vote',
+                'data-action-submit' => true,
+                'data-ui-loader' => true
+            ],
+        ]); ?>
         <br>
     <?php endif; ?>
 
