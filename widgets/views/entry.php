@@ -5,6 +5,7 @@ use humhub\modules\polls\models\Poll;
 use humhub\helpers\Html;
 use humhub\widgets\bootstrap\Badge;
 use humhub\widgets\bootstrap\Button;
+use humhub\widgets\bootstrap\Alert;
 
 humhub\modules\polls\assets\PollsAsset::register($this);
 
@@ -14,7 +15,7 @@ humhub\modules\polls\assets\PollsAsset::register($this);
 <div data-poll="<?= $poll->id ?>" data-content-component="polls.Poll" data-content-key="<?= $poll->content->id ?>">
 
     <?php if ($poll->closed) : ?>
-        &nbsp;<?= Badge::danger(Yii::t('PollsModule.base', 'Closed'))->style(['margin-left' => '3px'])->right() ?>
+        &nbsp;<?= Badge::danger(Yii::t('PollsModule.base', 'Closed'))->class('ms-1')->right() ?>
     <?php endif; ?>
 
     <?php if ($poll->anonymous) : ?>
@@ -35,9 +36,7 @@ humhub\modules\polls\assets\PollsAsset::register($this);
 
     <?php if(!$poll->isShowResult()) : ?>
         <br>
-        <div class="alert alert-default" style="margin:0">
-            <?= Yii::t('PollsModule.base', '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.') ?>
-        </div>
+        <?= Alert::light(Yii::t('PollsModule.base', '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.')->class('m-0')) ?>
     <?php endif; ?>
 
     <?php if (!$poll->hasUserVoted() && !Yii::$app->user->isGuest && !$poll->closed) : ?>
@@ -51,9 +50,8 @@ humhub\modules\polls\assets\PollsAsset::register($this);
     <?php endif; ?>
 
     <?php if (Yii::$app->user->isGuest && !$poll->closed) : ?>
-        <?= Html::a(Yii::t('PollsModule.base', 'Vote'), Yii::$app->user->loginUrl, ['class' => 'btn btn-primary', 'data-bs-target' => '#globalModal']); ?>
+        <?= Button::primary(Yii::t('PollsModule.base', 'Vote'))->link(Yii::$app->user->loginUrl)->options(['data-bs-target' => '#globalModal']) ?>
     <?php endif; ?>
-
 
     <div class="clearFloats"></div>
 

@@ -35,9 +35,9 @@ if (!$poll->anonymous) {
 }
 ?>
 <div class="container">
-    <div class="row" style="margin:0">
+    <div class="row m-0">
         <?php if (!$poll->hasUserVoted() && !$poll->closed) : ?>
-            <div class="col-1" style="margin-top:6px;padding-left:0">
+            <div class="col-1 mt-2 ps-0">
                 <?php if ($poll->allow_multiple) : ?>
                     <?= Html::checkBox('answers[' . $answer->id . ']'); ?>
                 <?php else : ?>
@@ -46,7 +46,7 @@ if (!$poll->anonymous) {
             </div>
         <?php endif; ?>
 
-        <div class="col-md-7 col-9" style="padding-left:0">
+        <div class="col-md-7 col-9 ps-0">
             <span><?= Html::encode($answer->answer) ?></span>
             <div class="progress">
                 <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="<?= $percent ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?= $percent ?>%"></div>
@@ -54,7 +54,7 @@ if (!$poll->anonymous) {
         </div>
 
         <?php if ($poll->isShowResult()) : ?>
-            <div class="col-2 text-nowrap tt" style="margin-top:14px;padding:0" data-bs-toggle="tooltip" data-placement="top" data-original-title="<?= $userlist ?>">
+            <div class="col-2 text-nowrap tt mt-3 p-0" data-bs-toggle="tooltip" data-placement="top" data-original-title="<?= $userlist ?>">
                 <?= !$poll->anonymous && $voteCount
                     ? Link::asLink($voteText, $contentContainer->createUrl('/polls/poll/user-list-results', [
                         'pollId' => $poll->id,

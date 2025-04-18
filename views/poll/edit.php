@@ -14,8 +14,8 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
 ?>
 
 <div data-poll="<?= $poll->id ?>" data-content-component="polls.Poll" data-content-key="<?= $poll->content->id ?>"
-     class="content_edit" id="poll_edit_<?= $poll->id; ?>">
-     <?= Alert::danger('<span class="errorMessage"></span>')->cssClass(['d-none']) ?>
+    class="content_edit" id="poll_edit_<?= $poll->id; ?>">
+    <?= Alert::danger('<span class="errorMessage"></span>')->cssClass(['d-none']) ?>
 
     <?php $form = ActiveForm::begin(); ?>
 
