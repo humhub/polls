@@ -54,10 +54,9 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
         <?= $form->field($poll, 'show_result_after_close')->checkbox(['id' => 'edit_poll_show_result_after_close' . $poll->id]) ?>
 
     </div>
-    <?= Button::widget([
+    <?= Button::primary([
         'label' => Yii::t('PollsModule.base', "Save"),
         'options' => [
-            'class' => 'btn-primary',
             'data-action-click' => 'editSubmit',
             'data-action-submit' => true,
             'data-action-url' => $poll->content->container->createUrl('/polls/poll/edit', ['id' => $poll->id]),
@@ -65,10 +64,9 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
         ],
     ]); ?>
 
-    <?= Button::widget([
+    <?= Button::danger([
         'label' => Yii::t('PollsModule.base', "Cancel"),
         'options' => [
-            'class' => 'btn-danger',
             'data-action-click' => 'editCancel',
             'data-action-url' => $poll->content->container->createUrl('/polls/poll/reload', ['id' => $poll->id]),
             'data-ui-loader' => true
