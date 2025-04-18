@@ -15,7 +15,7 @@ humhub\modules\polls\assets\PollsAsset::register($this);
 <div data-poll="<?= $poll->id ?>" data-content-component="polls.Poll" data-content-key="<?= $poll->content->id ?>">
 
     <?php if ($poll->closed) : ?>
-        &nbsp;<?= Badge::danger(Yii::t('PollsModule.base', 'Closed'))->class('ms-1')->right() ?>
+        &nbsp;<?= Badge::danger(Yii::t('PollsModule.base', 'Closed'))->cssClass('ms-1')->right() ?>
     <?php endif; ?>
 
     <?php if ($poll->anonymous) : ?>
@@ -36,7 +36,7 @@ humhub\modules\polls\assets\PollsAsset::register($this);
 
     <?php if(!$poll->isShowResult()) : ?>
         <br>
-        <?= Alert::light(Yii::t('PollsModule.base', '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.')->class('m-0')) ?>
+        <?= Alert::light(Yii::t('PollsModule.base', '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.')->cssClass('m-0')) ?>
     <?php endif; ?>
 
     <?php if (!$poll->hasUserVoted() && !Yii::$app->user->isGuest && !$poll->closed) : ?>
