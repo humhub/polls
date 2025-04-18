@@ -33,7 +33,7 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
                            value="<?= Html::encode($answer->answer) ?>"
                            class="form-control tt poll_answer_old_input"
                            placeholder="<?= Yii::t('PollsModule.base', "Edit answer (empty answers will be removed)...") ?>"/>
-                    <div class="input-group-addon" style="cursor:pointer;" data-action-click="removePollAnswer">
+                    <div class="input-group-text" style="cursor:pointer;" data-action-click="removePollAnswer">
                         <?= Icon::get('trash') ?>
                     </div>
                 </div>

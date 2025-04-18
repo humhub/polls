@@ -14,7 +14,7 @@ $title = ($showTitle) ? '0' . Yii::t('PollsModule.base', 'votes') : '';
                class="form-control poll_answer_new_input contentForm"
                placeholder="<?= Yii::t('PollsModule.base', "Add answer...") ?>"
                title="<?= $title ?>"/>
-        <div class="input-group-addon" style="cursor:pointer;" data-action-click="removePollAnswer">
+        <div class="input-group-text" style="cursor:pointer;" data-action-click="removePollAnswer">
             <?= Icon::get('trash') ?>
         </div>
     </div>
@@ -25,7 +25,7 @@ $title = ($showTitle) ? '0' . Yii::t('PollsModule.base', 'votes') : '';
                class="form-control poll_answer_new_input contentForm"
                placeholder="<?= Yii::t('PollsModule.base', "Add answer...") ?>"
                title="<?= $title ?>"/>
-        <div class="input-group-addon addPollAnswerButton" data-action-click="addPollAnswer" style="cursor:pointer">
+        <div class="input-group-text addPollAnswerButton" data-action-click="addPollAnswer" style="cursor:pointer">
             <?= Icon::get('plus') ?>
         </div>
     </div>
