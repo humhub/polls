@@ -54,23 +54,17 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
         <?= $form->field($poll, 'show_result_after_close')->checkbox(['id' => 'edit_poll_show_result_after_close' . $poll->id]) ?>
 
     </div>
-    <?= Button::primary([
-        'label' => Yii::t('PollsModule.base', "Save"),
-        'options' => [
-            'data-action-click' => 'editSubmit',
-            'data-action-submit' => true,
-            'data-action-url' => $poll->content->container->createUrl('/polls/poll/edit', ['id' => $poll->id]),
-            'data-ui-loader' => true
-        ],
+    <?= Button::primary(Yii::t('PollsModule.base', "Save"))->options([
+        'data-action-click' => 'editSubmit',
+        'data-action-submit' => true,
+        'data-action-url' => $poll->content->container->createUrl('/polls/poll/edit', ['id' => $poll->id]),
+        'data-ui-loader' => true
     ]); ?>
 
-    <?= Button::danger([
-        'label' => Yii::t('PollsModule.base', "Cancel"),
-        'options' => [
-            'data-action-click' => 'editCancel',
-            'data-action-url' => $poll->content->container->createUrl('/polls/poll/reload', ['id' => $poll->id]),
-            'data-ui-loader' => true
-        ],
+    <?= Button::danger(Yii::t('PollsModule.base', "Cancel"))->options([
+        'data-action-click' => 'editCancel',
+        'data-action-url' => $poll->content->container->createUrl('/polls/poll/reload', ['id' => $poll->id]),
+        'data-ui-loader' => true
     ]); ?>
 
     <?php ActiveForm::end(); ?>

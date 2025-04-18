@@ -42,14 +42,10 @@ humhub\modules\polls\assets\PollsAsset::register($this);
 
     <?php if (!$poll->hasUserVoted() && !Yii::$app->user->isGuest && !$poll->closed) : ?>
         <br>
-        <?= Button::widget([
-            'label' => Yii::t('PollsModule.base', 'Vote'),
-            'options' => [
-                'class' => 'btn-primary',
-                'data-action-click' => 'vote',
-                'data-action-submit' => true,
-                'data-ui-loader' => true
-            ],
+        <?= Button::primary(Yii::t('PollsModule.base', 'Vote'))->options([
+            'data-action-click' => 'vote',
+            'data-action-submit' => true,
+            'data-ui-loader' => true
         ]); ?>
         <br>
     <?php endif; ?>
