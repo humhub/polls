@@ -80,7 +80,7 @@ humhub.module('polls', function (module, require, $) {
         $input.val('');
         $newInputGroup.addClass('d-none');
         $this.closest('.mb-3').after($newInputGroup);
-        $this.children('span').removeClass('fa-plus').addClass('fa-trash');
+        $this.children('i').removeClass('fa-plus').addClass('fa-trash');
         $this.off('click.humhub-action').on('click', function () {
             $this.closest('.mb-3').remove();
         });
