@@ -36,7 +36,7 @@ humhub\modules\polls\assets\PollsAsset::register($this);
 
     <?php if(!$poll->isShowResult()) : ?>
         <br>
-        <?= Alert::light(Yii::t('PollsModule.base', '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.')->cssClass('m-0')) ?>
+        <?= Alert::light(Yii::t('PollsModule.base', '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.'))->cssClass('m-0')) ?>
     <?php endif; ?>
 
     <?php if (!$poll->hasUserVoted() && !Yii::$app->user->isGuest && !$poll->closed) : ?>
