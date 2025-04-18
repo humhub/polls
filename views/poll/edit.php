@@ -5,6 +5,8 @@ use humhub\widgets\form\ActiveForm;
 use humhub\helpers\Html;
 use humhub\modules\polls\widgets\AddAnswerInput;
 use humhub\widgets\bootstrap\Button;
+use humhub\widgets\bootstrap\Alert;
+use humhub\modules\ui\icon\widgets\Icon;
 
 /** @var  $poll \humhub\modules\polls\models\Poll */
 
@@ -13,9 +15,7 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
 
 <div data-poll="<?= $poll->id ?>" data-content-component="polls.Poll" data-content-key="<?= $poll->content->id ?>"
      class="content_edit" id="poll_edit_<?= $poll->id; ?>">
-    <div class="alert alert-danger" role="alert" style="display:none">
-        <span class="errorMessage"></span>
-    </div>
+     <?= Alert::danger('<span class="errorMessage"></span>')->cssClass(['d-none']) ?>
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -34,7 +34,7 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
                            class="form-control tt poll_answer_old_input"
                            placeholder="<?= Yii::t('PollsModule.base', "Edit answer (empty answers will be removed)...") ?>"/>
                     <div class="input-group-addon" style="cursor:pointer;" data-action-click="removePollAnswer">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        <?= Icon::get('trash') ?>
                     </div>
                 </div>
             </div>
