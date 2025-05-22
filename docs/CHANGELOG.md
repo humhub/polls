@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.4.0 (Unreleased)
+--------------------------
+- Enh #148: Migration to Bootstrap 5 for HumHub 1.18
+
 1.3.7 (Unreleased)
 --------------------------
 - Enh #142: Reduce translation message categories
