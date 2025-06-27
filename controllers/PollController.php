@@ -23,11 +23,6 @@ use yii\helpers\Html;
  */
 class PollController extends ContentContainerController
 {
-    /**
-     * @inheritdoc
-     */
-    public $requireContainer = false;
-
     public function actionCreateForm()
     {
         if (!(new Poll($this->contentContainer))->content->canEdit()) {
@@ -240,24 +235,6 @@ class PollController extends ContentContainerController
         }
 
         return $poll;
-    }
-
-    public function actionPickerSearch(string $keyword)
-    {
-        $polls = Poll::find()
-            ->readable()
-            ->andWhere(['like', 'poll.question', $keyword]);
-
-        $output = [];
-        foreach ($polls->each() as $poll) {
-            /* @var Poll $poll */
-            $output[] = [
-                'id' => $poll->id,
-                'text' => $poll->question,
-            ];
-        }
-
-        return $this->asJson($output);
     }
 
 }
