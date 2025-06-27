@@ -12,8 +12,6 @@ use humhub\libs\Html;
 use humhub\modules\custom_pages\modules\template\elements\BaseContentRecordElement;
 use humhub\modules\custom_pages\modules\template\elements\BaseElementVariable;
 use humhub\modules\polls\models\Poll;
-use humhub\modules\polls\widgets\PollPicker;
-use humhub\modules\ui\form\widgets\ActiveForm;
 use Yii;
 
 /**
@@ -39,7 +37,7 @@ class PollElement extends BaseContentRecordElement
     public function attributeLabels()
     {
         return [
-            'contentRecordId' => Yii::t('PollsModule.base', 'Select poll'),
+            'contentRecordId' => Yii::t('PollsModule.base', 'Poll ID'),
         ];
     }
 
@@ -54,14 +52,5 @@ class PollElement extends BaseContentRecordElement
     public function getTemplateVariable(): BaseElementVariable
     {
         return PollElementVariable::instance($this)->setRecord($this->getRecord());
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function renderEditForm(ActiveForm $form): string
-    {
-        return $form->field($this, 'contentRecordId')
-            ->widget(PollPicker::class, ['maxSelection' => 1]);
     }
 }
