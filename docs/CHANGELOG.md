@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.3.7 (Unreleased)
---------------------------
+1.3.7 (June 30, 2025)
+---------------------
 - Enh #142: Reduce translation message categories
 - Enh #143: Enable the feature to move a content to another space
 - Enh #145: Updated wording for clarity
