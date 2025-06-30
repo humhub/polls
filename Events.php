@@ -8,6 +8,8 @@
 
 namespace humhub\modules\polls;
 
+use humhub\modules\polls\extensions\custom_pages\elements\PollElement;
+use humhub\modules\polls\extensions\custom_pages\elements\PollsElement;
 use humhub\modules\polls\models\Poll;
 use humhub\modules\polls\models\PollAnswer;
 use humhub\modules\polls\models\PollAnswerUser;
@@ -190,6 +192,14 @@ class Events
             ['pattern' => 'polls/vote/<id:\d+>', 'route' => 'polls/rest/polls/votes', 'verb' => 'GET'],
 
         ], 'polls');
+    }
+
+    public static function onCustomPagesTemplateElementTypeServiceInit($event)
+    {
+        /* @var \humhub\modules\custom_pages\modules\template\services\ElementTypeService $elementTypeService */
+        $elementTypeService = $event->sender;
+        $elementTypeService->addType(PollElement::class);
+        $elementTypeService->addType(PollsElement::class);
     }
 
 }
