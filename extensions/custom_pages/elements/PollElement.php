@@ -43,7 +43,7 @@ class PollElement extends BaseContentRecordElement
 
     public function __toString()
     {
-        return Html::encode($this->record->question);
+        return Html::encode($this->record?->question);
     }
 
     /**
