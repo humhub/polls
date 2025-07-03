@@ -37,7 +37,7 @@ class PollElement extends BaseContentRecordElement
     public function attributeLabels()
     {
         return [
-            'contentRecordId' => Yii::t('PollsModule.base', 'Poll ID'),
+            'contentId' => Yii::t('PollsModule.base', 'Poll content ID'),
         ];
     }
 
