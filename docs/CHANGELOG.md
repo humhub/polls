@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.3.9 (Unreleased)
+---------------------
+- Enh #152: Use content ID in the "Custom Pages" extension
+
 1.3.8 (June 30, 2025)
 ---------------------
 - Enh #142: Reduce translation message categories
