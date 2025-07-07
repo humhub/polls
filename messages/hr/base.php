@@ -12,9 +12,9 @@ return [
     'Answers' => 'Odgovori',
     'At least one answer is required' => 'Potreban je barem jedan odgovor',
     'Cancel' => 'Poništi',
+    'Close Poll' => 'Cijela anketa',
     'Closed' => 'Zatvoreno',
     'Club A Steakhouse' => 'Club A Steakhouse',
-    'Close Poll' => 'Cijela anketa',
     'Could not load poll!' => 'Nije moguće učitati anketu!',
     'Description' => 'Opis',
     'Display answers in random order?' => 'Prikaži odgovore u nasumičnom redoslijedu?',
@@ -44,6 +44,7 @@ return [
     'Allows the user to create polls' => '',
     'Create poll' => '',
     'Location of the next meeting' => '',
+    'Poll content ID' => '',
     'Whenever someone participates in a poll.' => '',
     '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '',
 ];

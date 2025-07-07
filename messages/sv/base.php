@@ -13,9 +13,9 @@ return [
     'Answers' => 'Svar',
     'At least one answer is required' => 'Minst ett svar krävs',
     'Cancel' => 'Avbryt',
+    'Close Poll' => 'Avsluta undersökning',
     'Closed' => 'Stängd',
     'Club A Steakhouse' => 'Club A Steakhouse',
-    'Close Poll' => 'Avsluta undersökning',
     'Could not load poll!' => 'Kunde inte ladda enkät!',
     'Create poll' => 'Skapa undersökning',
     'Description' => 'Beskrivning',
@@ -46,4 +46,5 @@ return [
     'votes' => 'röster',
     '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}',
     '{userName} answered the {question}.' => '{userName} svarade på {question}.',
+    'Poll content ID' => '',
 ];

@@ -13,9 +13,9 @@ return [
     'Answers' => 'Risposte',
     'At least one answer is required' => 'E\' necessaria almeno ina risposta.',
     'Cancel' => 'Annulla',
+    'Close Poll' => 'Sondaggio completato',
     'Closed' => 'Chiuso',
     'Club A Steakhouse' => 'Paninoteca',
-    'Close Poll' => 'Sondaggio completato',
     'Could not load poll!' => 'Non posso caricare il sondaggio!',
     'Create poll' => 'Crea sondaggio',
     'Description' => 'Descrizione',
@@ -45,5 +45,6 @@ return [
     'and {count} more vote for this.' => 'più {count} voti per questo.',
     'votes' => 'voti',
     '{userName} answered the {question}.' => '{userName} ha risposto {question}.',
+    'Poll content ID' => '',
     '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '',
 ];

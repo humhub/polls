@@ -12,9 +12,9 @@ return [
     'Answers' => 'Trả lời',
     'At least one answer is required' => 'Yêu cầu ít nhất 1 câu trả lời',
     'Cancel' => 'Hủy',
+    'Close Poll' => 'Hoàn thành biểu quyết',
     'Closed' => 'Đóng',
     'Club A Steakhouse' => 'Tiệm thịt bò?',
-    'Close Poll' => 'Hoàn thành biểu quyết',
     'Could not load poll!' => 'Không thể tải biểu quyết!',
     'Description' => 'Miêu tả',
     'Display answers in random order?' => 'Hiển thị câu trả lời theo thứ tự ngẫu nhiên?',
@@ -44,6 +44,7 @@ return [
     'Create poll' => '',
     'Location of the next meeting' => '',
     'Poll' => '',
+    'Poll content ID' => '',
     'Whenever someone participates in a poll.' => '',
     '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '',
 ];

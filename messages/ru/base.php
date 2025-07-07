@@ -13,9 +13,9 @@ return [
     'Answers' => 'Ответы',
     'At least one answer is required' => 'Требуется хотя бы один ответ',
     'Cancel' => 'Отменить',
+    'Close Poll' => 'Завершить опрос',
     'Closed' => 'Закрыт',
     'Club A Steakhouse' => 'Клуб «Стейкхаус»',
-    'Close Poll' => 'Завершить опрос',
     'Could not load poll!' => 'Не удалось загрузить опрос!',
     'Create poll' => 'Создать опрос',
     'Description' => 'Описание',
@@ -44,6 +44,7 @@ return [
     'votes' => 'голосов',
     '{userName} answered the {question}.' => '{userName} ответил(а) на {question}.',
     'Location of the next meeting' => '',
+    'Poll content ID' => '',
     'Whenever someone participates in a poll.' => '',
     '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '',
 ];

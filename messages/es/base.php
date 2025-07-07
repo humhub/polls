@@ -13,9 +13,9 @@ return [
     'Answers' => 'Respuestas',
     'At least one answer is required' => 'Se requiere al menos una respuesta',
     'Cancel' => 'Cancelar',
+    'Close Poll' => 'Terminar la encuesta',
     'Closed' => 'Cerrado',
     'Club A Steakhouse' => 'Restaurante especializado en cortes de carne',
-    'Close Poll' => 'Terminar la encuesta',
     'Could not load poll!' => '¡No se pudo cargar la votación!',
     'Create poll' => 'Crear encuesta',
     'Description' => 'Descripción',
@@ -46,4 +46,5 @@ return [
     'votes' => 'votos',
     '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}',
     '{userName} answered the {question}.' => '{userName} respondió la {question}.',
+    'Poll content ID' => '',
 ];

@@ -10,9 +10,9 @@ return [
     'Anonymous poll!' => 'Anonīma aptauja!',
     'Answers' => 'Atbildes',
     'Cancel' => 'Atcelt',
+    'Close Poll' => 'Pabeigt aptauju',
     'Closed' => 'Slēgta',
     'Club A Steakhouse' => 'Uz steika sviestmaizi',
-    'Close Poll' => 'Pabeigt aptauju',
     'Could not load poll!' => 'Nevarēja ielādēt aptauju!',
     'Description' => 'Apraksts',
     'Display answers in random order?' => 'Parādīt atbildes jauktā kārtībā?',
@@ -44,6 +44,7 @@ return [
     'Hide results until poll is closed?' => '',
     'Location of the next meeting' => '',
     'Poll' => '',
+    'Poll content ID' => '',
     'Whenever someone participates in a poll.' => '',
     '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '',
 ];

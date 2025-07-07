@@ -13,9 +13,9 @@ return [
     'Answers' => 'Válaszok',
     'At least one answer is required' => 'Egy válaszra legalább szükség van',
     'Cancel' => 'Mégsem',
+    'Close Poll' => 'Szavazás lezárása',
     'Closed' => 'Befejeződött',
     'Club A Steakhouse' => 'Club A Steakhouse',
-    'Close Poll' => 'Szavazás lezárása',
     'Could not load poll!' => 'Szavazás nem tölthető be!',
     'Create poll' => 'Szavazás létrehozása',
     'Description' => 'Leírás',
@@ -46,4 +46,5 @@ return [
     'votes' => 'szavazat',
     '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '{n,plural,=1{# {htmlTagBegin}szavazat{htmlTagEnd}}other{# {htmlTagBegin}szavazat{htmlTagEnd}}}',
     '{userName} answered the {question}.' => '{userName} megválaszolta ezt: {question}.',
+    'Poll content ID' => '',
 ];

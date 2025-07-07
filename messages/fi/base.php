@@ -12,9 +12,9 @@ return [
     'Answers' => 'Vastausta',
     'At least one answer is required' => 'Tarvitaan vähintään yksi vastaus',
     'Cancel' => 'Peruuta',
+    'Close Poll' => 'Sulje kysely',
     'Closed' => 'Suljettu',
     'Club A Steakhouse' => 'Club A Steakhouse',
-    'Close Poll' => 'Sulje kysely',
     'Could not load poll!' => 'Kyselyä ei voitu ladata!',
     'Description' => 'Kuvaus',
     'Display answers in random order?' => 'Näytä vastaukset satunnaisessa järjestyksessä',
@@ -44,6 +44,7 @@ return [
     'Allows the user to create polls' => '',
     'Create poll' => '',
     'Location of the next meeting' => '',
+    'Poll content ID' => '',
     'Whenever someone participates in a poll.' => '',
     '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '',
 ];
