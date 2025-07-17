@@ -54,7 +54,7 @@ if (!$poll->anonymous) {
         </div>
 
         <?php if ($poll->isShowResult()) : ?>
-            <div class="col-2 text-nowrap tt mt-3 p-0" data-bs-toggle="tooltip" data-placement="top" data-original-title="<?= $userlist ?>">
+            <div class="col-2 text-nowrap tt mt-3 p-0" data-bs-toggle="tooltip" data-placement="top" data-bs-title="<?= $userlist ?>">
                 <?= !$poll->anonymous && $voteCount
                     ? Link::asLink($voteText, $contentContainer->createUrl('/polls/poll/user-list-results', [
                         'pollId' => $poll->id,
