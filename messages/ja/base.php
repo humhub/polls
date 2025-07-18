@@ -13,9 +13,9 @@ return [
     'Answers' => '回答',
     'At least one answer is required' => '1つ以上の回答が必要です',
     'Cancel' => 'キャンセル',
+    'Close Poll' => 'アンケートを終了',
     'Closed' => '終了',
     'Club A Steakhouse' => 'クラブAステーキハウス',
-    'Close Poll' => 'アンケートを終了',
     'Could not load poll!' => 'アンケートを読み込めませんでした！',
     'Create poll' => '投票を作成する',
     'Description' => '説明',
@@ -46,4 +46,5 @@ return [
     'votes' => '票',
     '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}',
     '{userName} answered the {question}.' => '{userName} さんが回答しました。{question}',
+    'Poll content ID' => '',
 ];

@@ -10,9 +10,9 @@ return [
     'Anonymous poll!' => '匿名投票',
     'Answers' => '答案',
     'Cancel' => '取消',
+    'Close Poll' => '完成投票',
     'Closed' => '关闭',
     'Club A Steakhouse' => '俱乐部A的牛排',
-    'Close Poll' => '完成投票',
     'Could not load poll!' => '无法加载投票！',
     'Description' => '描述',
     'Display answers in random order?' => '随机位置显示答案？',
@@ -44,6 +44,7 @@ return [
     'Hide results until poll is closed?' => '',
     'Location of the next meeting' => '',
     'Poll' => '',
+    'Poll content ID' => '',
     'Whenever someone participates in a poll.' => '',
     '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '',
 ];

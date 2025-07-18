@@ -13,9 +13,9 @@ return [
     'Answers' => 'Réponses',
     'At least one answer is required' => 'Au moins une réponse est obligatoire',
     'Cancel' => 'Annuler',
+    'Close Poll' => 'Fermer le sondage',
     'Closed' => 'Fermé',
     'Club A Steakhouse' => 'Hippopotamus',
-    'Close Poll' => 'Fermer le sondage',
     'Could not load poll!' => 'Impossible de charger le sondage.',
     'Create poll' => 'Créer un sondage',
     'Description' => 'Description',
@@ -46,4 +46,5 @@ return [
     'votes' => 'vote(s)',
     '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}',
     '{userName} answered the {question}.' => '{userName} a répondu à {question}.',
+    'Poll content ID' => '',
 ];

@@ -19,7 +19,7 @@ humhub\modules\polls\assets\PollsAsset::register($this);
     <?php endif; ?>
 
     <?php if ($poll->anonymous) : ?>
-        &nbsp;<?= Badge::success(Yii::t('PollsModule.base', 'Anonymous'))->right() ?>
+        &nbsp;<?= Badge::info(Yii::t('PollsModule.base', 'Anonymous'))->right() ?>
     <?php endif; ?>
 
     <?= Html::beginForm($contentContainer->createUrl('/polls/poll/answer', ['pollId' => $poll->id])) ?>

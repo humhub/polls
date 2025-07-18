@@ -13,9 +13,9 @@ return [
     'Answers' => 'คำตอบ',
     'At least one answer is required' => 'จำเป็นต้องมีอย่างน้อยหนึ่งคำตอบ',
     'Cancel' => 'ยกเลิก',
+    'Close Poll' => 'กรอกแบบสำรวจ',
     'Closed' => 'ปิด',
     'Club A Steakhouse' => 'คลับ เอ สเต็กเฮาส์',
-    'Close Poll' => 'กรอกแบบสำรวจ',
     'Could not load poll!' => 'ไม่สามารถโหลดแบบสำรวจความคิดเห็น!',
     'Create poll' => 'สร้างโพล',
     'Description' => 'คำอธิบาย',
@@ -45,5 +45,6 @@ return [
     'votes' => 'โหวต',
     '{userName} answered the {question}.' => '{userName} ตอบคำถาม {question}',
     'Poll' => '',
+    'Poll content ID' => '',
     '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '',
 ];

@@ -13,9 +13,9 @@ return [
     'Answers' => 'Odpovede',
     'At least one answer is required' => 'Vyžaduje sa aspoň jedna odpoveď',
     'Cancel' => 'Zrušiť',
+    'Close Poll' => 'Vyplňte anketu',
     'Closed' => 'ZATVORENÉ',
     'Club A Steakhouse' => 'Klub A Steakhouse',
-    'Close Poll' => 'Vyplňte anketu',
     'Could not load poll!' => 'Anketu sa nepodarilo načítať!',
     'Create poll' => 'Vytvoriť anketu',
     'Description' => 'Popis',
@@ -45,5 +45,6 @@ return [
     'and {count} more vote for this.' => 'a ďalší ({count}) za to hlasujú.',
     'votes' => 'hlasov',
     '{userName} answered the {question}.' => '{userName} odpovedal na otázku {question}.',
+    'Poll content ID' => '',
     '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '',
 ];

@@ -13,9 +13,9 @@ return [
     'Answers' => 'Отговори',
     'At least one answer is required' => 'Изисква се поне един отговор',
     'Cancel' => 'Отказ',
+    'Close Poll' => 'Завърши анкета',
     'Closed' => 'Затворена',
     'Club A Steakhouse' => 'Club A Steakhouse',
-    'Close Poll' => 'Завърши анкета',
     'Could not load poll!' => 'Анкета не може да бъде заредена!',
     'Create poll' => 'Създаване на анкета',
     'Description' => 'Описание',
@@ -45,5 +45,6 @@ return [
     'votes' => 'гласове',
     '{userName} answered the {question}.' => '{userName} отговори на {question}.',
     'Poll' => '',
+    'Poll content ID' => '',
     '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '',
 ];

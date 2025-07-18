@@ -13,9 +13,9 @@ return [
     'Answers' => 'Antwoorden',
     'At least one answer is required' => 'Ten minste één antwoord is vereist',
     'Cancel' => 'Annuleer',
+    'Close Poll' => 'Rond het stemmen af.',
     'Closed' => 'Gesloten',
     'Club A Steakhouse' => 'Club A Steakhouse',
-    'Close Poll' => 'Rond het stemmen af.',
     'Could not load poll!' => 'Kon stembus niet laden!',
     'Create poll' => 'Maak een stembus',
     'Description' => 'Beschrijving',
@@ -46,4 +46,5 @@ return [
     'votes' => 'stemmen',
     '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '{n,plural,=1{# {htmlTagBegin}stem{htmlTagEnd}}other{# {htmlTagBegin}stemmen{htmlTagEnd}}}',
     '{userName} answered the {question}.' => '{userName} beantwoorde de {question}.',
+    'Poll content ID' => '',
 ];

@@ -13,9 +13,9 @@ return [
     'Answers' => 'Opções',
     'At least one answer is required' => 'Pelo menos uma opção é necessária',
     'Cancel' => 'Cancelar',
+    'Close Poll' => 'Votação completa',
     'Closed' => 'Fechada',
     'Club A Steakhouse' => 'Churrasqueira Club A',
-    'Close Poll' => 'Votação completa',
     'Could not load poll!' => 'Não conseguimos carregar a votação!',
     'Create poll' => 'Criar votação',
     'Description' => 'Descrição',
@@ -45,5 +45,6 @@ return [
     'and {count} more vote for this.' => 'e {count} votaram para esta opção.',
     'votes' => 'votos',
     '{userName} answered the {question}.' => '{userName} votou sobre {question}.',
+    'Poll content ID' => '',
     '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '',
 ];

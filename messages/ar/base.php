@@ -13,9 +13,9 @@ return [
     'Answers' => 'الإجابات',
     'At least one answer is required' => 'مطلوب إجابة واحدة على الأقل',
     'Cancel' => 'إلغاء',
+    'Close Poll' => 'إكمال الاستطلاع',
     'Closed' => 'مغلق',
     'Club A Steakhouse' => 'نادي ستيك هاوس',
-    'Close Poll' => 'إكمال الاستطلاع',
     'Could not load poll!' => 'فشل تحميل الاستطلاع!',
     'Create poll' => 'إنشاء استطلاع',
     'Description' => 'الوصف',
@@ -46,4 +46,5 @@ return [
     'votes' => 'أصوات',
     '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '{n,plural,=1{# {htmlTagBegin}صوت{htmlTagEnd}}other{# {htmlTagBegin}أصوات{htmlTagEnd}}}',
     '{userName} answered the {question}.' => 'أجاب {userName} على {question}.',
+    'Poll content ID' => '',
 ];
