@@ -16,7 +16,7 @@ humhub\modules\polls\assets\PollsAsset::register($this);
     <?php endif; ?>
 
     <?php if ($poll->anonymous) : ?>
-        &nbsp;<span class="label label-success pull-right"><?= Yii::t('PollsModule.base', 'Anonymous') ?></span>
+        &nbsp;<span class="label label-info pull-right"><?= Yii::t('PollsModule.base', 'Anonymous') ?></span>
     <?php endif; ?>
 
     <?= Html::beginForm($contentContainer->createUrl('/polls/poll/answer', ['pollId' => $poll->id])) ?>

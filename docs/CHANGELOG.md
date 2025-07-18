@@ -4,6 +4,7 @@ Changelog
 1.3.9 (Unreleased)
 ---------------------
 - Enh #152: Use content ID in the "Custom Pages" extension
+- Fix #153: Anonymous badge wrong color
 
 1.3.8 (June 30, 2025)
 ---------------------
