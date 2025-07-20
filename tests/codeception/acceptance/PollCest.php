@@ -30,6 +30,8 @@ class PollCest
         $I->fillField(Locator::elementAt('.poll_answer_new_input', 2), 'Answer 2');
         $I->fillField(Locator::elementAt('.poll_answer_new_input', 3), 'Answer 3');
 
+        $I->scrollTo('#post_submit_button');
+        $I->wait(1);
         $I->click('#post_submit_button');
         $I->waitForElementVisible('.wall-entry .wall_humhubmodulespollsmodelsPoll_1');
         $I->see('My Poll Question');
