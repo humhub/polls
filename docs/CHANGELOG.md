@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.4.0 (Unreleased)
---------------------------
+1.4.0 (July 26, 2025)
+---------------------
 - Enh #148: Migration to Bootstrap 5 for HumHub 1.18
 - Enh #152: Use content ID in the "Custom Pages" extension
 - Fix #153: Anonymous badge wrong color
