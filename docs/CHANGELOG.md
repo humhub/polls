@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.3.9 (Unreleased)
+1.3.10 (July 30, 2025)
 ---------------------
 - Enh #152: Use content ID in the "Custom Pages" extension
 - Fix #153: Anonymous badge wrong color
