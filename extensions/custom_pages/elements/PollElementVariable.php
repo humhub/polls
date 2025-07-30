@@ -23,8 +23,8 @@ class PollElementVariable extends BaseContentRecordElementVariable
     public function setRecord(?ActiveRecord $record): BaseRecordElementVariable
     {
         if ($record instanceof Poll) {
-            $this->question = $record->question;
-            $this->description = $record->description;
+            $this->question = $record->question ?? '';
+            $this->description = $record->description ?? '';
             $this->closed = (bool) $record->closed;
 
             foreach ($record->answers as $answer) {
