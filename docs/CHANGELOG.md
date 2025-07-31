@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.3.11 (Unreleased)
+---------------------
+- Fix #156: Fix database format of the poll question column
+
 1.3.10 (July 30, 2025)
 ---------------------
 - Enh #152: Use content ID in the "Custom Pages" extension
