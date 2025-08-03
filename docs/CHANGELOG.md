@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.4.1 (Unreleased)
+----------------------
+- Fix: Migration to Bootstrap 5 for "Custom Pages" extension
+
 1.4.0 (July 26, 2025)
 ---------------------
 - Enh #148: Migration to Bootstrap 5 for HumHub 1.18
