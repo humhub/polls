@@ -49,7 +49,7 @@ class PollCest
         $I->seeSuccess('Saved');
         $I->see('1 vote', '.wall-entry');
         $I->click('1 vote', '.wall-entry');
-        $I->waitForText('Users voted for: Answer 1', null, '#globalModal');
+        $I->waitForText('Users voted for: Answer 1', 10, '#globalModal');
     }
 
 }
