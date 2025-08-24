@@ -2,7 +2,10 @@
 
 use humhub\modules\content\widgets\richtext\RichText;
 use humhub\modules\polls\models\Poll;
-use yii\helpers\Html;
+use humhub\helpers\Html;
+use humhub\widgets\bootstrap\Badge;
+use humhub\widgets\bootstrap\Button;
+use humhub\widgets\bootstrap\Alert;
 
 humhub\modules\polls\assets\PollsAsset::register($this);
 
@@ -12,11 +15,11 @@ humhub\modules\polls\assets\PollsAsset::register($this);
 <div data-poll="<?= $poll->id ?>" data-content-component="polls.Poll" data-content-key="<?= $poll->content->id ?>">
 
     <?php if ($poll->closed) : ?>
-        &nbsp;<span style="margin-left:3px;" class="label label-danger pull-right"><?= Yii::t('PollsModule.base', 'Closed') ?></span>
+        &nbsp;<?= Badge::danger(Yii::t('PollsModule.base', 'Closed'))->cssClass('ms-1')->right() ?>
     <?php endif; ?>
 
     <?php if ($poll->anonymous) : ?>
-        &nbsp;<span class="label label-info pull-right"><?= Yii::t('PollsModule.base', 'Anonymous') ?></span>
+        &nbsp;<?= Badge::info(Yii::t('PollsModule.base', 'Anonymous'))->right() ?>
     <?php endif; ?>
 
     <?= Html::beginForm($contentContainer->createUrl('/polls/poll/answer', ['pollId' => $poll->id])) ?>
@@ -33,23 +36,22 @@ humhub\modules\polls\assets\PollsAsset::register($this);
 
     <?php if(!$poll->isShowResult()) : ?>
         <br>
-        <div class="alert alert-default" style="margin:0">
-            <?= Yii::t('PollsModule.base', '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.') ?>
-        </div>
+        <?= Alert::light(Yii::t('PollsModule.base', '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.'))->cssClass('m-0') ?>
     <?php endif; ?>
 
     <?php if (!$poll->hasUserVoted() && !Yii::$app->user->isGuest && !$poll->closed) : ?>
         <br>
-        <button data-action-click="vote" data-action-submit data-ui-loader class="btn btn-primary">
-            <?= Yii::t('PollsModule.base', 'Vote') ?>
-        </button>
+        <?= Button::primary(Yii::t('PollsModule.base', 'Vote'))->options([
+            'data-action-click' => 'vote',
+            'data-action-submit' => true,
+            'data-ui-loader' => true
+        ]); ?>
         <br>
     <?php endif; ?>
 
     <?php if (Yii::$app->user->isGuest && !$poll->closed) : ?>
-        <?= Html::a(Yii::t('PollsModule.base', 'Vote'), Yii::$app->user->loginUrl, ['class' => 'btn btn-primary', 'data-target' => '#globalModal']); ?>
+        <?= Button::primary(Yii::t('PollsModule.base', 'Vote'))->link(Yii::$app->user->loginUrl)->options(['data-bs-target' => '#globalModal']) ?>
     <?php endif; ?>
-
 
     <div class="clearFloats"></div>
 
