@@ -8,7 +8,7 @@
 
 namespace humhub\modules\polls\assets;
 
-use humhub\modules\ui\view\components\View;
+use humhub\components\View;
 use Yii;
 use yii\web\AssetBundle;
 

@@ -9,10 +9,10 @@ use humhub\modules\polls\widgets\WallCreateForm;
 use humhub\modules\stream\actions\Stream;
 use humhub\modules\user\models\User;
 use humhub\modules\user\widgets\UserListBox;
+use humhub\helpers\Html;
 use Yii;
 use yii\web\ForbiddenHttpException;
 use yii\web\HttpException;
-use yii\helpers\Html;
 
 /**
  * PollController handles all poll related actions.
