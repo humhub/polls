@@ -1,13 +1,21 @@
 {
-    "name": "humhub/polls",
-    "type": "library",
-    "repositories": {
-        "humhub-module-coding-standards": {
-            "type": "vcs",
-            "url": "https://github.com/humhub/module-coding-standards.git"
-        }
-    },
-    "require-dev": {
-        "humhub/module-coding-standards": "dev-main"
+  "name": "humhub/polls",
+  "type": "humhub-module",
+  "config": {
+    "platform": {
+      "php": "8.2"
     }
+  },
+  "repositories": {
+    "humhub-module-coding-standards": {
+      "type": "vcs",
+      "url": "https://github.com/humhub/module-coding-standards.git"
+    }
+  },
+  "require-dev": {
+    "humhub/module-coding-standards": "dev-main"
+  },
+  "scripts": {
+    "rector": "vendor/bin/rector process --config=vendor/humhub/module-coding-standards/rector.php"
+  }
 }
