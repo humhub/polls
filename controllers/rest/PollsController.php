@@ -59,7 +59,7 @@ class PollsController extends BaseContentController
 
         $poll = new Poll($container, ['scenario' => Poll::SCENARIO_CREATE]);
 
-        if (!in_array(get_class($container), Yii::$app->getModule('polls')->getContentContainerTypes())
+        if (!in_array($container::class, Yii::$app->getModule('polls')->getContentContainerTypes())
             || !$poll->content->canEdit()) {
             return $this->returnError(403, 'You are not allowed to create a poll!');
         }

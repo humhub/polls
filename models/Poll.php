@@ -207,7 +207,7 @@ class Poll extends ContentActiveRecord implements Searchable
 
     public function addAnswer($answerText)
     {
-        if (trim($answerText) === '') {
+        if (trim((string) $answerText) === '') {
             return;
         }
 
