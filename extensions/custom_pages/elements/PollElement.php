@@ -19,7 +19,7 @@ use Yii;
  *
  * @property-read Poll|null $record
  */
-class PollElement extends BaseContentRecordElement
+class PollElement extends BaseContentRecordElement implements \Stringable
 {
     protected const RECORD_CLASS = Poll::class;
 
@@ -41,9 +41,9 @@ class PollElement extends BaseContentRecordElement
         ];
     }
 
-    public function __toString()
+    public function __toString(): string
     {
-        return Html::encode($this->record?->question);
+        return (string) Html::encode($this->record?->question);
     }
 
     /**
