@@ -4,6 +4,7 @@ Changelog
 1.4.0 (Unreleased)
 ----------------------
 - Enh #148: Migration to Bootstrap 5 for HumHub 1.18
+- Enh #159: Implemented `module-coding-standards`
 
 1.3.11 (Unreleased)
 ---------------------
