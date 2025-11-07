@@ -154,7 +154,7 @@ class Events
         $poll->vote([3]);
 
         $comment = new \humhub\modules\comment\models\Comment();
-        $comment->message = Yii::t('PollsModule.base', "Again? ;Weary;");
+        $comment->message = Yii::t('PollsModule.base', "Again? :weary:");
         $comment->object_model = $poll->className();
         $comment->object_id = $poll->getPrimaryKey();
         $comment->save();
