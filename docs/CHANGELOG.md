@@ -5,6 +5,7 @@ Changelog
 ----------------------
 - Enh #148: Migration to Bootstrap 5 for HumHub 1.18
 - Enh #159: Implemented `module-coding-standards`
+- Fix #161: Fixed `weary-emoji` in installer example content
 
 1.3.11 (Unreleased)
 ---------------------
