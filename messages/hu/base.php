@@ -4,7 +4,7 @@ return [
     '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '<strong>Megjegyzés</strong> Az eredmények a szavazás végéig nem láthatóak.',
     'Access denied!' => 'Hozzáférés megtagadva!',
     'Add answer...' => 'Válasz hozzáadása...',
-    'Again? ;Weary;' => 'Megint? ;Weary;',
+    'Again? :weary:' => 'Megint? :weary:',
     'Allows the user to create polls' => 'A felhasználóknak engedélyezi a szavazások létrehozását',
     'Allows to start polls.' => 'Engedélyezi szavazás indítását.',
     'Anonymous' => 'Névtelen / Ismeretlen',

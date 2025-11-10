@@ -2,7 +2,7 @@
 
 return [
     'Access denied!' => 'Adgang nægtet!',
-    'Again? ;Weary;' => 'Igen? ;Weary;',
+    'Again? :weary:' => 'Igen? :weary:',
     'Answers' => 'Svar',
     'Cancel' => 'Afbryd',
     'Could not load poll!' => 'Kunne ikke indlæse afstemning!',

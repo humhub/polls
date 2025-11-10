@@ -7,7 +7,7 @@ return [
     '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '',
     'Access denied!' => '',
     'Add answer...' => '',
-    'Again? ;Weary;' => '',
+    'Again? :weary:' => '',
     'Allows the user to create polls' => '',
     'Allows to start polls.' => '',
     'Anonymous' => '',

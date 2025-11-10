@@ -4,7 +4,7 @@ return [
     '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '<strong>Забележка:</strong> Резултатът е скрит, докато анкетата не бъде затворена от модератор.',
     'Access denied!' => 'Достъп отказан!',
     'Add answer...' => 'Добави отговор...',
-    'Again? ;Weary;' => 'Отново? ;Weary;',
+    'Again? :weary:' => 'Отново? :weary:',
     'Allows the user to create polls' => 'Позволява на потребителя да създава анкети',
     'Allows to start polls.' => 'Позволява стартиране на анкети.',
     'Anonymous' => 'Анонимен',

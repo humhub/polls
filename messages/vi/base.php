@@ -4,7 +4,7 @@ return [
     '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '<strong>Ghi chú:</strong> Kết quả được ẩn cho tới khi phiên biểu quyết được đóng bởi điều hành viên.',
     'Access denied!' => 'Từ chối truy cập!',
     'Add answer...' => 'Thêm câu trả lời...',
-    'Again? ;Weary;' => 'Lại lần nữa? ;Weary;',
+    'Again? :weary:' => 'Lại lần nữa? :weary:',
     'Allows to start polls.' => 'Cho phép tạo biểu quyết',
     'Anonymous' => 'Vô danh',
     'Anonymous Votes?' => 'Cho phép biểu quyết vô danh?',

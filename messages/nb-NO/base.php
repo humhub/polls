@@ -4,7 +4,7 @@ return [
     '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '<strong>Merk:</strong> Resultatene er skjult til meningsmålingen avsluttes av moderator.',
     'Access denied!' => 'Ingen tilgang!',
     'Add answer...' => 'Legg til svar...',
-    'Again? ;Weary;' => 'Igjen? ; Weary',
+    'Again? :weary:' => 'Igjen? ; Weary',
     'Allows the user to create polls' => 'Tillat bruker å lage avstemming',
     'Allows to start polls.' => 'Tillater å starte en avstemming.',
     'Anonymous' => 'Anonym',

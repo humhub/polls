@@ -4,7 +4,7 @@ return [
     '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '<strong>Uwaga:</strong> Wynik głosowania jest ukryty dopóki ankieta nie zostanie zamknięta przez moderatora.',
     'Access denied!' => 'Brak dostępu!',
     'Add answer...' => 'Dodaj odpowiedź...',
-    'Again? ;Weary;' => 'Znowu? ;Zmęczony;',
+    'Again? :weary:' => 'Znowu? ;Zmęczony;',
     'Allows the user to create polls' => 'Pozwalaj użytkownikom na tworzenie ankiet',
     'Allows to start polls.' => 'Pozwala dodawać głosowania.',
     'Anonymous' => 'Anonimowo',

@@ -3,7 +3,7 @@
 return [
     'Access denied!' => '禁止访问',
     'Add answer...' => '添加答案...',
-    'Again? ;Weary;' => '又来？',
+    'Again? :weary:' => '又来？',
     'Allows to start polls.' => '允许开始投票',
     'Anonymous' => '匿名',
     'Anonymous Votes?' => '匿名投票？',

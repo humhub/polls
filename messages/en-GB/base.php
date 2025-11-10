@@ -4,7 +4,7 @@ return array (
   '<b>There are no polls yet!</b><br>Be the first and create one...' => '',
   'Access denied!' => '',
   'Add answer...' => '',
-  'Again? ;Weary;' => '',
+  'Again? :weary:' => '',
   'Allow multiple answers per user?' => '',
   'Anonymous' => '',
   'Anonymous Votes?' => '',

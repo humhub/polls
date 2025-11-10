@@ -3,7 +3,7 @@ return [
   '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '<strong>Hinweis:</strong> Das Ergebnis wird erst nach Beendigung der Umfrage angezeigt.',
   'Access denied!' => 'Zugriff verweigert!',
   'Add answer...' => 'Antwort hinzufügen ...',
-  'Again? ;Weary;' => 'Noch einmal? ;Weary;',
+  'Again? :weary:' => 'Noch einmal? :weary:',
   'Allows the user to create polls' => 'Erlaubt es dem Nutzer Umfragen zu erstellen',
   'Allows to start polls.' => 'Ermöglicht Umfragen zu starten.',
   'Anonymous' => 'Anonym',

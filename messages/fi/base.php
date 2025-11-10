@@ -4,7 +4,7 @@ return [
     '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '<strong>Huomaa:</strong> tulos on piilotettu, kunnes tekijä sulkee kyselyn.',
     'Access denied!' => 'Pääsy kieletty!',
     'Add answer...' => 'Lisää vastaus...',
-    'Again? ;Weary;' => 'Uudelleen? ;Weary;',
+    'Again? :weary:' => 'Uudelleen? :weary:',
     'Allows to start polls.' => 'Antaa luoda kyselyitä',
     'Anonymous' => 'Anonyymi',
     'Anonymous Votes?' => 'Haluatko että vastaukset ovat anonymeja?',

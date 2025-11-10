@@ -4,7 +4,7 @@ return [
     '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '<strong>ملاحظة:</strong> يتم إخفاء النتيجة حتى يتم إغلاق الاستطلاع بواسطة المشرف.',
     'Access denied!' => 'تم منع الوصول!',
     'Add answer...' => 'إضافة إجابة',
-    'Again? ;Weary;' => 'مرة أخرى؟ ؛المرهق؛',
+    'Again? :weary:' => 'مرة أخرى؟ ؛المرهق؛',
     'Allows the user to create polls' => 'السماح للمستخدم بإنشاء استطلاعات الرأي',
     'Allows to start polls.' => 'السماح ببدء الاستطلاعات.',
     'Anonymous' => 'مجهول',

@@ -4,7 +4,7 @@ return [
     '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '<strong>หมายเหตุ:</strong> ผลลัพธ์จะถูกซ่อนไว้จนกว่าโพลล์จะปิดโดยผู้ดูแล',
     'Access denied!' => 'ปฏิเสธการเข้าใช้!',
     'Add answer...' => 'เพิ่มคำตอบ...',
-    'Again? ;Weary;' => 'อีกแล้วเหรอ? ;เหน็ดเหนื่อย;',
+    'Again? :weary:' => 'อีกแล้วเหรอ? ;เหน็ดเหนื่อย;',
     'Allows the user to create polls' => 'อนุญาตให้ผู้ใช้สร้างโพล',
     'Allows to start polls.' => 'อนุญาตให้เริ่มการเลือกตั้ง',
     'Anonymous' => 'ไม่ระบุชื่อ',

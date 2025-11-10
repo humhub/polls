@@ -1,11 +1,14 @@
 Changelog
 =========
 
+1.4.2 (November 11, 2025)
+-------------------------
+- Fix #161: Fixed `weary-emoji` in installer example content
+
 1.4.1 (November 11, 2025)
 -------------------------
 - Enh #148: Migration to Bootstrap 5 for HumHub 1.18
 - Enh #159: Implemented `module-coding-standards`
-- Fix #161: Fixed `weary-emoji` in installer example content
 - Fix #156: Fix database format of the poll question column
 
 1.3.10 (July 30, 2025)

@@ -20,7 +20,7 @@ return [
     '{userName} answered the {question}.' => '{userName} ha respondiu a {question}.',
     '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '',
     'Add answer...' => '',
-    'Again? ;Weary;' => '',
+    'Again? :weary:' => '',
     'Allows the user to create polls' => '',
     'Anonymous' => '',
     'Anonymous Votes?' => '',
