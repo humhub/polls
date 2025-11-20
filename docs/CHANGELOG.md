@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.4.3 - (Unreleased)
+---------------------------
+- Enh #164: Convert swagger docs to OpenAPI 3.0
+
 1.4.2 (November 11, 2025)
 -------------------------
 - Fix #161: Fixed `weary-emoji` in installer example content
