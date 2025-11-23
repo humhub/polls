@@ -4,7 +4,7 @@ return [
     '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '<strong> Napomena: </strong> rezultat je skriven dok moderator ne zatvori anketu.',
     'Access denied!' => 'Pristup odbijen!',
     'Add answer...' => 'Dodaj odgovor...',
-    'Again? ;Weary;' => 'Ponovo? ;Weary;',
+    'Again? :weary:' => 'Ponovo? :weary:',
     'Allows to start polls.' => 'Dopusti pokretanje ankete',
     'Anonymous' => 'Anonimno',
     'Anonymous Votes?' => 'Anonimni glasovi?',

@@ -29,7 +29,7 @@ return [
     'and {count} more vote for this.' => 'و {count} نفر دیگر به این رای دادند.',
     'votes' => 'آرا',
     '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '',
-    'Again? ;Weary;' => '',
+    'Again? :weary:' => '',
     'Allows the user to create polls' => '',
     'Allows to start polls.' => '',
     'At least one answer is required' => '',

@@ -4,7 +4,7 @@ return [
     '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '<strong>Poznámka:</strong> Výsledek je skrytý, dokud hlasování neuzavře moderátor.',
     'Access denied!' => 'Přístup odepřen!',
     'Add answer...' => 'Vložit odpověď...',
-    'Again? ;Weary;' => 'Znovu? ;Unavený;',
+    'Again? :weary:' => 'Znovu? ;Unavený;',
     'Allows the user to create polls' => 'Povolit uživateli vytvářet ankety',
     'Allows to start polls.' => 'Povolit vytváření anket.',
     'Anonymous' => 'Anonym',

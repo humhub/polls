@@ -4,7 +4,7 @@ return [
     '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '<strong>Примечание:</strong> результат скрыт, пока модератор не завершит опрос.',
     'Access denied!' => 'Доступ закрыт!',
     'Add answer...' => 'Добавить ответ...',
-    'Again? ;Weary;' => 'Ещё раз? ;Weary;',
+    'Again? :weary:' => 'Ещё раз? :weary:',
     'Allows the user to create polls' => 'Позволяет пользователю создавать опросы',
     'Allows to start polls.' => 'Разрешить создавать опросы',
     'Anonymous' => 'Анонимный',

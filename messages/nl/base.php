@@ -3,7 +3,7 @@ return [
   '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '<strong>Opmerking:</ strong> het resultaat  blijft verborgen totdat een  moderator de stembus sluit.',
   'Access denied!' => 'Toegang geweigerd!',
   'Add answer...' => 'Antwoord toevoegen...',
-  'Again? ;Weary;' => 'Opnieuw? ;Weary;',
+  'Again? :weary:' => 'Opnieuw? :weary:',
   'Allows the user to create polls' => 'Sta de gebruiker toe stembussen maken',
   'Allows to start polls.' => 'Starten van stembussen toestaan.',
   'Anonymous' => 'Anoniem',

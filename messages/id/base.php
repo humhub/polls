@@ -17,7 +17,7 @@ return [
     'You have insufficient permissions to perform that operation!' => 'Anda tidak memiliki izin yang memadai untuk melakukan operasi itu!',
     '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '',
     'Add answer...' => '',
-    'Again? ;Weary;' => '',
+    'Again? :weary:' => '',
     'Allows the user to create polls' => '',
     'Allows to start polls.' => '',
     'Anonymous' => '',

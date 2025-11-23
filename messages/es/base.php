@@ -4,7 +4,7 @@ return [
     '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '<strong>Nota:</strong> el resultado se oculta hasta que un moderador cierra la encuesta.',
     'Access denied!' => 'Acceso denegado!',
     'Add answer...' => 'Añadir respuesta...',
-    'Again? ;Weary;' => '¿De nuevo? ;Cansado;',
+    'Again? :weary:' => '¿De nuevo? ;Cansado;',
     'Allows the user to create polls' => 'Permite al usuario crear encuestas.',
     'Allows to start polls.' => 'Permite iniciar encuestas.',
     'Anonymous' => 'Anónimos',

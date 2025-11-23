@@ -4,7 +4,7 @@ return [
     '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '<strong>注意：</strong> 結果はアンケートが終了するまで表示されません。',
     'Access denied!' => 'アクセスが拒否されました！',
     'Add answer...' => '回答を追加...',
-    'Again? ;Weary;' => 'また？ ;疲れた;',
+    'Again? :weary:' => 'また？ ;疲れた;',
     'Allows the user to create polls' => '投票を作成できるようにします',
     'Allows to start polls.' => '投票形式のアンケートを開始できます。',
     'Anonymous' => '匿名',

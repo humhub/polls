@@ -3,7 +3,7 @@ return [
   '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '<strong>Note :</strong> Les résultats sont cachés jusqu\'à ce que le sondage soit fermé par le modérateur.',
   'Access denied!' => 'Accès refusé.',
   'Add answer...' => 'Ajouter une réponse...',
-  'Again? ;Weary;' => 'Encore ? ;Weary;',
+  'Again? :weary:' => 'Encore ? :weary:',
   'Allows the user to create polls' => 'Autoriser les utilisateurs à créer un sondage',
   'Allows to start polls.' => 'Ce module permet de créer des sondages.',
   'Anonymous' => 'Anonyme',

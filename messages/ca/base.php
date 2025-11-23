@@ -36,7 +36,7 @@ return [
     'and {count} more vote for this.' => 'i {count} més han votat això.',
     'votes' => 'vots',
     '{userName} answered the {question}.' => '{userName} ha respost {question}.',
-    'Again? ;Weary;' => '',
+    'Again? :weary:' => '',
     'Anonymous poll!' => '',
     'Club A Steakhouse' => '',
     'Location of the next meeting' => '',

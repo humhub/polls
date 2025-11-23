@@ -2,7 +2,7 @@
 
 return [
     'Access denied!' => 'Η πρόσβαση απορρίφθηκε! ',
-    'Again? ;Weary;' => 'Ξανά; Κουρασμένος;',
+    'Again? :weary:' => 'Ξανά; Κουρασμένος;',
     'Cancel' => 'Ακύρωση',
     'Club A Steakhouse' => 'Club A Steakhouse',
     'Description' => 'Περιγραφή',

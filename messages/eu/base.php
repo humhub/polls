@@ -4,7 +4,7 @@ return [
     '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '<strong>Oharra:</strong> emaitza ezkutatuta egongo da moderatzaile batek inkesta itxi arte.',
     'Access denied!' => 'Sarrera debekatua!',
     'Add answer...' => 'Gehitu erantzuna...',
-    'Again? ;Weary;' => 'Berriro? ;Nekatuta;',
+    'Again? :weary:' => 'Berriro? ;Nekatuta;',
     'Allows the user to create polls' => 'Erabiltzaileari inkestak sortzeko aukera ematen dio',
     'Allows to start polls.' => 'Inkestak hasteko aukera ematen du.',
     'Anonymous' => 'Anonimoa',

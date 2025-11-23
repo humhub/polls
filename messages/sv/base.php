@@ -4,7 +4,7 @@ return [
     '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '<strong>OBS:</strong> Resultatet är dolt tills undersökningen är stängd av moderatorn.',
     'Access denied!' => 'Tillträde nekas!',
     'Add answer...' => 'Lägg till svar...',
-    'Again? ;Weary;' => 'Om igen? ;Trötta;',
+    'Again? :weary:' => 'Om igen? ;Trötta;',
     'Allows the user to create polls' => 'Låter användaren skapa undersökningar',
     'Allows to start polls.' => 'Tillåtelse att starta undersökningar.',
     'Anonymous' => 'Anonym',

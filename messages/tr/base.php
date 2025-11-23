@@ -29,7 +29,7 @@ return [
     'and {count} more vote for this.' => 've {count} oy verildi.',
     'votes' => 'oylar',
     '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '',
-    'Again? ;Weary;' => '',
+    'Again? :weary:' => '',
     'Allows the user to create polls' => '',
     'Close Poll' => '',
     'Club A Steakhouse' => '',

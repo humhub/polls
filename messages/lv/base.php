@@ -3,7 +3,7 @@
 return [
     'Access denied!' => 'Pieeja noraidīta!',
     'Add answer...' => 'Pievieno atbildi...',
-    'Again? ;Weary;' => 'Atkal? ;Weary;',
+    'Again? :weary:' => 'Atkal? :weary:',
     'Allows to start polls.' => 'Atļauj uzsākt aptauju.',
     'Anonymous' => 'Anonīma',
     'Anonymous Votes?' => 'Anonīmi balsojumi?',

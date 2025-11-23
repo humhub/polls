@@ -3,7 +3,7 @@ return [
   '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '<strong>Observação:</strong> o resultado fica oculto até que a enquete seja encerrada por um moderador.',
   'Access denied!' => 'Acesso negado!',
   'Add answer...' => 'Adicionar resposta...',
-  'Again? ;Weary;' => 'De novo? ;Weary;',
+  'Again? :weary:' => 'De novo? :weary:',
   'Allows the user to create polls' => 'Permitir ao usuário criar enquetes',
   'Allows to start polls.' => 'Permitir iniciar enquetes.',
   'Anonymous' => 'Anônimo',

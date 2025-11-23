@@ -7,7 +7,7 @@ return [
     'Save' => 'Salvează',
     '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.' => '',
     'Add answer...' => '',
-    'Again? ;Weary;' => '',
+    'Again? :weary:' => '',
     'Allows the user to create polls' => '',
     'Allows to start polls.' => '',
     'Anonymous' => '',
