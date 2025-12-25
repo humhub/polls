@@ -1,12 +1,12 @@
 <?php
 
-use humhub\modules\content\widgets\richtext\RichTextField;
-use humhub\widgets\form\ActiveForm;
 use humhub\helpers\Html;
+use humhub\modules\content\widgets\richtext\RichTextField;
 use humhub\modules\polls\widgets\AddAnswerInput;
-use humhub\widgets\bootstrap\Button;
-use humhub\widgets\bootstrap\Alert;
 use humhub\modules\ui\icon\widgets\Icon;
+use humhub\widgets\bootstrap\Alert;
+use humhub\widgets\bootstrap\Button;
+use humhub\widgets\form\ActiveForm;
 
 /** @var  $poll \humhub\modules\polls\models\Poll */
 
@@ -42,7 +42,7 @@ $disabled = ($poll->closed) ? 'disabled="disabled"' : '';
         <?php endforeach; ?>
 
         <?php if (!$poll->closed) : ?>
-            <?= AddAnswerInput::widget(['name' => 'newAnswers[]', 'showTitle' => true]); ?>
+            <?= AddAnswerInput::widget(['model' => $poll, 'name' => 'newAnswers[]', 'showTitle' => true]); ?>
         <?php endif; ?>
 
 

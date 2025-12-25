@@ -1,12 +1,12 @@
 <?php
 
+use humhub\helpers\Html;
 use humhub\modules\content\widgets\richtext\RichTextField;
 use humhub\modules\content\widgets\WallCreateContentFormFooter;
 use humhub\modules\polls\assets\PollsAsset;
 use humhub\modules\polls\models\Poll;
 use humhub\modules\polls\widgets\AddAnswerInput;
 use humhub\widgets\form\ActiveForm;
-use humhub\helpers\Html;
 
 /* @var $model Poll */
 /* @var $form ActiveForm */
@@ -23,7 +23,7 @@ PollsAsset::register($this);
     ])->label(false) ?>
 
     <?= Html::activeLabel($model, 'answersText', ['label' => Yii::t('PollsModule.base', 'Answers'), 'class' => 'control-label']); ?>
-    <?= AddAnswerInput::widget(['name' => 'newAnswers[]', 'showTitle' => false]); ?>
+    <?= AddAnswerInput::widget(['model' => $model, 'name' => 'newAnswers[]', 'showTitle' => false]); ?>
 
     <div class="container">
         <div class="row">

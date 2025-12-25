@@ -3,6 +3,7 @@
 namespace humhub\modules\polls\widgets;
 
 use humhub\components\Widget;
+use humhub\modules\polls\models\Poll;
 
 /**
  * PollWallEntryWidget is used to display a poll inside the stream.
@@ -15,12 +16,17 @@ use humhub\components\Widget;
  */
 class AddAnswerInput extends Widget
 {
+    public Poll $model;
     public $name;
     public $showTitle;
 
     public function run()
     {
-        return $this->render('addAnswersInput', ['name' => $this->name, 'showTitle' => $this->showTitle]);
+        return $this->render('addAnswersInput', [
+            'model' => $this->model,
+            'name' => $this->name,
+            'showTitle' => $this->showTitle,
+        ]);
     }
 
 }
