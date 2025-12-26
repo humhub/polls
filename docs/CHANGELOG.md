@@ -4,7 +4,7 @@ Changelog
 1.4.3 - (Unreleased)
 ---------------------------
 - Enh #164: Convert swagger docs to OpenAPI 3.0
-- Fix: Various visual issues since BS5
+- Fix #167: Various visual issues since BS5
 
 1.4.2 (November 11, 2025)
 -------------------------
