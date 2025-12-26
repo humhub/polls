@@ -1,11 +1,11 @@
 <?php
 
+use humhub\helpers\Html;
 use humhub\modules\content\widgets\richtext\RichText;
 use humhub\modules\polls\models\Poll;
-use humhub\helpers\Html;
+use humhub\widgets\bootstrap\Alert;
 use humhub\widgets\bootstrap\Badge;
 use humhub\widgets\bootstrap\Button;
-use humhub\widgets\bootstrap\Alert;
 
 humhub\modules\polls\assets\PollsAsset::register($this);
 
@@ -36,7 +36,9 @@ humhub\modules\polls\assets\PollsAsset::register($this);
 
     <?php if(!$poll->isShowResult()) : ?>
         <br>
-        <?= Alert::light(Yii::t('PollsModule.base', '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.'))->cssClass('m-0') ?>
+        <?= Alert::light(Yii::t('PollsModule.base', '<strong>Note:</strong> The result is hidden until the poll is closed by a moderator.'))
+            ->cssClass('m-0')
+            ->closeButton(false) ?>
     <?php endif; ?>
 
     <?php if (!$poll->hasUserVoted() && !Yii::$app->user->isGuest && !$poll->closed) : ?>
