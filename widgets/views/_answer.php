@@ -56,10 +56,11 @@ if (!$poll->anonymous) {
         <?php if ($poll->isShowResult()) : ?>
             <div class="col-2 text-nowrap mt-3 p-0">
                 <?= !$poll->anonymous && $voteCount
-                    ? Link::asLink($voteText, $contentContainer->createUrl('/polls/poll/user-list-results', [
+                    ? Link::to($voteText, $contentContainer->createUrl('/polls/poll/user-list-results', [
                             'pollId' => $poll->id,
                             'answerId' => $answer->id,
                         ]))
+                        ->cssClass('link-accent')
                         ->options(['data-bs-target' => '#globalModal'])
                         ->tooltip($userlist)
                     : $voteText ?>
