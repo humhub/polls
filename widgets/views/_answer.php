@@ -60,6 +60,7 @@ if (!$poll->anonymous) {
                             'pollId' => $poll->id,
                             'answerId' => $answer->id,
                         ]))
+                        ->encodeLabel(false)
                         ->cssClass('link-accent')
                         ->options(['data-bs-target' => '#globalModal'])
                         ->tooltip($userlist)
