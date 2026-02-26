@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.4.3 - (Unreleased)
----------------------------
+1.4.3 (February 26, 2026)
+-------------------------
 - Enh #164: Convert swagger docs to OpenAPI 3.0
 - Fix #167: Various visual issues since BS5
 - Fix #172: Labels encoding (see [migration guide](https://github.com/humhub/humhub/blob/master/MIGRATE-DEV.md#version-1181))
