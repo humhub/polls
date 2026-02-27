@@ -34,7 +34,7 @@ if (!$poll->anonymous) {
     }
 }
 ?>
-<div class="container">
+<div class="container-fluid">
     <div class="row m-0">
         <?php if (!$poll->hasUserVoted() && !$poll->closed) : ?>
             <div class="col-1 mt-2 ps-0">

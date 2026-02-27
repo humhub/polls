@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.4.4 (Unreleased)
+-------------------------
+- Fix: Alignment on large screens and Enterprise Theme
+
 1.4.3 (February 26, 2026)
 -------------------------
 - Enh #164: Convert swagger docs to OpenAPI 3.0
