@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.4.4 (Unreleased)
+1.4.5 (Feburary 27, 2026)
 -------------------------
 - Fix #173: Alignment on large screens and Enterprise Theme
 
