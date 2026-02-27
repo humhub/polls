@@ -3,7 +3,7 @@
     "name": "Polls",
     "description": "Easily create polls, streamline decision-making, and harness the power of voting.",
     "keywords": ["poll", "voting", "decision making"],
-    "version": "1.4.4",
+    "version": "1.4.5",
     "humhub": {
         "minVersion": "1.18.1",
         "maxVersion": "1.18"
