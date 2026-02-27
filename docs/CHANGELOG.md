@@ -3,7 +3,7 @@ Changelog
 
 1.4.4 (Unreleased)
 -------------------------
-- Fix: Alignment on large screens and Enterprise Theme
+- Fix #173: Alignment on large screens and Enterprise Theme
 
 1.4.3 (February 26, 2026)
 -------------------------
