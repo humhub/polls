@@ -3,9 +3,9 @@
     "name": "Polls",
     "description": "Easily create polls, streamline decision-making, and harness the power of voting.",
     "keywords": ["poll", "voting", "decision making"],
-    "version": "1.4.3",
+    "version": "1.4.4",
     "humhub": {
-        "minVersion": "1.18",
+        "minVersion": "1.18.1",
         "maxVersion": "1.18"
     },
     "homepage": "https://github.com/humhub/polls",
