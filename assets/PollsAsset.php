@@ -8,22 +8,19 @@
 
 namespace humhub\modules\polls\assets;
 
-use humhub\components\View;
+use humhub\components\assets\AssetBundle;
 use Yii;
-use yii\web\AssetBundle;
 
 class PollsAsset extends AssetBundle
 {
     public $jsOptions = ['position' => \yii\web\View::POS_END];
     public $sourcePath = '@polls/resources';
-    public $css = [];
     public $js = [
         'js/humhub.polls.js',
     ];
 
     /**
-     * @param View $view
-     * @return AssetBundle
+     * @inheritdoc
      */
     public static function register($view)
     {
