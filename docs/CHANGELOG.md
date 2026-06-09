@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.5.1 (Unreleased)
+------------------
+- Fix #175: Error creating installer sample content (comment no longer uses removed `object_model`/`object_id` properties)
+
 1.5.0 (June 5, 2026)
 --------------------
 - Enh #174: Update for HumHub 1.19
