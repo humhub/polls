@@ -8,3 +8,4 @@ Easily create polls with the intuitive Polls Module, simplifying decision-making
 - **Vote Types:** Choose between regular and anonymous voting.
 - **Choices:** Allow your users to select single or multiple options.
 - **Blind Voting:** Keep poll results hidden until it's closed to avoid choice bias.
+
