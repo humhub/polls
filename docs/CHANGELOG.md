@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.5.1 (Unreleased)
-------------------
+1.5.1 (July 23, 2026)
+---------------------
 - Fix #175: Error creating installer sample content (comment no longer uses removed `object_model`/`object_id` properties)
 
 1.5.0 (June 5, 2026)
