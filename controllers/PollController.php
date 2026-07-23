@@ -6,7 +6,7 @@ use humhub\modules\content\components\ContentContainerController;
 use humhub\modules\polls\models\Poll;
 use humhub\modules\polls\models\PollAnswer;
 use humhub\modules\polls\widgets\WallCreateForm;
-use humhub\modules\stream\actions\Stream;
+use humhub\modules\stream\actions\StreamEntryResponse;
 use humhub\modules\user\models\User;
 use humhub\modules\user\widgets\UserListBox;
 use humhub\helpers\Html;
@@ -67,7 +67,7 @@ class PollController extends ContentContainerController
             throw new HttpException(403);
         }
 
-        return $this->asJson(Stream::getContentResultEntry($model->content));
+        return $this->asJson(StreamEntryResponse::getAsArray($model->content));
     }
 
     public function actionEdit()
@@ -95,7 +95,7 @@ class PollController extends ContentContainerController
             if ($model->validate() && $model->save()) {
                 // Reload record to get populated updated_at field
                 $model = Poll::findOne(['id' => $id]);
-                return Stream::getContentResultEntry($model->content);
+                return StreamEntryResponse::getAsArray($model->content);
             } else {
                 $result['errors'] = $model->getErrors();
             }
@@ -131,7 +131,7 @@ class PollController extends ContentContainerController
         // Refresh updated_at
         $model->content->refresh();
 
-        return Stream::getContentResultEntry($model->content);
+        return StreamEntryResponse::getAsArray($model->content);
     }
 
     /**
@@ -159,7 +159,7 @@ class PollController extends ContentContainerController
 
         $poll->vote($votes);
 
-        return Stream::getContentResultEntry($poll->content);
+        return StreamEntryResponse::getAsArray($poll->content);
     }
 
     /**
@@ -169,7 +169,7 @@ class PollController extends ContentContainerController
     {
         $poll = $this->getPollByParameter();
         $poll->resetAnswer();
-        return $this->asJson(Stream::getContentResultEntry($poll->content));
+        return $this->asJson(StreamEntryResponse::getAsArray($poll->content));
     }
 
     /**

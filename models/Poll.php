@@ -2,9 +2,10 @@
 
 namespace humhub\modules\polls\models;
 
+use humhub\modules\activity\services\ActivityManager;
 use humhub\modules\content\widgets\richtext\RichText;
+use humhub\modules\polls\activities\NewVote;
 use humhub\modules\polls\permissions\CreatePoll;
-use humhub\modules\search\interfaces\Searchable;
 use humhub\modules\content\components\ContentActiveRecord;
 use Yii;
 
@@ -32,7 +33,7 @@ use Yii;
  * @since 0.5
  * @author Luke
  */
-class Poll extends ContentActiveRecord implements Searchable
+class Poll extends ContentActiveRecord
 {
     public const MIN_REQUIRED_ANSWERS = 2;
     public const SCENARIO_CREATE = 'create';
@@ -309,10 +310,7 @@ class Poll extends ContentActiveRecord implements Searchable
         }
 
         if ($voted && !$this->anonymous) {
-            $activity = new \humhub\modules\polls\activities\NewVote();
-            $activity->source = $this;
-            $activity->originator = Yii::$app->user->getIdentity();
-            $activity->create();
+            ActivityManager::dispatch(NewVote::class, $this);
         }
 
         return $voted;
