@@ -88,7 +88,7 @@ class PollsController extends BaseContentController
             return $this->returnError(404, 'Poll is not found!');
         }
 
-        if (!$poll->content->canEdit()) {
+        if (!$poll->content->canEdit() || $poll->closed) {
             return $this->returnError(403, 'You are not allowed to update this poll!');
         }
 
