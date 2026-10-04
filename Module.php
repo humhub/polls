@@ -2,7 +2,6 @@
 
 namespace humhub\modules\polls;
 
-use humhub\components\console\Application as ConsoleApplication;
 use humhub\modules\user\models\User;
 use humhub\modules\polls\models\Poll;
 use humhub\modules\space\models\Space;
@@ -25,19 +24,6 @@ class Module extends ContentContainerModule
      * @inheritdoc
      */
     public $resourcesPath = 'resources';
-
-    /**
-     * @inheritdoc
-     */
-    public function init()
-    {
-        parent::init();
-
-        if (Yii::$app instanceof ConsoleApplication) {
-            // Prevents the Yii HelpCommand from crawling all web controllers and possibly throwing errors at REST endpoints if the REST module is not available.
-            $this->controllerNamespace = 'polls/commands';
-        }
-    }
 
     /**
      * @inheritdoc
