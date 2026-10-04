@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.4.6 (Unreleased)
+------------------
+- Fix: Refined poll update handling
+
 1.4.5 (Feburary 27, 2026)
 -------------------------
 - Fix #173: Alignment on large screens and Enterprise Theme

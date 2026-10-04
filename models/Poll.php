@@ -91,8 +91,18 @@ class Poll extends ContentActiveRecord implements Searchable
             //we use the question attribute since its always required, otherwise it would not be called for editAnswers if editAnswers is empty...
             [['question'], 'minTwoAnswers', 'on' => self::SCENARIO_EDIT],
             [['allow_multiple'], 'integer'],
-
+            [['anonymous'], 'keepAnonymous', 'on' => self::SCENARIO_EDIT, 'skipOnEmpty' => false],
         ];
+    }
+
+    /**
+     * An anonymous poll cannot be switched back to non-anonymous
+     */
+    public function keepAnonymous($attribute)
+    {
+        if (!$this->isNewRecord && $this->getOldAttribute('anonymous') && !$this->anonymous) {
+            $this->addError($attribute, Yii::t('PollsModule.base', 'Access denied!'));
+        }
     }
 
     public function minTwoNewAnswers($attribute)
