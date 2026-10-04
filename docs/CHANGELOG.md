@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.5.2 (Unreleased)
+------------------
+- Fix: Refined poll update handling
+
 1.5.1 (July 23, 2026)
 ---------------------
 - Fix #175: Error creating installer sample content (comment no longer uses removed `object_model`/`object_id` properties)
@@ -9,7 +13,12 @@ Changelog
 --------------------
 - Enh #174: Update for HumHub 1.19
 
+1.4.6 (Unreleased)
+------------------
+- Fix: Refined poll update handling
+
 1.4.5 (February 27, 2026)
+1.4.5 (Feburary 27, 2026)
 -------------------------
 - Fix #173: Alignment on large screens and Enterprise Theme
 
