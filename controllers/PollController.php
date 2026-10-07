@@ -78,6 +78,10 @@ class PollController extends ContentContainerController
         $edited = false;
         /* @var Poll $poll*/
         $model = Poll::findOne(['id' => $id]);
+        if (!$model) {
+            throw new HttpException(404);
+        }
+
         $wasAnonymous = $model->anonymous;
         $model->scenario = Poll::SCENARIO_EDIT;
 
@@ -120,6 +124,10 @@ class PollController extends ContentContainerController
         $this->forcePostRequest();
 
         $model = Poll::findOne(['id' => $id]);
+        if (!$model) {
+            throw new HttpException(404);
+        }
+
         $model->scenario = Poll::SCENARIO_CLOSE;
 
         if (!$model->content->canEdit()) {
@@ -141,6 +149,11 @@ class PollController extends ContentContainerController
     {
         Yii::$app->response->format = 'json';
         $poll = $this->getPollByParameter();
+
+        if ($poll->closed) {
+            throw new HttpException(403, Yii::t('PollsModule.base', 'Poll is closed!'));
+        }
+
         $answers = Yii::$app->request->post('answers');
 
         // Build array of answer ids
@@ -182,6 +195,10 @@ class PollController extends ContentContainerController
 
         if ($poll->anonymous) {
             throw new HttpException(401, Yii::t('PollsModule.base', 'Anonymous poll!'));
+        }
+
+        if (!$poll->isShowResult()) {
+            throw new HttpException(403, Yii::t('PollsModule.base', 'Access denied!'));
         }
 
         $answerId = (int) Yii::$app->request->get('answerId', '');

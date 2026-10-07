@@ -182,6 +182,14 @@ class PollsController extends BaseContentController
             return $this->returnError(404, 'Poll is not found!');
         }
 
+        if (!$poll->content->canView()) {
+            return $this->returnError(403, 'You cannot view this content!');
+        }
+
+        if ($poll->closed) {
+            return $this->returnError(403, 'Poll is closed!');
+        }
+
         $answers = Yii::$app->request->post('answers');
 
         $votes = [];
@@ -221,6 +229,14 @@ class PollsController extends BaseContentController
             return $this->returnError(404, 'Poll is not found!');
         }
 
+        if (!$poll->content->canView()) {
+            return $this->returnError(403, 'You cannot view this content!');
+        }
+
+        if ($poll->closed) {
+            return $this->returnError(403, 'Poll is closed!');
+        }
+
         if (!$poll->hasUserVoted()) {
             return $this->returnSuccess('You are not voted yet on this poll.');
         }
@@ -241,6 +257,10 @@ class PollsController extends BaseContentController
         $poll = Poll::findOne(['id' => $id]);
         if (!$poll) {
             return $this->returnError(404, 'Poll is not found!');
+        }
+
+        if (!$poll->content->canView()) {
+            return $this->returnError(403, 'You cannot view this content!');
         }
 
         return PollAnswerUser::find()

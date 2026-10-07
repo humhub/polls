@@ -299,7 +299,7 @@ class Poll extends ContentActiveRecord implements Searchable
     public function vote($votes = [])
     {
 
-        if ($this->hasUserVoted()) {
+        if ($this->closed || $this->hasUserVoted()) {
             return false;
         }
 
