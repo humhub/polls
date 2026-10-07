@@ -665,7 +665,7 @@ paths:
                     type: string
                     example: You have voted.
         "403":
-          description: Forbidden
+          description: Forbidden, e.g. the poll is closed ("Poll is closed!"), the user cannot view the poll ("You cannot view this content!") or voting for multiple answers is disabled ("Voting for multiple answers is disabled!")
           content:
             application/json:
               schema:
@@ -676,7 +676,7 @@ paths:
                     example: 403
                   message:
                     type: string
-                    example: Voting for multiple answers is disabled!
+                    example: Poll is closed!
         "404":
           description: Not found
           content:
@@ -717,7 +717,7 @@ paths:
                     type: string
                     example: You have reset your vote.
         "403":
-          description: Forbidden
+          description: Forbidden, e.g. the poll is closed ("Poll is closed!") or the user cannot view the poll ("You cannot view this content!")
           content:
             application/json:
               schema:
@@ -728,7 +728,7 @@ paths:
                     example: 403
                   message:
                     type: string
-                    example: Voting for multiple answers is disabled!
+                    example: Poll is closed!
         "404":
           description: Not found
           content:
@@ -767,6 +767,19 @@ paths:
                     - 11
                     - 13
                     - 24
+        "403":
+          description: Forbidden, the user cannot view the poll
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    example: 403
+                  message:
+                    type: string
+                    example: You cannot view this content!
         "404":
           description: Not found
           content:
