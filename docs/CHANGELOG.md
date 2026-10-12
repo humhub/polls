@@ -1,11 +1,24 @@
 Changelog
 =========
 
-1.4.6 (Unreleased)
+1.5.2 (Unreleased)
 ------------------
 - Fix: Refined poll update handling
 - Fix #178: Polls could be voted on after closing; REST vote actions ignored poll access rights; Voter list was exposed for polls with hidden results; Missing polls caused a 500 error on edit and close
 
+1.5.1 (July 23, 2026)
+---------------------
+- Fix #175: Error creating installer sample content (comment no longer uses removed `object_model`/`object_id` properties)
+
+1.5.0 (June 5, 2026)
+--------------------
+- Enh #174: Update for HumHub 1.19
+
+1.4.6 (Unreleased)
+------------------
+- Fix: Refined poll update handling
+
+1.4.5 (February 27, 2026)
 1.4.5 (Feburary 27, 2026)
 -------------------------
 - Fix #173: Alignment on large screens and Enterprise Theme

@@ -143,8 +143,7 @@ class Events
 
         $comment = new \humhub\modules\comment\models\Comment();
         $comment->message = Yii::t('PollsModule.base', "Why don't we go to Bemelmans Bar?");
-        $comment->object_model = $poll->className();
-        $comment->object_id = $poll->getPrimaryKey();
+        $comment->content_id = $poll->content->id;
         $comment->save();
 
         // Switch Identity
@@ -155,8 +154,7 @@ class Events
 
         $comment = new \humhub\modules\comment\models\Comment();
         $comment->message = Yii::t('PollsModule.base', "Again? :weary:");
-        $comment->object_model = $poll->className();
-        $comment->object_id = $poll->getPrimaryKey();
+        $comment->content_id = $poll->content->id;
         $comment->save();
 
         // Switch Identity

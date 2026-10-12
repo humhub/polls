@@ -1,15 +1,18 @@
+<?php
+
+use humhub\modules\polls\models\Poll;
+use humhub\widgets\bootstrap\Link;
+
+/* @var Poll $poll */
+?>
 <li>
-    <?php if ($poll->closed) : ?>
-        <a class="dropdown-item" href="#" data-action-click="close" data-action-target="[data-poll='<?= $poll->id ?>']" 
-           data-action-url="<?= $poll->content->container->createUrl('/polls/poll/open', ['id' => $poll->id]); ?>">
-            <i class="fa fa-check"></i>
-            <?= Yii::t('PollsModule.base', 'Reopen Poll') ?>
-        </a>
-    <?php else : ?>
-        <a class="dropdown-item" data-action-click="close" data-action-target="[data-poll='<?= $poll->id ?>']" 
-           data-action-url="<?= $poll->content->container->createUrl('/polls/poll/close', ['id' => $poll->id]); ?>">
-            <i class="fa fa-times"></i>
-            <?= Yii::t('PollsModule.base', 'Close Poll') ?>
-        </a>
-    <?php endif; ?>
+    <?= $poll->closed
+        ? Link::to(Yii::t('PollsModule.base', 'Reopen Poll'))
+            ->action('close', $poll->content->container->createUrl('/polls/poll/open', ['id' => $poll->id]), '[data-poll=' . $poll->id . ']')
+            ->icon('check')
+            ->cssClass('dropdown-item')
+        : Link::to(Yii::t('PollsModule.base', 'Close Poll'))
+            ->action('close', $poll->content->container->createUrl('/polls/poll/close', ['id' => $poll->id]), '[data-poll=' . $poll->id . ']')
+            ->icon('times')
+            ->cssClass('dropdown-item') ?>
 </li>
