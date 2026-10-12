@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.4.6 (Unreleased)
-------------------
+1.4.6 (October 12, 2026)
+------------------------
 - Fix: Refined poll update handling
 - Fix #178: Polls could be voted on after closing; REST vote actions ignored poll access rights; Voter list was exposed for polls with hidden results; Missing polls caused a 500 error on edit and close
 
