@@ -37,6 +37,7 @@ return [
     'Please specify at least {min} answers!' => '',
     'Poll' => '',
     'Poll content ID' => '',
+    'Poll is closed!' => '',
     'Question' => '',
     'Reopen Poll' => '',
     'Reset my vote' => '',

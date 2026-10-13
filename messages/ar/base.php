@@ -47,4 +47,5 @@ return [
     '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '{n,plural,=1{# {htmlTagBegin}صوت{htmlTagEnd}}other{# {htmlTagBegin}أصوات{htmlTagEnd}}}',
     '{userName} answered the {question}.' => 'أجاب {userName} على {question}.',
     'Poll content ID' => '',
+    'Poll is closed!' => '',
 ];

@@ -30,6 +30,7 @@ return [
     'Please specify at least {min} answers!' => '',
     'Poll' => '',
     'Poll content ID' => '',
+    'Poll is closed!' => '',
     'Polls' => '',
     'Question' => '',
     'Reopen Poll' => '',

@@ -47,4 +47,5 @@ return [
     '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '{n,plural,=1{# {htmlTagBegin}głos{htmlTagEnd}}other{# {htmlTagBegin}głosów{htmlTagEnd}}}',
     '{userName} answered the {question}.' => '{userName} odpowiedział(a) na {question}.',
     'Again? :weary:' => '',
+    'Poll is closed!' => '',
 ];

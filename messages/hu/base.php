@@ -47,4 +47,5 @@ return [
     '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '{n,plural,=1{# {htmlTagBegin}szavazat{htmlTagEnd}}other{# {htmlTagBegin}szavazat{htmlTagEnd}}}',
     '{userName} answered the {question}.' => '{userName} megválaszolta ezt: {question}.',
     'Poll content ID' => '',
+    'Poll is closed!' => '',
 ];

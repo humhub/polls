@@ -46,5 +46,6 @@ return [
     'votes' => 'votos',
     '{userName} answered the {question}.' => '{userName} votou sobre {question}.',
     'Poll content ID' => '',
+    'Poll is closed!' => '',
     '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '',
 ];

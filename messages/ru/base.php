@@ -45,6 +45,7 @@ return [
     '{userName} answered the {question}.' => '{userName} ответил(а) на {question}.',
     'Location of the next meeting' => '',
     'Poll content ID' => '',
+    'Poll is closed!' => '',
     'Whenever someone participates in a poll.' => '',
     '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '',
 ];

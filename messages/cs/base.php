@@ -46,5 +46,6 @@ return [
     'votes' => 'hlasů',
     '{userName} answered the {question}.' => 'Uživatel {userName} odpověděl na otázku {question}.',
     'Poll content ID' => '',
+    'Poll is closed!' => '',
     '{n,plural,=1{# {htmlTagBegin}vote{htmlTagEnd}}other{# {htmlTagBegin}votes{htmlTagEnd}}}' => '',
 ];

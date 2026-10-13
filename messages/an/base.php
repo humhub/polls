@@ -38,6 +38,7 @@ return [
     'Pisillo Italian Panini' => '',
     'Poll' => '',
     'Poll content ID' => '',
+    'Poll is closed!' => '',
     'Reset my vote' => '',
     'Right now, we are in the planning stages for our next meetup and we would like to know from you, where you would like to go?' => '',
     'To Daniel' => '',
